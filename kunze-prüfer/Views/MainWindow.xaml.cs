@@ -25,5 +25,28 @@ namespace kunze_prüfer
         {
             InitializeComponent();
         }
+
+        private void ViewHandler(int selectedIndex)
+        {
+            switch (selectedIndex)
+            {
+                case 1:
+                    navItem_1.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0, 0));
+                    break;
+                case 2:
+                    navItem_2.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0, 0));
+                    break;
+            }
+        }
+
+        private void navItem_1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ViewHandler(1);
+        }
+
+        private void navItem_2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ViewHandler(2);
+        }
     }
 }
