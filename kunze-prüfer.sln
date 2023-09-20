@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33920.266
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kunze-prüfer", "kunze-prüfer\kunze-prüfer.csproj", "{D2B63D07-F9AE-4555-9E16-604E59BB5772}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2B63D07-F9AE-4555-9E16-604E59BB5772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B63D07-F9AE-4555-9E16-604E59BB5772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B63D07-F9AE-4555-9E16-604E59BB5772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B63D07-F9AE-4555-9E16-604E59BB5772}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32B7D787-3A37-4440-A822-AE92C80C6B8E}
+	EndGlobalSection
+EndGlobal
