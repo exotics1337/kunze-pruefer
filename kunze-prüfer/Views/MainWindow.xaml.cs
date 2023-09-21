@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdonisUI;
@@ -28,13 +22,15 @@ namespace kunze_prüfer
 
         private void ViewHandler(int selectedIndex)
         {
+            navItem_1.Style = (Style)FindResource("NavItem");
+            navItem_2.Style = (Style)FindResource("NavItem");
             switch (selectedIndex)
             {
                 case 1:
-                    navItem_1.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0, 0));
+                    navItem_1.Style = (Style)FindResource("NavItemSelected");
                     break;
                 case 2:
-                    navItem_2.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xFF, 0, 0));
+                    navItem_2.Style = (Style)FindResource("NavItemSelected");
                     break;
             }
         }
