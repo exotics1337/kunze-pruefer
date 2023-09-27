@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
         xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+        xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kunze_prüfer"
@@ -16,7 +17,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="185" />
+            <ColumnDefinition Width="210" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -26,20 +27,29 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="0" Background="#FFF0F0F0" Grid.RowSpan="2">
-            <StackPanel Grid.Column="0" Orientation="Vertical" Grid.Row="1" Margin="0,35,0,0" Height="1000">
-                <TextBlock Style="{StaticResource NavGroupHeader}">PRÜFUNG</TextBlock>
-                <TextBlock MouseDown="navItem_1_MouseDown" x:Name="navItem_1" Style="{StaticResource NavItem}">Option 1</TextBlock>
-                <TextBlock MouseDown="navItem_2_MouseDown" x:Name="navItem_2" Style="{StaticResource NavItem}">Option 2</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-                <TextBlock Style="{StaticResource NavGroupHeader}">RECHNUNG</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-                <TextBlock Style="{StaticResource NavGroupHeader}">STAMMDATEN</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-                <TextBlock Style="{StaticResource NavItem}">Option N</TextBlock>
-            </StackPanel>
+            <ListBox x:Name="listBox" Grid.Column="0" Margin="0,35,0,0"
+                     adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
+                     adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True" SelectionChanged="listBox_SelectionChanged"
+                     >
+                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,8,8,0">PRÜFUNG</ListBoxItem>
+                <TextBlock x:Name="navItem_1" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
+                <TextBlock x:Name="navItem_2" Style="{StaticResource NavItem}">Prüfungen einsehen</TextBlock>
+                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0" >RECHNUNG</ListBoxItem>
+                <TextBlock x:Name="navItem_3" Style="{StaticResource NavItem}">Rechnung erstellen</TextBlock>
+                <TextBlock x:Name="navItem_4" Style="{StaticResource NavItem}">Rechnungen einsehen</TextBlock>
+                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">ANGEBOT</ListBoxItem>
+                <TextBlock x:Name="navItem_5" Style="{StaticResource NavItem}">Angebot erstellen</TextBlock>
+                <TextBlock x:Name="navItem_6" Style="{StaticResource NavItem}">Angebote einsehen</TextBlock>
+                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">AUFTRAG</ListBoxItem>
+                <TextBlock x:Name="navItem_7" Style="{StaticResource NavItem}">Auftrag erstellen</TextBlock>
+                <TextBlock x:Name="navItem_8" Style="{StaticResource NavItem}">Aufträge einsehen</TextBlock>
+                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">STAMMDATEN</ListBoxItem>
+                <TextBlock x:Name="navItem_9" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
+                <TextBlock x:Name="navItem_10" Style="{StaticResource NavItem}">Prüfungstypen</TextBlock>
+                <TextBlock x:Name="navItem_11" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>
+                <TextBlock x:Name="navItem_12" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
+                <TextBlock x:Name="navItem_13" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
+            </ListBox>
         </Grid>
     </Grid>
 </adonisControls:AdonisWindow>
