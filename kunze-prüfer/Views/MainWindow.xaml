@@ -24,12 +24,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="{Binding TitleBarActualHeight, RelativeSource={RelativeSource AncestorType={x:Type adonisControls:AdonisWindow}}}"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="0" Background="#FFF0F0F0" Grid.RowSpan="2">
             <ListBox x:Name="listBox" Grid.Column="0" Margin="0,35,0,0"
+                     ItemContainerStyle="{DynamicResource _ListBoxItemStyle}"
                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
-                     adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True" SelectionChanged="listBox_SelectionChanged"
+                     adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FFBDAD91"
                      >
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,8,8,0">PRÜFUNG</ListBoxItem>
                 <TextBlock x:Name="navItem_1" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
@@ -50,6 +52,13 @@
                 <TextBlock x:Name="navItem_12" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
                 <TextBlock x:Name="navItem_13" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
             </ListBox>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" Background="#FF9600">
+            <StackPanel Orientation="Horizontal">
+                <Image MouseDown="SignOut_MouseDown" Margin="15,0,5,0" Source="/Media/Icons/close-78.png" Width="25" ></Image>
+                <Image MouseDown="Exit_MouseDown" Margin="5,0,90,0" Source="/Media/Icons/logout-78.png" Width="25" ></Image>
+                <Image MouseDown="Profile_MouseDown" Margin="0,0,15,0"  Source="/Media/Icons/account-78.png" Width="25"></Image>
+            </StackPanel>
         </Grid>
     </Grid>
 </adonisControls:AdonisWindow>

@@ -87,5 +87,20 @@ namespace kunze_prüfer
             selectedPage = listBox.SelectedIndex;
             ViewHandler();
         }
+
+        private void Profile_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void SignOut_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Exit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
