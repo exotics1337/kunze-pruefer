@@ -10,7 +10,8 @@
         xmlns:local="clr-namespace:kunze_prüfer"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280"
-        PlaceTitleBarOverContent="True">
+        PlaceTitleBarOverContent="True"
+        BorderThickness="0">
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
@@ -28,37 +29,42 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="0" Background="#FFF0F0F0" Grid.RowSpan="2">
-            <ListBox x:Name="listBox" Grid.Column="0" Margin="0,35,0,0"
+            <ListBox x:Name="ListBox" Grid.Column="0" Margin="0,35,0,0"
                      ItemContainerStyle="{DynamicResource _ListBoxItemStyle}"
                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
                      adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FFBDAD91"
                      >
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,8,8,0">PRÜFUNG</ListBoxItem>
-                <TextBlock x:Name="navItem_1" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
-                <TextBlock x:Name="navItem_2" Style="{StaticResource NavItem}">Prüfungen einsehen</TextBlock>
+                <TextBlock x:Name="NavItem1" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
+                <TextBlock x:Name="NavItem2" Style="{StaticResource NavItem}">Prüfungen einsehen</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0" >RECHNUNG</ListBoxItem>
-                <TextBlock x:Name="navItem_3" Style="{StaticResource NavItem}">Rechnung erstellen</TextBlock>
-                <TextBlock x:Name="navItem_4" Style="{StaticResource NavItem}">Rechnungen einsehen</TextBlock>
+                <TextBlock x:Name="NavItem3" Style="{StaticResource NavItem}">Rechnung erstellen</TextBlock>
+                <TextBlock x:Name="NavItem4" Style="{StaticResource NavItem}">Rechnungen einsehen</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">ANGEBOT</ListBoxItem>
-                <TextBlock x:Name="navItem_5" Style="{StaticResource NavItem}">Angebot erstellen</TextBlock>
-                <TextBlock x:Name="navItem_6" Style="{StaticResource NavItem}">Angebote einsehen</TextBlock>
+                <TextBlock x:Name="NavItem5" Style="{StaticResource NavItem}">Angebot erstellen</TextBlock>
+                <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Angebote einsehen</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">AUFTRAG</ListBoxItem>
-                <TextBlock x:Name="navItem_7" Style="{StaticResource NavItem}">Auftrag erstellen</TextBlock>
-                <TextBlock x:Name="navItem_8" Style="{StaticResource NavItem}">Aufträge einsehen</TextBlock>
+                <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Auftrag erstellen</TextBlock>
+                <TextBlock x:Name="NavItem8" Style="{StaticResource NavItem}">Aufträge einsehen</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">STAMMDATEN</ListBoxItem>
-                <TextBlock x:Name="navItem_9" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
-                <TextBlock x:Name="navItem_10" Style="{StaticResource NavItem}">Prüfungstypen</TextBlock>
-                <TextBlock x:Name="navItem_11" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>
-                <TextBlock x:Name="navItem_12" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
-                <TextBlock x:Name="navItem_13" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
+                <TextBlock x:Name="NavItem9" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem10" Style="{StaticResource NavItem}">Prüfungstypen</TextBlock>
+                <TextBlock x:Name="NavItem11" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem12" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
+                <TextBlock x:Name="NavItem13" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
+                <TextBlock x:Name="NavItem14" MouseDown="NavItem14_OnMouseDown" Style="{StaticResource NavItem}">Testio</TextBlock>
             </ListBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Background="#FF9600">
             <StackPanel Orientation="Horizontal">
-                <Image MouseDown="SignOut_MouseDown" Margin="15,0,5,0" Source="/Media/Icons/close-78.png" Width="25" ></Image>
-                <Image MouseDown="Exit_MouseDown" Margin="5,0,90,0" Source="/Media/Icons/logout-78.png" Width="25" ></Image>
-                <Image MouseDown="Profile_MouseDown" Margin="0,0,15,0"  Source="/Media/Icons/account-78.png" Width="25"></Image>
+                <Image MouseDown="Profile_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="15,0,80,0"  Source="/Media/Icons/account-78.png" ToolTip="Max Mustermann" Width="25"></Image>
+                <Image MouseDown="Exit_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="15,0,5,0" Source="/Media/Icons/close-78.png" Width="25" ></Image>
+                <Image MouseDown="SignOut_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="5,0,15,0" Source="/Media/Icons/logout-78.png" Width="25"></Image>
             </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Background="White">
+            
         </Grid>
     </Grid>
 </adonisControls:AdonisWindow>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,6 +9,13 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdonisUI;
+using AdonisUI.Controls;
+using kunze_prüfer.Models;
+using kunze_prüfer.Views.QuickPDF;
+using QuickPDF = kunze_prüfer.Models.QuickPDF;
+using MessageBox = AdonisUI.Controls.MessageBox;
+using MessageBoxImage = AdonisUI.Controls.MessageBoxImage;
+using MessageBoxResult = AdonisUI.Controls.MessageBoxResult;
 
 namespace kunze_prüfer
 {
@@ -25,82 +34,107 @@ namespace kunze_prüfer
         {
             Style defaultStyle = this.FindResource("NavItem") as Style;
             Style selectedStyle = this.FindResource("NavItemSelected") as Style;
-            navItem_1.Style = defaultStyle;
-            navItem_2.Style = defaultStyle;
-            navItem_3.Style = defaultStyle;
-            navItem_4.Style = defaultStyle;
-            navItem_5.Style = defaultStyle;
-            navItem_6.Style = defaultStyle;
-            navItem_7.Style = defaultStyle;
-            navItem_8.Style = defaultStyle;
-            navItem_9.Style = defaultStyle;
-            navItem_10.Style = defaultStyle;
-            navItem_11.Style = defaultStyle;
-            navItem_12.Style = defaultStyle;
-            navItem_13.Style = defaultStyle;
+            NavItem1.Style = defaultStyle;
+            NavItem2.Style = defaultStyle;
+            NavItem3.Style = defaultStyle;
+            NavItem4.Style = defaultStyle;
+            NavItem5.Style = defaultStyle;
+            NavItem6.Style = defaultStyle;
+            NavItem7.Style = defaultStyle;
+            NavItem8.Style = defaultStyle;
+            NavItem9.Style = defaultStyle;
+            NavItem10.Style = defaultStyle;
+            NavItem11.Style = defaultStyle;
+            NavItem12.Style = defaultStyle;
+            NavItem13.Style = defaultStyle;
             switch (selectedPage)
             {
                 case 1:
-                    navItem_1.Style = selectedStyle;
+                    NavItem1.Style = selectedStyle;
                     break;
                 case 2:
-                    navItem_2.Style = selectedStyle;
+                    NavItem2.Style = selectedStyle;
                     break;
                 case 4:
-                    navItem_3.Style = selectedStyle;
+                    NavItem3.Style = selectedStyle;
                     break;
                 case 5:
-                    navItem_4.Style = selectedStyle;
+                    NavItem4.Style = selectedStyle;
                     break;
                 case 7:
-                    navItem_5.Style = selectedStyle;
+                    NavItem5.Style = selectedStyle;
                     break;
                 case 8:
-                    navItem_6.Style = selectedStyle;
+                    NavItem6.Style = selectedStyle;
                     break;
                 case 10:
-                    navItem_7.Style = selectedStyle;
+                    NavItem7.Style = selectedStyle;
                     break;
                 case 11:
-                    navItem_8.Style = selectedStyle;
+                    NavItem8.Style = selectedStyle;
                     break;
                 case 13:
-                    navItem_9.Style = selectedStyle;
+                    NavItem9.Style = selectedStyle;
                     break;
                 case 14:
-                    navItem_10.Style = selectedStyle;
+                    NavItem10.Style = selectedStyle;
                     break;
                 case 15:
-                    navItem_11.Style = selectedStyle;
+                    NavItem11.Style = selectedStyle;
                     break;
                 case 16:
-                    navItem_12.Style = selectedStyle;
+                    NavItem12.Style = selectedStyle;
                     break;
                 case 17:
-                    navItem_13.Style = selectedStyle;
+                    NavItem13.Style = selectedStyle;
                     break;
             }
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedPage = listBox.SelectedIndex;
+            selectedPage = ListBox.SelectedIndex;
             ViewHandler();
         }
 
         private void Profile_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            
         }
 
         private void SignOut_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            
         }
 
         private void Exit_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            var messageBox = new MessageBoxModel
+            {
+                Text = "Möchten Sie das Programm wirklich beenden?",
+                Caption = "Programm beenden?",
+                Buttons = MessageBoxButtons.YesNo("Ja", "Nein"),
+                Icon = MessageBoxImage.Exclamation,
+            };
 
+            AdonisUI.Controls.MessageBoxResult result = AdonisUI.Controls.MessageBox.Show(messageBox);
+            
+            if (result == AdonisUI.Controls.MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void NavItem14_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            QuickPDF quickInstance = new QuickPDF();
+            
+            quickInstance.AddElement(1, "Test", 1.0, 1.0);
+            quickInstance.AddElement(2, "Test2", 13.0, 193.0);
+            quickInstance.AddElement(3, "Test3", 10.0, 1194.0);
+            
+            PDFCreator pdfCreator = new PDFCreator(quickInstance);
+            pdfCreator.Show();
         }
     }
 }
