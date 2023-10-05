@@ -22,5 +22,15 @@ namespace kunze_prüfer.Models
         {
             RechnungsElemente.Add(new RechnungsElement { Rechnungs_pos = pos, Artikelname = artikelname, Artikel_menge  = artikelmenge, Artikel_einzel_preis = einzelpreis, Artikel_gesamt_preis = einzelpreis * artikelmenge});
         }
+
+        public void EditElement(int index, int pos, string artikelname, double artikelmenge, double einzelpreis)
+        {
+            RechnungsElemente[index].Rechnungs_pos = pos;
+            RechnungsElemente[index].Artikelname = artikelname;
+            RechnungsElemente[index].Artikel_menge = artikelmenge;
+            RechnungsElemente[index].Artikel_einzel_preis = einzelpreis;
+            RechnungsElemente[index].Artikel_gesamt_preis = einzelpreis * artikelmenge;
+        }
+        
     }
 }
