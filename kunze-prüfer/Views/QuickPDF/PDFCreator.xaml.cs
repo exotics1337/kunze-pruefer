@@ -22,13 +22,12 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             if (ListBox_Rechnungspos.SelectedIndex != -1)
             {
-                MessageBox.Show("Bitte wählen Sie einen Artikel aus.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                int selectedIndex = ListBox_Rechnungspos.SelectedIndex;
+                ListView.Items.Add(quickInstance.RechnungsElemente[selectedIndex]);
             }
             else
             {
-                int selectedIndex = ListBox_Rechnungspos.SelectedIndex;
-                ListView.Items.Add(quickInstance.RechnungsElemente[selectedIndex]);
-                AdonisUI.Controls.MessageBox.Show(quickInstance.RechnungsElemente[selectedIndex].Artikelname);
+                MessageBox.Show("Bitte wählen Sie einen Artikel aus.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

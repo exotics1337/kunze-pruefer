@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.RowSpan="2" Margin="6" Background="White">
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 0" Background="White">
             <ListBox Height="545" BorderThickness="1" x:Name="ListBox_Rechnungspos">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
@@ -37,25 +37,22 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button x:Name="BtnPosAdd" Click="BtnPosAdd_OnClick">Position Hinzufügen</Button>
+            <Button x:Name="BtnPosAdd" Margin="0,6,0,0" Click="BtnPosAdd_OnClick">Position Hinzufügen</Button>
         </StackPanel>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2" >
         </Grid>
             <ToolBarTray Grid.Row="0" Grid.Column="1" DockPanel.Dock="Top" Height="20">
                 <ToolBar>
-                    <ComboBox Width="110">
-                        <ListBoxItem> Rechnung </ListBoxItem>
-                        <ListBoxItem> Angebot </ListBoxItem>
-                        <ListBoxItem> Test </ListBoxItem>
+                    <ComboBox Width="110" Text="Vorlage wählen">
+                        <ComboBoxItem> Rechnung </ComboBoxItem>
+                        <ComboBoxItem> Angebot </ComboBoxItem>
+                        <ComboBoxItem> Test </ComboBoxItem>
                     </ComboBox>
                 </ToolBar>
                 <ToolBar>
                     <Button> Textbausteine Wählen </Button>
-                </ToolBar>
-                <ToolBar >
-                    <Button> Speichern </Button>
-                    <Button> Drucken </Button>
+                    <ToggleButton> Belegansicht </ToggleButton>
                 </ToolBar>
             </ToolBarTray>
         
@@ -63,15 +60,23 @@
             <ListView x:Name="ListView" BorderThickness="1" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Position" />
-                        <GridViewColumn Header="Name" />
-                        <GridViewColumn Header="Menge" />
-                        <GridViewColumn Header="Preis" />
+                        <GridViewColumn Header="Position" DisplayMemberBinding="{Binding Rechnungs_pos}" Width="50" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Artikelname}" Width="350"/>
+                        <GridViewColumn Header="Menge" DisplayMemberBinding="{Binding Artikel_menge}" Width="55" />
+                        <GridViewColumn Header="E-Preis" DisplayMemberBinding="{Binding Artikel_einzel_preis}" Width="80" />
+                        <GridViewColumn Header="G-Preis" DisplayMemberBinding="{Binding Artikel_gesamt_preis}" Width="80" />
                     </GridView>
                 </ListView.View>
             </ListView>
         </Grid>
         
-        <Grid Grid.Row="2" Grid.ColumnSpan="2"></Grid>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button> Drucken </Button>
+                <Button> Speichern </Button>
+                <Button> Löschen </Button>
+                <Button> Schließen </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

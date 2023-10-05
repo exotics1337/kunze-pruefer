@@ -13,14 +13,14 @@ namespace kunze_prüfer.Models
         {
             public int Rechnungs_pos { get; set; }
             public string Artikelname { get; set; }
-            
             public double Artikel_menge { get; set; }
             public double Artikel_einzel_preis { get; set; }
+            public double Artikel_gesamt_preis { get; set; }
         }
         
         public void AddElement(int pos, string artikelname, double artikelmenge, double einzelpreis)
         {
-            RechnungsElemente.Add(new RechnungsElement { Rechnungs_pos = pos, Artikelname = artikelname, Artikel_menge  = artikelmenge, Artikel_einzel_preis = einzelpreis });
+            RechnungsElemente.Add(new RechnungsElement { Rechnungs_pos = pos, Artikelname = artikelname, Artikel_menge  = artikelmenge, Artikel_einzel_preis = einzelpreis, Artikel_gesamt_preis = einzelpreis * artikelmenge});
         }
     }
 }
