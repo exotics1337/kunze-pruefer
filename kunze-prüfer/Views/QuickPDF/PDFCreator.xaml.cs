@@ -30,5 +30,27 @@ namespace kunze_prüfer.Views.QuickPDF
                 MessageBox.Show("Bitte wählen Sie einen Artikel aus.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void BtnPosAddAll_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (ListBox_Rechnungspos.Items.Count != -1)
+            {
+                int currentIndex = 0;
+                foreach (var item in ListBox_Rechnungspos.Items)
+                {
+                    ListView.Items.Add(quickInstance.RechnungsElemente[currentIndex]);
+                    currentIndex++;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Es sind keine Positionen verfügbar.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void BtnClose_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

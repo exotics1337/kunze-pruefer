@@ -6,10 +6,26 @@
         xmlns:local="clr-namespace:kunze_prüfer.Views.QuickPDF"
         mc:Ignorable="d"
         Title="PDFCreator" Height="650" Width="1000" Background="#faf4ed">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="TransparentButton">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Padding" Value="6"/>
+                <Setter Property="Margin" Value="10, 0, 10,0"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         
@@ -17,28 +33,28 @@
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
 
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 0" Background="White">
-            <ListBox Height="545" BorderThickness="1" x:Name="ListBox_Rechnungspos">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Style.Resources>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
-                        </Style.Resources>
-                    </Style>                
-                </ListBox.ItemContainerStyle>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" x:Name="StackPanelTemplate">
-                            <Image Source="/Media/Icons/invoice-item-52.png" RenderOptions.BitmapScalingMode="HighQuality" Width="20" Stretch="Fill" Margin="0,0,5,0"/>
-                            <TextBlock Text="{Binding}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <Button x:Name="BtnPosAdd" Margin="0,6,0,0" Click="BtnPosAdd_OnClick">Position Hinzufügen</Button>
-        </StackPanel>
+
+        <ListBox MinHeight="550" BorderThickness="1" x:Name="ListBox_Rechnungspos" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 4" Background="White">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                    </Style.Resources>
+                </Style>                
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" x:Name="StackPanelTemplate">
+                        <Image Source="/Media/Icons/invoice-item-52.png" RenderOptions.BitmapScalingMode="HighQuality" Width="20" Stretch="Fill" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Grid.Row="2" Grid.Column="0" Height="Auto" Width="Auto" x:Name="BtnPosAdd"  Margin="6, 0, 6, 4" Click="BtnPosAdd_OnClick">Position Hinzufügen</Button>
+        <Button Grid.Row="3" Grid.Column="0" Height="Auto" Width="Auto" x:Name="BtnPosAddAll"  Margin="6, 0, 6, 4" Click="BtnPosAddAll_OnClick">Alle Positionen Hinzufügen</Button>
+
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2" >
         </Grid>
@@ -56,7 +72,7 @@
                 </ToolBar>
             </ToolBarTray>
         
-        <Grid Grid.Row="1" Grid.Column="1" Background="White">
+        <Grid Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Background="White" Margin="0,0,0,4">
             <ListView x:Name="ListView" BorderThickness="1" >
                 <ListView.View>
                     <GridView>
@@ -70,12 +86,26 @@
             </ListView>
         </Grid>
         
-        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+        <Grid Grid.Row="4" Grid.ColumnSpan="2" Background="#FF9600">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button> Drucken </Button>
-                <Button> Speichern </Button>
-                <Button> Löschen </Button>
-                <Button> Schließen </Button>
+                <Button Style="{StaticResource TransparentButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/print-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Drucken </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource TransparentButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/save-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Speichern </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource TransparentButton}" x:Name="BtnClose" Click="BtnClose_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/close2-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Schließen </TextBlock>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>
