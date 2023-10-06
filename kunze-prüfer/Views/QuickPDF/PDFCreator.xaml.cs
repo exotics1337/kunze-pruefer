@@ -23,6 +23,15 @@ namespace kunze_prüfer.Views.QuickPDF
             if (ListBox_Rechnungspos.SelectedIndex != -1)
             {
                 int selectedIndex = ListBox_Rechnungspos.SelectedIndex;
+                int lastListViewIndex = ListView.Items.Count;
+                if (lastListViewIndex != -1)
+                {
+                    quickInstance.EditPos(selectedIndex, lastListViewIndex + 1);
+                }
+                else
+                {
+                    quickInstance.EditPos(selectedIndex, 1);
+                }
                 ListView.Items.Add(quickInstance.RechnungsElemente[selectedIndex]);
             }
             else
@@ -38,6 +47,15 @@ namespace kunze_prüfer.Views.QuickPDF
                 int currentIndex = 0;
                 foreach (var item in ListBox_Rechnungspos.Items)
                 {
+                    int lastListViewIndex = ListView.Items.Count;
+                    if (lastListViewIndex != -1)
+                    {
+                        quickInstance.EditPos(currentIndex, lastListViewIndex + 1);
+                    }
+                    else
+                    {
+                        quickInstance.EditPos(currentIndex, 1);
+                    }
                     ListView.Items.Add(quickInstance.RechnungsElemente[currentIndex]);
                     currentIndex++;
                 }

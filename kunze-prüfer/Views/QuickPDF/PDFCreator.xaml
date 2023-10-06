@@ -87,7 +87,27 @@
         </Grid>
         
         <Grid Grid.Row="4" Grid.ColumnSpan="2" Background="#FF9600">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource TransparentButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/delete-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Position löschen </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource TransparentButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/add-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Neue Position erstellen </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource TransparentButton}" x:Name="BtnEditPos" Click="BtnClose_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/edit-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Position bearbeiten </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="#d97e00">
                 <Button Style="{StaticResource TransparentButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Media/Icons/print-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>

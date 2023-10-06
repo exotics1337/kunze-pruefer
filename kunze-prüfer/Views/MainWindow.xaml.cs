@@ -46,47 +46,43 @@ namespace kunze_prüfer
             NavItem10.Style = defaultStyle;
             NavItem11.Style = defaultStyle;
             NavItem12.Style = defaultStyle;
-            NavItem13.Style = defaultStyle;
             switch (selectedPage)
             {
-                case 1:
+                case 0:
                     NavItem1.Style = selectedStyle;
                     break;
                 case 2:
                     NavItem2.Style = selectedStyle;
                     break;
-                case 4:
+                case 3:
                     NavItem3.Style = selectedStyle;
                     break;
                 case 5:
                     NavItem4.Style = selectedStyle;
                     break;
-                case 7:
+                case 6:
                     NavItem5.Style = selectedStyle;
                     break;
-                case 8:
+                case 7:
                     NavItem6.Style = selectedStyle;
                     break;
-                case 10:
+                case 9:
                     NavItem7.Style = selectedStyle;
                     break;
-                case 11:
+                case 10:
                     NavItem8.Style = selectedStyle;
                     break;
-                case 13:
+                case 11:
                     NavItem9.Style = selectedStyle;
                     break;
-                case 14:
+                case 12:
                     NavItem10.Style = selectedStyle;
                     break;
-                case 15:
+                case 13:
                     NavItem11.Style = selectedStyle;
                     break;
-                case 16:
+                case 14:
                     NavItem12.Style = selectedStyle;
-                    break;
-                case 17:
-                    NavItem13.Style = selectedStyle;
                     break;
             }
         }

@@ -86,3 +86,9 @@ C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\c
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\delete-row-52.png
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\print-52.png
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\save-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\close2-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\delete-row-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\print-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\save-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\add-row-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\edit-row-52.png

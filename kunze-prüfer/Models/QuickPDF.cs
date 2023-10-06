@@ -32,5 +32,9 @@ namespace kunze_prüfer.Models
             RechnungsElemente[index].Artikel_gesamt_preis = einzelpreis * artikelmenge;
         }
         
+        public void EditPos(int index, int pos)
+        {
+            RechnungsElemente[index].Rechnungs_pos = pos;
+        }
     }
 }

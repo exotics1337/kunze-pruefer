@@ -2,12 +2,10 @@
         x:Class="kunze_prüfer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
         xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
         xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:kunze_prüfer"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280"
         PlaceTitleBarOverContent="True"
@@ -34,25 +32,21 @@
                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"
                      adonisExtensions:ScrollViewerExtension.HideScrollBarsUntilMouseOver="True" SelectionChanged="listBox_SelectionChanged" BorderBrush="#FFBDAD91"
                      >
+                <TextBlock x:Name="NavItem1" Style="{StaticResource NavItem}">Dashboard</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,8,8,0">PRÜFUNG</ListBoxItem>
-                <TextBlock x:Name="NavItem1" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
-                <TextBlock x:Name="NavItem2" Style="{StaticResource NavItem}">Prüfungen einsehen</TextBlock>
-                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0" >RECHNUNG</ListBoxItem>
-                <TextBlock x:Name="NavItem3" Style="{StaticResource NavItem}">Rechnung erstellen</TextBlock>
-                <TextBlock x:Name="NavItem4" Style="{StaticResource NavItem}">Rechnungen einsehen</TextBlock>
-                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">ANGEBOT</ListBoxItem>
-                <TextBlock x:Name="NavItem5" Style="{StaticResource NavItem}">Angebot erstellen</TextBlock>
-                <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Angebote einsehen</TextBlock>
-                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">AUFTRAG</ListBoxItem>
-                <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Auftrag erstellen</TextBlock>
-                <TextBlock x:Name="NavItem8" Style="{StaticResource NavItem}">Aufträge einsehen</TextBlock>
+                <TextBlock x:Name="NavItem2" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
+                <TextBlock x:Name="NavItem3" Style="{StaticResource NavItem}">Prüfungsverwaltung</TextBlock>
+                <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0" >DOKUMENTENVERWALTUNG</ListBoxItem>
+                <TextBlock x:Name="NavItem4" Style="{StaticResource NavItem}">Rechnungsverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem5" Style="{StaticResource NavItem}">Angebotsverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Auftragsverwaltung</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">STAMMDATEN</ListBoxItem>
-                <TextBlock x:Name="NavItem9" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem10" Style="{StaticResource NavItem}">Prüfungstypen</TextBlock>
-                <TextBlock x:Name="NavItem11" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem12" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
-                <TextBlock x:Name="NavItem13" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
-                <TextBlock x:Name="NavItem14" MouseDown="NavItem14_OnMouseDown" Style="{StaticResource NavItem}">Testio</TextBlock>
+                <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem8" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem9" Style="{StaticResource NavItem}">Prüfungstypen</TextBlock>
+                <TextBlock x:Name="NavItem10" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
+                <TextBlock x:Name="NavItem11" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
+                <TextBlock x:Name="NavItem12" MouseDown="NavItem14_OnMouseDown" Style="{StaticResource NavItem}">Testio</TextBlock>
             </ListBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Background="#FF9600">
