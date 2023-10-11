@@ -58,7 +58,62 @@
         </Grid>
         
         <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="670" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             
+            <Grid Grid.Row="1" Grid.Column="1" Background="#FF9600">
+                <StackPanel Orientation="Vertical" Margin="20,10,0,0">
+                    <Label Foreground="White"> Eingeloggt als: </Label>
+                    <Label Foreground="White" FontSize="24"> Max Mustermann</Label>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3" Background="#FF9600">
+                <StackPanel Orientation="Vertical" Margin="20,3,0,0">
+                    <Label Foreground="White"> Quick Actions </Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource TransparentButton}">
+                            <StackPanel Orientation="Vertical">
+                                <Image Height="24" Source="/Media/Icons/new-test-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Label Foreground="White"> Neuen Test </Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource TransparentButton}">
+                            <StackPanel Orientation="Vertical">
+                                <Image Height="24" Source="/Media/Icons/new-doc-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Label Foreground="White"> Neue Rechnung </Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource TransparentButton}">
+                            <StackPanel Orientation="Vertical">
+                                <Image Height="24" Source="/Media/Icons/edit-prop-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Label Foreground="White"> Prüfung Verwalten </Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource TransparentButton}">
+                            <StackPanel Orientation="Vertical">
+                                <Image Height="24" Source="/Media/Icons/transfer-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Label Foreground="White"> Auftrag in Rechnung </Label>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource TransparentButton}">
+                            <StackPanel Orientation="Vertical">
+                                <Image Height="24" Source="/Media/Icons/transfer-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                                <Label Foreground="White"> Angebot in Auftrag </Label>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </adonisControls:AdonisWindow>

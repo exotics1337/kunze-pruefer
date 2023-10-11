@@ -37,6 +37,17 @@
                 </Style.Triggers>
                 -->
                 </Style>
+            
+            <Style TargetType="Button" x:Key="TransparentButton">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Padding" Value="6"/>
+                <Setter Property="Margin" Value="10, 0, 10,0"/>
+            </Style>
 
             <Style x:Key="_ListBoxItemStyle" TargetType="ListBoxItem">
                 <Setter Property="Template">

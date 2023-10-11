@@ -11,9 +11,14 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/add-row-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/close2-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/delete-row-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/edit-prop-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/edit-row-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/invoice-item-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/new-doc-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/new-test-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/print-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/save-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/test-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/transfer-52.png")]
 
 

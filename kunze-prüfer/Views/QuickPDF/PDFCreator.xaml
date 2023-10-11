@@ -6,20 +6,6 @@
         xmlns:local="clr-namespace:kunze_prüfer.Views.QuickPDF"
         mc:Ignorable="d"
         Title="PDFCreator" Height="650" Width="1000" Background="#faf4ed">
-    <Window.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Button" x:Key="TransparentButton">
-                <Setter Property="Background" Value="Transparent"/>
-                <Setter Property="BorderBrush" Value="Transparent"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="FontSize" Value="12"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Padding" Value="6"/>
-                <Setter Property="Margin" Value="10, 0, 10,0"/>
-            </Style>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
