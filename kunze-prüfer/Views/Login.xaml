@@ -9,7 +9,8 @@
         xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
         xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
         mc:Ignorable="d"
-        Title="Login" SizeToContent="WidthAndHeight">
+        Title="Login" SizeToContent="WidthAndHeight"
+        Icon="/Media/Icons/kunze-icon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="55" />
@@ -22,7 +23,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
@@ -38,7 +39,12 @@
         <Button Grid.Column="1" Grid.Row="3" Margin="5"> Login </Button>
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="6" Background="#FF9600" Margin="0,0,0,0">
-            <TextBlock Foreground="White" FontSize="13" FontWeight="Light" TextAlignment="Right" Margin="0,2,10,0" >Datenbank Verbunden</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image Source="/Media/Icons/database-ok-52.png" Width="16" Stretch="Uniform" Margin="0,3,4,0" />
+                <TextBlock Foreground="White" FontSize="13" FontWeight="Light" Margin="0,7,10,0" >
+                Datenbank Verbunden
+            </TextBlock>
+            </StackPanel>
         </Grid>
         
     </Grid>

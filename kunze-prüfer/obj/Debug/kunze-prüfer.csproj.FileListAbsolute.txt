@@ -97,3 +97,6 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Med
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\new-test-52.png
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\test-52.png
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\transfer-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Backgrounds\dashboard.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\database-ok-52.png
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\kunze-icon.ico
