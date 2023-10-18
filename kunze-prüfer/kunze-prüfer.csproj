@@ -74,6 +74,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase\DB.cs" />
+    <Compile Include="Migrations\202310180051127_TabewithKeys.cs" />
+    <Compile Include="Migrations\202310180051127_TabewithKeys.Designer.cs">
+      <DependentUpon>202310180051127_TabewithKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Views\QuickPDF\PDFCreator.xaml.cs">
       <DependentUpon>PDFCreator.xaml</DependentUpon>
     </Compile>
@@ -113,6 +118,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202310180051127_TabewithKeys.resx">
+      <DependentUpon>202310180051127_TabewithKeys.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -31,7 +31,73 @@ namespace kunze_prüfer.DataBase
         public DbSet<Probe_Unter> Probe_Unter { get; set; }
         public DbSet<Fertigstellung_Zeit> Fertigstellung_Zeit { get; set; }
         public DbSet<Mitarbeiter> Mitarbeiter { get; set; }
-        
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Kunde>()
+                .HasKey(k => k.k_nr);
+            
+            modelBuilder.Entity<Ansprechpartner>()
+                .HasKey(a => a.Anspr_nr);
+            
+            modelBuilder.Entity<Kunden_Ansprechpartner>()
+                .HasKey(ka => new { ka.K_nr, ka.Anspr_nr });
+
+            modelBuilder.Entity<Status>()
+                .HasKey(s => s.Status_nr);
+
+            modelBuilder.Entity<Rechnungsposition>()
+                .HasKey(rp => rp.r_nr);
+
+            modelBuilder.Entity<Textbaustein>()
+                .HasKey(t => t.Textbaustein_nr);
+
+            modelBuilder.Entity<Auftrag>()
+                .HasKey(a => a.Auf_nr);
+
+            modelBuilder.Entity<Werkstoff>()
+                .HasKey(w => w.w_nr);
+
+            modelBuilder.Entity<Rechnung>()
+                .HasKey(r => r.r_nr);
+
+            modelBuilder.Entity<Angebot_Textbaustein>()
+                .HasKey(at => new { at.Ang_nr, at.Textbaustein_nr });
+            
+            modelBuilder.Entity<Norm>()
+                .HasKey(n => n.N_nr);
+            
+            modelBuilder.Entity<Angebot>()
+                .HasKey(a => a.Ang_nr);
+
+            modelBuilder.Entity<Pruefungstyp>()
+                .HasKey(p => p.Pe_Typ_nr);
+            
+            modelBuilder.Entity<Abnahmegesellschaft>()
+                .HasKey(a => a.Abnahme_nr);
+
+            modelBuilder.Entity<Werkstoff_Pruefung>()
+                .HasKey(wp => new { wp.W_nr, wp.Pe_Typ_nr });
+            
+            modelBuilder.Entity<Mehrwertsteuer>()
+                .HasKey(m => m.Mwst_nr);
+
+            modelBuilder.Entity<Angebotsposition>()
+                .HasKey(ap => new { ap.Ang_nr, ap.Pe_typ_nr });
+
+            modelBuilder.Entity<Probe_Kopf>()
+                .HasKey(pk => pk.P_nr);
+            
+            modelBuilder.Entity<Probe_Unter>()
+                .HasKey(pk => pk.P_nr);
+            
+            modelBuilder.Entity<Fertigstellung_Zeit>()
+                .HasKey(fz => fz.P_fertigstellung_zeit_nr);
+            
+            modelBuilder.Entity<Mitarbeiter>()
+                .HasKey(m => m.M_nr);
+            
+        }
     }
     
     public class Kunde
