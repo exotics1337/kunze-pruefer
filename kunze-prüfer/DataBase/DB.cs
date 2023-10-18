@@ -10,8 +10,28 @@ namespace kunze_prüfer.DataBase
     {
         public KunzeDB() : base("KunzeDB") { }
 
-        //public DbSet<Kunden> Kunden { get; set; }
-        //public DbSet<Werkstoff> Werkstoff { get; set; }
+        public DbSet<Kunde> Kunden { get; set; }
+        public DbSet<Ansprechpartner> Ansprechpartner { get; set; }
+        public DbSet<Kunden_Ansprechpartner> Kunden_Ansprechpartner { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet<Rechnungsposition> Rechnungsposition { get; set; }
+        public DbSet<Textbaustein> Textbaustein { get; set; }
+        public DbSet<Auftrag> Auftrag { get; set; }
+        public DbSet<Werkstoff> Werkstoff { get; set; }
+        public DbSet<Rechnung> Rechnung { get; set; }
+        public DbSet<Angebot_Textbaustein> Angebot_Textbaustein { get; set; }
+        public DbSet<Norm> Norm { get; set; }
+        public DbSet<Angebot> Angebot  { get; set; }
+        public DbSet<Pruefungstyp> Pruefungstyp { get; set; }
+        public DbSet<Abnahmegesellschaft> Abnahmegesellschaft { get; set; }
+        public DbSet<Werkstoff_Pruefung> Werkstoff_Pruefung{ get; set; }
+        public DbSet<Mehrwertsteuer> Mehrwertsteuer { get; set; }
+        public DbSet<Angebotsposition> Angebotsposition { get; set; }
+        public DbSet<Probe_Kopf> Probe_Kopf { get; set; }
+        public DbSet<Probe_Unter> Probe_Unter { get; set; }
+        public DbSet<Fertigstellung_Zeit> Fertigstellung_Zeit { get; set; }
+        public DbSet<Mitarbeiter> Mitarbeiter { get; set; }
+        
     }
     
     public class Kunde
