@@ -5,6 +5,7 @@ using System.Data.Entity;
 namespace kunze_prüfer.DataBase
 {
     using System;
+    using System.Collections.Generic;
 
     public class KunzeDB : DbContext
     {
@@ -35,13 +36,20 @@ namespace kunze_prüfer.DataBase
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Kunde>()
-                .HasKey(k => k.k_nr);
+                .HasKey(k => k.k_nr)
+                .HasMany(k => k.Kunden_Ansprechpartner)
+                .WithRequired(ka => ka.Kunde)
+                .HasForeignKey(ka => ka.K_nr);
+                
             
             modelBuilder.Entity<Ansprechpartner>()
                 .HasKey(a => a.Anspr_nr);
-            
+
             modelBuilder.Entity<Kunden_Ansprechpartner>()
-                .HasKey(ka => new { ka.K_nr, ka.Anspr_nr });
+                .HasKey(ka => new { ka.K_nr, ka.Anspr_nr })
+                .HasMany(a => a.Auftrag)
+                .WithRequired(ka => ka.Kunden_Ansprechpartner)
+                .HasForeignKey(a => new { a.k_nr, a.Anspr_nr });
 
             modelBuilder.Entity<Status>()
                 .HasKey(s => s.Status_nr);
@@ -56,9 +64,7 @@ namespace kunze_prüfer.DataBase
                 .HasKey(a => a.Auf_nr);
 
             modelBuilder.Entity<Werkstoff>()
-                .HasKey(w => w.w_nr);
-
-            modelBuilder.Entity<Rechnung>()
+                .HasKey(w => w.w_nr); modelBuilder.Entity<Rechnung>()
                 .HasKey(r => r.r_nr);
 
             modelBuilder.Entity<Angebot_Textbaustein>()
@@ -107,6 +113,9 @@ namespace kunze_prüfer.DataBase
         public string k_ust_id { get; set; }
         public string k_lief_adresse { get; set; }
         public bool k_geloescht { get; set; }
+        
+        //Nav 
+        public virtual ICollection<Kunden_Ansprechpartner> Kunden_Ansprechpartner { get; set; }
     }
 
     public class Ansprechpartner
@@ -118,12 +127,21 @@ namespace kunze_prüfer.DataBase
         public string Anspr_email { get; set; }
         public string Anspr_position { get; set; }
         public bool Anspr_geloescht { get; set; }
+        
+        //Nav
+        public virtual ICollection<Kunden_Ansprechpartner> Kunden_Ansprechpartner { get; set; }
     }
     
     public class Kunden_Ansprechpartner
     {
         public int K_nr { get; set; }
         public int Anspr_nr { get; set; }
+        
+        //Nav 
+        public virtual Kunde Kunde { get; set;}
+        public virtual Ansprechpartner Ansprechpartner{ get; set;}
+        
+        public virtual ICollection<Auftrag> Auftrag { get; set; }
     }
 
     public class Status
@@ -131,6 +149,9 @@ namespace kunze_prüfer.DataBase
         public int Status_nr { get; set; }
         public string Status_bez { get; set; }
         public bool Status_gelöscht { get; set; }
+        
+       //nav 
+        public virtual ICollection<Auftrag> Auftrag { get; set; }
     }
 
     public class Rechnungsposition
@@ -162,6 +183,11 @@ namespace kunze_prüfer.DataBase
         public int Anspr_nr { get; set; }
         public int Prob_nr { get; set; }
         public bool Auf_geloescht { get; set; }
+        
+        //NAv
+        
+        public virtual Status Status { get; set;}
+        public virtual Kunden_Ansprechpartner Kunden_Ansprechpartner { get; set;}
     }
 
     public class Werkstoff
