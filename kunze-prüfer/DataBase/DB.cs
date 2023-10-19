@@ -40,10 +40,14 @@ namespace kunze_prüfer.DataBase
                 .HasMany(k => k.Kunden_Ansprechpartner)
                 .WithRequired(ka => ka.Kunde)
                 .HasForeignKey(ka => ka.K_nr);
-                
-            
+
+
             modelBuilder.Entity<Ansprechpartner>()
-                .HasKey(a => a.Anspr_nr);
+                .HasKey(a => a.Anspr_nr)
+                .HasMany(ka => ka.Kunden_Ansprechpartner)
+                .WithRequired(a => a.Ansprechpartner)
+                .HasForeignKey(ka => ka.Anspr_nr);
+                
 
             modelBuilder.Entity<Kunden_Ansprechpartner>()
                 .HasKey(ka => new { ka.K_nr, ka.Anspr_nr })
@@ -159,6 +163,14 @@ namespace kunze_prüfer.DataBase
         public int r_nr { get; set; }
         public int Pe_typ_nr { get; set; }
         public double Rp_preis { get; set; }
+        
+        //nav
+        public virtual Rechnung Rechnung { get; set; }
+        
+        public virtual Pruefungstyp Pruefungstyp { get; set; }
+        
+        
+        
     }
 
     public class Textbaustein
@@ -167,6 +179,9 @@ namespace kunze_prüfer.DataBase
         public string Text_Ueberschrift { get; set; }
         public string Text_Inhalt { get; set; }
         public bool Text_geloescht { get; set; }
+        
+        //nav
+        public virtual ICollection<Angebot_Textbaustein> AngebotTextbausteins { get; set; }
     }
 
     public class Auftrag
@@ -188,6 +203,11 @@ namespace kunze_prüfer.DataBase
         
         public virtual Status Status { get; set;}
         public virtual Kunden_Ansprechpartner Kunden_Ansprechpartner { get; set;}
+        public virtual ICollection<Angebot> Angebot { get; set; }
+        public virtual Werkstoff Werkstoff { get; set; }
+        public virtual Norm Norm { get; set; }
+        public virtual ICollection<Probe_Kopf> Probe_Kopf { get; set; }
+        
     }
 
     public class Werkstoff
@@ -202,6 +222,12 @@ namespace kunze_prüfer.DataBase
         public int w_laenge { get; set; }
         public int w_gewicht { get; set; }
         public bool w_geloescht { get; set; }
+        
+        //NAv
+        public virtual ICollection<Auftrag> Auftrag { get; set; }
+        public virtual ICollection<Werkstoff_Pruefung> WerkstoffPruefung { get; set; }
+        
+        
     }
 
     public class Rechnung
@@ -214,6 +240,11 @@ namespace kunze_prüfer.DataBase
         public bool r_skontofaehig { get; set; }
         public int Ang_nr { get; set; }
         public bool r_geloescht { get; set; }
+        
+        //Nav
+        
+        public virtual ICollection<Rechnungsposition> Rechnungsposition { get; set; }
+        public virtual Angebot Angebot { get; set; }
     }
 
     public class Angebot_Textbaustein
@@ -221,6 +252,11 @@ namespace kunze_prüfer.DataBase
         public int Ang_nr { get; set; }
         public int Textbaustein_nr { get; set; }
         
+        //Nav
+        public virtual Textbaustein Textbaustein { get; set; }
+        
+        public virtual Angebot Angebot { get; set; }
+
     }
 
     public class Norm
@@ -228,6 +264,10 @@ namespace kunze_prüfer.DataBase
         public int N_nr { get; set; }
         public string N_bez { get; set; }
         public bool N_geloescht { get; set; }
+        
+        //Nav
+        public virtual ICollection<Auftrag> Auftrag { get; set; }
+        
     }
 
     public class Angebot
@@ -239,6 +279,15 @@ namespace kunze_prüfer.DataBase
         public int Mwst_nr { get; set; }
         public int Auf_nr { get; set; }
         public bool Ang_geloescht { get; set; }
+        
+        //Nav
+        
+        public virtual ICollection<Angebot_Textbaustein> AngebotTextbaustein { get; set; }
+        public virtual ICollection<Angebotsposition> Angebotsposition { get; set; }
+        public virtual ICollection<Rechnung> Rechnung { get; set; }
+        public virtual Auftrag Auftrag { get; set; }
+        public virtual Mehrwertsteuer Mehrwertsteuer { get; set; }
+        
     }
 
     public class Pruefungstyp
@@ -247,6 +296,11 @@ namespace kunze_prüfer.DataBase
         public string Pe_typ_bez { get; set; }
         public decimal Pe_durch_preis { get; set; }
         public bool Pe_geloescht { get; set; }
+        
+        //Nav
+        public virtual ICollection<Rechnungsposition> Rechnungsposition { get; set; }
+        public virtual ICollection<Angebotsposition> Angebotsposition { get; set; }
+        public virtual ICollection<Werkstoff_Pruefung> Werkstoff_Pruefung { get; set; }
     }
 
     public class Abnahmegesellschaft
@@ -254,12 +308,21 @@ namespace kunze_prüfer.DataBase
         public int Abnahme_nr { get; set; }
         public string Abnhme_bez { get; set; }
         public bool Abnahme_geloescht { get; set; }
+        
+        //NAv
+        public virtual ICollection<Probe_Kopf> Probe_Kopf { get; set; }
+        
     }
 
     public class Werkstoff_Pruefung
     {
         public int W_nr { get; set; }
         public int Pe_Typ_nr { get; set; }
+        
+        //NAv
+        public virtual Werkstoff Werkstoff { get; set; }
+        
+        public virtual Pruefungstyp Pruefungstyp { get; set; }
     }
 
     public class Mehrwertsteuer
@@ -267,6 +330,11 @@ namespace kunze_prüfer.DataBase
         public int Mwst_nr { get; set; }
         public int Mwst_satz { get; set; }
         public bool Mwst_geloescht { get; set; }
+        
+        //NAv
+
+        public virtual ICollection<Angebot> Angebot { get; set; }
+        
     }
     
     public class Angebotsposition
@@ -274,6 +342,11 @@ namespace kunze_prüfer.DataBase
         public int Ang_nr { get; set; }
         public int Pe_typ_nr { get; set; }
         public double Rp_preis { get; set; }
+        
+        //Nav
+
+        public virtual Pruefungstyp Pruefungstyp { get; set; }
+        public virtual Angebot Angebot { get; set; }
     }
 
     public class Probe_Kopf
@@ -293,6 +366,16 @@ namespace kunze_prüfer.DataBase
         public bool P_abgeschlossen { get; set; }
         public int Abnahme_nr { get; set; }
         public bool P_kopf_geloescht { get; set; }
+        
+        //NAv
+        
+        public virtual Auftrag Auftrag { get; set; }
+        
+        public virtual Abnahmegesellschaft Abnahmegesellschaft { get; set; }
+        
+        public virtual Fertigstellung_Zeit FertigstellungZeit { get; set; }
+        
+        public virtual ICollection<Probe_Unter> Probe_Unter { get; set; }
     }
 
     public class Probe_Unter
@@ -309,6 +392,11 @@ namespace kunze_prüfer.DataBase
         public int M_nr { get; set; }
         public string P_ergebnis_text { get; set; }
         public bool P_unter_geloescht { get; set; }
+        
+        //Nav 
+
+        public virtual Probe_Kopf Probe_Kopf { get; set; }
+        public virtual Mitarbeiter Mitarbeiter { get; set; }
     }
 
     public class Fertigstellung_Zeit
@@ -316,6 +404,11 @@ namespace kunze_prüfer.DataBase
         public int P_fertigstellung_zeit_nr { get; set; }
         public string P_fertigstellung_zeit_bez { get; set; }
         public bool P_fertigstellung_geloescht { get; set; }
+        
+        //NAv
+        
+        public virtual ICollection<Probe_Kopf> Probe_Kopf { get; set; }
+        
     }
 
     public class Mitarbeiter
@@ -326,6 +419,10 @@ namespace kunze_prüfer.DataBase
         public string M_pass { get; set; }
         public bool M_admin { get; set; }
         public bool M_geloescht { get; set; }
+        
+        //Nav
+        
+        public virtual ICollection<Probe_Unter> Probe_Unter { get; set; }
     }
 
 }
