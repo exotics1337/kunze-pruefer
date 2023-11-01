@@ -56,57 +56,213 @@ namespace kunze_prüfer.DataBase
                 .HasForeignKey(a => new { a.k_nr, a.Anspr_nr });
 
             modelBuilder.Entity<Status>()
-                .HasKey(s => s.Status_nr);
+                .HasKey(s => s.Status_nr)
+                .HasMany(a => a.Auftrag)
+                .WithRequired(s => s.Status)
+                .HasForeignKey(a => a.Status_nr);
+
 
             modelBuilder.Entity<Rechnungsposition>()
-                .HasKey(rp => rp.r_nr);
+                .HasKey(rp => rp.r_nr)
+                .HasRequired(r => r.Rechnung)
+                .WithMany(r => r.Rechnungsposition)
+                .HasForeignKey(rp => rp.r_nr);
+
+            modelBuilder.Entity<Rechnungsposition>()
+                .HasRequired(pr => pr.Pruefungstyp)
+                .WithMany(re => re.Rechnungsposition)
+                .HasForeignKey(pe => pe.Pe_typ_nr);
 
             modelBuilder.Entity<Textbaustein>()
-                .HasKey(t => t.Textbaustein_nr);
+                .HasKey(t => t.Textbaustein_nr)
+                .HasMany(an => an.AngebotTextbausteins)
+                .WithRequired(te => te.Textbaustein)
+                .HasForeignKey(an => an.Textbaustein_nr);
 
             modelBuilder.Entity<Auftrag>()
-                .HasKey(a => a.Auf_nr);
+                .HasKey(a => a.Auf_nr)
+                .HasRequired(ku => ku.Kunden_Ansprechpartner)
+                .WithMany(a => a.Auftrag)
+                .HasForeignKey(au => new{au.k_nr, au.Anspr_nr});
+
+            modelBuilder.Entity<Auftrag>()
+                .HasRequired(s => s.Status)
+                .WithMany(au => au.Auftrag)
+                .HasForeignKey(st => st.Status_nr);
+
+            modelBuilder.Entity<Auftrag>()
+                .HasRequired(we => we.Werkstoff)
+                .WithMany(au => au.Auftrag)
+                .HasForeignKey(we => we.w_nr);
+
+            modelBuilder.Entity<Auftrag>()
+                .HasRequired(n => n.Norm)
+                .WithMany(au => au.Auftrag)
+                .HasForeignKey(n => n.n_nr);
+
+            // modelBuilder.Entity<Auftrag>()
+            //     .HasRequired(ku => ku.Kunden_Ansprechpartner)
+            //     .WithMany(au => au.Auftrag)
+            //     .HasForeignKey(ku => ku.Anspr_nr);
+
+            modelBuilder.Entity<Auftrag>()
+                .HasMany(an => an.Angebot)
+                .WithRequired(au => au.Auftrag)
+                .HasForeignKey(an => an.Auf_nr);
+
+            modelBuilder.Entity<Auftrag>()
+                .HasMany(pr => pr.Probe_Kopf)
+                .WithRequired(au => au.Auftrag)
+                .HasForeignKey(pr => pr.Probe_Unter);
 
             modelBuilder.Entity<Werkstoff>()
-                .HasKey(w => w.w_nr); modelBuilder.Entity<Rechnung>()
-                .HasKey(r => r.r_nr);
+                .HasKey(w => w.w_nr)
+                .HasMany(au => au.Auftrag)
+                .WithRequired(we => we.Werkstoff);
+
+            modelBuilder.Entity<Werkstoff>()
+                .HasMany(we => we.WerkstoffPruefung)
+                .WithRequired(we => we.Werkstoff)
+                .HasForeignKey(we => we.W_nr);
 
             modelBuilder.Entity<Angebot_Textbaustein>()
-                .HasKey(at => new { at.Ang_nr, at.Textbaustein_nr });
-            
+                .HasKey(at => new { at.Ang_nr, at.Textbaustein_nr })
+                .HasRequired(te => te.Textbaustein)
+                .WithMany(an => an.AngebotTextbausteins)
+                .HasForeignKey(te => te.Textbaustein_nr);
+
+            modelBuilder.Entity<Angebot_Textbaustein>()
+                .HasRequired(an => an.Angebot)
+                .WithMany(an => an.AngebotTextbaustein)
+                .HasForeignKey(an => an.Ang_nr);
+
             modelBuilder.Entity<Norm>()
-                .HasKey(n => n.N_nr);
-            
+                .HasKey(n => n.N_nr)
+                .HasMany(au => au.Auftrag)
+                .WithRequired(n => n.Norm)
+                .HasForeignKey(au => au.n_nr);
+
             modelBuilder.Entity<Angebot>()
-                .HasKey(a => a.Ang_nr);
+                .HasKey(a => a.Ang_nr)
+                .HasRequired(au => au.Auftrag)
+                .WithMany(an => an.Angebot)
+                .HasForeignKey(an => an.Auf_nr);
 
-            modelBuilder.Entity<Pruefungstyp>()
-                .HasKey(p => p.Pe_Typ_nr);
-            
-            modelBuilder.Entity<Abnahmegesellschaft>()
-                .HasKey(a => a.Abnahme_nr);
+            modelBuilder.Entity<Angebot>()
+                .HasRequired(me => me.Mehrwertsteuer)
+                .WithMany(an => an.Angebot)
+                .HasForeignKey(me => me.Mwst_nr);
 
-            modelBuilder.Entity<Werkstoff_Pruefung>()
-                .HasKey(wp => new { wp.W_nr, wp.Pe_Typ_nr });
-            
-            modelBuilder.Entity<Mehrwertsteuer>()
-                .HasKey(m => m.Mwst_nr);
+            modelBuilder.Entity<Angebot>()
+                .HasMany(an => an.Angebotsposition)
+                .WithRequired(an => an.Angebot)
+                .HasForeignKey(an => an.Ang_nr);
 
-            modelBuilder.Entity<Angebotsposition>()
-                .HasKey(ap => new { ap.Ang_nr, ap.Pe_typ_nr });
+            modelBuilder.Entity<Angebot>()
+                .HasMany(re => re.Rechnung)
+                .WithRequired(an => an.Angebot)
+                .HasForeignKey(an => an.Ang_nr);
+            
+           modelBuilder.Entity<Angebot>()
+               .HasMany(an => an.AngebotTextbaustein)
+               .WithRequired(an => an.Angebot)
+               .HasForeignKey(an => an.Ang_nr);
 
-            modelBuilder.Entity<Probe_Kopf>()
-                .HasKey(pk => pk.P_nr);
+
+           modelBuilder.Entity<Pruefungstyp>()
+               .HasKey(p => p.Pe_Typ_nr)
+               .HasMany(re => re.Rechnungsposition)
+               .WithRequired(pr => pr.Pruefungstyp)
+               .HasForeignKey(pr => pr.Pe_typ_nr);
             
-            modelBuilder.Entity<Probe_Unter>()
-                .HasKey(pk => pk.P_nr);
+             modelBuilder.Entity<Pruefungstyp>()
+                 .HasMany(re => re.Werkstoff_Pruefung)
+                 .WithRequired(pr => pr.Pruefungstyp)
+                 .HasForeignKey(pr => pr.Pe_Typ_nr);
+           
+             modelBuilder.Entity<Pruefungstyp>()
+                 .HasMany(re => re.Angebotsposition)
+                 .WithRequired(pr => pr.Pruefungstyp)
+                 .HasForeignKey(pr => pr.Pe_typ_nr);
+
+             modelBuilder.Entity<Abnahmegesellschaft>()
+                 .HasKey(a => a.Abnahme_nr)
+                 .HasMany(pr => pr.Probe_Kopf)
+                 .WithRequired(ab => ab.Abnahmegesellschaft)
+                 .HasForeignKey(ab => ab.Abnahme_nr);
+
+             modelBuilder.Entity<Werkstoff_Pruefung>()
+                 .HasKey(wp => new { wp.W_nr, wp.Pe_Typ_nr })
+                 .HasRequired(we => we.Werkstoff)
+                 .WithMany(we => we.WerkstoffPruefung)
+                 .HasForeignKey(we => we.W_nr);
             
-            modelBuilder.Entity<Fertigstellung_Zeit>()
-                .HasKey(fz => fz.P_fertigstellung_zeit_nr);
+             modelBuilder.Entity<Werkstoff_Pruefung>()
+                 .HasRequired(we => we.Pruefungstyp)
+                 .WithMany(we => we.Werkstoff_Pruefung)
+                 .HasForeignKey(we => we.Pe_Typ_nr);
+
+             modelBuilder.Entity<Mehrwertsteuer>()
+                 .HasKey(m => m.Mwst_nr)
+                 .HasMany(an => an.Angebot)
+                 .WithRequired(an => an.Mehrwertsteuer)
+                 .HasForeignKey(pr => pr.Mwst_nr);
+
+             modelBuilder.Entity<Angebotsposition>()
+                 .HasKey(ap => new { ap.Ang_nr, ap.Pe_typ_nr })
+                 .HasRequired(pr => pr.Pruefungstyp)
+                 .WithMany(an => an.Angebotsposition)
+                 .HasForeignKey(pr => pr.Pe_typ_nr);
+             
+             modelBuilder.Entity<Angebotsposition>()
+                 .HasRequired(pr => pr.Angebot)
+                 .WithMany(an => an.Angebotsposition)
+                 .HasForeignKey(pr => pr.Ang_nr);
+
+             modelBuilder.Entity<Probe_Kopf>()
+                 .HasKey(pk => pk.P_nr)
+                 .HasRequired(pr => pr.FertigstellungZeit)
+                 .WithMany(fe => fe.Probe_Kopf)
+                 .HasForeignKey(fe => fe.P_fertigstellung_zeit_nr);
             
-            modelBuilder.Entity<Mitarbeiter>()
-                .HasKey(m => m.M_nr);
-            
+             modelBuilder.Entity<Probe_Kopf>()
+                 .HasRequired(pr => pr.Auftrag)
+                 .WithMany(fe => fe.Probe_Kopf)
+                 .HasForeignKey(fe => fe.Prob_nr);
+             
+             modelBuilder.Entity<Probe_Kopf>()
+                 .HasRequired(pr => pr.Abnahmegesellschaft)
+                 .WithMany(fe => fe.Probe_Kopf)
+                 .HasForeignKey(fe => fe.Abnahme_nr);
+             
+             modelBuilder.Entity<Probe_Kopf>()
+                 .HasMany(pr=> pr.Probe_Unter)
+                 .WithRequired(pr=> pr.Probe_Kopf)
+                 .HasForeignKey(fe => fe.P_nr);
+
+             modelBuilder.Entity<Probe_Unter>()
+                 .HasKey(pk => pk.P_nr)
+                 .HasRequired(pr => pr.Mitarbeiter)
+                 .WithMany(pr => pr.Probe_Unter)
+                 .HasForeignKey(pr => pr.M_nr);
+             
+             modelBuilder.Entity<Probe_Unter>()
+                 .HasRequired(pr => pr.Probe_Kopf)
+                 .WithMany(pr => pr.Probe_Unter)
+                 .HasForeignKey(pr => pr.P_nr);
+
+             modelBuilder.Entity<Fertigstellung_Zeit>()
+                 .HasKey(fz => fz.P_fertigstellung_zeit_nr)
+                 .HasMany(pr => pr.Probe_Kopf)
+                 .WithRequired(fe => fe.FertigstellungZeit)
+                 .HasForeignKey(fe => fe.P_fertigstellung_zeit_nr);
+
+             modelBuilder.Entity<Mitarbeiter>()
+                 .HasKey(m => m.M_nr)
+                 .HasMany(mi => mi.Probe_Unter)
+                 .WithRequired(pr => pr.Mitarbeiter)
+                 .HasForeignKey(mi => mi.M_nr);
+
         }
     }
     
@@ -163,7 +319,7 @@ namespace kunze_prüfer.DataBase
         public int r_nr { get; set; }
         public int Pe_typ_nr { get; set; }
         public double Rp_preis { get; set; }
-        
+        public int Rp_menge { get; set; }
         //nav
         public virtual Rechnung Rechnung { get; set; }
         
@@ -342,7 +498,7 @@ namespace kunze_prüfer.DataBase
         public int Ang_nr { get; set; }
         public int Pe_typ_nr { get; set; }
         public double Rp_preis { get; set; }
-        
+        public int Rp_menge { get; set; }
         //Nav
 
         public virtual Pruefungstyp Pruefungstyp { get; set; }
