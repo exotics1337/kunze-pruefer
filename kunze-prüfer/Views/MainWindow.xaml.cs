@@ -12,7 +12,6 @@ using AdonisUI;
 using AdonisUI.Controls;
 using kunze_prüfer.Models;
 using kunze_prüfer.Views.QuickPDF;
-using QuickPDF = kunze_prüfer.Models.QuickPDF;
 using MessageBox = AdonisUI.Controls.MessageBox;
 using MessageBoxImage = AdonisUI.Controls.MessageBoxImage;
 using MessageBoxResult = AdonisUI.Controls.MessageBoxResult;
@@ -123,7 +122,7 @@ namespace kunze_prüfer
 
         private void NavItem14_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            QuickPDF quickInstance = new QuickPDF();
+            InvoiceCreator quickInstance = new InvoiceCreator();
             
             quickInstance.AddElement(1, "Test", 1.0, 1.0);
             quickInstance.AddElement(2, "Test2", 13.0, 193.0);

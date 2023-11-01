@@ -1,21 +1,20 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using QuickPDF = kunze_prüfer.Models.QuickPDF;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
     public partial class PDFCreator : Window
     {
-        private Models.QuickPDF quickInstance = new Models.QuickPDF();
-        public PDFCreator(Models.QuickPDF quickInstance)
+        private Models.InvoiceCreator invoiceInstance = new Models.InvoiceCreator();
+        public PDFCreator(Models.InvoiceCreator invoiceInstance)
         {
             InitializeComponent();
-            foreach (var element in quickInstance.RechnungsElemente)
+            foreach (var element in invoiceInstance.InvoiceElements)
             {
                 ListBox_Rechnungspos.Items.Add(element.Artikelname);
             }
 
-            this.quickInstance = quickInstance;
+            this.invoiceInstance = invoiceInstance;
         }
 
         private void BtnPosAdd_OnClick(object sender, RoutedEventArgs e)
@@ -26,13 +25,13 @@ namespace kunze_prüfer.Views.QuickPDF
                 int lastListViewIndex = ListView.Items.Count;
                 if (lastListViewIndex != -1)
                 {
-                    quickInstance.EditPos(selectedIndex, lastListViewIndex + 1);
+                    invoiceInstance.EditPos(selectedIndex, lastListViewIndex + 1);
                 }
                 else
                 {
-                    quickInstance.EditPos(selectedIndex, 1);
+                    invoiceInstance.EditPos(selectedIndex, 1);
                 }
-                ListView.Items.Add(quickInstance.RechnungsElemente[selectedIndex]);
+                ListView.Items.Add(invoiceInstance.InvoiceElements[selectedIndex]);
             }
             else
             {
@@ -50,13 +49,13 @@ namespace kunze_prüfer.Views.QuickPDF
                     int lastListViewIndex = ListView.Items.Count;
                     if (lastListViewIndex != -1)
                     {
-                        quickInstance.EditPos(currentIndex, lastListViewIndex + 1);
+                        invoiceInstance.EditPos(currentIndex, lastListViewIndex + 1);
                     }
                     else
                     {
-                        quickInstance.EditPos(currentIndex, 1);
+                        invoiceInstance.EditPos(currentIndex, 1);
                     }
-                    ListView.Items.Add(quickInstance.RechnungsElemente[currentIndex]);
+                    ListView.Items.Add(invoiceInstance.InvoiceElements[currentIndex]);
                     currentIndex++;
                 }
             }

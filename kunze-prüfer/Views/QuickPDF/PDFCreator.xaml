@@ -44,21 +44,8 @@
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2" >
         </Grid>
-            <ToolBarTray Grid.Row="0" Grid.Column="1" DockPanel.Dock="Top" Height="20">
-                <ToolBar>
-                    <ComboBox Width="110" Text="Vorlage wählen">
-                        <ComboBoxItem> Rechnung </ComboBoxItem>
-                        <ComboBoxItem> Angebot </ComboBoxItem>
-                        <ComboBoxItem> Test </ComboBoxItem>
-                    </ComboBox>
-                </ToolBar>
-                <ToolBar>
-                    <Button> Textbausteine Wählen </Button>
-                    <ToggleButton> Belegansicht </ToggleButton>
-                </ToolBar>
-            </ToolBarTray>
         
-        <Grid Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Background="White" Margin="0,0,0,4">
+        <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Background="White" Margin="0,0,0,4">
             <ListView x:Name="ListView" BorderThickness="1" >
                 <ListView.View>
                     <GridView>
@@ -71,6 +58,11 @@
                 </ListView.View>
             </ListView>
         </Grid>
+        
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="0" CornerRadius="0,0,5,5" Background="#FF9600" Margin="0, -3, 0, 10" Width="280" HorizontalAlignment="Left"> 
+            <Grid>
+            </Grid>
+        </Border>
         
         <Grid Grid.Row="4" Grid.ColumnSpan="2" Background="#FF9600">
             <StackPanel Orientation="Horizontal">
