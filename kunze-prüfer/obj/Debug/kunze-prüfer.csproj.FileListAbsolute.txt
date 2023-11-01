@@ -235,3 +235,30 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Sys
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\System.Memory.xml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\libHarfBuzzSharp.dylib
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\x86\libHarfBuzzSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\x64\libHarfBuzzSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\arm64\libHarfBuzzSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\libSkiaSharp.dylib
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\x86\libSkiaSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\x64\libSkiaSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\arm64\libSkiaSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\HarfBuzzSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\QuestPDF.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\SkiaSharp.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\SkiaSharp.HarfBuzz.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Buffers.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Memory.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\HarfBuzzSharp.pdb
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\HarfBuzzSharp.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\QuestPDF.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\SkiaSharp.pdb
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\SkiaSharp.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\SkiaSharp.HarfBuzz.pdb
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\SkiaSharp.HarfBuzz.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Buffers.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Memory.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml

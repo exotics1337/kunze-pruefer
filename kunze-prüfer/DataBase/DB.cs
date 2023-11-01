@@ -238,18 +238,19 @@ namespace kunze_prüfer.DataBase
              modelBuilder.Entity<Probe_Kopf>()
                  .HasMany(pr=> pr.Probe_Unter)
                  .WithRequired(pr=> pr.Probe_Kopf)
-                 .HasForeignKey(fe => fe.P_nr);
+                 .HasForeignKey(fe =>fe.P_nr);
 
              modelBuilder.Entity<Probe_Unter>()
-                 .HasKey(pk => pk.P_nr)
-                 .HasRequired(pr => pr.Mitarbeiter)
-                 .WithMany(pr => pr.Probe_Unter)
-                 .HasForeignKey(pr => pr.M_nr);
-             
-             modelBuilder.Entity<Probe_Unter>()
+                 .HasKey(pk => new{pk.P_nr, pk.Pe_nr})
                  .HasRequired(pr => pr.Probe_Kopf)
                  .WithMany(pr => pr.Probe_Unter)
                  .HasForeignKey(pr => pr.P_nr);
+
+             
+             modelBuilder.Entity<Probe_Unter>()
+                 .HasRequired(pr => pr.Mitarbeiter)
+                 .WithMany(pr => pr.Probe_Unter)
+                 .HasForeignKey(pr => pr.M_nr);
 
              modelBuilder.Entity<Fertigstellung_Zeit>()
                  .HasKey(fz => fz.P_fertigstellung_zeit_nr)
