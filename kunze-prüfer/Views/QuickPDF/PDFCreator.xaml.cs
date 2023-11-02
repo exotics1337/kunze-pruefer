@@ -69,5 +69,31 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             this.Close();
         }
+
+        private void BtnDeletePos_OnClick(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = ListBox_Rechnungspos.SelectedIndex;
+            int lastListViewIndex = ListView.Items.Count;
+            
+            if (selectedIndex != -1)
+            {
+                if (lastListViewIndex != -1)
+                {
+                    for(int i = selectedIndex + 1; i < lastListViewIndex; i++)
+                    {
+                        invoiceInstance.EditPos(i, i - 1);
+                    }
+                    invoiceInstance.DeleteElement(selectedIndex);
+                }
+                else
+                {
+                    MessageBox.Show("Es sind keine Positionen verfügbar.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte wählen Sie einen Artikel aus.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

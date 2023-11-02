@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListBox MinHeight="550" BorderThickness="1" x:Name="ListBox_Rechnungspos" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 4" Background="White">
+        <ListBox MinHeight="550" BorderThickness="0" x:Name="ListBox_Rechnungspos" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 4" Background="White">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Style.Resources>
@@ -59,14 +59,16 @@
             </ListView>
         </Grid>
         
-        <Border Grid.Row="3" Grid.Column="1" BorderThickness="0" CornerRadius="0,0,5,5" Background="#FF9600" Margin="0, -3, 0, 10" Width="280" HorizontalAlignment="Left"> 
-            <Grid>
-            </Grid>
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="0" CornerRadius="0,0,5,5" Background="#FF9600" Margin="0, -3, 0, 10" Width="250" HorizontalAlignment="Left"> 
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{StaticResource TransparentButton}" FontSize="10">Tabellenansicht</Button>
+                <Button Style="{StaticResource TransparentButton}" FontSize="10">Belegansicht</Button>
+            </StackPanel>
         </Border>
         
         <Grid Grid.Row="4" Grid.ColumnSpan="2" Background="#FF9600">
             <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource TransparentButton}">
+                <Button Style="{StaticResource TransparentButton}" x:Name="BtnDeletePos" Click="BtnDeletePos_OnClick" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Media/Icons/delete-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
                         <TextBlock> Position löschen </TextBlock>

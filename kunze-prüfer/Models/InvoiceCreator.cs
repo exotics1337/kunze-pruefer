@@ -35,5 +35,10 @@ namespace kunze_prüfer.Models
         {
             InvoiceElements[index].Rechnungs_pos = pos;
         }
+        
+        public void DeleteElement(int index)
+        {
+            InvoiceElements.RemoveAt(index);
+        }
     }
 }
