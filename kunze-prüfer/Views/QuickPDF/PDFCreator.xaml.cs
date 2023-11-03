@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace kunze_prüfer.Views.QuickPDF
@@ -9,7 +10,7 @@ namespace kunze_prüfer.Views.QuickPDF
         public PDFCreator(Models.InvoiceCreator invoiceInstance)
         {
             InitializeComponent();
-            foreach (var element in invoiceInstance.InvoiceElements)
+            foreach (var element in invoiceInstance.InvoiceBaseElements)
             {
                 ListBox_Rechnungspos.Items.Add(element.Artikelname);
             }
@@ -21,17 +22,8 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             if (ListBox_Rechnungspos.SelectedIndex != -1)
             {
-                int selectedIndex = ListBox_Rechnungspos.SelectedIndex;
-                int lastListViewIndex = ListView.Items.Count;
-                if (lastListViewIndex != -1)
-                {
-                    invoiceInstance.EditPos(selectedIndex, lastListViewIndex + 1);
-                }
-                else
-                {
-                    invoiceInstance.EditPos(selectedIndex, 1);
-                }
-                ListView.Items.Add(invoiceInstance.InvoiceElements[selectedIndex]);
+              invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.SelectedIndex);
+              ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count - 1]);
             }
             else
             {
@@ -43,21 +35,7 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             if (ListBox_Rechnungspos.Items.Count != -1)
             {
-                int currentIndex = 0;
-                foreach (var item in ListBox_Rechnungspos.Items)
-                {
-                    int lastListViewIndex = ListView.Items.Count;
-                    if (lastListViewIndex != -1)
-                    {
-                        invoiceInstance.EditPos(currentIndex, lastListViewIndex + 1);
-                    }
-                    else
-                    {
-                        invoiceInstance.EditPos(currentIndex, 1);
-                    }
-                    ListView.Items.Add(invoiceInstance.InvoiceElements[currentIndex]);
-                    currentIndex++;
-                }
+                
             }
             else
             {
@@ -72,28 +50,12 @@ namespace kunze_prüfer.Views.QuickPDF
 
         private void BtnDeletePos_OnClick(object sender, RoutedEventArgs e)
         {
-            int selectedIndex = ListBox_Rechnungspos.SelectedIndex;
-            int lastListViewIndex = ListView.Items.Count;
-            
-            if (selectedIndex != -1)
-            {
-                if (lastListViewIndex != -1)
-                {
-                    for(int i = selectedIndex + 1; i < lastListViewIndex; i++)
-                    {
-                        invoiceInstance.EditPos(i, i - 1);
-                    }
-                    invoiceInstance.DeleteElement(selectedIndex);
-                }
-                else
-                {
-                    MessageBox.Show("Es sind keine Positionen verfügbar.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Bitte wählen Sie einen Artikel aus.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //
+        }
+        
+        private void RebuildListView()
+        {
+
         }
     }
 }

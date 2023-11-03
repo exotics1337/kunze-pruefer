@@ -59,7 +59,7 @@
             </ListView>
         </Grid>
         
-        <Border Grid.Row="3" Grid.Column="1" BorderThickness="0" CornerRadius="0,0,5,5" Background="#FF9600" Margin="0, -3, 0, 10" Width="250" HorizontalAlignment="Left"> 
+        <Border Grid.Row="3" Grid.Column="1" BorderThickness="0" CornerRadius="0,0,5,5" Background="#FF9600" Margin="0, -3, 0, 10" Width="200" HorizontalAlignment="Left"> 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Style="{StaticResource TransparentButton}" FontSize="10">Tabellenansicht</Button>
                 <Button Style="{StaticResource TransparentButton}" FontSize="10">Belegansicht</Button>

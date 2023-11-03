@@ -7,7 +7,16 @@ namespace kunze_prüfer.Models
     public class InvoiceCreator
     {
         public List<InvoiceElement> InvoiceElements = new List<InvoiceElement>();
+        public List<InvoiceBaseElement> InvoiceBaseElements = new List<InvoiceBaseElement>();
         
+        public class InvoiceBaseElement
+        {
+            public string Artikelname { get; set; }
+            public double Artikel_menge { get; set; }
+            public double Artikel_einzel_preis { get; set; }
+            public double Artikel_gesamt_preis { get; set; }
+        }
+
         public class InvoiceElement
         {
             public int Rechnungs_pos { get; set; }
@@ -16,9 +25,16 @@ namespace kunze_prüfer.Models
             public double Artikel_einzel_preis { get; set; }
             public double Artikel_gesamt_preis { get; set; }
         }
-        
-        public void AddElement(int pos, string artikelname, double artikelmenge, double einzelpreis)
+
+        public void AddBaseElement(string artikelname, double artikelmenge, double einzelpreis)
         {
+            InvoiceBaseElements.Add(new InvoiceBaseElement{Artikelname = artikelname, Artikel_menge = artikelmenge, Artikel_einzel_preis = einzelpreis, Artikel_gesamt_preis = einzelpreis * artikelmenge});
+        }
+        public void AddElement(int pos, int baseElementIndex)
+        {
+            string artikelname = InvoiceBaseElements[baseElementIndex].Artikelname;
+            double artikelmenge = InvoiceBaseElements[baseElementIndex].Artikel_menge;
+            double einzelpreis = InvoiceBaseElements[baseElementIndex].Artikel_einzel_preis;
             InvoiceElements.Add(new InvoiceElement { Rechnungs_pos = pos, Artikelname = artikelname, Artikel_menge  = artikelmenge, Artikel_einzel_preis = einzelpreis, Artikel_gesamt_preis = einzelpreis * artikelmenge});
         }
 
@@ -29,6 +45,16 @@ namespace kunze_prüfer.Models
             InvoiceElements[index].Artikel_menge = artikelmenge;
             InvoiceElements[index].Artikel_einzel_preis = einzelpreis;
             InvoiceElements[index].Artikel_gesamt_preis = einzelpreis * artikelmenge;
+        }
+        
+        public void ReCount()
+        {
+            int pos = 1;
+            foreach (var element in InvoiceElements)
+            {
+                element.Rechnungs_pos = pos;
+                pos++;
+            }
         }
         
         public void EditPos(int index, int pos)

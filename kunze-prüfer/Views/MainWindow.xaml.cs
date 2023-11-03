@@ -124,9 +124,9 @@ namespace kunze_prüfer
         {
             InvoiceCreator quickInstance = new InvoiceCreator();
             
-            quickInstance.AddElement(1, "Test", 1.0, 1.0);
-            quickInstance.AddElement(2, "Test2", 13.0, 193.0);
-            quickInstance.AddElement(3, "Test3", 10.0, 1194.0);
+            quickInstance.AddBaseElement( "Test", 1.0, 1.0);
+            quickInstance.AddBaseElement( "Test2", 13.0, 193.0);
+            quickInstance.AddBaseElement( "Test3", 10.0, 1194.0);
             
             PDFCreator pdfCreator = new PDFCreator(quickInstance);
             pdfCreator.Show();
