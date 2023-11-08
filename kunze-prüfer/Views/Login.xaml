@@ -33,16 +33,16 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Margin="5" Orientation="Horizontal">
-            <TextBox Width="90" ></TextBox>
-            <PasswordBox Width="217" Margin="20,0,0,0"></PasswordBox>
+            <TextBox Width="90" x:Name="BoxMitNr"></TextBox>
+            <PasswordBox Width="217" Margin="20,0,0,0" x:Name="PasswordBox"></PasswordBox>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="3" Margin="5"> Login </Button>
+        <Button Grid.Column="1" Grid.Row="3" Margin="5" x:Name="ButtonLogin" Click="ButtonLogin_OnClick"> Login </Button>
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="6" Background="#FF9600" Margin="0,0,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Image Source="/Media/Icons/database-ok-52.png" Width="16" Stretch="Uniform" Margin="0,3,4,0" />
+                <Image Source="/Media/Icons/database-ok-52.png" Width="16" Stretch="Uniform" Margin="0,3,4,0" x:Name="ImageDatabaseOk" Visibility="Hidden" />
                 <TextBlock x:Name="TextBlockDatabaseStatus" Foreground="White" FontSize="13" FontWeight="Light" Margin="0,7,10,0" >
-                Datenbank Verbunden
+                Verbindung wird hergestellt...
             </TextBlock>
             </StackPanel>
         </Grid>

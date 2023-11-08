@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdonisUI;
 using kunze_prüfer.DataBase;
+using kunze_prüfer.Models;
 
 namespace kunze_prüfer.Views
 {
@@ -22,19 +23,58 @@ namespace kunze_prüfer.Views
     /// </summary>
     public partial class Login : AdonisUI.Controls.AdonisWindow
     {
-        public class DbClass : KunzeDB
-        {
-            public bool CheckConnection()
-            {
-                return Database.Exists();
-            }
-        }
         public Login()
         {   
             InitializeComponent();
-            DbClass db = new DbClass();
-            MessageBox.Show(db.CheckConnection().ToString()); // returns false
+            CheckConnection();
         }
-        
+
+        private async void CheckConnection()
+        {
+            await Task.Run(() =>
+            {
+                using (var db = new KunzeDB())
+                {
+                    if (db.Database.Exists())
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            TextBlockDatabaseStatus.Text = "Datenbank Verbunden";
+                            ImageDatabaseOk.Visibility = Visibility.Visible;
+                        });
+                    }
+                    else
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            TextBlockDatabaseStatus.Text = "Datenbank nicht Verbunden";
+                        });
+                    }
+                }
+            });
+        }
+
+        private async void ButtonLogin_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (BoxMitNr.Text != "" && PasswordBox.Password != "")
+            {
+                int mitnr = Convert.ToInt32(BoxMitNr.Text);
+                string password = PasswordBox.Password;
+                bool loginResult = await CheckLogin.ValidateLogin(mitnr, password);
+                if (loginResult)
+                {
+                    // Login erfolgreich
+                }
+                else
+                {
+                    AdonisUI.Controls.MessageBox.Show("Mitarbeiter Nr. und/oder Passwort existiert nicht!", "Login fehlgeschlagen!", AdonisUI.Controls.MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                AdonisUI.Controls.MessageBox.Show("Bitte geben Sie Ihre Mitarbeiter Nummer und Ihr Passwort ein!",
+                    "Login fehlgeschlagen!", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+        }
     }
 }
