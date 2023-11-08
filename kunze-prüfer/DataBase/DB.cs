@@ -50,7 +50,7 @@ namespace kunze_prüfer.DataBase
                 .HasForeignKey(ka => ka.Anspr_nr);
                 
 
-            modelBuilder.Entity<Kunden_Ansprechpartner>()
+            modelBuilder.Entity<Kunden_Ansprechpartner>() //Auslagerung von Foreignkeys
                 .HasKey(ka => new { ka.K_nr, ka.Anspr_nr })
                 .HasMany(a => a.Auftrag)
                 .WithRequired(ka => ka.Kunden_Ansprechpartner)
