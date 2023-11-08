@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Diagnostics;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
@@ -108,6 +109,18 @@ namespace kunze_prüfer.Views.QuickPDF
                 RebuildListView();
                 RebuildListBox();
             }
+        }
+
+        private void BtnTabellenansicht_OnClick(object sender, RoutedEventArgs e)
+        {
+            BtnTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF8B00") as SolidColorBrush;
+            BtnBelegansicht.Background = new BrushConverter().ConvertFromString("#FF9600") as SolidColorBrush;
+        }
+
+        private void BtnBelegansicht_OnClick(object sender, RoutedEventArgs e)
+        {
+            BtnTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF9600") as SolidColorBrush;
+            BtnBelegansicht.Background = new BrushConverter().ConvertFromString("#FF8B00") as SolidColorBrush;
         }
     }
 }
