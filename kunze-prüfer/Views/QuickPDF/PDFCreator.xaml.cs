@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Diagnostics;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
@@ -23,7 +24,7 @@ namespace kunze_prüfer.Views.QuickPDF
             if (ListBox_Rechnungspos.SelectedIndex != -1)
             {
               invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.SelectedIndex);
-              ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count - 1]);
+              ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count]);
             }
             else
             {
@@ -35,7 +36,11 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             if (ListBox_Rechnungspos.Items.Count != -1)
             {
-                
+                foreach(var element in ListBox_Rechnungspos.Items)
+                {
+                    invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.Items.IndexOf(element));
+                    ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count]);
+                }
             }
             else
             {
@@ -50,12 +55,72 @@ namespace kunze_prüfer.Views.QuickPDF
 
         private void BtnDeletePos_OnClick(object sender, RoutedEventArgs e)
         {
-            //
+            if (ListView.SelectedIndex != -1)
+            {
+                invoiceInstance.DeleteElement(ListView.SelectedIndex);
+                invoiceInstance.ReCount();
+                RebuildListView();
+            }
+            else
+            {
+                MessageBox.Show("Bitte wählen Sie eine Position aus.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         
         private void RebuildListView()
         {
+            ListView.Items.Clear();
+            foreach (var element in invoiceInstance.InvoiceElements)
+            {
+                ListView.Items.Add(element);
+            }
+        }
+        
+        private void RebuildListBox()
+        {
+            ListBox_Rechnungspos.Items.Clear();
+            foreach (var element in invoiceInstance.InvoiceBaseElements)
+            {
+                ListBox_Rechnungspos.Items.Add(element.Artikelname);
+            }
+        }
 
+        private void BtnAddPos_OnClick(object sender, RoutedEventArgs e)
+        {
+            PDFCreator_ElementEditor addElementForm = new PDFCreator_ElementEditor(false, invoiceInstance, newPosition: ListView.Items.Count + 1);
+            addElementForm.ShowDialog();
+            bool? dialogResult = addElementForm.DialogResult;
+            if (dialogResult == true)
+            {
+                this.invoiceInstance = addElementForm.ResultInstance;
+                RebuildListView();
+                RebuildListBox();
+            }
+        }
+
+        private void BtnEditPos_OnClick(object sender, RoutedEventArgs e)
+        {
+            PDFCreator_ElementEditor editElementForm = new PDFCreator_ElementEditor(true, invoiceInstance, invoiceElementIndex: ListView.SelectedIndex, newPosition: ListView.SelectedIndex + 1);
+            editElementForm.ShowDialog();
+            bool? dialogResult = editElementForm.DialogResult;
+            if (dialogResult == true)
+            {
+                this.invoiceInstance = editElementForm.ResultInstance;
+                RebuildListView();
+                RebuildListBox();
+            }
+        }
+
+        private void BtnTabellenansicht_OnClick(object sender, RoutedEventArgs e)
+        {
+            BtnTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF8B00") as SolidColorBrush;
+            BtnBelegansicht.Background = new BrushConverter().ConvertFromString("#FF9600") as SolidColorBrush;
+        }
+
+        private void BtnBelegansicht_OnClick(object sender, RoutedEventArgs e)
+        {
+            BtnTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF9600") as SolidColorBrush;
+            BtnBelegansicht.Background = new BrushConverter().ConvertFromString("#FF8B00") as SolidColorBrush;
         }
     }
 }

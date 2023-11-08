@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdonisUI;
+using kunze_prüfer.DataBase;
 
 namespace kunze_prüfer.Views
 {
@@ -20,9 +22,19 @@ namespace kunze_prüfer.Views
     /// </summary>
     public partial class Login : AdonisUI.Controls.AdonisWindow
     {
-        public Login()
+        public class DbClass : KunzeDB
         {
-            InitializeComponent();
+            public bool CheckConnection()
+            {
+                return Database.Exists();
+            }
         }
+        public Login()
+        {   
+            InitializeComponent();
+            DbClass db = new DbClass();
+            MessageBox.Show(db.CheckConnection().ToString()); // returns false
+        }
+        
     }
 }

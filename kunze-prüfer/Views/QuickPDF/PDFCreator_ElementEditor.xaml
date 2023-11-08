@@ -1,0 +1,92 @@
+﻿<Window x:Class="kunze_prüfer.Views.QuickPDF.PDFCreator_ElementEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:kunze_prüfer.Views.QuickPDF"
+        mc:Ignorable="d"
+        Title="Position Hinzufügen / Bearbeiten" Height="400" Width="320">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="3" Grid.ColumnSpan="5" Background="#FF9600">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource TransparentButton}" x:Name="AcceptBtn" Click="AcceptBtn_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="BtnImg" Source="/Media/Icons/add-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock x:Name="BtnText"> Neue Position erstellen </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Style="{StaticResource TransparentButton}" x:Name="DenyBtn" Click="DenyBtn_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/close2-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Abbrechen </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1">
+            <Grid Background="Gray">
+                <GroupBox Header="Grunddaten" >
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="75">Position</Label>
+                            <TextBox x:Name="TextBoxPosition" Width="100" Grid.Column="2" />
+                            <Label x:Name="LabelLetztePosition" Visibility="Hidden" FontWeight="Light" FontSize="10" VerticalAlignment="Center" Margin="10,0,0,0"> Letzte Position: </Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="75">Name</Label>
+                            <TextBox x:Name="TextBoxName" Width="100" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="75">Menge</Label>
+                            <TextBox x:Name="TextBoxMenge" Width="100" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+            <Grid Background="Gray" Margin="0,15,0,0">
+                <GroupBox Header="Preise" >
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="75"></Label>
+                            <Label Width="95" FontWeight="Regular">Einzelpreis</Label>
+                            <Label Width="90" FontWeight="Regular">Gesamtpreis</Label>
+                            <Label Width="90" Margin="5,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="70">Netto</Label>
+                            <TextBox Width="90" x:Name="TextBoxEinzelNetto" TextChanged="TextBoxEinzelNetto_OnTextChanged"/>
+                            <TextBox x:Name="TextBoxGesamtNetto" IsEnabled="False" Width="90" Margin="5,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="70">Brutto</Label>
+                            <TextBox x:Name="TextBoxEinzelBrutto" Width="90" TextChanged="TextBoxEinzelBrutto_OnTextChanged" />
+                            <TextBox x:Name="TextBoxGesamtBrutto" IsEnabled="False" Width="90" Margin="5,0,0,0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="70">Mwst</Label>
+                            <TextBox x:Name="TextBoxEinzelMwst" IsEnabled="False" Width="90" />
+                            <TextBox x:Name="TextBoxGesamtMwst" IsEnabled="False" Width="90" Margin="5,0,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
+        </StackPanel>
+        
+    </Grid>
+</Window>
