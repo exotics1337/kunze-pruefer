@@ -109,8 +109,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
+    <Compile Include="Models\NettoBrutto.cs" />
     <Compile Include="Views\QuickPDF\PDFCreator.xaml.cs">
       <DependentUpon>PDFCreator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml.cs">
+      <DependentUpon>PDFCreator_ElementEditor.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
@@ -133,6 +137,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\QuickPDF\PDFCreator.xaml" />
+    <Page Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

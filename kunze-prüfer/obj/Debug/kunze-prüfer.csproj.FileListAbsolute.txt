@@ -262,3 +262,5 @@ C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr�
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr체fer\bin\Debug\System.Memory.xml
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr체fer\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr체fer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.baml

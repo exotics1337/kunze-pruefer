@@ -74,20 +74,20 @@
                         <TextBlock> Position löschen </TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource TransparentButton}">
+                <Button Style="{StaticResource TransparentButton}" x:Name="BtnAddPos" Click="BtnAddPos_OnClick" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Media/Icons/add-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
                         <TextBlock> Neue Position erstellen </TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource TransparentButton}" x:Name="BtnEditPos" Click="BtnClose_OnClick">
+                <Button Style="{StaticResource TransparentButton}" x:Name="BtnEditPos" Click="BtnEditPos_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Media/Icons/edit-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
                         <TextBlock> Position bearbeiten </TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="#d97e00">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="#ed8900">
                 <Button Style="{StaticResource TransparentButton}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Media/Icons/print-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
