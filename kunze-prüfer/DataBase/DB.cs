@@ -6,6 +6,7 @@ namespace kunze_prüfer.DataBase
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class KunzeDB : DbContext
     {
@@ -63,7 +64,7 @@ namespace kunze_prüfer.DataBase
 
 
             modelBuilder.Entity<Rechnungsposition>()
-                .HasKey(rp => rp.r_nr)
+                .HasKey(rp => new{rp.r_nr , rp.Pe_typ_nr})
                 .HasRequired(r => r.Rechnung)
                 .WithMany(r => r.Rechnungsposition)
                 .HasForeignKey(rp => rp.r_nr);
@@ -113,7 +114,7 @@ namespace kunze_prüfer.DataBase
             modelBuilder.Entity<Auftrag>()
                 .HasMany(pr => pr.Probe_Kopf)
                 .WithRequired(au => au.Auftrag)
-                .HasForeignKey(pr => pr.Probe_Unter);
+                .HasForeignKey(pr => pr.Prob_nr);
 
             modelBuilder.Entity<Werkstoff>()
                 .HasKey(w => w.w_nr)
@@ -241,7 +242,7 @@ namespace kunze_prüfer.DataBase
                  .HasForeignKey(fe =>fe.P_nr);
 
              modelBuilder.Entity<Probe_Unter>()
-                 .HasKey(pk => new{pk.P_nr, pk.Pe_nr})
+                 .HasKey(pk => new { pk.P_nr, pk.Pe_nr })
                  .HasRequired(pr => pr.Probe_Kopf)
                  .WithMany(pr => pr.Probe_Unter)
                  .HasForeignKey(pr => pr.P_nr);
@@ -264,7 +265,18 @@ namespace kunze_prüfer.DataBase
                  .WithRequired(pr => pr.Mitarbeiter)
                  .HasForeignKey(mi => mi.M_nr);
 
+             modelBuilder.Entity<Rechnung>()
+                 .HasKey(r => r.r_nr)
+                 .HasMany(re => re.Rechnungsposition)
+                 .WithRequired(r => r.Rechnung)
+                 .HasForeignKey(r => r.r_nr);
+             modelBuilder.Entity<Rechnung>()
+                 .HasRequired(a => a.Angebot)
+                 .WithMany(r => r.Rechnung)
+                 .HasForeignKey(r => r.Ang_nr);
+            base.OnModelCreating(modelBuilder);
         }
+        
     }
     
     public class Kunde
@@ -508,6 +520,7 @@ namespace kunze_prüfer.DataBase
 
     public class Probe_Kopf
     {
+        
         public int P_nr { get; set; }
         public int Prob_nr { get; set; }
         public DateTime P_eingang { get; set; }
@@ -537,7 +550,11 @@ namespace kunze_prüfer.DataBase
 
     public class Probe_Unter
     {
+        
+        [Key, Column(Order = 0)]
         public int P_nr { get; set; }
+        
+        [Key, Column(Order = 1)]
         public int Pe_nr { get; set; }
         public int Pe_typ_nr { get; set; }
         public int Pe_anzahl { get; set; }
@@ -551,7 +568,7 @@ namespace kunze_prüfer.DataBase
         public bool P_unter_geloescht { get; set; }
         
         //Nav 
-
+        
         public virtual Probe_Kopf Probe_Kopf { get; set; }
         public virtual Mitarbeiter Mitarbeiter { get; set; }
     }

@@ -99,13 +99,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase\DB.cs" />
-    <Compile Include="Migrations\202310180051127_TabewithKeys.cs" />
-    <Compile Include="Migrations\202310180051127_TabewithKeys.Designer.cs">
-      <DependentUpon>202310180051127_TabewithKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310180558142_reltest.cs" />
-    <Compile Include="Migrations\202310180558142_reltest.Designer.cs">
-      <DependentUpon>202310180558142_reltest.cs</DependentUpon>
+    <Compile Include="Migrations\202311080958029_v01.cs" />
+    <Compile Include="Migrations\202311080958029_v01.Designer.cs">
+      <DependentUpon>202311080958029_v01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
@@ -148,11 +144,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202310180051127_TabewithKeys.resx">
-      <DependentUpon>202310180051127_TabewithKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310180558142_reltest.resx">
-      <DependentUpon>202310180558142_reltest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311080958029_v01.resx">
+      <DependentUpon>202311080958029_v01.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
