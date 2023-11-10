@@ -49,7 +49,7 @@ namespace kunze_prüfer.Views.QuickPDF
             {
                 try
                 {
-                    invoiceInstance.AddBaseElement(TextBoxName.Text, Convert.ToDouble(TextBoxMenge.Text), Convert.ToDouble(TextBoxEinzelBrutto.Text));
+                    invoiceInstance.AddBaseElement(TextBoxName.Text, Convert.ToDouble(TextBoxMenge.Text), Convert.ToDouble(TextBoxEinzelBrutto.Text), CheckBoxFreiposition.IsChecked == true ? true : false);
                     invoiceInstance.AddElement(Convert.ToInt32(TextBoxPosition.Text), invoiceInstance.InvoiceBaseElements.Count - 1);
                     ResultInstance = invoiceInstance;
                     DialogResult = true;
@@ -104,6 +104,22 @@ namespace kunze_prüfer.Views.QuickPDF
                 TextBoxGesamtMwst.Text = String.Format("{0:0.00}", Convert.ToDouble(TextBoxEinzelMwst.Text) * Convert.ToDouble(TextBoxMenge.Text));
             }
             catch{}
+        }
+
+        private void CheckBoxFreiposition_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxFreiposition.IsChecked == true)
+            {
+                TextBoxMenge.IsEnabled = false;
+                TextBoxEinzelNetto.IsEnabled = false;
+                TextBoxEinzelBrutto.IsEnabled = false;
+            }
+            else
+            {
+                TextBoxMenge.IsEnabled = true;
+                TextBoxEinzelNetto.IsEnabled = true;
+                TextBoxEinzelBrutto.IsEnabled = true;
+            }
         }
     }
 }
