@@ -25,6 +25,7 @@ namespace kunze_prüfer.Views.QuickPDF
             {
               invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.SelectedIndex);
               ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count]);
+              UpdateSum();
             }
             else
             {
@@ -41,6 +42,7 @@ namespace kunze_prüfer.Views.QuickPDF
                     invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.Items.IndexOf(element));
                     ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count]);
                 }
+                UpdateSum();
             }
             else
             {
@@ -60,6 +62,7 @@ namespace kunze_prüfer.Views.QuickPDF
                 invoiceInstance.DeleteElement(ListView.SelectedIndex);
                 invoiceInstance.ReCount();
                 RebuildListView();
+                UpdateSum();
             }
             else
             {
@@ -73,6 +76,10 @@ namespace kunze_prüfer.Views.QuickPDF
             foreach (var element in invoiceInstance.InvoiceElements)
             {
                 ListView.Items.Add(element);
+                if (element.Artikel_IstFreiposition)
+                {
+                    // do something
+                }
             }
         }
         
@@ -95,6 +102,7 @@ namespace kunze_prüfer.Views.QuickPDF
                 this.invoiceInstance = addElementForm.ResultInstance;
                 RebuildListView();
                 RebuildListBox();
+                UpdateSum();
             }
         }
 
@@ -108,19 +116,25 @@ namespace kunze_prüfer.Views.QuickPDF
                 this.invoiceInstance = editElementForm.ResultInstance;
                 RebuildListView();
                 RebuildListBox();
+                UpdateSum();
             }
         }
 
         private void BtnTabellenansicht_OnClick(object sender, RoutedEventArgs e)
         {
-            BtnTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF8B00") as SolidColorBrush;
-            BtnBelegansicht.Background = new BrushConverter().ConvertFromString("#FF9600") as SolidColorBrush;
+            BorderTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF7B00") as SolidColorBrush;
+            BorderBelegansicht.Background = new BrushConverter().ConvertFromString("#FF9900") as SolidColorBrush;
         }
 
         private void BtnBelegansicht_OnClick(object sender, RoutedEventArgs e)
         {
-            BtnTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF9600") as SolidColorBrush;
-            BtnBelegansicht.Background = new BrushConverter().ConvertFromString("#FF8B00") as SolidColorBrush;
+            BorderTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF9900") as SolidColorBrush;
+            BorderBelegansicht.Background = new BrushConverter().ConvertFromString("#FF7B00") as SolidColorBrush;
+        }
+        
+        private void UpdateSum()
+        {
+            TextBlockRechnungssumme.Text = "Rechnungsumme: " + invoiceInstance.GetSum().ToString("C");
         }
     }
 }

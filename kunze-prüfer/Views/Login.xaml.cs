@@ -63,7 +63,9 @@ namespace kunze_prüfer.Views
                 bool loginResult = await CheckLogin.ValidateLogin(mitnr, password);
                 if (loginResult)
                 {
-                    // Login erfolgreich
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
                 }
                 else
                 {

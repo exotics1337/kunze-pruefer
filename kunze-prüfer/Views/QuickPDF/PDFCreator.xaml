@@ -59,12 +59,19 @@
             </ListView>
         </Grid>
         
-        <Border Grid.Row="3" Grid.Column="1" BorderThickness="0" CornerRadius="0,0,5,5" Background="#FF9600" Margin="0, -3, 0, 10" Width="200" HorizontalAlignment="Left"> 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Background="#FF8B00" Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnTabellenansicht" Click="BtnTabellenansicht_OnClick">Tabellenansicht</Button>
-                <Button Background="#FF9600" Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnBelegansicht" Click="BtnBelegansicht_OnClick">Belegansicht</Button>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Border CornerRadius="0,0,8,8" Width="110" Height="25" Background="#FF7B00" Margin="0,-5,5,0" VerticalAlignment="Top" x:Name="BorderTabellenansicht" >
+                    <Button Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnTabellenansicht" MouseDown="BtnTabellenansicht_OnClick">Tabellenansicht</Button>
+                </Border>
+                <Border CornerRadius="0,0,8,8" Width="95" Height="25" Background="#FF9900" Margin="0,-5,5,0" VerticalAlignment="Top" x:Name="BorderBelegansicht"  >
+                    <Button Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnBelegansicht" MouseDown="BtnBelegansicht_OnClick">Belegansicht</Button>
+                </Border>
             </StackPanel>
-        </Border>
+            <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Border CornerRadius="3" Height="20" Background="#FF8B00" Margin="0,0,5,0" HorizontalAlignment="Right" Padding="3,0,3,0">
+                    <TextBlock Text="" x:Name="TextBlockRechnungssumme" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="10"/>
+                </Border>
+            </StackPanel>
         
         <Grid Grid.Row="4" Grid.ColumnSpan="2" Background="#FF9600">
             <StackPanel Orientation="Horizontal">
