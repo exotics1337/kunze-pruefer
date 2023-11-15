@@ -308,3 +308,4 @@ C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\System.Runtim
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v02.resources

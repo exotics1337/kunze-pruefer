@@ -124,9 +124,9 @@ namespace kunze_prüfer
         {
             InvoiceCreator quickInstance = new InvoiceCreator();
             
-            quickInstance.AddBaseElement( "Test", 1.0, 1.0);
-            quickInstance.AddBaseElement( "Test2", 13.0, 193.0);
-            quickInstance.AddBaseElement( "Test3", 10.0, 1194.0);
+            quickInstance.AddBaseElement( "Chemische Untersuchung", 0.0, 0.0, true);
+            quickInstance.AddBaseElement( "Stückanalyse (Un- / Niedrigierter Stahl)", 1.0, 75.0);
+            quickInstance.AddBaseElement( "Probenvorbereitung", 1.0, 17.50);
             
             PDFCreator pdfCreator = new PDFCreator(quickInstance);
             pdfCreator.Show();

@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:kunze_prüfer.Views.QuickPDF"
         mc:Ignorable="d"
-        Title="PDFCreator" Height="650" Width="1000" Background="#faf4ed">
+        Title="PDFCreator" Height="650" Width="1000" Background="#f0ecec">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <ListBox MinHeight="550" BorderThickness="0" x:Name="ListBox_Rechnungspos" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 4" Background="White">
+        <ListBox MinHeight="550" BorderThickness="1" BorderBrush="#c4c4c4" x:Name="ListBox_Rechnungspos" Grid.Row="0" Grid.RowSpan="2" Margin="6, 6, 6, 4" Background="White">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Style.Resources>
@@ -46,25 +46,29 @@
         </Grid>
         
         <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Background="White" Margin="0,0,0,4">
-            <ListView x:Name="ListView" BorderThickness="1" >
+            <ListView x:Name="ListView" BorderThickness="1" BorderBrush="#c4c4c4" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Position" DisplayMemberBinding="{Binding Rechnungs_pos}" Width="50" />
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Artikelname}" Width="350"/>
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Background" Value="#FF9600" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn Header="#" DisplayMemberBinding="{Binding Rechnungs_pos}" Width="30" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Artikelname}" Width="300"/>
                         <GridViewColumn Header="Menge" DisplayMemberBinding="{Binding Artikel_menge}" Width="55" />
                         <GridViewColumn Header="E-Preis" DisplayMemberBinding="{Binding Artikel_einzel_preis}" Width="80" />
                         <GridViewColumn Header="G-Preis" DisplayMemberBinding="{Binding Artikel_gesamt_preis}" Width="80" />
+                        <GridViewColumn Header="Bemerkung" DisplayMemberBinding="{Binding Artikel_bemerkung}" Width="150" />
                     </GridView>
                 </ListView.View>
             </ListView>
         </Grid>
         
             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Border CornerRadius="0,0,8,8" Width="110" Height="25" Background="#FF7B00" Margin="0,-5,5,0" VerticalAlignment="Top" x:Name="BorderTabellenansicht" >
-                    <Button Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnTabellenansicht" MouseDown="BtnTabellenansicht_OnClick">Tabellenansicht</Button>
-                </Border>
-                <Border CornerRadius="0,0,8,8" Width="95" Height="25" Background="#FF9900" Margin="0,-5,5,0" VerticalAlignment="Top" x:Name="BorderBelegansicht"  >
-                    <Button Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnBelegansicht" MouseDown="BtnBelegansicht_OnClick">Belegansicht</Button>
+                <Border CornerRadius="0,0,8,8" Width="145" Height="25" Background="#FF9600" Margin="0,-5,5,0" VerticalAlignment="Top" x:Name="BorderTabellenansicht" >
+                    <Button Style="{StaticResource TransparentButton}" FontSize="10" x:Name="BtnTabellenansicht" MouseDown="BtnTabellenansicht_OnClick">Belegansicht Vorschau</Button>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">

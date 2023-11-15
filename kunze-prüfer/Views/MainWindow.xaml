@@ -27,7 +27,7 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Background="#FFF0F0F0" Grid.RowSpan="2">
+        <Grid Grid.Column="0" Background="#f0ecec" Grid.RowSpan="2">
             <ListBox x:Name="ListBox" Grid.Column="0" Margin="0,35,0,0"
                      ItemContainerStyle="{DynamicResource _ListBoxItemStyle}"
                      adonisExtensions:ScrollViewerExtension.VerticalScrollBarPlacement="Overlay"

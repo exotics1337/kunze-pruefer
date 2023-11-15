@@ -512,6 +512,7 @@ namespace kunze_prüfer.DataBase
         public int Pe_typ_nr { get; set; }
         public double Rp_preis { get; set; }
         public int Rp_menge { get; set; }
+        public string Rp_bemerkung { get; set; }
         //Nav
 
         public virtual Pruefungstyp Pruefungstyp { get; set; }

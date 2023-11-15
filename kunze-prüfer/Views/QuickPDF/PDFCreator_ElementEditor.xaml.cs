@@ -25,7 +25,11 @@ namespace kunze_prüfer.Views.QuickPDF
                 TextBoxName.Text = this.invoiceInstance.InvoiceElements[invoiceElementIndex].Artikelname;
                 TextBoxMenge.Text = this.invoiceInstance.InvoiceElements[invoiceElementIndex].Artikel_menge.ToString();
                 TextBoxEinzelBrutto.Text = this.invoiceInstance.InvoiceElements[invoiceElementIndex].Artikel_einzel_preis.ToString();
+                TextBoxBemerkung.Text = this.invoiceInstance.InvoiceElements[invoiceElementIndex].Artikel_bemerkung;
+                CheckBoxFreiposition.IsChecked =
+                    this.invoiceInstance.InvoiceElements[invoiceElementIndex].Artikel_IstFreiposition;
                 LabelLetztePosition.Visibility = Visibility.Hidden;
+                
                 
                 BtnText.Text = "Element bearbeiten";
                 string imagePath = "Media/Icons/edit-row-52.png";
@@ -50,7 +54,7 @@ namespace kunze_prüfer.Views.QuickPDF
                 try
                 {
                     invoiceInstance.AddBaseElement(TextBoxName.Text, Convert.ToDouble(TextBoxMenge.Text), Convert.ToDouble(TextBoxEinzelBrutto.Text), CheckBoxFreiposition.IsChecked == true ? true : false);
-                    invoiceInstance.AddElement(Convert.ToInt32(TextBoxPosition.Text), invoiceInstance.InvoiceBaseElements.Count - 1);
+                    invoiceInstance.AddElement(Convert.ToInt32(TextBoxPosition.Text), invoiceInstance.InvoiceBaseElements.Count - 1, TextBoxBemerkung.Text != null || TextBoxBemerkung.Text != "" ? TextBoxBemerkung.Text : "");
                     ResultInstance = invoiceInstance;
                     DialogResult = true;
                     Close();
@@ -64,7 +68,7 @@ namespace kunze_prüfer.Views.QuickPDF
             {
                 try
                 {
-                    invoiceInstance.EditElement(Convert.ToInt32(TextBoxPosition.Text) - 1, Convert.ToInt32(TextBoxPosition.Text), TextBoxName.Text, Convert.ToDouble(TextBoxMenge.Text), Convert.ToDouble(TextBoxEinzelBrutto.Text));
+                    invoiceInstance.EditElement(Convert.ToInt32(TextBoxPosition.Text) - 1, Convert.ToInt32(TextBoxPosition.Text), TextBoxName.Text, Convert.ToDouble(TextBoxMenge.Text), Convert.ToDouble(TextBoxEinzelBrutto.Text), CheckBoxFreiposition.IsChecked == true ? true : false, TextBoxBemerkung.Text != null || TextBoxBemerkung.Text != "" ? TextBoxBemerkung.Text : "");
                     ResultInstance = invoiceInstance;
                     DialogResult = true;
                     Close();
@@ -111,8 +115,11 @@ namespace kunze_prüfer.Views.QuickPDF
             if (CheckBoxFreiposition.IsChecked == true)
             {
                 TextBoxMenge.IsEnabled = false;
+                TextBoxMenge.Text = "0";
                 TextBoxEinzelNetto.IsEnabled = false;
+                TextBoxEinzelNetto.Text = "0";
                 TextBoxEinzelBrutto.IsEnabled = false;
+                TextBoxEinzelBrutto.Text = "0";
             }
             else
             {
