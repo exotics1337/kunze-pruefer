@@ -99,6 +99,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataBase\DB.cs" />
+    <Compile Include="DataBase\DBQ.cs" />
     <Compile Include="DataBase\QuerryTest.cs" />
     <Compile Include="Migrations\202311080958029_v01.cs" />
     <Compile Include="Migrations\202311080958029_v01.Designer.cs">

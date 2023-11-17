@@ -27,6 +27,10 @@ namespace kunze_prüfer.Views
         {   
             InitializeComponent();
             CheckConnection();
+            QuerryTest test = new QuerryTest();
+            
+            test.mesto();
+
         }
 
         private async void CheckConnection()
