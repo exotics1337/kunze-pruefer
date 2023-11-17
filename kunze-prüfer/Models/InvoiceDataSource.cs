@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace kunze_prüfer.Models
 {
-    public class InvoiceCreator
+    public class InvoiceDataSource
     {
         public List<InvoiceElement> InvoiceElements = new List<InvoiceElement>();
         public List<InvoiceBaseElement> InvoiceBaseElements = new List<InvoiceBaseElement>();

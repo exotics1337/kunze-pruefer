@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using kunze_prüfer.Models;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
     public partial class PDFCreator_ElementEditor : Window
     {
-        private Models.InvoiceCreator invoiceInstance = new Models.InvoiceCreator();
-        public Models.InvoiceCreator ResultInstance { get; private set; }
+        private Models.InvoiceDataSource invoiceInstance = new Models.InvoiceDataSource();
+        public Models.InvoiceDataSource ResultInstance { get; private set; }
         private bool _editMode;
-        public PDFCreator_ElementEditor(bool editMode, Models.InvoiceCreator invoiceInstance,
+        public PDFCreator_ElementEditor(bool editMode, Models.InvoiceDataSource invoiceInstance,
             int invoiceElementIndex = -1, int newPosition = -1) // Optionale Parameter
         {
             InitializeComponent();
             _editMode = editMode;
             this.invoiceInstance = invoiceInstance;
+            string SrcBinding;
             if (editMode && invoiceElementIndex != -1)
             {
                 TextBoxPosition.Text = this.invoiceInstance.InvoiceElements[invoiceElementIndex].Rechnungs_pos.ToString();
@@ -32,10 +31,10 @@ namespace kunze_prüfer.Views.QuickPDF
                 
                 
                 BtnText.Text = "Element bearbeiten";
-                string imagePath = "Media/Icons/edit-row-52.png";
-                Uri uri = new Uri(imagePath, UriKind.RelativeOrAbsolute);
-                BitmapImage bitmapImage = new BitmapImage(uri);
-                BtnImg.Source = bitmapImage;
+                //string imagePath = "Media/Icons/edit-row-52.png";
+                //Uri uri = new Uri(imagePath, UriKind.Relative);
+                //BitmapImage bitmapImage = new BitmapImage(uri);
+                //BtnImg.Source = bitmapImage;
             }
             else
             {
@@ -59,7 +58,7 @@ namespace kunze_prüfer.Views.QuickPDF
                     DialogResult = true;
                     Close();
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Bitte überprüfen Sie Ihre Eingaben.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 }   
@@ -73,7 +72,7 @@ namespace kunze_prüfer.Views.QuickPDF
                     DialogResult = true;
                     Close();
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Bitte überprüfen Sie Ihre Eingaben.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

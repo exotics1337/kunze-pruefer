@@ -110,6 +110,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
+    <Compile Include="Models\ErrorLogger.cs" />
+    <Compile Include="Models\InvoiceGenerator.cs" />
     <Compile Include="Models\InvoiceTemplate.cs" />
     <Compile Include="Models\NettoBrutto.cs" />
     <Compile Include="Views\QuickPDF\PDFCreator.xaml.cs">
@@ -126,7 +128,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Models\InvoiceCreator.cs" />
+    <Compile Include="Models\InvoiceDataSource.cs" />
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource TransparentButton}" x:Name="AcceptBtn" Click="AcceptBtn_OnClick">
                     <StackPanel Orientation="Horizontal">
-                        <Image x:Name="BtnImg" Source="/Media/Icons/add-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <Image x:Name="BtnImg" Source="/Media/Icons/save-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
                         <TextBlock x:Name="BtnText"> Neue Position erstellen </TextBlock>
                     </StackPanel>
                 </Button>

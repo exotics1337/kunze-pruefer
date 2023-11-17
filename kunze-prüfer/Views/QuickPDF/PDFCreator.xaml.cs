@@ -3,13 +3,17 @@ using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using kunze_prüfer.Models;
+using QuestPDF.Fluent;
+using QuestPDF.Previewer;
+using Colors = QuestPDF.Helpers.Colors;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
     public partial class PDFCreator : Window
     {
-        private Models.InvoiceCreator invoiceInstance = new Models.InvoiceCreator();
-        public PDFCreator(Models.InvoiceCreator invoiceInstance)
+        private Models.InvoiceDataSource invoiceInstance = new Models.InvoiceDataSource();
+        public PDFCreator(Models.InvoiceDataSource invoiceInstance)
         {
             InitializeComponent();
             foreach (var element in invoiceInstance.InvoiceBaseElements)
@@ -129,7 +133,7 @@ namespace kunze_prüfer.Views.QuickPDF
 
         private void BtnTabellenansicht_OnClick(object sender, RoutedEventArgs e)
         {
-            
+
         }
         
         

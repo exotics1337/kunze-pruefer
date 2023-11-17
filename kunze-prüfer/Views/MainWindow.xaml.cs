@@ -122,7 +122,7 @@ namespace kunze_prüfer
 
         private void NavItem14_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            InvoiceCreator quickInstance = new InvoiceCreator();
+            InvoiceDataSource quickInstance = new InvoiceDataSource();
             
             quickInstance.AddBaseElement( "Chemische Untersuchung", 0.0, 0.0, true);
             quickInstance.AddBaseElement( "Stückanalyse (Un- / Niedrigierter Stahl)", 1.0, 75.0);
