@@ -1,14 +1,19 @@
 ﻿using System.Windows;
 using System.Diagnostics;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using kunze_prüfer.Models;
+using QuestPDF.Fluent;
+using QuestPDF.Previewer;
+using Colors = QuestPDF.Helpers.Colors;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
     public partial class PDFCreator : Window
     {
-        private Models.InvoiceCreator invoiceInstance = new Models.InvoiceCreator();
-        public PDFCreator(Models.InvoiceCreator invoiceInstance)
+        private Models.InvoiceDataSource invoiceInstance = new Models.InvoiceDataSource();
+        public PDFCreator(Models.InvoiceDataSource invoiceInstance)
         {
             InitializeComponent();
             foreach (var element in invoiceInstance.InvoiceBaseElements)
@@ -26,6 +31,7 @@ namespace kunze_prüfer.Views.QuickPDF
               invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.SelectedIndex);
               ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count]);
               UpdateSum();
+              RebuildListView();
             }
             else
             {
@@ -42,7 +48,8 @@ namespace kunze_prüfer.Views.QuickPDF
                     invoiceInstance.AddElement(ListView.Items.Count + 1, ListBox_Rechnungspos.Items.IndexOf(element));
                     ListView.Items.Add(invoiceInstance.InvoiceElements[ListView.Items.Count]);
                 }
-                UpdateSum();
+                UpdateSum();              
+                RebuildListView();
             }
             else
             {
@@ -76,9 +83,13 @@ namespace kunze_prüfer.Views.QuickPDF
             foreach (var element in invoiceInstance.InvoiceElements)
             {
                 ListView.Items.Add(element);
-                if (element.Artikel_IstFreiposition)
+            }
+
+            for (int i = 0; i < ListView.Items.Count; i++)
+            {
+                if (invoiceInstance.InvoiceElements[i].Artikel_IstFreiposition)
                 {
-                    // do something
+                    // change to bold
                 }
             }
         }
@@ -122,15 +133,9 @@ namespace kunze_prüfer.Views.QuickPDF
 
         private void BtnTabellenansicht_OnClick(object sender, RoutedEventArgs e)
         {
-            BorderTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF7B00") as SolidColorBrush;
-            BorderBelegansicht.Background = new BrushConverter().ConvertFromString("#FF9900") as SolidColorBrush;
-        }
 
-        private void BtnBelegansicht_OnClick(object sender, RoutedEventArgs e)
-        {
-            BorderTabellenansicht.Background = new BrushConverter().ConvertFromString("#FF9900") as SolidColorBrush;
-            BorderBelegansicht.Background = new BrushConverter().ConvertFromString("#FF7B00") as SolidColorBrush;
         }
+        
         
         private void UpdateSum()
         {

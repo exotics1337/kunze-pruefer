@@ -122,7 +122,7 @@ namespace kunze_prüfer
 
         private void NavItem14_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            InvoiceCreator quickInstance = new InvoiceCreator();
+            InvoiceDataSource quickInstance = new InvoiceDataSource();
             
             quickInstance.AddBaseElement( "Test", 1.0, 1.0);
             quickInstance.AddBaseElement( "Test2", 13.0, 193.0);
