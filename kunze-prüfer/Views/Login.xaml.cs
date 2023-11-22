@@ -82,5 +82,23 @@ namespace kunze_prüfer.Views
                     "Login fehlgeschlagen!", AdonisUI.Controls.MessageBoxButton.OK);
             }
         }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBox.Visibility == Visibility.Visible)
+            {
+                // Passwort anzeigen
+                PasswordBox.Visibility = Visibility.Collapsed;
+                TextBoxPassword.Visibility = Visibility.Visible;
+                TextBoxPassword.Text = PasswordBox.Password;
+            }
+            else
+            {
+                // Passwort verbergen
+                PasswordBox.Visibility = Visibility.Visible;
+                TextBoxPassword.Visibility = Visibility.Collapsed;
+                PasswordBox.Password = TextBoxPassword.Text;
+            }
+        }
     }
 }

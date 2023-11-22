@@ -32,10 +32,19 @@
             <TextBlock Margin="32,0,0,0">Passwort</TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="2" Margin="5" Orientation="Horizontal">
-            <TextBox Width="90" x:Name="BoxMitNr"></TextBox>
-            <PasswordBox Width="217" Margin="20,0,0,0" x:Name="PasswordBox"></PasswordBox>
-        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="2" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Width="90" x:Name="BoxMitNr" Grid.Column="0"/>
+            <Grid Grid.Column="1" Margin="0,0,18,0">
+                <PasswordBox Width="217" x:Name="PasswordBox" />
+                <TextBox Width="217" x:Name="TextBoxPassword" Visibility="Collapsed"/>
+            </Grid>
+            <Button Content="👁" Width="30" Margin="250,0,0,0" Click="ToggleButton_Click" Grid.Column="2"/>
+        </Grid>
+      
         <Button Grid.Column="1" Grid.Row="3" Margin="5" x:Name="ButtonLogin" Click="ButtonLogin_OnClick"> Login </Button>
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="6" Background="#FF9600" Margin="0,0,0,0">
