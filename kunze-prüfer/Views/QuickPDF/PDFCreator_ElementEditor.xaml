@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:kunze_prüfer.Views.QuickPDF"
         mc:Ignorable="d"
-        Title="Position Hinzufügen / Bearbeiten" Height="420" Width="320">
+        Title="Position Hinzufügen / Bearbeiten" Height="460" Width="320">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -24,7 +24,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource TransparentButton}" x:Name="AcceptBtn" Click="AcceptBtn_OnClick">
                     <StackPanel Orientation="Horizontal">
-                        <Image x:Name="BtnImg" Source="/Media/Icons/add-row-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <Image x:Name="BtnImg" Source="/Media/Icons/save-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
                         <TextBlock x:Name="BtnText"> Neue Position erstellen </TextBlock>
                     </StackPanel>
                 </Button>
@@ -56,6 +56,10 @@
                             <Label Width="75">Menge</Label>
                             <TextBox x:Name="TextBoxMenge" Width="100" />
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <Label Width="75">Bemerkung</Label>
+                            <TextBox x:Name="TextBoxBemerkung" Width="190" />
+                        </StackPanel>
                     </StackPanel>
                 </GroupBox>
             </Grid>
@@ -86,7 +90,7 @@
                     </StackPanel>
                 </GroupBox>
             </Grid>
-            <CheckBox Margin="0,4,0,0" x:Name="CheckBoxFreiposition" Click="CheckBoxFreiposition_OnClick">Ist Freiposition</CheckBox>
+            <CheckBox Margin="0,4,0,0" x:Name="CheckBoxFreiposition" Click="CheckBoxFreiposition_OnClick">Ist Überschrift</CheckBox>
         </StackPanel>
         
     </Grid>

@@ -105,8 +105,13 @@
     <Compile Include="Migrations\202311080958029_v01.Designer.cs">
       <DependentUpon>202311080958029_v01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311150933211_v02.cs" />
+    <Compile Include="Migrations\202311150933211_v02.Designer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
+    <Compile Include="Models\ErrorLogger.cs" />
+    <Compile Include="Models\InvoiceGenerator.cs" />
+    <Compile Include="Models\InvoiceTemplate.cs" />
     <Compile Include="Models\NettoBrutto.cs" />
     <Compile Include="Views\QuickPDF\PDFCreator.xaml.cs">
       <DependentUpon>PDFCreator.xaml</DependentUpon>
@@ -122,7 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Models\InvoiceCreator.cs" />
+    <Compile Include="Models\InvoiceDataSource.cs" />
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -154,6 +159,7 @@
     <EmbeddedResource Include="Migrations\202311080958029_v01.resx">
       <DependentUpon>202311080958029_v01.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311150933211_v02.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
