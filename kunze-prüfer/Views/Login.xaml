@@ -23,7 +23,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
@@ -46,6 +46,7 @@
         </Grid>
       
         <Button Grid.Column="1" Grid.Row="3" Margin="5" x:Name="ButtonLogin" Click="ButtonLogin_OnClick"> Login </Button>
+        <TextBlock Grid.Column="1" Grid.Row="4" FontWeight="Light" TextDecorations="Underline" x:Name="TextBlockDatabaseConfig" MouseDown="TextBlockDatabaseConfig_OnMouseDown" Margin="10266aeb" >Datenbankverbindung Konfigurieren</TextBlock>
 
         <Grid Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="6" Background="#FF9600" Margin="0,0,0,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

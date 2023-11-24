@@ -415,3 +415,4 @@ C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer.csproj.CopyComplete
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer.exe
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer.pdb
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.202311150933211_v02.resources

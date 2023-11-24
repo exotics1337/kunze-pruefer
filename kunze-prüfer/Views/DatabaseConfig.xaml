@@ -1,0 +1,56 @@
+﻿<Window x:Class="kunze_prüfer.Views.DatabaseConfig"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:kunze_prüfer.Views"
+        mc:Ignorable="d"
+        Title="DatabaseConfig" Height="225" Width="320">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30px" />
+        </Grid.RowDefinitions>
+        <Grid Background="Gray">
+            <GroupBox Header="Datenbankverbindung Konfigurieren" >
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <Label Width="105">Server (IP,Port)</Label>
+                        <TextBox x:Name="TextBoxIP" Width="180" Grid.Column="2" />
+                        <Label x:Name="LabelLetztePosition" Visibility="Hidden" FontWeight="Light" FontSize="10" VerticalAlignment="Center" Margin="10,0,0,0"> Letzte Position: </Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <Label Width="105">Datenbankname</Label>
+                        <TextBox x:Name="TextBoxDBName" Width="180" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <Label Width="105">DB-Username</Label>
+                        <TextBox x:Name="TextBoxDBUser" Width="180" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="3">
+                        <Label Width="105">DB-Passwort</Label>
+                        <PasswordBox x:Name="TextBoxDBPasswort" Width="180" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FF9600">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource TransparentButton}" x:Name="AcceptBtn" Click="AcceptBtn_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="BtnImg" Source="/Media/Icons/save-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock x:Name="BtnText"> Konfiguration Speichern </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Style="{StaticResource TransparentButton}" x:Name="DenyBtn" Click="DenyBtn_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Media/Icons/close2-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
+                        <TextBlock> Abbrechen </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

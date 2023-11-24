@@ -66,6 +66,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlClient, Version=4.6.1.5, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.8.5\lib\net461\System.Data.SqlClient.dll</HintPath>
@@ -113,15 +114,16 @@
     <Compile Include="Models\InvoiceGenerator.cs" />
     <Compile Include="Models\InvoiceTemplate.cs" />
     <Compile Include="Models\NettoBrutto.cs" />
+    <Compile Include="Views\DatabaseConfig.xaml.cs">
+      <DependentUpon>DatabaseConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\QuickPDF\PDFCreator.xaml.cs">
       <DependentUpon>PDFCreator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml.cs">
       <DependentUpon>PDFCreator_ElementEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Stammdaten.xaml.cs">
-      <DependentUpon>Stammdaten.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Views\DatabaseConfig.xaml" />
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

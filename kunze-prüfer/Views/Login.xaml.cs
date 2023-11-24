@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ using kunze_prüfer.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
+using Configuration = kunze_prüfer.Migrations.Configuration;
 
 namespace kunze_prüfer.Views
 {
@@ -36,6 +38,7 @@ namespace kunze_prüfer.Views
 
         private async void CheckConnection()
         {
+            ButtonLogin.IsEnabled = false;
             await Task.Run(() =>
             {
                 using (var db = new KunzeDB())
@@ -46,6 +49,7 @@ namespace kunze_prüfer.Views
                         {
                             TextBlockDatabaseStatus.Text = "Datenbank Verbunden";
                             ImageDatabaseOk.Visibility = Visibility.Visible;
+                            ButtonLogin.IsEnabled = true;
                         });
                     }
                     else
@@ -141,6 +145,12 @@ namespace kunze_prüfer.Views
                 TextBoxPassword.Visibility = Visibility.Collapsed;
                 PasswordBox.Password = TextBoxPassword.Text;
             }
+        }
+
+
+        private void TextBlockDatabaseConfig_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
         }
     }
 }
