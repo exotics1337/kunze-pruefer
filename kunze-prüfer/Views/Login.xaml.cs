@@ -19,7 +19,7 @@ using kunze_prüfer.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
-using Configuration = kunze_prüfer.Migrations.Configuration;
+//using Configuration = kunze_prüfer.Migrations.Configuration;
 
 namespace kunze_prüfer.Views
 {
