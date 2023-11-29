@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:kunze_prüfer.Views"
         mc:Ignorable="d"
-        Title="DatabaseConfig" Height="225" Width="320">
+        Title="DatabaseConfig" Height="245" Width="340">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

@@ -150,7 +150,8 @@ namespace kunze_prüfer.Views
 
         private void TextBlockDatabaseConfig_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            DatabaseConfig dbConfig = new DatabaseConfig();
+            dbConfig.ShowDialog();
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:kunze_prüfer.Views.QuickPDF"
         mc:Ignorable="d"
-        Title="Position Hinzufügen / Bearbeiten" Height="460" Width="320">
+        Title="Position Hinzufügen / Bearbeiten" Height="460" Width="330">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

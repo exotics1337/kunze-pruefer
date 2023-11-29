@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using AdonisUI;
 using AdonisUI.Controls;
 using kunze_prüfer.Models;
+using kunze_prüfer.Views;
 using kunze_prüfer.Views.QuickPDF;
 using MessageBox = AdonisUI.Controls.MessageBox;
 using MessageBoxImage = AdonisUI.Controls.MessageBoxImage;
@@ -24,11 +25,20 @@ namespace kunze_prüfer
     public partial class MainWindow : AdonisUI.Controls.AdonisWindow
     {
         private int selectedPage;
+        public UserControl CurrentView { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            SetDefaultView();
+            ViewHandler();
         }
 
+        private void SetDefaultView()
+        {
+            selectedPage = 0;
+            CurrentView = new Dashboard();
+        }
         private void ViewHandler()
         {
             Style defaultStyle = this.FindResource("NavItem") as Style;
@@ -49,6 +59,7 @@ namespace kunze_prüfer
             {
                 case 0:
                     NavItem1.Style = selectedStyle;
+                    CurrentView = new Dashboard();
                     break;
                 case 2:
                     NavItem2.Style = selectedStyle;

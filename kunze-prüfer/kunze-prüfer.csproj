@@ -114,6 +114,9 @@
     <Compile Include="Models\InvoiceGenerator.cs" />
     <Compile Include="Models\InvoiceTemplate.cs" />
     <Compile Include="Models\NettoBrutto.cs" />
+    <Compile Include="Views\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatabaseConfig.xaml.cs">
       <DependentUpon>DatabaseConfig.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,7 @@
     <Compile Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml.cs">
       <DependentUpon>PDFCreator_ElementEditor.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Dashboard.xaml" />
     <Page Include="Views\DatabaseConfig.xaml" />
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
@@ -229,6 +233,11 @@
     <Content Include="Media\Icons\transfer-52.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Dokumentenverwaltung\" />
+    <Folder Include="Views\Prüfung\" />
+    <Folder Include="Views\Stammdaten\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
