@@ -259,7 +259,6 @@ C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr�
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.baml
-C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\libHarfBuzzSharp.dylib
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\x86\libHarfBuzzSharp.dll
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\x64\libHarfBuzzSharp.dll
@@ -415,8 +414,8 @@ C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer.csproj.CopyComplete
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer.exe
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\obj\Debug\kunze-prüfer.pdb
-C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.202311150933211_v02.resources
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.baml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources

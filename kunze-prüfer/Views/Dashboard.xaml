@@ -7,64 +7,40 @@
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1070">
     <Grid>
-                    <Grid.Background>
-                <ImageBrush ImageSource="/Media/Backgrounds/dashboard.png" Stretch="UniformToFill" />
-            </Grid.Background>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="30" />
-                <ColumnDefinition Width="670" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Row="1" Grid.Column="1" Background="#ff9e14">
-                <StackPanel Orientation="Vertical" Margin="20,10,0,0">
-                    <Label Foreground="White"> Eingeloggt als: </Label>
-                    <Label Foreground="White" FontSize="24"> Max Mustermann</Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="16"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="16"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Background="#F8F4F4">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
+                <StackPanel Orientation="Vertical" Margin="0,12,6,0">
+                    <TextBlock FontSize="8" FontWeight="Light"> DASHBOARD </TextBlock>
+                    <TextBlock FontSize="20"> Offene Aufträge (2) </TextBlock>
                 </StackPanel>
-            </Grid>
-            <Grid Grid.Row="1" Grid.Column="3" Background="#ff9e14">
-                <StackPanel Orientation="Vertical" Margin="20,3,0,0">
-                    <Label Foreground="White"> Quick Actions </Label>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource TransparentButton}">
-                            <StackPanel Orientation="Vertical">
-                                <Image Height="24" Source="/Media/Icons/new-test-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
-                                <Label Foreground="White"> Neuen Test </Label>
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource TransparentButton}">
-                            <StackPanel Orientation="Vertical">
-                                <Image Height="24" Source="/Media/Icons/new-doc-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
-                                <Label Foreground="White"> Neue Rechnung </Label>
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource TransparentButton}">
-                            <StackPanel Orientation="Vertical">
-                                <Image Height="24" Source="/Media/Icons/edit-prop-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
-                                <Label Foreground="White"> Prüfung Verwalten </Label>
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource TransparentButton}">
-                            <StackPanel Orientation="Vertical">
-                                <Image Height="24" Source="/Media/Icons/transfer-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
-                                <Label Foreground="White"> Auftrag in Rechnung </Label>
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource TransparentButton}">
-                            <StackPanel Orientation="Vertical">
-                                <Image Height="24" Source="/Media/Icons/transfer-52.png" RenderOptions.BitmapScalingMode="HighQuality" />
-                                <Label Foreground="White"> Angebot in Auftrag </Label>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
+            </StackPanel>
+            <Button Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0">+ Neuen Auftrag erstellen</Button>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <TextBox>Suche in Aufträgen</TextBox>
+        </Grid>
+        <Grid Grid.Row="6" Grid.Column="1">
+            <DataGrid></DataGrid>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Background="#F8F4F4"></Grid>
     </Grid>
 </UserControl>

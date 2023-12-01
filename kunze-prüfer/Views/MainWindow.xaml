@@ -36,12 +36,12 @@
                      >
                 <TextBlock x:Name="NavItem1" Style="{StaticResource NavItem}">Dashboard</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,8,8,0">PRÜFUNG</ListBoxItem>
-                <TextBlock x:Name="NavItem2" Style="{StaticResource NavItem}">Neue Prüfung erstellen</TextBlock>
+                <TextBlock x:Name="NavItem2" Style="{StaticResource NavItem}">Neuen Auftrag erstellen</TextBlock>
                 <TextBlock x:Name="NavItem3" Style="{StaticResource NavItem}">Prüfungsverwaltung</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0" >DOKUMENTENVERWALTUNG</ListBoxItem>
-                <TextBlock x:Name="NavItem4" Style="{StaticResource NavItem}">Rechnungsverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem5" Style="{StaticResource NavItem}">Angebotsverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Auftragsverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem4" Style="{StaticResource NavItem}">Rechnungen</TextBlock>
+                <TextBlock x:Name="NavItem5" Style="{StaticResource NavItem}">Angebote</TextBlock>
+                <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Aufträge</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">STAMMDATEN</ListBoxItem>
                 <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
                 <TextBlock x:Name="NavItem8" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>

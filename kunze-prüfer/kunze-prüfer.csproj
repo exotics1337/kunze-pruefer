@@ -232,6 +232,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Auftragsverwaltung\" />
     <Folder Include="Views\Dokumentenverwaltung\" />
     <Folder Include="Views\Prüfung\" />
     <Folder Include="Views\Stammdaten\" />
