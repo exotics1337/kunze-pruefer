@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -22,10 +23,9 @@ namespace kunze_prüfer
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : AdonisUI.Controls.AdonisWindow
+    public partial class MainWindow : AdonisUI.Controls.AdonisWindow, INotifyPropertyChanged
     {
         private int selectedPage;
-        public UserControl CurrentView { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +34,31 @@ namespace kunze_prüfer
             ViewHandler();
         }
 
+        private UserControl _currentView;
+
+        // Ändere die Property-Deklaration
+        public UserControl CurrentView
+        {
+            get { return _currentView; }
+            set
+            {
+                if (_currentView != value)
+                {
+                    _currentView = value;
+                    OnPropertyChanged(nameof(CurrentView));
+                }
+            }
+        }
+
+        // Event für die Property-Änderung
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // Methode zum Feuern des PropertyChanged-Events
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        
         private void SetDefaultView()
         {
             selectedPage = 0;
