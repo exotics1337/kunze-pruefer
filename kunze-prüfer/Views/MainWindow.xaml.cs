@@ -20,6 +20,8 @@ using MessageBoxResult = AdonisUI.Controls.MessageBoxResult;
 
 namespace kunze_prüfer
 {
+    using Views.Stammdaten;
+
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
@@ -115,6 +117,7 @@ namespace kunze_prüfer
                     break;
                 case 13:
                     NavItem11.Style = selectedStyle;
+                    CurrentView = new Stammdaten();
                     break;
                 case 14:
                     NavItem12.Style = selectedStyle;

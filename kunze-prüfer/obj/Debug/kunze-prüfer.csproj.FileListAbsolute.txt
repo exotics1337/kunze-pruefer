@@ -334,7 +334,6 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\System.Numeric
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.g.cs
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.baml
-C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\bin\Debug\libHarfBuzzSharp.dylib
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\bin\Debug\x86\libHarfBuzzSharp.dll
 C:\Users\gunay\RiderProjects\kunze-prüfer\kunze-prüfer\bin\Debug\x64\libHarfBuzzSharp.dll
@@ -419,3 +418,12 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Vie
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.baml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
