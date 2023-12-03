@@ -256,7 +256,6 @@ C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr�
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze-prüfer.csproj.CopyComplete
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze-prüfer.exe
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze-prüfer.pdb
-C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\libHarfBuzzSharp.dylib
@@ -427,3 +426,14 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboar
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Dashboard.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\DatabaseConfig.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Dashboard.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\DatabaseConfig.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator_ElementEditor.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
