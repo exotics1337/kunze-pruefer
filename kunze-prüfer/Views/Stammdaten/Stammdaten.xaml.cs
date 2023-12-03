@@ -1,7 +1,10 @@
 ﻿namespace kunze_prüfer.Views.Stammdaten
 {
+    using System;
     using System.Collections.ObjectModel;
+    using System.Windows;
     using System.Windows.Controls;
+    using kunze_prüfer.Views.Stammdaten;
 
     public partial class Stammdaten : UserControl
     {
@@ -20,7 +23,40 @@
         public ObservableCollection<string> Stumm { get; set; }
         private void loadbox()
         {
-            Stumm.Add("test");
+            Stumm.Add("Kunden");
+            Stumm.Add("Angebot");
+            Stumm.Add("Ansprechpartner");
+            Stumm.Add("Auftrag");
+            Stumm.Add("Mitarbeiter");
+            Stumm.Add("Abnahmegesellschaft");
+            Stumm.Add("Mehrwertsteuer");
+            AuswahlCb1.SelectedIndex = 0;
+        }
+
+        private void ChangeUser()
+        {
+            if (AuswahlCb1.SelectedItem!=null)
+            {
+                string test = AuswahlCb1.SelectedItem.ToString();
+                Console.WriteLine(test);
+                switch (test)
+                {
+                    case "Kunden":
+                        Kunden.Visibility = Visibility.Visible;
+                        break;
+                }    
+            }
+            else
+            {
+                
+            }
+            
+        }
+
+        private void AuswahlCb1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ChangeUser();
+            
         }
     }
 }

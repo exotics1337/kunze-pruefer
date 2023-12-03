@@ -127,6 +127,9 @@
     <Compile Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml.cs">
       <DependentUpon>PDFCreator_ElementEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Kunden.xaml.cs">
+      <DependentUpon>Kunden.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\Stammdaten.xaml.cs">
       <DependentUpon>Stammdaten.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,7 @@
     </Compile>
     <Page Include="Views\QuickPDF\PDFCreator.xaml" />
     <Page Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml" />
+    <Page Include="Views\Stammdaten\Kunden.xaml" />
     <Page Include="Views\Stammdaten\Stammdaten.xaml" />
   </ItemGroup>
   <ItemGroup>
