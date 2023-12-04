@@ -130,6 +130,9 @@
     <Compile Include="Views\Stammdaten\Kunden.xaml.cs">
       <DependentUpon>Kunden.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Mitarbeiter.xaml.cs">
+      <DependentUpon>Mitarbeiter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\Stammdaten.xaml.cs">
       <DependentUpon>Stammdaten.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,7 @@
     <Page Include="Views\QuickPDF\PDFCreator.xaml" />
     <Page Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml" />
     <Page Include="Views\Stammdaten\Kunden.xaml" />
+    <Page Include="Views\Stammdaten\Mitarbeiter.xaml" />
     <Page Include="Views\Stammdaten\Stammdaten.xaml" />
   </ItemGroup>
   <ItemGroup>

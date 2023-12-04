@@ -38,11 +38,21 @@
             if (AuswahlCb1.SelectedItem!=null)
             {
                 string test = AuswahlCb1.SelectedItem.ToString();
-                Console.WriteLine(test);
+                //Console.WriteLine(test);
+                foreach (var control in UserGrid.Children)
+                {
+                    if (control is UserControl)
+                    {
+                        ((UserControl)control).Visibility = Visibility.Collapsed;
+                    }
+                }
                 switch (test)
                 {
                     case "Kunden":
                         Kunden.Visibility = Visibility.Visible;
+                        break;
+                    case "Mitarbeiter":
+                        Mitarbeiter.Visibility = Visibility.Visible;
                         break;
                 }    
             }
@@ -56,6 +66,11 @@
         private void AuswahlCb1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ChangeUser();
+            
+        }
+
+        private void ToggleVisibility()
+        {
             
         }
     }

@@ -440,3 +440,8 @@ C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr�
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr체fer\obj\Debug\Views\Stammdaten\Kunden.g.cs
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr체fer\obj\Debug\Views\Stammdaten\Kunden.baml
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr체fer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\Views\Stammdaten\Kunden.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\Views\Stammdaten\Mitarbeiter.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\Views\Stammdaten\Kunden.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-pr체fer\obj\Debug\Views\Stammdaten\Mitarbeiter.baml
