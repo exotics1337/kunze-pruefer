@@ -4,11 +4,15 @@ using kunze_prüfer.Views.Auftragsverwaltung;
 
 namespace kunze_prüfer.Views
 {
+    using Stammdaten;
+
     public partial class Dashboard : UserControl
     {
         public Dashboard()
         {
             InitializeComponent();
+            CustomDataGrid dg = new CustomDataGrid();
+            dg.RefreshData();
             DataContext = this;
             CurrentView = new DashboardDetails(0);
         }
