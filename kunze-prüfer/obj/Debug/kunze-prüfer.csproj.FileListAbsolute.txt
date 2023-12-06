@@ -63,7 +63,6 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Ado
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\AdonisUI.xml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\AdonisUI.ClassicTheme.xml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze-prüfer.csproj.AssemblyReference.cache
-C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze-prüfer.csproj.SuggestedBindingRedirects.cache
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Login.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\MainWindow.g.cs
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\QuickPDF\PDFCreator.g.cs
@@ -445,7 +444,15 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdat
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kunden.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.baml
-C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.g.cs
-C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.baml
-C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomDataGrid.g.cs
-C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomDataGrid.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kunden.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kunden.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\Auftragsverwaltung.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\Auftragsverwaltung.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze-prüfer.csproj.SuggestedBindingRedirects.cache

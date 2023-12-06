@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="kunze_prüfer.Views.Dashboard"
+﻿<UserControl x:Class="kunze_prüfer.Views.Auftragsverwaltung.Auftragsverwaltung"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:kunze_prüfer.Views"
+             xmlns:local="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1070">
     <Grid>
@@ -16,32 +16,15 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="16"/>
             <RowDefinition Height="65"/>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="16"/>
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Background="#F8F4F4">
-            <StackPanel Orientation="Horizontal">
-                <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
-                <StackPanel Orientation="Vertical" Margin="0,12,6,0">
-                    <TextBlock FontSize="8" FontWeight="Light"> DASHBOARD </TextBlock>
-                    <TextBlock FontSize="20"> Offene Aufträge (2) </TextBlock>
-                </StackPanel>
-            </StackPanel>
-            <Button Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0">+ Neuen Auftrag erstellen</Button>
-        </Grid>
-        <Grid Grid.Row="4" Grid.Column="1">
-            <TextBox>Suche in Aufträgen</TextBox>
-        </Grid>
-        <Grid Grid.Row="6" Grid.Column="1">
-            <DataGrid></DataGrid>
-        </Grid>
-        <Grid Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Background="#F8F4F4">
+        <Grid Grid.Row="5" Grid.Column="3" Grid.RowSpan="2" Background="#F8F4F4">
             <ContentControl Content="{Binding CurrentView}" />
             <Grid VerticalAlignment="Bottom" Height="150">
                 <StackPanel>
@@ -52,12 +35,30 @@
                         </StackPanel>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                        <Button Width="150">Angebot Drucken</Button>    
-                        <Button Margin="5,0,0,0" Width="150">Rechnung Drucken</Button>    
+                        <Button Width="150">Schritt Zurück</Button>    
+                        <Button Margin="5,0,0,0" Width="150">Nächster Schritt</Button>    
                     </StackPanel>
-                    <Button Width="305" Height="40" Margin="0,10,0,0"> Auftrag Weiterbearbeiten </Button>
+                    <Button Width="305" Height="40" Margin="0,10,0,0"> Schritt als Erledigt Markieren  </Button>
                 </StackPanel>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Background="#F8F4F4">
+            
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
+                <StackPanel Orientation="Vertical" Margin="0,12,6,0">
+                    <TextBlock FontSize="8" FontWeight="Light"> AUFTRAGSVERWALTUNG </TextBlock>
+                    <TextBlock FontSize="20"> Auftrag #000 - Max Müller GmbH </TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <Button Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0">Zurück zum Dashboard</Button>
+        </Grid>
+        
+        
+        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">
+            <!-- To Be Implemented. Auftrags Pipeline kommt hier hin -->
         </Grid>
     </Grid>
 </UserControl>
