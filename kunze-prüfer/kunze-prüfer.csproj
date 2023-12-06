@@ -112,8 +112,17 @@
     <Compile Include="Models\InvoiceGenerator.cs" />
     <Compile Include="Models\InvoiceTemplate.cs" />
     <Compile Include="Models\NettoBrutto.cs" />
+    <Compile Include="Views\Auftragsverwaltung\Auftragsverwaltung.xaml.cs">
+      <DependentUpon>Auftragsverwaltung.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Auftragsverwaltung\DashboardDetails.xaml.cs">
       <DependentUpon>DashboardDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Auftragsverwaltung\DBSichten\AuftragAnlegen.xaml.cs">
+      <DependentUpon>AuftragAnlegen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Auftragsverwaltung\DBSichten\StammdatenAnlegen.xaml.cs">
+      <DependentUpon>StammdatenAnlegen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -136,7 +145,10 @@
     <Compile Include="Views\Stammdaten\Stammdaten.xaml.cs">
       <DependentUpon>Stammdaten.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Auftragsverwaltung\Auftragsverwaltung.xaml" />
     <Page Include="Views\Auftragsverwaltung\DashboardDetails.xaml" />
+    <Page Include="Views\Auftragsverwaltung\DBSichten\AuftragAnlegen.xaml" />
+    <Page Include="Views\Auftragsverwaltung\DBSichten\StammdatenAnlegen.xaml" />
     <Page Include="Views\Dashboard.xaml" />
     <Page Include="Views\DatabaseConfig.xaml" />
     <Page Include="Views\Login.xaml">

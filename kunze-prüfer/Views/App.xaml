@@ -48,6 +48,24 @@
                 <Setter Property="Padding" Value="6"/>
                 <Setter Property="Margin" Value="10, 0, 10,0"/>
             </Style>
+            
+            <Style TargetType="TextBlock" x:Key="InternalLink">
+                <Setter Property="TextBlock.TextDecorations">
+                    <Setter.Value>
+                        <TextDecorationCollection>
+                            <TextDecoration Location="Underline">
+                                <TextDecoration.Pen>
+                                    <Pen Brush="#449AFF">
+                                        <Pen.DashStyle>
+                                            <DashStyle Dashes="3"/>
+                                        </Pen.DashStyle>
+                                    </Pen>
+                                </TextDecoration.Pen>
+                            </TextDecoration>
+                        </TextDecorationCollection>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="_ListBoxItemStyle" TargetType="ListBoxItem">
                 <Setter Property="Template">
