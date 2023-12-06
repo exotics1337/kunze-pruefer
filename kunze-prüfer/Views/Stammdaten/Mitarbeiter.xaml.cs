@@ -7,6 +7,8 @@
         public Mitarbeiter()
         {
             InitializeComponent();
+            tesel.KonfiguriereSpaltenFuerModell(typeof(Mitarbeiter));
+            tesel.InitializeDate<DataBase.Mitarbeiter>();
         }
     }
 }

@@ -5,6 +5,7 @@
     using System.Windows;
     using System.Windows.Controls;
     using kunze_prüfer.Views.Stammdaten;
+    using kunze_prüfer.DataBase;
 
     public partial class Stammdaten : UserControl
     {
@@ -35,6 +36,8 @@
 
         private void ChangeUser()
         {
+            CustomDataGrid dg = new CustomDataGrid();
+            dg.RefreshData();
             if (AuswahlCb1.SelectedItem!=null)
             {
                 string test = AuswahlCb1.SelectedItem.ToString();
@@ -46,6 +49,7 @@
                         ((UserControl)control).Visibility = Visibility.Collapsed;
                     }
                 }
+
                 switch (test)
                 {
                     case "Kunden":
@@ -69,9 +73,13 @@
             
         }
 
-        private void ToggleVisibility()
+        private void searchalgo(int id)
         {
-            
+            DBQ db = new DBQ();
+            db.GetEntityByIdAsync<Kunde, int>(id);
         }
+
+       
+        
     }
 }

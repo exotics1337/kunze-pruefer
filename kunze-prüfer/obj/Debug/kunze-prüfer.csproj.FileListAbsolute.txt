@@ -445,3 +445,7 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdat
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kunden.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Mitarbeiter.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomDataGrid.g.cs
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomDataGrid.baml

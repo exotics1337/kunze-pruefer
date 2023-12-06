@@ -7,6 +7,15 @@
              mc:Ignorable="d"
              d:DesignHeight="520" d:DesignWidth="690">
     <Grid>
-        <Button Background="Red"> test </Button>
+       <Grid.RowDefinitions>
+           <RowDefinition ></RowDefinition>
+           <RowDefinition Height="100"></RowDefinition>
+       </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+             <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <local:CustomDataGrid x:Name="tesel"></local:CustomDataGrid>
+        
+        <Button Grid.Row="1" Background="BlanchedAlmond"></Button>
     </Grid>
 </UserControl>

@@ -127,6 +127,9 @@
     <Compile Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml.cs">
       <DependentUpon>PDFCreator_ElementEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\CustomDataGrid.xaml.cs">
+      <DependentUpon>CustomDataGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\Kunden.xaml.cs">
       <DependentUpon>Kunden.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,7 @@
     </Compile>
     <Page Include="Views\QuickPDF\PDFCreator.xaml" />
     <Page Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml" />
+    <Page Include="Views\Stammdaten\CustomDataGrid.xaml" />
     <Page Include="Views\Stammdaten\Kunden.xaml" />
     <Page Include="Views\Stammdaten\Mitarbeiter.xaml" />
     <Page Include="Views\Stammdaten\Stammdaten.xaml" />
