@@ -59,19 +59,34 @@
                 switch (test)
                 {
                     case "Kunden":
-                        Kunden.Visibility = Visibility.Visible;
+                          Kunden.Visibility = Visibility.Visible;
                         break;
                     case "Mitarbeiter":
-                        Mitarbeiter.Visibility = Visibility.Visible;
+                          Mitarbeiter.Visibility = Visibility.Visible;
                         break;
-                    
+                    case "Abnahmegesellschaft":
+                          Abnahmegesellschaft.Visibility = Visibility.Visible;
+                        break; 
+                    case "Ansprechpartner":
+                          Ansprechpartner.Visibility = Visibility.Visible; 
+                        break;
+                    case "Fertigstellungszeit":
+                          Fertigstellungszeit.Visibility = Visibility.Visible; 
+                        break; 
+                    case "Norm":
+                          Norm.Visibility = Visibility.Visible;
+                        break;   
+                    case "Mehrwertsteuer":
+                          Mehrwertsteuer.Visibility = Visibility.Visible; 
+                        break;
+                    case "Angebot":
+                          Angebot.Visibility = Visibility.Visible; 
+                        break; 
+                    case "Prüfungstypen":
+                          Prüfungstypen.Visibility = Visibility.Visible;
+                        break;                    
                 }    
             }
-            else
-            {
-                
-            }
-            
         }
 
         private void AuswahlCb1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
