@@ -29,13 +29,13 @@
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,5,0,0" x:Name="AuftragsbearbeiterFeld">
                 <StackPanel Margin="2,0,0,1">
                     <TextBlock FontSize="11" Foreground="#848484">Auftragsbearbeiter</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="#449AFF" Text="Max Mustermann" x:Name="AuftragsbearbeiterText" Style="{StaticResource InternalLink}" />
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Text="Max Mustermann" x:Name="AuftragsbearbeiterText" />
                 </StackPanel>
             </Border>
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,15,0,0" x:Name="KundeFeld">
                 <StackPanel Margin="2,0,0,1">
                     <TextBlock FontSize="11" Foreground="#848484">Kunde</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="#449AFF" Text="Mustermann GmbH" x:Name="KundeText" Style="{StaticResource InternalLink}" />
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Text="Mustermann GmbH" x:Name="KundeText" />
                 </StackPanel>
             </Border>
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,15,0,0" x:Name="AnsprechpartnerFeld">
