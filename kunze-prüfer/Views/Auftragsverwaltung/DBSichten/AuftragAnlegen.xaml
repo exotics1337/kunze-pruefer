@@ -61,7 +61,7 @@
                     <Button Margin="10"> Kunden Auswählen</Button>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Ansprechpartnerdetails">
+            <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Werkstoffdetails">
                 <Grid>
                     <DataGrid>
                         
