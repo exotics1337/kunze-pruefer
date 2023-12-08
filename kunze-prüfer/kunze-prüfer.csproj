@@ -136,17 +136,47 @@
     <Compile Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml.cs">
       <DependentUpon>PDFCreator_ElementEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Abnahmegesellschaft.xaml.cs">
+      <DependentUpon>Abnahmegesellschaft.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Angebot.xaml.cs">
+      <DependentUpon>Angebot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Ansprechpartner.xaml.cs">
+      <DependentUpon>Ansprechpartner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Auftrag.xaml.cs">
+      <DependentUpon>Auftrag.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\CustomDataGrid.xaml.cs">
       <DependentUpon>CustomDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Fertigstellungszeit.xaml.cs">
+      <DependentUpon>Fertigstellungszeit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Stammdaten\Kunden.xaml.cs">
       <DependentUpon>Kunden.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Mehrwertsteuer.xaml.cs">
+      <DependentUpon>Mehrwertsteuer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\Mitarbeiter.xaml.cs">
       <DependentUpon>Mitarbeiter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Norm.xaml.cs">
+      <DependentUpon>Norm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Prüfungstypen.xaml.cs">
+      <DependentUpon>Prüfungstypen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\Stammdaten.xaml.cs">
       <DependentUpon>Stammdaten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Textbausteine.xaml.cs">
+      <DependentUpon>Textbausteine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Stammdaten\Werkstoff.xaml.cs">
+      <DependentUpon>Werkstoff.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Auftragsverwaltung\Auftragsverwaltung.xaml" />
     <Page Include="Views\Auftragsverwaltung\DashboardDetails.xaml" />
@@ -176,10 +206,20 @@
     </Compile>
     <Page Include="Views\QuickPDF\PDFCreator.xaml" />
     <Page Include="Views\QuickPDF\PDFCreator_ElementEditor.xaml" />
+    <Page Include="Views\Stammdaten\Abnahmegesellschaft.xaml" />
+    <Page Include="Views\Stammdaten\Angebot.xaml" />
+    <Page Include="Views\Stammdaten\Ansprechpartner.xaml" />
+    <Page Include="Views\Stammdaten\Auftrag.xaml" />
     <Page Include="Views\Stammdaten\CustomDataGrid.xaml" />
+    <Page Include="Views\Stammdaten\Fertigstellungszeit.xaml" />
     <Page Include="Views\Stammdaten\Kunden.xaml" />
+    <Page Include="Views\Stammdaten\Mehrwertsteuer.xaml" />
     <Page Include="Views\Stammdaten\Mitarbeiter.xaml" />
+    <Page Include="Views\Stammdaten\Norm.xaml" />
+    <Page Include="Views\Stammdaten\Prüfungstypen.xaml" />
     <Page Include="Views\Stammdaten\Stammdaten.xaml" />
+    <Page Include="Views\Stammdaten\Textbausteine.xaml" />
+    <Page Include="Views\Stammdaten\Werkstoff.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

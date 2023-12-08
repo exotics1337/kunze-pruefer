@@ -39,9 +39,17 @@
             <TextBox>Suche</TextBox>
         </Grid>
         <Grid Grid.Row="6" Grid.Column="1" x:Name="UserGrid" >
-          
-           <local:Kunden x:Name="Kunden" Visibility="Collapsed"></local:Kunden>
-           <local:Mitarbeiter x:Name="Mitarbeiter" Visibility="Collapsed"></local:Mitarbeiter>  
+            <local:Kunden x:Name="Kunden" Visibility="Collapsed"></local:Kunden>
+            <local:Mitarbeiter x:Name="Mitarbeiter" Visibility="Collapsed"></local:Mitarbeiter>
+            <local:Abnahmegesellschaft></local:Abnahmegesellschaft>
+            <local:Ansprechpartner></local:Ansprechpartner>
+            <local:Auftrag></local:Auftrag> 
+            <local:Mehrwertsteuer></local:Mehrwertsteuer>
+            <local:Werkstoff></local:Werkstoff>
+            <local:Norm></local:Norm>
+            <local:Prüfungstypen></local:Prüfungstypen>
+            <local:Textbausteine></local:Textbausteine>
+            <local:Fertigstellungszeit></local:Fertigstellungszeit>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Background="#F8F4F4"></Grid>
         

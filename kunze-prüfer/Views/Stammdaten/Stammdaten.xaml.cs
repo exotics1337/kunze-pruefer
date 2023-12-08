@@ -31,6 +31,12 @@
             Stumm.Add("Mitarbeiter");
             Stumm.Add("Abnahmegesellschaft");
             Stumm.Add("Mehrwertsteuer");
+            Stumm.Add("Werkstoff");
+            Stumm.Add("Norm");
+            Stumm.Add("Prüfungstypen");
+            Stumm.Add("Fertigstellungszeit");
+            Stumm.Add("Textbausteine");
+            Stumm.Add("Werkstoff");
             AuswahlCb1.SelectedIndex = 0;
         }
 
@@ -58,6 +64,7 @@
                     case "Mitarbeiter":
                         Mitarbeiter.Visibility = Visibility.Visible;
                         break;
+                    
                 }    
             }
             else
