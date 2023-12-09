@@ -25,12 +25,12 @@ d:DesignHeight="500" d:DesignWidth="680">
                             <Button Margin="0,3,0,0" Width="200" >Angebot Erstellen</Button>
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
-                            <TextBlock FontSize="11" Foreground="#848484">Angebotnr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="60" Text="" />
+                            <TextBlock FontSize="11" Foreground="#848484">Angebotsnr.</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Angebot wurde angenommen</TextBlock>
-                            <CheckBox Margin="0,3,0,0" Width="140">Angebot angenommen</CheckBox>
+                            <CheckBox Margin="0,3,0,0" Width="140">Bestätigen</CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
