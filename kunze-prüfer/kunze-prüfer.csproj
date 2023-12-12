@@ -166,6 +166,9 @@
     <Compile Include="Views\Stammdaten\Auftrag.xaml.cs">
       <DependentUpon>Auftrag.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\CustomBtnLayout.xaml.cs">
+      <DependentUpon>CustomBtnLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\CustomDataGrid.xaml.cs">
       <DependentUpon>CustomDataGrid.xaml</DependentUpon>
     </Compile>
@@ -234,6 +237,7 @@
     <Page Include="Views\Stammdaten\Angebot.xaml" />
     <Page Include="Views\Stammdaten\Ansprechpartner.xaml" />
     <Page Include="Views\Stammdaten\Auftrag.xaml" />
+    <Page Include="Views\Stammdaten\CustomBtnLayout.xaml" />
     <Page Include="Views\Stammdaten\CustomDataGrid.xaml" />
     <Page Include="Views\Stammdaten\Fertigstellungszeit.xaml" />
     <Page Include="Views\Stammdaten\Kunden.xaml" />

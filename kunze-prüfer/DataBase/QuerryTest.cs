@@ -27,18 +27,18 @@
             }
         }
         
-public void UpdateAll<T>(Action<T> updateAction) where T : class
-{
-    using (var db = new QuerryTest())
-    {
-        var entities = db.Set<T>().ToList();
-        foreach (var entity in entities)
+        public void UpdateAll<T>(Action<T> updateAction) where T : class
         {
-            updateAction(entity);
+            using (var db = new QuerryTest())
+            {
+                var entities = db.Set<T>().ToList();
+                foreach (var entity in entities)
+                {
+                    updateAction(entity);
+                }
+                db.SaveChanges();
+            }
         }
-        db.SaveChanges();
-    }
-}
         public T GetEntityById<T, TKey>(TKey id) where T : class
         {
             using (var db = new QuerryTest())
@@ -59,7 +59,7 @@ public void UpdateAll<T>(Action<T> updateAction) where T : class
             }
 
             Console.WriteLine(lol.GetEntityById<Kunde, int>(1));
-            //Console.WriteLine(lol.GetEntityById<Kunde, string>("Sergio"));
+            Console.WriteLine(lol.GetEntityById<Kunde, string>("Sergio"));
         }
     }
 }

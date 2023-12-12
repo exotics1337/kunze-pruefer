@@ -16,13 +16,15 @@
             this.DataContext = this;
             Stumm = new ObservableCollection<string>();
             loadbox();
+            CustomBtnLayout cbtl = new CustomBtnLayout();
+            cbtl.Stammdaten = this;
 
 
         }
         //Databinding
         
         public ObservableCollection<string> Stumm { get; set; }
-        private void loadbox()
+        public void loadbox()
         {
             Stumm.Add("Kunden");
             Stumm.Add("Angebot");
