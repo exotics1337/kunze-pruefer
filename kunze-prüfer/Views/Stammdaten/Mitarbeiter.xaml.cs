@@ -8,7 +8,7 @@
         {
             InitializeComponent();
             tesel.KonfiguriereSpaltenFuerModell(typeof(Mitarbeiter));
-            tesel.InitializeDate<DataBase.Mitarbeiter>();
+            tesel.InitializeData<DataBase.Mitarbeiter>();
         }
     }
 }

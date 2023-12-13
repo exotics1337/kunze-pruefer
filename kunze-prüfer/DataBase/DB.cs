@@ -363,8 +363,8 @@ namespace kunze_prüfer.DataBase
         public int Status_nr { get; set; }
         public int w_nr { get; set; }
         public int n_nr { get; set; }
-        public string auf_bestell_nr { get; set; }
-        public string Auf_prüflos { get; set; }
+        public int auf_bestell_nr { get; set; }
+        public int Auf_prüflos { get; set; }
         public int Anspr_nr { get; set; }
         public int Prob_nr { get; set; }
         public bool Auf_geloescht { get; set; }

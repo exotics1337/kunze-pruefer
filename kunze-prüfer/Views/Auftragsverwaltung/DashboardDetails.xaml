@@ -26,34 +26,34 @@
         </Grid>
         
         <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
-            <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,5,0,0" x:Name="AuftragsbearbeiterFeld">
+            <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,5,0,0" x:Name="LieferterminFeld">
                 <StackPanel Margin="2,0,0,1">
-                    <TextBlock FontSize="11" Foreground="#848484">Auftragsbearbeiter</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Text="Max Mustermann" x:Name="AuftragsbearbeiterText" />
+                    <TextBlock FontSize="11" Foreground="#848484">Liefertermin</TextBlock>
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Text="" x:Name="LieferterminText" />
                 </StackPanel>
             </Border>
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,15,0,0" x:Name="KundeFeld">
                 <StackPanel Margin="2,0,0,1">
                     <TextBlock FontSize="11" Foreground="#848484">Kunde</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Text="Mustermann GmbH" x:Name="KundeText" />
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Text="" x:Name="KundeText" />
                 </StackPanel>
             </Border>
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,15,0,0" x:Name="AnsprechpartnerFeld">
                 <StackPanel Margin="2,0,0,1">
                     <TextBlock FontSize="11" Foreground="#848484">Ansprechpartner</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="Max Müller" x:Name="AnsprechpartnerText"/>
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="" x:Name="AnsprechpartnerText"/>
                 </StackPanel>
             </Border>
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,15,0,0" x:Name="AnsprechpartnerEMailFeld">
                 <StackPanel Margin="2,0,0,1">
                     <TextBlock FontSize="11" Foreground="#848484">Ansprechpartner E-Mail</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="#449AFF" ToolTip="Mail senden an:" Text="muellermax34@gmail.com" x:Name="AnsprechpartnerEMailText" Style="{StaticResource InternalLink}" />
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="#449AFF" ToolTip="Mail senden an:" Text="" x:Name="AnsprechpartnerEMailText" Style="{StaticResource InternalLink}" />
                 </StackPanel>
             </Border>
             <Border BorderThickness="0,0,0,.7" Width="320" BorderBrush="#AEAEAE" Margin="0,15,0,0" x:Name="AuftragsnummerFeld">
                 <StackPanel Margin="2,0,0,1">
                     <TextBlock FontSize="11" Foreground="#848484" x:Name="AuftragsnummerHeaderText">Auftragsnummer</TextBlock>
-                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" ToolTip="Mail senden an:" Text="16451" x:Name="AuftragsnummerText" />
+                    <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" ToolTip="Mail senden an:" Text="" x:Name="AuftragsnummerText" />
                 </StackPanel>
             </Border>
         </StackPanel>

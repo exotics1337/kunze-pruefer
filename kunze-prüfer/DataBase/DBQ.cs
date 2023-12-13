@@ -48,7 +48,23 @@ namespace kunze_prüfer.DataBase
             }
         }
 
-        
+        public async Task<T> AddAsync<T>(T entity) where T : class
+        {
+            using (var db = new DBQ())
+            {
+                try
+                {
+                    db.Set<T>().Add(entity);
+                    await db.SaveChangesAsync();
+                    return entity;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
         
         public async Task<T> GetEntityByIdAsync<T, TKey>(TKey id) where T : class
         {

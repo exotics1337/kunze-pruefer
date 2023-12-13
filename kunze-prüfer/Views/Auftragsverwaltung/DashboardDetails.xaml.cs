@@ -1,23 +1,31 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+using kunze_prüfer.DataBase;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung
 {
     public partial class DashboardDetails : UserControl
     {
-        public DashboardDetails(int id, bool IsAuftragsverwaltung = false)
+        private DBQ db = new DBQ();
+        public DashboardDetails(int id)
         {
             InitializeComponent();
-            AuftragsverwaltungUI(IsAuftragsverwaltung);
+            if (id != 0)
+            {
+                LoadDetails(id);
+            }
         }
 
-        private void AuftragsverwaltungUI(bool IsAuftragsverwaltung)
+        private async void LoadDetails(int id)
         {
-            if (IsAuftragsverwaltung)
-            {
-                AuftragsbearbeiterFeld.Visibility = System.Windows.Visibility.Collapsed;
-                AuftragsnummerHeaderText.Text = "Auftragslieferungstermin";
-                AuftragsnummerText.Text = "01.01.2021";
-            }
+            var auftrag = await db.GetEntityByIdAsync<Auftrag, int>(id);
+            var kunde = await db.GetEntityByIdAsync<Kunde, int>(auftrag.k_nr);
+            var ansprechpartner = await db.GetEntityByIdAsync<Ansprechpartner, int>(auftrag.Anspr_nr);
+            LieferterminText.Text = auftrag.Auf_liefertermin.ToString();
+            KundeText.Text = kunde.k_name;
+            AnsprechpartnerText.Text = ansprechpartner.Anspr_vname + " " + ansprechpartner.Anspr_nname;
+            AnsprechpartnerEMailText.Text = ansprechpartner.Anspr_email;
+            AuftragsnummerText.Text = auftrag.Auf_nr.ToString();
         }
     }
 }
