@@ -13,55 +13,34 @@
         public CustomBtnLayout()
         {
             InitializeComponent();
+            // Stammdaten = this.Stammdaten;
+            //Stammdaten stammdaten = new Stammdaten();
+            
         }
 
-        private DBQ db = new DBQ();
         public Stammdaten Stammdaten { get; set; }
 
         private void Update_btn_OnClick(object sender, RoutedEventArgs e)
         {
-            // Stammdaten stammi = this.Parent as Stammdaten;
-            if (Stammdaten != null)
-            {
-                find_tabel(Stammdaten);
-            }
-            else
-            {
-                Console.WriteLine("huso");
-            }
-            // if (sender is Stammdaten stammi)
-            // {
-            //     Console.WriteLine(stammi);
-            // }
+            Stammdaten.UpdateData();
         }
 
-        private void find_tabel(Stammdaten stammi)
-        {
-            Console.WriteLine(stammi);
-            if (stammi.AuswahlCb1.SelectedItem != null)
-            {
-                switch (stammi.AuswahlCb1.SelectedItem.ToString())
-                {
-                    case "Kunden":
-                        Console.WriteLine("Got Kunde");
-                        UpdateEntities(db.Kunden.ToList());
-                        break;
-                }    
-            }
-            else
-            {
-                Console.WriteLine("BOMBA");
-            }
+        
 
-        }
-
-        private void UpdateEntities<T>(IEnumerable<T> entities) where T : class
+        public void UpdateEntities<T>(IEnumerable<T> entities) where T : class
         {
             try
             {
+                DBQ db = new DBQ(); // Besser wäre ein globaler DbContext
                 foreach (var entity in entities)
                 {
-                    db.Entry(entity).State = EntityState.Modified;
+                    // Prüfen, ob die Entität bereits getrackt wird
+                    var entry = db.Entry(entity);
+                    if (entry.State == EntityState.Detached)
+                    {
+                        db.Set<T>().Attach(entity); // Attach, wenn die Entität nicht getrackt wird
+                    }
+                    entry.State = EntityState.Modified; // Setzt den Zustand auf Modified
                 }
 
                 db.SaveChanges();
@@ -71,7 +50,6 @@
                 Console.WriteLine(e);
                 throw;
             }
-
         }
     }
 }

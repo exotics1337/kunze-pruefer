@@ -20,6 +20,6 @@
         <!--     <Button Width="120" Height="30" Margin="10">Update</Button> -->
         <!--     <Button Width="120" Height="30" Margin="10">Abbrechen</Button> -->
         <!-- </StackPanel> -->
-        <local:CustomBtnLayout Grid.Row="1"></local:CustomBtnLayout>
+        <local:CustomBtnLayout Grid.Row="1" x:Name="kunde_layout"></local:CustomBtnLayout>
     </Grid>
 </UserControl>
