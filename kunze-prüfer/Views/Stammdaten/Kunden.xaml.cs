@@ -15,8 +15,8 @@
         {
             InitializeComponent();
             tesel.KonfiguriereSpaltenFuerModell(typeof(Kunde));
-            tesel.InitializeDate<Kunde>();
+            tesel.InitializeData<Kunde>();
+            
         }
-        
     }
 }

@@ -15,10 +15,10 @@
         {
             InitializeComponent();
         }
-        public void KonfiguriereSpaltenFuerModell(Type modellTyp)
+        public void KonfiguriereSpaltenFuerModell(Type modellTyp, bool showDeleted = false, bool showAll = true)
         {
             baseDataGrid.Columns.Clear();
-    
+            
             if (modellTyp == typeof(Kunde))
             {
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kundenname", Binding = new Binding("k_name") });
@@ -29,7 +29,35 @@
                 // Konfigurieren Sie hier die Spalten für Mitarbeiter
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Mitarbeitername", Binding = new Binding("M_nname") });
             }
+            else if (modellTyp == typeof(Auftrag))
+            {
+                if (showAll)
+                {
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftragsnummer", Binding = new Binding("Auf_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftragsannahme", Binding = new Binding("Auf_angenommen") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Liefertermin", Binding = new Binding("Auf_liefertermin") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kundennummer", Binding = new Binding("k_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Statusnummer", Binding = new Binding("Status_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Werkstoffnummer", Binding = new Binding("w_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Normnummer", Binding = new Binding("n_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bestellnummer", Binding = new Binding("auf_bestell_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüflos", Binding = new Binding("Auf_prüflos") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Ansprechpartnernummer", Binding = new Binding("Anspr_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Probennummer", Binding = new Binding("Prob_nr") }); 
+                }
+                else
+                {
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftragsnummer", Binding = new Binding("Auf_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Statusnummer", Binding = new Binding("Status_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Liefertermin", Binding = new Binding("Auf_liefertermin") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kundennummer", Binding = new Binding("k_nr") });
+                }
 
+                if (showDeleted)
+                {
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Auf_geloescht") });
+                }
+            }
         }
 
         private async Task<List<T>> LoadAsync<T>() where T : class
@@ -39,7 +67,7 @@
             return items;
         }
 
-        public async void InitializeDate<T>() where T : class
+        public async void InitializeData<T>() where T : class
         {
             var itemList = await Task.Run(()=> LoadAsync<T>());
             var itemsObserv = new ObservableCollection<T>(itemList);
@@ -51,7 +79,12 @@
 
         public void RefreshData()
         {
-            InitializeDate<Kunde>();
+            InitializeData<Kunde>();
+        }
+
+        public void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

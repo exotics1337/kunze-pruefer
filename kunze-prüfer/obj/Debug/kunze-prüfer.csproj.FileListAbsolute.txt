@@ -591,3 +591,37 @@ C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-pr�
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoff.baml
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.g.cs
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Angebotbestätigung.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Werkstoffprüfung.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Abnahmegesellschaft.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebot.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Ansprechpartner.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Auftrag.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Fertigstellungszeit.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Mehrwertsteuer.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Norm.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Prüfungstypen.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Textbausteine.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoff.g.cs
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Angebotbestätigung.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Werkstoffprüfung.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Abnahmegesellschaft.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebot.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Ansprechpartner.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Auftrag.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Fertigstellungszeit.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Mehrwertsteuer.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Norm.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Prüfungstypen.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Textbausteine.baml
+C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoff.baml

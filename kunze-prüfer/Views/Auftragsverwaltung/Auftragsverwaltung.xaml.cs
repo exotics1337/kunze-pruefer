@@ -1,17 +1,26 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung
 {
     public partial class Auftragsverwaltung : UserControl
     {
+        public static event Action SubmitButtonClicked;
         public Auftragsverwaltung()
         {
             InitializeComponent();
             DataContext = this;
-            CurrentView = new DashboardDetails(0, true);
-            //CurrentStepView = new DashboardStepDetails(0);
+            CurrentView = new DashboardDetails(0); 
+            ButtonSubmit.Click += ButtonSubmit_Click;
         }
+
+        private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            SubmitButtonClicked?.Invoke();
+        }
+
 
         private int _currentStep;
         private UserControl _currentView;

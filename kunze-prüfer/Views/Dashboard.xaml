@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:kunze_prüfer.Views"
+             xmlns:stammdaten="clr-namespace:kunze_prüfer.Views.Stammdaten"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1070">
     <Grid>
@@ -39,7 +40,7 @@
             <TextBox>Suche in Aufträgen</TextBox>
         </Grid>
         <Grid Grid.Row="6" Grid.Column="1">
-            <DataGrid></DataGrid>
+            <stammdaten:CustomDataGrid x:Name="DataGrid"></stammdaten:CustomDataGrid>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Background="#F8F4F4">
             <ContentControl Content="{Binding CurrentView}" />
@@ -48,7 +49,7 @@
                     <Border BorderThickness="0,0,0,.7" Width="320" Height="38" BorderBrush="#AEAEAE" Margin="0,0,0,15">
                         <StackPanel Margin="2,0,0,1">
                             <TextBlock FontSize="11" Foreground="#848484">Aktuelle Phase</TextBlock>
-                            <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="Warten auf Zahlungseingang" />
+                            <TextBlock x:Name="StatusText" Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="" />
                         </StackPanel>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">

@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="440" d:DesignWidth="650">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" x:Name="baseDataGrid">
+        <DataGrid AutoGenerateColumns="False" x:Name="baseDataGrid" SelectionChanged="SelectionChanged">
             
         </DataGrid>
     </Grid>
