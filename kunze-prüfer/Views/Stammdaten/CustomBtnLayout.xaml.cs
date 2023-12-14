@@ -13,8 +13,6 @@
         public CustomBtnLayout()
         {
             InitializeComponent();
-            // Stammdaten = this.Stammdaten;
-            //Stammdaten stammdaten = new Stammdaten();
             
         }
 
@@ -27,20 +25,26 @@
 
         
 
+        
         public void UpdateEntities<T>(IEnumerable<T> entities) where T : class
         {
             try
             {
-                DBQ db = new DBQ(); // Besser wäre ein globaler DbContext
+                DBQ db = new DBQ();
                 foreach (var entity in entities)
                 {
-                    // Prüfen, ob die Entität bereits getrackt wird
                     var entry = db.Entry(entity);
                     if (entry.State == EntityState.Detached)
                     {
-                        db.Set<T>().Attach(entity); // Attach, wenn die Entität nicht getrackt wird
+                        db.Set<T>().Attach(entity);
                     }
-                    entry.State = EntityState.Modified; // Setzt den Zustand auf Modified
+                    else if (entry.State != EntityState.Unchanged)
+                    {
+                        // Detach the entity if it's being tracked but not in Unchanged state
+                        entry.State = EntityState.Detached;
+                        db.Set<T>().Attach(entity);
+                    }
+                    entry.State = EntityState.Modified;
                 }
 
                 db.SaveChanges();
@@ -51,5 +55,6 @@
                 throw;
             }
         }
+
     }
 }

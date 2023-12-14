@@ -625,3 +625,4 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Vie
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Prüfungstypen.baml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Textbausteine.baml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoff.baml
+C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v04.resources

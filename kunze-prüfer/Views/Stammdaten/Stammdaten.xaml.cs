@@ -1,6 +1,8 @@
 ﻿namespace kunze_prüfer.Views.Stammdaten
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows;
@@ -20,6 +22,7 @@
         }
         //Databinding
         public ObservableCollection<string> Stumm { get; set; }
+        private DataAccessService DAS = new DataAccessService();
         
         public void loadbox()
         {
@@ -90,39 +93,28 @@
 
         public void UpdateData()
         {
-            CustomBtnLayout cbl = new CustomBtnLayout();
-            DBQ db = new DBQ();
             if (AuswahlCb1.SelectedItem != null)
             {
                 switch (AuswahlCb1.SelectedItem.ToString())
                 {
                     case "Kunden":
-                        Console.WriteLine("boom");
-                        cbl.UpdateEntities(db.Kunden.ToList());
+                        UpdateEntity(Kunden.tesel.baseDataGrid.ItemsSource as IEnumerable<Kunde>);
                         break;
                     case "Mitarbeiter":
-                        
                         break;
                     case "Abnahmegesellschaft":
-                        Abnahmegesellschaft.Visibility = Visibility.Visible;
                         break; 
                     case "Ansprechpartner":
-                        Ansprechpartner.Visibility = Visibility.Visible; 
                         break;
                     case "Fertigstellungszeit":
-                        Fertigstellungszeit.Visibility = Visibility.Visible; 
                         break; 
                     case "Norm":
-                        Norm.Visibility = Visibility.Visible;
                         break;   
                     case "Mehrwertsteuer":
-                        Mehrwertsteuer.Visibility = Visibility.Visible; 
                         break;
                     case "Angebot":
-                        Angebot.Visibility = Visibility.Visible; 
                         break; 
                     case "Prüfungstypen":
-                        Prüfungstypen.Visibility = Visibility.Visible;
                         break;                    
                 } 
             }
@@ -135,9 +127,15 @@
         private void AuswahlCb1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ChangeUser();
-            
         }
 
+        private void UpdateEntity<T>(IEnumerable<T> itemstoUpdate) where T : class
+        {
+            if (itemstoUpdate != null)
+            {
+                DAS.UpdateEntities(itemstoUpdate);
+            }
+        }
         private void searchalgo(int id)
         {
             DBQ db = new DBQ();

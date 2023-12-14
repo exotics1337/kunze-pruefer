@@ -6,6 +6,7 @@ namespace kunze_prüfer.DataBase
 
 {
     using System;
+    using System.ComponentModel;
     using System.Data.Entity;
     using System.Threading.Tasks;
 
@@ -89,11 +90,11 @@ namespace kunze_prüfer.DataBase
                 try
                 {
                     var entity = db.Set<T>().SingleOrDefault(e => idSelector(e).Equals(id)); 
-                      if (entity != null)
-                      {
+                    if (entity != null)
+                    {
                         updateAction(entity);
                         db.SaveChanges();
-                      }
+                    }
                 }
                 catch (Exception e)
                 {

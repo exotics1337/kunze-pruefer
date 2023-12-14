@@ -16,7 +16,7 @@ namespace kunze_prüfer.Views
             InitializeComponent();
             DataContext = this;
             CurrentView = new DashboardDetails(0);
-            GetAufträge();
+            // GetAufträge();
             
             //DataGrid.SelectionChanged += DataGrid_SelectionChanged;
         }
@@ -25,8 +25,7 @@ namespace kunze_prüfer.Views
         {
             //
         }
-        
-        async void GetAufträge()
+        void GetAufträge()
         {
            DataGrid.KonfiguriereSpaltenFuerModell(typeof(Auftrag), false, false);
            DataGrid.InitializeData<Auftrag>();
