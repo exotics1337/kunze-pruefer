@@ -16,16 +16,13 @@
             this.DataContext = this;
             Stumm = new ObservableCollection<string>();
             loadbox();
-            // CustomBtnLayout cbl = new CustomBtnLayout();
-            // cbl.Update_btn.stammm = this;
             Kunden.kunde_layout.Stammdaten = this;
         }
         //Databinding
-        
         public ObservableCollection<string> Stumm { get; set; }
+        
         public void loadbox()
         {
-            
             Stumm.Add("Kunden");
             Stumm.Add("Angebot");
             Stumm.Add("Ansprechpartner");

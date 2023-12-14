@@ -21,8 +21,8 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                 n_nr = int.Parse(TextBoxNormnr.Text),
                 auf_bestell_nr = int.Parse(TextBoxBestellnr.Text),
                 Auf_prüflos = int.Parse(TextBoxPrüflos.Text),
-                Anspr_nr = int.Parse(Ansprechpartnernummer.Text),
-                Prob_nr = int.Parse(Probennummer.Text)
+                // Anspr_nr = int.Parse(Ansprechpartnernummer.Text),
+                // Prob_nr = int.Parse(Probennummer.Text)
             };
 
         }
