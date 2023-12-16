@@ -56,5 +56,9 @@
             }
         }
 
+        private void Refresh_btn_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

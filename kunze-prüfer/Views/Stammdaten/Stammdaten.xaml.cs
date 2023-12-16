@@ -19,6 +19,7 @@
             Stumm = new ObservableCollection<string>();
             loadbox();
             Kunden.kunde_layout.Stammdaten = this;
+            Kunden.tesel.baseDataGrid.RowEditEnding += (s, e) => HandleNewEntity<Kunde>(Kunden.tesel, e);
         }
         //Databinding
         public ObservableCollection<string> Stumm { get; set; }
@@ -98,7 +99,7 @@
                 switch (AuswahlCb1.SelectedItem.ToString())
                 {
                     case "Kunden":
-                        UpdateEntity(Kunden.tesel.baseDataGrid.ItemsSource as IEnumerable<Kunde>);
+                        UpdateEntity(Kunden.tesel.baseDataGrid.ItemsSource as IEnumerable<Kunde>,"k_nr");
                         break;
                     case "Mitarbeiter":
                         break;
@@ -129,13 +130,50 @@
             ChangeUser();
         }
 
-        private void UpdateEntity<T>(IEnumerable<T> itemstoUpdate) where T : class
+        private void UpdateEntity<T>(IEnumerable<T> itemstoUpdate, string id) where T : class
         {
             if (itemstoUpdate != null)
             {
-                DAS.UpdateEntities(itemstoUpdate);
+                DAS.UpdateEntities(itemstoUpdate,id);
+                CustomDataGrid dg = new CustomDataGrid();
+                dg.RefreshData();
             }
         }
+        
+        private void HandleNewEntity<T>(CustomDataGrid dataGrid, DataGridRowEditEndingEventArgs e) where T : class, new()
+        {
+            if (e.EditAction == DataGridEditAction.Commit)
+            {
+                var newRow = e.Row.Item as T;
+                if (newRow != null && IsNewEntity(newRow))
+                {
+                   AddEntityAsync(newRow); 
+                }
+            }
+        }
+
+        private bool IsNewEntity<T>(T entity) where T : class
+        {
+            if (typeof(T) == typeof(Kunden))
+            {
+                var kunde = entity as Kunde;
+                return kunde != null && kunde.k_nr == 0; 
+            }
+            return false;
+        }
+        private async void AddEntityAsync<T>(T entity) where T : class
+        {
+            try
+            {
+                await DAS.AddAsync(entity);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        
+        
         private void searchalgo(int id)
         {
             DBQ db = new DBQ();
