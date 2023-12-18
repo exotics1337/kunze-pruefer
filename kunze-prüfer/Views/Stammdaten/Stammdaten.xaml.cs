@@ -19,7 +19,6 @@
             Stumm = new ObservableCollection<string>();
             loadbox();
             Kunden.kunde_layout.Stammdaten = this;
-            Kunden.tesel.baseDataGrid.RowEditEnding += (s, e) => HandleNewEntity<Kunde>(Kunden.tesel, e);
         }
         //Databinding
         public ObservableCollection<string> Stumm { get; set; }
@@ -39,7 +38,6 @@
             Stumm.Add("Prüfungstypen");
             Stumm.Add("Fertigstellungszeit");
             Stumm.Add("Textbausteine");
-            Stumm.Add("Werkstoff");
             AuswahlCb1.SelectedIndex = 0;
         }
 
@@ -87,7 +85,17 @@
                         break; 
                     case "Prüfungstypen":
                         Prüfungstypen.Visibility = Visibility.Visible;
+                        break;
+                    case"Textbausteine":
+                        Textbausteine.Visibility = Visibility.Visible;
                         break;                    
+                    case"Auftrag":
+                        Textbausteine.Visibility = Visibility.Visible;
+                        break;  
+                    case"Werkstoff":
+                        Textbausteine.Visibility = Visibility.Visible;
+                        break;  
+                    
                 }    
             }
         }
@@ -125,6 +133,7 @@
             }
 
         } 
+        
         private void AuswahlCb1_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ChangeUser();
@@ -135,44 +144,8 @@
             if (itemstoUpdate != null)
             {
                 DAS.UpdateEntities(itemstoUpdate,id);
-                CustomDataGrid dg = new CustomDataGrid();
-                dg.RefreshData();
             }
         }
-        
-        private void HandleNewEntity<T>(CustomDataGrid dataGrid, DataGridRowEditEndingEventArgs e) where T : class, new()
-        {
-            if (e.EditAction == DataGridEditAction.Commit)
-            {
-                var newRow = e.Row.Item as T;
-                if (newRow != null && IsNewEntity(newRow))
-                {
-                   AddEntityAsync(newRow); 
-                }
-            }
-        }
-
-        private bool IsNewEntity<T>(T entity) where T : class
-        {
-            if (typeof(T) == typeof(Kunden))
-            {
-                var kunde = entity as Kunde;
-                return kunde != null && kunde.k_nr == 0; 
-            }
-            return false;
-        }
-        private async void AddEntityAsync<T>(T entity) where T : class
-        {
-            try
-            {
-                await DAS.AddAsync(entity);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        
         
         private void searchalgo(int id)
         {

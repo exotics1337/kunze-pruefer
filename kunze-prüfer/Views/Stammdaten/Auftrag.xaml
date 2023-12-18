@@ -7,6 +7,18 @@
              mc:Ignorable="d"
              d:DesignHeight="520" d:DesignWidth="690">
     <Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <local:CustomDataGrid x:Name="cdg_auftrag"></local:CustomDataGrid>
+            <local:CustomBtnLayout Grid.Row="1" x:Name="Auftrag_layout"></local:CustomBtnLayout>
+        </Grid>
         
     </Grid>
 </UserControl>

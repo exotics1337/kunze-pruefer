@@ -15,17 +15,21 @@
         {
             InitializeComponent();
         }
-        public void KonfiguriereSpaltenFuerModell(Type modellTyp, bool showDeleted = false, bool showAll = true)
+        public void KonfiguriereSpaltenFuerModell(Type modellTyp, bool showDeleted = false, bool showAll = true, bool showid = false)
         {
             baseDataGrid.Columns.Clear();
             
             if (modellTyp == typeof(Kunde))
             {
-                baseDataGrid.Columns.Add(new DataGridTextColumn{ Header = "ID", Binding = new Binding("k_nr")});
+                if (showid)
+                {
+                    baseDataGrid.Columns.Add(new DataGridTextColumn{ Header = "ID", Binding = new Binding("k_nr"), IsReadOnly = true});
+                }
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kundenname", Binding = new Binding("k_name")});
                 baseDataGrid.Columns.Add(new DataGridTextColumn{ Header = "Umsatzsteuer", Binding = new Binding("k_ust_id")});
                 baseDataGrid.Columns.Add(new DataGridTextColumn{ Header = "Lieferaddresse", Binding = new Binding("k_lief_adresse")});
                 baseDataGrid.Columns.Add(new DataGridTextColumn{ Header = "Gelöscht", Binding = new Binding("k_geloescht")});
+                
             }
             else if (modellTyp == typeof(Mitarbeiter))
             {

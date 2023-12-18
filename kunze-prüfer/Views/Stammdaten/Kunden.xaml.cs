@@ -14,7 +14,7 @@
         public Kunden()
         {
             InitializeComponent();
-            tesel.KonfiguriereSpaltenFuerModell(typeof(Kunde));
+            tesel.KonfiguriereSpaltenFuerModell(typeof(Kunde), showid:true);
             tesel.InitializeData<Kunde>();
             
         }

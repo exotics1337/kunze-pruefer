@@ -7,8 +7,8 @@
         public Mitarbeiter()
         {
             InitializeComponent();
-            tesel.KonfiguriereSpaltenFuerModell(typeof(Mitarbeiter));
-            tesel.InitializeData<DataBase.Mitarbeiter>();
+            cdg_mitarbeiter.KonfiguriereSpaltenFuerModell(typeof(Mitarbeiter));
+            cdg_mitarbeiter.InitializeData<DataBase.Mitarbeiter>();
         }
     }
 }

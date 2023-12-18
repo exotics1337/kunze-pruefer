@@ -15,11 +15,6 @@
              <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <local:CustomDataGrid x:Name="tesel"></local:CustomDataGrid>
-        <!-- <StackPanel Grid.Row="1" Orientation="Horizontal"> -->
-        <!--     <Button Width="120" Height="30" Margin="10">Refresh</Button> -->
-        <!--     <Button Width="120" Height="30" Margin="10">Update</Button> -->
-        <!--     <Button Width="120" Height="30" Margin="10">Abbrechen</Button> -->
-        <!-- </StackPanel> -->
         <local:CustomBtnLayout Grid.Row="1" x:Name="kunde_layout"></local:CustomBtnLayout>
     </Grid>
 </UserControl>
