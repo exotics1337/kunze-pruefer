@@ -1,4 +1,6 @@
-﻿namespace kunze_prüfer.Views.Stammdaten
+﻿using AdonisUI.Controls;
+
+namespace kunze_prüfer.Views.Stammdaten
 {
     using System;
     using System.Collections.Generic;
@@ -14,6 +16,15 @@
         public CustomDataGrid()
         {
             InitializeComponent();
+        }
+        
+        public int currentlySelectedId = 0;
+        public bool handleSelectionChanged = false;
+        public event Action SelectionChangedEvent;
+        public bool IsReadOnly
+        {
+            get => baseDataGrid.IsReadOnly;
+            set => baseDataGrid.IsReadOnly = value;
         }
         public void KonfiguriereSpaltenFuerModell(Type modellTyp, bool showDeleted = false, bool showAll = true, bool showid = false)
         {
@@ -84,14 +95,17 @@
             });
         }
 
-        public void RefreshData()
+        public void RefreshData<T>() where T : class
         {
-            InitializeData<Kunde>();
+            InitializeData<T>();
         }
 
         public void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (!handleSelectionChanged) return;
+            currentlySelectedId = (int)baseDataGrid.SelectedCells[0].Item.GetType().GetProperty("Auf_nr")
+                .GetValue(baseDataGrid.SelectedCells[0].Item, null); 
+            SelectionChangedEvent?.Invoke();
         }
     }
 }

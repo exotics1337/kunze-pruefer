@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using AdonisUI.Controls;
 using kunze_prüfer.DataBase;
 using kunze_prüfer.Views.Auftragsverwaltung;
 
@@ -16,20 +17,22 @@ namespace kunze_prüfer.Views
             InitializeComponent();
             DataContext = this;
             CurrentView = new DashboardDetails(0);
-            // GetAufträge();
-            
-            //DataGrid.SelectionChanged += DataGrid_SelectionChanged;
+            GetAufträge();
+            DataGrid.SelectionChangedEvent += OnCustomDataGridSelectionChanged;
+            DataGrid.IsReadOnly = true;
+            DataGrid.handleSelectionChanged = true;
         }
+
         
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnCustomDataGridSelectionChanged()
         {
-            //
+            CurrentView = new DashboardDetails(DataGrid.currentlySelectedId);
         }
         void GetAufträge()
         {
            DataGrid.KonfiguriereSpaltenFuerModell(typeof(Auftrag), false, false);
-           DataGrid.InitializeData<Auftrag>();
-           DataGrid.RefreshData();
+           DataGrid.InitializeData<DataBase.Auftrag>();
+           DataGrid.RefreshData<DataBase.Auftrag>();
         }
         
         private UserControl _currentView;

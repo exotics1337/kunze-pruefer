@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
+using AdonisUI.Controls;
 using kunze_prüfer.DataBase;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung
@@ -11,7 +12,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         {
             InitializeComponent();
             if (id != 0)
-            {
+            { 
                 LoadDetails(id);
             }
         }
@@ -21,11 +22,15 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             var auftrag = await db.GetEntityByIdAsync<Auftrag, int>(id);
             var kunde = await db.GetEntityByIdAsync<Kunde, int>(auftrag.k_nr);
             var ansprechpartner = await db.GetEntityByIdAsync<Ansprechpartner, int>(auftrag.Anspr_nr);
-            LieferterminText.Text = auftrag.Auf_liefertermin.ToString();
-            KundeText.Text = kunde.k_name;
-            AnsprechpartnerText.Text = ansprechpartner.Anspr_vname + " " + ansprechpartner.Anspr_nname;
-            AnsprechpartnerEMailText.Text = ansprechpartner.Anspr_email;
-            AuftragsnummerText.Text = auftrag.Auf_nr.ToString();
+            MessageBox.Show(kunde.k_name);
+            Dispatcher.Invoke(() =>
+            {
+                LieferterminText.Text = auftrag.Auf_liefertermin.ToString();
+                KundeText.Text = kunde.k_name;
+                AnsprechpartnerText.Text = ansprechpartner.Anspr_vname + " " + ansprechpartner.Anspr_nname;
+                AnsprechpartnerEMailText.Text = ansprechpartner.Anspr_email;
+                AuftragsnummerText.Text = auftrag.Auf_nr.ToString();
+            }); // TODO: Fix this
         }
     }
 }

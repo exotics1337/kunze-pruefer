@@ -44,7 +44,7 @@
         private void ChangeUser()
         {
             CustomDataGrid dg = new CustomDataGrid();
-            dg.RefreshData();
+            dg.RefreshData<Kunde>();
             if (AuswahlCb1.SelectedItem!=null)
             {
                 string test = AuswahlCb1.SelectedItem.ToString();
