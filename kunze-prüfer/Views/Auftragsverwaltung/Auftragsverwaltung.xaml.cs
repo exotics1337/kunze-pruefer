@@ -13,9 +13,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         {
             InitializeComponent();
             DataContext = this;
-            _currentStep = 1; // TODO: Von DB aktuellen Status abfragen
-            CurrentDetailsView = new DashboardDetails(0);
-            StepHandler(_currentStep);
+            CurrentStep = 1; // TODO: Von DB aktuellen Status abfragen
+            CurrentDetailsView = new DashboardDetails(0); // TODO: Details ID basierend auf aktuellem Auftrag abfragen, aber auch erst wenn der Auftrag existiert
+            StepHandler(CurrentStep);
             ButtonSubmit.Click += ButtonSubmit_Click;
         }
 
@@ -51,6 +51,20 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                 }
             }
         }
+        
+        public int CurrentStep
+        {
+            get { return _currentStep; }
+            set
+            {
+                if (value < 7 && value > 0)
+                {
+                    _currentStep = value;
+                    OnPropertyChanged(nameof(CurrentStep));
+                    StepHandler(_currentStep);
+                }
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
@@ -83,6 +97,16 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                     CurrentView = new AuftragErledigt();
                     break;
             }
+        }
+
+        private void ButtonNext_OnClick(object sender, RoutedEventArgs e)
+        {
+            CurrentStep++;
+        }
+
+        private void ButtonBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            CurrentStep--;
         }
     }
 }
