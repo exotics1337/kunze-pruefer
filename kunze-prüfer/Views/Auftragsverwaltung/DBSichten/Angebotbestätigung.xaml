@@ -33,6 +33,7 @@ d:DesignHeight="500" d:DesignWidth="680">
                             <CheckBox Margin="0,3,0,0" Width="140">Bestätigen</CheckBox>
                         </StackPanel>
                     </StackPanel>
+                    
                 </Grid>
             </GroupBox>
         </StackPanel>

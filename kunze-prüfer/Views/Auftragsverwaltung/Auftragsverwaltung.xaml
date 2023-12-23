@@ -25,32 +25,32 @@
             <RowDefinition Height="16"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="5" Grid.Column="3" Grid.RowSpan="2" Background="#F8F4F4">
-            <ContentControl Content="{Binding CurrentView}" />
+            <ContentControl Content="{Binding CurrentDetailsView}" />
             <Grid VerticalAlignment="Bottom" Height="150">
                 <StackPanel>
                     <Border BorderThickness="0,0,0,.7" Width="320" Height="38" BorderBrush="#AEAEAE" Margin="0,0,0,15">
                         <StackPanel Margin="2,0,0,1">
                             <TextBlock FontSize="11" Foreground="#848484">Aktuelle Phase</TextBlock>
-                            <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="Warten auf Zahlungseingang" />
+                            <TextBlock Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="Warten auf Zahlungseingang" x:Name="TextStatus" />
                         </StackPanel>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                        <Button Width="150">Schritt Zurück</Button>    
-                        <Button Margin="5,0,0,0" Width="150">Nächster Schritt</Button>    
+                        <Button Width="150" x:Name="ButtonBack" >Schritt Zurück</Button>    
+                        <Button Margin="5,0,0,0" Width="150" x:Name="ButtonNext">Nächster Schritt</Button>    
                     </StackPanel>
                     <Button Width="305" Height="40" Margin="0,10,0,0" x:Name="ButtonSubmit"> Schritt als Erledigt Markieren  </Button>
                 </StackPanel>
             </Grid>
         </Grid>
         <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Background="#F8F4F4">
-            
+            <ContentControl Content="{Binding CurrentView}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">
             <StackPanel Orientation="Horizontal">
                 <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
                 <StackPanel Orientation="Vertical" Margin="0,12,6,0">
                     <TextBlock FontSize="8" FontWeight="Light"> AUFTRAGSVERWALTUNG </TextBlock>
-                    <TextBlock FontSize="20"> Auftrag #000 - Max Müller GmbH </TextBlock>
+                    <TextBlock FontSize="20" x:Name="TextAuftrag"> Auftrag #000 </TextBlock>
                 </StackPanel>
             </StackPanel>
             <Button Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0">Zurück zum Dashboard</Button>

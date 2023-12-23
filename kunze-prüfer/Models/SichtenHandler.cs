@@ -5,8 +5,7 @@ namespace kunze_prüfer.Models
 {
     public class SichtenHandler
     {
-      DBQ db = new DBQ();        
-      
+      DBQ db = new DBQ(); 
       public async Task<bool> NeuerAuftrag(int id)
       {
           try

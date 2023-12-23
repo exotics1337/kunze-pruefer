@@ -1,4 +1,6 @@
-﻿namespace kunze_prüfer.Views.Stammdaten
+﻿using kunze_prüfer.Models;
+
+namespace kunze_prüfer.Views.Stammdaten
 {
     using System.Windows.Controls;
 

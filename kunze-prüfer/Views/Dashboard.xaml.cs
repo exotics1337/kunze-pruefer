@@ -23,7 +23,7 @@ namespace kunze_prüfer.Views
             DataGrid.handleSelectionChanged = true;
         }
 
-        
+
         private void OnCustomDataGridSelectionChanged()
         {
             CurrentView = new DashboardDetails(DataGrid.currentlySelectedId);

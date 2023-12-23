@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using kunze_prüfer.Views.Auftragsverwaltung.DBSichten;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung
 {
@@ -12,7 +13,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         {
             InitializeComponent();
             DataContext = this;
-            CurrentView = new DashboardDetails(0); 
+            _currentStep = 1; // TODO: Von DB aktuellen Status abfragen
+            CurrentDetailsView = new DashboardDetails(0);
+            StepHandler(_currentStep);
             ButtonSubmit.Click += ButtonSubmit_Click;
         }
 
@@ -21,11 +24,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             SubmitButtonClicked?.Invoke();
         }
 
-
+        private UserControl _currentDetailsView;
         private int _currentStep;
         private UserControl _currentView;
-        private UserControl _currentStepView;
-        
         public UserControl CurrentView
         {
             get { return _currentView; }
@@ -38,15 +39,15 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                 }
             }
         }
-        public UserControl CurrentStepView
+        public UserControl CurrentDetailsView
         {
-            get { return _currentStepView; }
+            get { return _currentDetailsView; }
             set
             {
-                if (_currentStepView != value)
+                if (_currentDetailsView != value)
                 {
-                    _currentStepView = value;
-                    OnPropertyChanged(nameof(CurrentStepView));
+                    _currentDetailsView = value;
+                    OnPropertyChanged(nameof(CurrentDetailsView));
                 }
             }
         }
@@ -61,22 +62,25 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             switch (step)
             {
                 case 1:
-                    // ...
+                    CurrentView = new StammdatenAnlegen();
                     break;
                 case 2:
-                    // ...
+                    CurrentView = new AuftragAnlegen();
                     break;
                 case 3:
-                    // ...
+                    CurrentView = new Angebotbestätigung();
                     break;
                 case 4:
-                    // ...
+                    CurrentView = new Werkstoffprüfung();
                     break;
                 case 5:
-                    // ...
+                    CurrentView = new WerkstoffprüfungFinished();
                     break;
                 case 6:
-                    // ...
+                    CurrentView = new Zahlungseingang();
+                    break;
+                case 7:
+                    CurrentView = new AuftragErledigt();
                     break;
             }
         }

@@ -13,6 +13,7 @@ using AdonisUI;
 using AdonisUI.Controls;
 using kunze_prüfer.Models;
 using kunze_prüfer.Views;
+using kunze_prüfer.Views.Auftragsverwaltung;
 using kunze_prüfer.Views.QuickPDF;
 using MessageBox = AdonisUI.Controls.MessageBox;
 using MessageBoxImage = AdonisUI.Controls.MessageBoxImage;
@@ -90,6 +91,7 @@ namespace kunze_prüfer
                     break;
                 case 2:
                     NavItem2.Style = selectedStyle;
+                    CurrentView = new Auftragsverwaltung();
                     break;
                 case 3:
                     NavItem3.Style = selectedStyle;
