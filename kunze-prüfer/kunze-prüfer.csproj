@@ -103,13 +103,9 @@
     <Compile Include="DataBase\DB.cs" />
     <Compile Include="DataBase\DBQ.cs" />
     <Compile Include="DataBase\QuerryTest.cs" />
-    <Compile Include="Migrations\202311290737428_v03.cs" />
-    <Compile Include="Migrations\202311290737428_v03.Designer.cs">
-      <DependentUpon>202311290737428_v03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312142001412_v04.cs" />
-    <Compile Include="Migrations\202312142001412_v04.Designer.cs">
-      <DependentUpon>202312142001412_v04.cs</DependentUpon>
+    <Compile Include="Migrations\202312241251277_v01.cs" />
+    <Compile Include="Migrations\202312241251277_v01.Designer.cs">
+      <DependentUpon>202312241251277_v01.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
@@ -268,11 +264,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202311290737428_v03.resx">
-      <DependentUpon>202311290737428_v03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312142001412_v04.resx">
-      <DependentUpon>202312142001412_v04.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312241251277_v01.resx">
+      <DependentUpon>202312241251277_v01.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
