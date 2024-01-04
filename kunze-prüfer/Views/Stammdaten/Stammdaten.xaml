@@ -11,7 +11,6 @@
             <ColumnDefinition Width="16"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="340"/>
             <ColumnDefinition Width="16"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -52,7 +51,6 @@
             <local:Fertigstellungszeit Visibility="Collapsed" x:Name="Fertigstellungszeit"></local:Fertigstellungszeit>
             <local:Angebot x:Name="Angebot" Visibility="Collapsed"></local:Angebot>
         </Grid>
-        <Grid Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Background="#F8F4F4"></Grid>
         
     </Grid>
 </UserControl>

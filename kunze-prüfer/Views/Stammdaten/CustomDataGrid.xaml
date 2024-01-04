@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:kunze_prüfer.Views.Stammdaten"
              mc:Ignorable="d"
-             d:DesignHeight="440" d:DesignWidth="650">
+             d:DesignHeight="440" d:DesignWidth="990">
     <Grid>
         <DataGrid AutoGenerateColumns="False" x:Name="baseDataGrid" SelectionChanged="SelectionChanged">
             
