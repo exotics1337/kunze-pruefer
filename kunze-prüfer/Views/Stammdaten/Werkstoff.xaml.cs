@@ -7,6 +7,8 @@
         public Werkstoff()
         {
             InitializeComponent();
+            cdg_werkstoff.KonfiguriereSpaltenFuerModell(typeof(Werkstoff));
+            cdg_werkstoff.InitializeData<DataBase.Werkstoff>();
         }
     }
 }

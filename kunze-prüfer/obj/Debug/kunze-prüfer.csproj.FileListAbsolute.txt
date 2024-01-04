@@ -423,7 +423,6 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftrags
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Stammdaten.baml
-C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DashboardDetails.g.cs
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\Dashboard.g.cs
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\Views\DatabaseConfig.g.cs
@@ -627,3 +626,14 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Vie
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoff.baml
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources

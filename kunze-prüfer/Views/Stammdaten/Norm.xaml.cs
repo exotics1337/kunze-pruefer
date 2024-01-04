@@ -7,6 +7,8 @@
         public Norm()
         {
             InitializeComponent();
+            cdg_norm.KonfiguriereSpaltenFuerModell(typeof(Norm));
+            cdg_norm.InitializeData<DataBase.Norm>();
         }
     }
 }

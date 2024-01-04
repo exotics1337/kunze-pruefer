@@ -7,6 +7,8 @@
         public Angebot()
         {
             InitializeComponent();
+            cdg_angebot.KonfiguriereSpaltenFuerModell(typeof(Angebot),showAll:true);
+            cdg_angebot.InitializeData<DataBase.Angebot>();
         }
     }
 }

@@ -45,13 +45,18 @@ namespace kunze_prüfer.Views.Stammdaten
             else if (modellTyp == typeof(Mitarbeiter))
             {
                 // Konfigurieren Sie hier die Spalten für Mitarbeiter
-                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Mitarbeitername", Binding = new Binding("M_nname") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Id", Binding = new Binding("M_nr"), IsReadOnly = true});
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Vorname", Binding = new Binding("M_vname") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Nachname", Binding = new Binding("M_nname") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Passwort", Binding = new Binding("M_pass") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Admin", Binding = new Binding("M_admin") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("M_geloescht") });
             }
             else if (modellTyp == typeof(Auftrag))
             {
                 if (showAll)
                 {
-                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftragsnummer", Binding = new Binding("Auf_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftragsnummer", Binding = new Binding("Auf_nr"), IsReadOnly = true});
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftragsannahme", Binding = new Binding("Auf_angenommen") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Liefertermin", Binding = new Binding("Auf_liefertermin") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kundennummer", Binding = new Binding("k_nr") });
@@ -75,6 +80,77 @@ namespace kunze_prüfer.Views.Stammdaten
                 {
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Auf_geloescht") });
                 }
+            }
+            else if (modellTyp == typeof(Mehrwertsteuer))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Mwst_nr"), IsReadOnly = true});
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Steuersatz", Binding = new Binding("Mswt_satz") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Mswt_geloescht") });
+            }
+            else if (modellTyp == typeof(Norm))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("N_nr"), IsReadOnly = true});               
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bezeichnung", Binding = new Binding("N_bez") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("N_geloescht") });
+            }
+            else if (modellTyp == typeof(Abnahmegesellschaft))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Abnahme_nr"), IsReadOnly = true});               
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bezeichnung", Binding = new Binding("Abnhme_bez") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Abnahme_geloescht") });
+            }
+            else if (modellTyp == typeof(Ansprechpartner))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Anspr_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Vorname", Binding = new Binding("Anspr_vname") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Nachname", Binding = new Binding("Anspr_nname") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Telefon", Binding = new Binding("Anspr_tel") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "E-Mail", Binding = new Binding("Anspr_email") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Position", Binding = new Binding("Anspr_position") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Anspr_geloescht") });
+            }
+            else if (modellTyp == typeof(Fertigstellungszeit))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Fertigstellungszeit-ID", Binding = new Binding("P_fertigstellung_zeit_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bezeichnung", Binding = new Binding("P_fertigstellung_zeit_bez") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("P_fertigstellung_geloescht") });
+            }
+            else if (modellTyp == typeof(Prüfungstypen))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Typ-ID", Binding = new Binding("Pe_Typ_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Typbezeichnung", Binding = new Binding("Pe_typ_bez") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Durchschnittspreis", Binding = new Binding("Pe_durch_preis") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Pe_geloescht") });
+            }
+            else if (modellTyp == typeof(Textbausteine))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Textbaustein-Nr", Binding = new Binding("Textbaustein_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Überschrift", Binding = new Binding("Text_Ueberschrift") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Inhalt", Binding = new Binding("Text_Inhalt") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Text_geloescht") });
+            }
+            else if (modellTyp == typeof(Werkstoff))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Nr", Binding = new Binding("w_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Name", Binding = new Binding("w_name") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kurzbeschreibung", Binding = new Binding("w_kurz") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kennzeichen", Binding = new Binding("w_kennzeichen") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Oberfläche", Binding = new Binding("w_oberflaeche") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Höhe", Binding = new Binding("w_hoehe") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Breite", Binding = new Binding("w_breite") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Länge", Binding = new Binding("w_laenge") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gewicht", Binding = new Binding("w_gewicht") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("w_geloescht") });
+            }
+            else if (modellTyp==typeof(Angebot))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebot-Nr", Binding = new Binding("Ang_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Probevoraussetzung", Binding = new Binding("Ang_probe_vorraussetzung") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angenommen", Binding = new Binding("Ang_angenommen") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gültigkeitsdatum", Binding = new Binding("Ang_gueltigkeit_dat") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "MwSt-Nr", Binding = new Binding("Mwst_nr") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftrags-Nr", Binding = new Binding("Auf_nr") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Ang_geloescht") });
             }
         }
 

@@ -7,6 +7,8 @@
         public Mehrwertsteuer()
         {
             InitializeComponent();
+            cdg_mehrwert.KonfiguriereSpaltenFuerModell(typeof(Mehrwertsteuer));
+            cdg_mehrwert.InitializeData<DataBase.Mehrwertsteuer>();
         }
     }
 }

@@ -4,9 +4,11 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Data.Entity.Infrastructure.Design;
     using System.Linq;
     using System.Windows;
     using System.Windows.Controls;
+    using System.Xml.Schema;
     using kunze_prüfer.Views.Stammdaten;
     using kunze_prüfer.DataBase;
 
@@ -19,6 +21,19 @@
             Stumm = new ObservableCollection<string>();
             loadbox();
             Kunden.kunde_layout.Stammdaten = this;
+            Mitarbeiter.Mitarbei_layout.Stammdaten = this;
+            Abnahmegesellschaft.Abnahme_layout.Stammdaten = this;
+            Angebot.Angebot_layout.Stammdaten = this;
+            Ansprechpartner.Ansprech_layout.Stammdaten = this;
+            Auftrag.Auftrag_layout.Stammdaten = this;
+            Abnahmegesellschaft.Abnahme_layout.Stammdaten = this;
+            Mehrwertsteuer.Mehrwert_layout.Stammdaten = this;
+            Werkstoff.Werkstoff_layout.Stammdaten = this;
+            Norm.Norm_layout.Stammdaten = this;
+            Prüfungstypen.Prüf_layout.Stammdaten = this;
+            Fertigstellungszeit.Fertigstell_layout.Stammdaten = this;
+            Textbausteine.Textbaustein_layout.Stammdaten = this; 
+            
         }
         //Databinding
         public ObservableCollection<string> Stumm { get; set; }
@@ -90,10 +105,10 @@
                         Textbausteine.Visibility = Visibility.Visible;
                         break;                    
                     case"Auftrag":
-                        Textbausteine.Visibility = Visibility.Visible;
+                        Auftrag.Visibility = Visibility.Visible;
                         break;  
                     case"Werkstoff":
-                        Textbausteine.Visibility = Visibility.Visible;
+                        Werkstoff.Visibility = Visibility.Visible;
                         break;  
                     
                 }    
@@ -107,29 +122,47 @@
                 switch (AuswahlCb1.SelectedItem.ToString())
                 {
                     case "Kunden":
-                        UpdateEntity(Kunden.tesel.baseDataGrid.ItemsSource as IEnumerable<Kunde>,"k_nr");
+                        UpdateEntity(Kunden.tesel.baseDataGrid.ItemsSource as IEnumerable<DataBase.Kunde>,"k_nr");
                         break;
                     case "Mitarbeiter":
+                        UpdateEntity(Mitarbeiter.cdg_mitarbeiter.baseDataGrid.ItemsSource as IEnumerable<DataBase.Mitarbeiter>,"M_nr");
                         break;
                     case "Abnahmegesellschaft":
+                        UpdateEntity(Abnahmegesellschaft.cdg_abnahme.baseDataGrid.ItemsSource as IEnumerable<DataBase.Abnahmegesellschaft>,"Abnahme_nr");
                         break; 
                     case "Ansprechpartner":
+                        UpdateEntity(Ansprechpartner.cdg_ansprech.baseDataGrid.ItemsSource as IEnumerable<DataBase.Ansprechpartner>, "Anspr_nr");
                         break;
                     case "Fertigstellungszeit":
+                        UpdateEntity(Fertigstellungszeit.cdg_fertigstellung.baseDataGrid.ItemsSource as IEnumerable<DataBase.Fertigstellung_Zeit>, "P_fertigstellung_zeit_nr");
                         break; 
                     case "Norm":
+                        UpdateEntity(Norm.cdg_norm.baseDataGrid.ItemsSource as IEnumerable<DataBase.Norm>, "N_nr");
                         break;   
                     case "Mehrwertsteuer":
+                        UpdateEntity(Mehrwertsteuer.cdg_mehrwert.baseDataGrid.ItemsSource as IEnumerable<DataBase.Mehrwertsteuer>,"Mwst_nr");
                         break;
                     case "Angebot":
+                        UpdateEntity(Angebot.cdg_angebot.baseDataGrid.ItemsSource as IEnumerable<DataBase.Angebot> as IEnumerable<DataBase.Angebot>, "Ang_nr");
                         break; 
                     case "Prüfungstypen":
-                        break;                    
+                        UpdateEntity(Prüfungstypen.cdg_prüf.baseDataGrid.ItemsSource as IEnumerable<DataBase.Pruefungstyp>, "Pe_Typ_nr");
+                        break;
+                    case "Auftrag":
+                        UpdateEntity(Auftrag.cdg_auftrag.baseDataGrid.ItemsSource as IEnumerable<DataBase.Auftrag>, "Auf_nr");
+                        break;
+                    case "Werkstoff":
+                        UpdateEntity(Werkstoff.cdg_werkstoff.baseDataGrid.ItemsSource as IEnumerable<DataBase.Werkstoff>,"w_nr");
+                        break;
+                    case "Textbausteine":
+                        UpdateEntity(Textbausteine.cdg_textbaustein.baseDataGrid.ItemsSource as IEnumerable<DataBase.Textbaustein>, "Textbaustein_nr");
+                        break;
+                    
                 } 
             }
             else
             {
-                Console.WriteLine("ich hasse alle");
+                Console.WriteLine("Debug");
             }
 
         } 

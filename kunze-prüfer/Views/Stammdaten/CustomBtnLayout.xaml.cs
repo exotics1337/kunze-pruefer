@@ -7,6 +7,7 @@
     using System.Windows;
     using System.Windows.Controls;
     using DataBase;
+    using Models;
 
     public partial class CustomBtnLayout : UserControl
     {
@@ -20,7 +21,14 @@
 
         private void Update_btn_OnClick(object sender, RoutedEventArgs e)
         {
-            Stammdaten.UpdateData();
+            try
+            {
+                Stammdaten.UpdateData();
+            }
+            catch (Exception exception)
+            {
+                AdonisUI.Controls.MessageBox.Show("Bitte überprüfen sie Ihre Eingaben");
+            }
         }
 
         

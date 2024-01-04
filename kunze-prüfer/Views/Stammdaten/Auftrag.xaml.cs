@@ -7,6 +7,8 @@
         public Auftrag()
         {
             InitializeComponent();
+            cdg_auftrag.KonfiguriereSpaltenFuerModell(typeof(Auftrag));
+            cdg_auftrag.InitializeData<DataBase.Auftrag>();
         }
     }
 }
