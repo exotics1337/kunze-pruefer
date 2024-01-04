@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using DataBase;
@@ -14,6 +15,7 @@
         public CustomBtnLayout()
         {
             InitializeComponent();
+            
             
         }
 
@@ -63,10 +65,24 @@
                 throw;
             }
         }
-
-        private void Refresh_btn_OnClick(object sender, RoutedEventArgs e)
+        private async void Refresh_btn_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            var kundenTask = Stammdaten.Kunden.tesel.InitializeData<DataBase.Kunde>();
+            var mitarbeiterTask = Stammdaten.Mitarbeiter.cdg_mitarbeiter.InitializeData<DataBase.Mitarbeiter>();
+            var abnahmegesellschaftTask = Stammdaten.Abnahmegesellschaft.cdg_abnahme.InitializeData<DataBase.Abnahmegesellschaft>();
+            var ansprechpartnerTask = Stammdaten.Ansprechpartner.cdg_ansprech.InitializeData<DataBase.Ansprechpartner>();
+            var fertigstellungszeitTask = Stammdaten.Fertigstellungszeit.cdg_fertigstellung.InitializeData<DataBase.Fertigstellung_Zeit>();
+            var normTask = Stammdaten.Norm.cdg_norm.InitializeData<DataBase.Norm>();
+            var mehrwertsteuerTask = Stammdaten.Mehrwertsteuer.cdg_mehrwert.InitializeData<DataBase.Mehrwertsteuer>();
+            var angebotTask = Stammdaten.Angebot.cdg_angebot.InitializeData<DataBase.Angebot>();
+            var pruefungstypenTask = Stammdaten.Prüfungstypen.cdg_prüf.InitializeData<DataBase.Pruefungstyp>();
+            var auftragTask = Stammdaten.Auftrag.cdg_auftrag.InitializeData<DataBase.Auftrag>();
+            var werkstoffTask = Stammdaten.Werkstoff.cdg_werkstoff.InitializeData<DataBase.Werkstoff>();
+            var textbausteineTask = Stammdaten.Textbausteine.cdg_textbaustein.InitializeData<DataBase.Textbaustein>();
+
+            await Task.WhenAll(kundenTask, mitarbeiterTask, abnahmegesellschaftTask, ansprechpartnerTask, fertigstellungszeitTask, normTask, mehrwertsteuerTask, angebotTask, pruefungstypenTask, auftragTask, werkstoffTask, textbausteineTask);
         }
+
+
     }
 }
