@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AdonisUI;
 using AdonisUI.Controls;
 using kunze_prüfer.Models;
 using kunze_prüfer.Views;
@@ -163,13 +155,13 @@ namespace kunze_prüfer
 
         private void NavItem14_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            InvoiceDataSource quickInstance = new InvoiceDataSource();
+            InvoiceDataSource invoiceDataInstance = new InvoiceDataSource();
             
-            quickInstance.AddBaseElement( "Test", 1.0, 1.0);
-            quickInstance.AddBaseElement( "Test2", 13.0, 193.0);
-            quickInstance.AddBaseElement( "Test3", 10.0, 1194.0);
+            invoiceDataInstance.AddBaseElement( "Test", 1.0, 1.0);
+            invoiceDataInstance.AddBaseElement( "Test2", 13.0, 193.0);
+            invoiceDataInstance.AddBaseElement( "Test3", 10.0, 1194.0);
             
-            PDFCreator pdfCreator = new PDFCreator(quickInstance);
+            PDFCreator pdfCreator = new PDFCreator(invoiceDataInstance);
             pdfCreator.Show();
         }
     }

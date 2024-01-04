@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using kunze_prüfer.DataBase;
 
 namespace kunze_prüfer.DataBase
@@ -83,6 +84,22 @@ namespace kunze_prüfer.DataBase
             }
         }
         
+        public T GetLastEntity<T, TKey>(Func<T, TKey> keySelector) where T : class
+        {
+            using (var db = new DBQ())
+            {
+                try
+                {
+                    return db.Set<T>().OrderByDescending(keySelector).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
+        
         public void UpdateById<T, TKey>(TKey id, Action<T> updateAction, Func<T, TKey> idSelector) where T : class
         {
             using (var db = new DBQ())
@@ -113,16 +130,6 @@ namespace kunze_prüfer.DataBase
                 );
              */
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
     }
 }

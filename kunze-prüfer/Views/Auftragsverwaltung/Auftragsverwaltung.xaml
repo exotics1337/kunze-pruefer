@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung"
+             xmlns:dbsichten="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung.DBSichten"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1070">
     <Grid>
@@ -46,14 +47,12 @@
             <ContentControl Content="{Binding CurrentView}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">
-            <StackPanel Orientation="Horizontal">
-                <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
+            <StackPanel Orientation="Horizontal" Margin="12,0,0,0">
                 <StackPanel Orientation="Vertical" Margin="0,12,6,0">
                     <TextBlock FontSize="8" FontWeight="Light"> AUFTRAGSVERWALTUNG </TextBlock>
-                    <TextBlock FontSize="20" x:Name="TextAuftrag"> Auftrag #000 </TextBlock>
+                    <TextBlock FontSize="20" x:Name="TextAuftrag"></TextBlock>
                 </StackPanel>
             </StackPanel>
-            <Button Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0">Zurück zum Dashboard</Button>
         </Grid>
         
         

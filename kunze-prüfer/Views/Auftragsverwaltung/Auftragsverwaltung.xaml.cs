@@ -1,23 +1,53 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using kunze_prüfer.Views.Auftragsverwaltung.DBSichten;
+using kunze_prüfer.DataBase;
+using kunze_prüfer.Models;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung
 {
     public partial class Auftragsverwaltung : UserControl
     {
         public static event Action SubmitButtonClicked;
-        public Auftragsverwaltung()
+        private DBQ db = new DBQ();
+        public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
         {
             InitializeComponent();
             DataContext = this;
-            CurrentStep = 1; // TODO: Von DB aktuellen Status abfragen
-            CurrentDetailsView = new DashboardDetails(0); // TODO: Details ID basierend auf aktuellem Auftrag abfragen, aber auch erst wenn der Auftrag existiert
+            CurrentStep = 1;
+            CurrentDetailsView = new DashboardDetails(auftragsnummer);
             StepHandler(CurrentStep);
             ButtonSubmit.Click += ButtonSubmit_Click;
+            if (auftragsnummer == 0)
+            {
+                try
+                {
+                    var auftrag = db.GetLastEntity<Auftrag, int>(c => c.Auf_nr);
+                    if (auftrag != null)
+                    {
+                        auftragsnummer = auftrag.Auf_nr + 1;
+                        CurrentStep = auftrag.Status_nr;
+                        TextStatus.Text = auftrag.Status.Status_bez;
+                        TextAuftrag.Text = $"Auftrag #{auftragsnummer}";
+                    }
+                    else
+                    {
+                        auftragsnummer = 1;
+                        CurrentStep = 1;
+                        TextAuftrag.Text = "Neuer Auftrag";
+                    }
+                    MessageBox.Show(auftragsnummer.ToString());
+                }
+                catch(Exception e)
+                {
+                    ErrorLogger.Log(e);
+                }
+            }
         }
+        
+
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -76,25 +106,25 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             switch (step)
             {
                 case 1:
-                    CurrentView = new StammdatenAnlegen();
+                    CurrentView = new DBSichten.StammdatenAnlegen();
                     break;
                 case 2:
-                    CurrentView = new AuftragAnlegen();
+                    CurrentView = new DBSichten.AuftragAnlegen();
                     break;
                 case 3:
-                    CurrentView = new Angebotbestätigung();
+                    CurrentView = new DBSichten.Angebotbestätigung();
                     break;
                 case 4:
-                    CurrentView = new Werkstoffprüfung();
+                    CurrentView = new DBSichten.Werkstoffprüfung();
                     break;
                 case 5:
-                    CurrentView = new WerkstoffprüfungFinished();
+                    CurrentView = new DBSichten.WerkstoffprüfungFinished();
                     break;
                 case 6:
-                    CurrentView = new Zahlungseingang();
+                    CurrentView = new DBSichten.Zahlungseingang();
                     break;
                 case 7:
-                    CurrentView = new AuftragErledigt();
+                    CurrentView = new DBSichten.AuftragErledigt();
                     break;
             }
         }
