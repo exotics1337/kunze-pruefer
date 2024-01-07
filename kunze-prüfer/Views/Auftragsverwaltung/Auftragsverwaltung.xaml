@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung"
              xmlns:dbsichten="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung.DBSichten"
+             xmlns:extensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1070">
     <Grid>
@@ -36,15 +36,24 @@
                         </StackPanel>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                        <Button Width="150" x:Name="ButtonBack" Click="ButtonBack_OnClick">Schritt Zurück</Button>    
-                        <Button Margin="5,0,0,0" Width="150" x:Name="ButtonNext" Click="ButtonNext_OnClick">Nächster Schritt</Button>    
+                        <Button Width="150" x:Name="ButtonBack" Click="ButtonBack_OnClick" BorderThickness="0">Schritt Zurück</Button>    
+                        <Button Margin="5,0,0,0" Width="150" x:Name="ButtonNext" Click="ButtonNext_OnClick" BorderThickness="0">Nächster Schritt</Button>    
                     </StackPanel>
-                    <Button Width="305" Height="40" Margin="0,10,0,0" x:Name="ButtonSubmit"> Schritt als Erledigt Markieren  </Button>
+                    <Button ToolTip="Wenn der Schritt als Erledigt Markiert wird, dann werden die Änderungen in die Datenbank geschrieben" BorderThickness="0" Width="305" Height="40" Margin="0,10,0,0" x:Name="ButtonSubmit" Background="#FF9600" Foreground="WhiteSmoke" FontWeight="SemiBold"
+                            extensions:CursorSpotlightExtension.BackgroundBrush="#FF7900">
+                        Schritt als Erledigt Markieren  
+                    </Button>
                 </StackPanel>
             </Grid>
         </Grid>
-        <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Background="#F8F4F4">
-            <ContentControl Content="{Binding CurrentView}" />
+        <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Background="#F8F4F4" x:Name="ViewGrid">
+            <dbsichten:StammdatenAnlegen x:Name="viewStammdatenAnlegen" Visibility="Collapsed"></dbsichten:StammdatenAnlegen>
+            <dbsichten:AuftragAnlegen x:Name="viewAuftragAnlegen" Visibility="Collapsed"></dbsichten:AuftragAnlegen>
+            <dbsichten:Angebotbestätigung x:Name="viewAngebotbestätigung" Visibility="Collapsed"></dbsichten:Angebotbestätigung>
+            <dbsichten:Werkstoffprüfung x:Name="viewWerkstoffprüfung" Visibility="Collapsed"></dbsichten:Werkstoffprüfung>
+            <dbsichten:WerkstoffprüfungFinished x:Name="viewWerkstoffprüfungFinished" Visibility="Collapsed"></dbsichten:WerkstoffprüfungFinished>
+            <dbsichten:Zahlungseingang x:Name="viewZahlungseingang" Visibility="Collapsed"></dbsichten:Zahlungseingang>
+            <dbsichten:AuftragErledigt x:Name="viewAuftragErledigt" Visibility="Collapsed"></dbsichten:AuftragErledigt>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">
             <StackPanel Orientation="Horizontal" Margin="12,0,0,0">

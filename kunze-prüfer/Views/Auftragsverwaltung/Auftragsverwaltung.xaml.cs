@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using kunze_prüfer.DataBase;
@@ -12,6 +12,10 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
     {
         public static event Action SubmitButtonClicked;
         private DBQ db = new DBQ();
+        public static class SharedResources
+        {
+            public static Auftrag CurrentAuftrag { get; set; }
+        }
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
         {
             InitializeComponent();
@@ -46,8 +50,6 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                 }
             }
         }
-        
-
 
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +89,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             get { return _currentStep; }
             set
             {
-                if (value < 7 && value > 0)
+                if (value <= 7 && value > 0)
                 {
                     _currentStep = value;
                     OnPropertyChanged(nameof(CurrentStep));
@@ -103,28 +105,67 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
 
         private void StepHandler(int step)
         {
+            foreach (var control in ViewGrid.Children)
+            {
+                if (control is UserControl)
+                {
+                    ((UserControl)control).Visibility = Visibility.Collapsed;
+                }
+            }
             switch (step)
             {
                 case 1:
-                    CurrentView = new DBSichten.StammdatenAnlegen();
+                    viewStammdatenAnlegen.Visibility = Visibility.Visible;
                     break;
                 case 2:
-                    CurrentView = new DBSichten.AuftragAnlegen();
+                    viewAuftragAnlegen.Visibility = Visibility.Visible;
                     break;
                 case 3:
-                    CurrentView = new DBSichten.Angebotbestätigung();
+                    viewAngebotbestätigung.Visibility = Visibility.Visible;
                     break;
                 case 4:
-                    CurrentView = new DBSichten.Werkstoffprüfung();
+                    viewWerkstoffprüfung.Visibility = Visibility.Visible;
                     break;
                 case 5:
-                    CurrentView = new DBSichten.WerkstoffprüfungFinished();
+                    viewWerkstoffprüfungFinished.Visibility = Visibility.Visible;
                     break;
                 case 6:
-                    CurrentView = new DBSichten.Zahlungseingang();
+                    viewZahlungseingang.Visibility = Visibility.Visible;
                     break;
                 case 7:
-                    CurrentView = new DBSichten.AuftragErledigt();
+                    viewAuftragErledigt.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    Debug.WriteLine($"Unexpected step: {step}");
+                    break;
+            }
+            UpdateStatusText();
+        }
+
+        private void UpdateStatusText()
+        {
+            switch (CurrentStep)
+            {
+                case 1:
+                    TextStatus.Text = "Stammdaten anlegen";
+                    break;
+                case 2:
+                    TextStatus.Text = "Auftrag anlegen";
+                    break;
+                case 3:
+                    TextStatus.Text = "Angebotbestätigung";
+                    break;
+                case 4:
+                    TextStatus.Text = "Werkstoffprüfung";
+                    break;
+                case 5:
+                    TextStatus.Text = "Werkstoffprüfung abgeschlossen";
+                    break;
+                case 6:
+                    TextStatus.Text = "Zahlungseingang";
+                    break;
+                case 7:
+                    TextStatus.Text = "Auftrag erledigt";
                     break;
             }
         }

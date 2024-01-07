@@ -8,22 +8,22 @@
              d:DesignHeight="720" d:DesignWidth="1070">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="16"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="16" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="16" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="16"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="16"/>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="16" />
+            <RowDefinition Height="65" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="16" />
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Background="#F8F4F4">
             <StackPanel Orientation="Horizontal">
                 <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
@@ -31,26 +31,27 @@
                     <TextBlock FontSize="20">Stammdaten</TextBlock>
                 </StackPanel>
             </StackPanel>
-          
-            <ComboBox Text="Auswahl" SelectionChanged="AuswahlCb1_OnSelectionChanged" ItemsSource="{Binding Stumm}" x:Name="AuswahlCb1" Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0"></ComboBox>
+
+            <ComboBox Text="Auswahl" SelectionChanged="AuswahlCb1_OnSelectionChanged" ItemsSource="{Binding Stumm}"
+                      x:Name="AuswahlCb1" Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0" />
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1">
             <TextBox>Suche</TextBox>
         </Grid>
-        <Grid Grid.Row="6" Grid.Column="1" x:Name="UserGrid" >
-            <local:Kunden x:Name="Kunden" Visibility="Collapsed"></local:Kunden>
-            <local:Mitarbeiter x:Name="Mitarbeiter" Visibility="Collapsed"></local:Mitarbeiter>
-            <local:Abnahmegesellschaft Visibility="Collapsed" x:Name="Abnahmegesellschaft"></local:Abnahmegesellschaft>
-            <local:Ansprechpartner Visibility="Collapsed" x:Name="Ansprechpartner"></local:Ansprechpartner>
-            <local:Auftrag Visibility="Collapsed" x:Name="Auftrag"></local:Auftrag> 
-            <local:Mehrwertsteuer Visibility="Collapsed" x:Name="Mehrwertsteuer"></local:Mehrwertsteuer>
-            <local:Werkstoff Visibility="Collapsed" x:Name="Werkstoff"></local:Werkstoff>
-            <local:Norm Visibility="Collapsed" x:Name="Norm"></local:Norm>
-            <local:Prüfungstypen Visibility="Collapsed" x:Name="Prüfungstypen"></local:Prüfungstypen>
-            <local:Textbausteine Visibility="Collapsed" x:Name="Textbausteine"></local:Textbausteine>
-            <local:Fertigstellungszeit Visibility="Collapsed" x:Name="Fertigstellungszeit"></local:Fertigstellungszeit>
-            <local:Angebot x:Name="Angebot" Visibility="Collapsed"></local:Angebot>
+        <Grid Grid.Row="6" Grid.Column="1" x:Name="UserGrid">
+            <local:Kunden x:Name="Kunden" Visibility="Collapsed" />
+            <local:Mitarbeiter x:Name="Mitarbeiter" Visibility="Collapsed" />
+            <local:Abnahmegesellschaft Visibility="Collapsed" x:Name="Abnahmegesellschaft" />
+            <local:Ansprechpartner Visibility="Collapsed" x:Name="Ansprechpartner" />
+            <local:Auftrag Visibility="Collapsed" x:Name="Auftrag" />
+            <local:Mehrwertsteuer Visibility="Collapsed" x:Name="Mehrwertsteuer" />
+            <local:Werkstoff Visibility="Collapsed" x:Name="Werkstoff" />
+            <local:Norm Visibility="Collapsed" x:Name="Norm" />
+            <local:Prüfungstypen Visibility="Collapsed" x:Name="Prüfungstypen" />
+            <local:Textbausteine Visibility="Collapsed" x:Name="Textbausteine" />
+            <local:Fertigstellungszeit Visibility="Collapsed" x:Name="Fertigstellungszeit" />
+            <local:Angebot x:Name="Angebot" Visibility="Collapsed" />
         </Grid>
-        
+
     </Grid>
 </UserControl>

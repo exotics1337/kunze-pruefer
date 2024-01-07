@@ -10,6 +10,8 @@
         Title="Kunze Prüfer" Height="720" Width="1280"
         PlaceTitleBarOverContent="True"
         BorderThickness="0"
+        TitleBarBackground="#FF9600"
+        TitleBarForeground="WhiteSmoke"
         Icon="/Media/Icons/kunze-icon.ico">
     <Window.Style>
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
@@ -43,17 +45,13 @@
                 <TextBlock x:Name="NavItem5" Style="{StaticResource NavItem}">Angebote</TextBlock>
                 <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Aufträge</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">STAMMDATEN</ListBoxItem>
-                <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Kundenverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem8" Style="{StaticResource NavItem}">Mitarbeiterverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem9" Style="{StaticResource NavItem}">Prüfungstypen</TextBlock>
-                <TextBlock x:Name="NavItem10" Style="{StaticResource NavItem}">Abnahmegesellschaften</TextBlock>
-                <TextBlock x:Name="NavItem11" Style="{StaticResource NavItem}">Grunddaten</TextBlock>
-                <TextBlock x:Name="NavItem12" MouseDown="NavItem14_OnMouseDown" Style="{StaticResource NavItem}">Testio</TextBlock>
+                <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Stammdatenverwaltung</TextBlock>
+                <TextBlock x:Name="NavItem8" MouseDown="NavItem8_OnMouseDown" Style="{StaticResource NavItem}">Testio</TextBlock>
             </ListBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Background="#FF9600">
             <StackPanel Orientation="Horizontal">
-                <Image MouseDown="Profile_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="15,0,80,0"  Source="/Media/Icons/account-78.png" ToolTip="Max Mustermann" Width="25"></Image>
+                <Image x:Name="ImageProfile" MouseDown="Profile_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="15,0,80,0"  Source="/Media/Icons/account-78.png" ToolTip="Max Mustermann" Width="25"></Image>
                 <Image MouseDown="Exit_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="15,0,5,0" Source="/Media/Icons/close-78.png" Width="25" ></Image>
                 <Image MouseDown="SignOut_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Margin="5,0,15,0" Source="/Media/Icons/logout-78.png" Width="25"></Image>
             </StackPanel>

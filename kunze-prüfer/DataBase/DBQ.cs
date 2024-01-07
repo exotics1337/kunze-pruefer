@@ -13,7 +13,7 @@ namespace kunze_prüfer.DataBase
 
     public class DBQ : KunzeDB
     {
-        public async Task<List<T>> GetAll<T>() where T : class
+        public async Task<List<T>> GetAllAsync<T>() where T : class
         {
             using (var db = new DBQ())
             {
@@ -28,6 +28,12 @@ namespace kunze_prüfer.DataBase
                 }
             }
         }
+        
+        public Task<List<T>> GetAll<T>() where T : class
+        {
+            return Task.Run(() => GetAllAsync<T>().Result);
+        }
+
         
         public async Task UpdateAllAsync<T>(Action<T> updateAction) where T : class
         {
@@ -98,7 +104,7 @@ namespace kunze_prüfer.DataBase
                     throw;
                 }
             }
-        }
+        }   
         
         public void UpdateById<T, TKey>(TKey id, Action<T> updateAction, Func<T, TKey> idSelector) where T : class
         {
@@ -129,6 +135,35 @@ namespace kunze_prüfer.DataBase
                 kunde => kunde.KundenId // Die Funktion, um die Kunden-ID zu extrahieren
                 );
              */
+        }
+        
+        public async Task<List<T>> GetFilteredAsync<T>(string query) where T : class
+        {
+            using (var db = new DBQ())
+            {
+                // Get all entities of type T
+                var allEntities = await db.Set<T>().ToListAsync();
+
+                // Filter entities based on the query
+                var filteredEntities = allEntities.Where(entity =>
+                {
+                    // Check each string property to see if it contains the query
+                    foreach (var prop in typeof(T).GetProperties())
+                    {
+                        if (prop.PropertyType == typeof(string))
+                        {
+                            var value = prop.GetValue(entity) as string;
+                            if (!string.IsNullOrEmpty(value) && value.IndexOf(query, StringComparison.OrdinalIgnoreCase) >= 0)
+                            {
+                                return true; // If any property contains the query, return true
+                            }
+                        }
+                    }
+                    return false; // If no properties contain the query, return false
+                }).ToList();
+
+                return filteredEntities;
+            }
         }
         
     }

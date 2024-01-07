@@ -286,6 +286,7 @@ namespace kunze_prüfer.DataBase
         public string k_name { get; set; }
         public string k_ust_id { get; set; }
         public string k_lief_adresse { get; set; }
+        public string k_rech_adresse { get; set; }
         public bool k_geloescht { get; set; }
         
         //Nav 

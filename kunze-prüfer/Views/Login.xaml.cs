@@ -1,24 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using AdonisUI;
 using kunze_prüfer.DataBase;
 using kunze_prüfer.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
-using QuestPDF.Previewer;
 //using Configuration = kunze_prüfer.Migrations.Configuration;
 
 namespace kunze_prüfer.Views
@@ -113,7 +102,11 @@ namespace kunze_prüfer.Views
                 bool loginResult = await CheckLogin.ValidateLogin(mitnr, password);
                 if (loginResult)
                 {
-                    MainWindow mw = new MainWindow();
+                    User user = new User();
+                    user.MitNr = mitnr;
+                    user.IsAdmin = await CheckLogin.IsAdmin(mitnr);
+                    user.Name = await CheckLogin.GetName(mitnr);
+                    MainWindow mw = new MainWindow(user);
                     mw.Show();
                     this.Close();
                 }

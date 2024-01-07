@@ -36,5 +36,38 @@ namespace kunze_prüfer.Models
             }
         }
         
+        public static async Task<bool> IsAdmin(int mitnr)
+        {
+            using (KunzeDB db = new KunzeDB())
+            {
+                try
+                {
+                    var result = await db.Mitarbeiter.AnyAsync(x => x.M_nr == mitnr && x.M_admin == true);
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogger.Log(ex);
+                    return false;
+                }
+            }
+        }
+        
+        public static async Task<string> GetName(int mitnr)
+        {
+            using (KunzeDB db = new KunzeDB())
+            {
+                try
+                {
+                    var result = await db.Mitarbeiter.Where(x => x.M_nr == mitnr).Select(x => x.M_vname + " " + x.M_nname).FirstOrDefaultAsync();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogger.Log(ex);
+                    return null;
+                }
+            }
+        }
     }
 }

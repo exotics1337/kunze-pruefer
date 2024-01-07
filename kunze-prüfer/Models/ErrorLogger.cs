@@ -10,8 +10,7 @@ namespace kunze_prüfer.Models
         {
             if (!File.Exists("./error.log"))
             {
-                File.Create("./error.log");
-
+                File.Create("./error.log"); // File Handle wird nicht ordnungsmäßig geschlossen, Programm schmiert beim ersten Aufruf ab geht aber beim zweiten. Ich liebe Bill Gates
             }
             
             if (File.Exists("./error.log"))

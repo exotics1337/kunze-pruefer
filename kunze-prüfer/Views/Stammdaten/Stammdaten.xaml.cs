@@ -58,6 +58,8 @@
 
         private void ChangeUser()
         {
+            CustomDataGrid dg = new CustomDataGrid();
+            dg.RefreshData<Kunde>();
             if (AuswahlCb1.SelectedItem!=null)
             {
                 string test = AuswahlCb1.SelectedItem.ToString();
@@ -121,51 +123,39 @@
                 {
                     case "Kunden":
                         UpdateEntity(Kunden.tesel.baseDataGrid.ItemsSource as IEnumerable<DataBase.Kunde>,"k_nr");
-                        Kunden.tesel.InitializeData<DataBase.Kunde>();
                         break;
                     case "Mitarbeiter":
                         UpdateEntity(Mitarbeiter.cdg_mitarbeiter.baseDataGrid.ItemsSource as IEnumerable<DataBase.Mitarbeiter>,"M_nr");
-                        Mitarbeiter.cdg_mitarbeiter.InitializeData<DataBase.Mitarbeiter>();
                         break;
                     case "Abnahmegesellschaft":
                         UpdateEntity(Abnahmegesellschaft.cdg_abnahme.baseDataGrid.ItemsSource as IEnumerable<DataBase.Abnahmegesellschaft>,"Abnahme_nr");
-                        Abnahmegesellschaft.cdg_abnahme.InitializeData<DataBase.Abnahmegesellschaft>();
                         break; 
                     case "Ansprechpartner":
                         UpdateEntity(Ansprechpartner.cdg_ansprech.baseDataGrid.ItemsSource as IEnumerable<DataBase.Ansprechpartner>, "Anspr_nr");
-                        Ansprechpartner.cdg_ansprech.InitializeData<DataBase.Ansprechpartner>();
                         break;
                     case "Fertigstellungszeit":
                         UpdateEntity(Fertigstellungszeit.cdg_fertigstellung.baseDataGrid.ItemsSource as IEnumerable<DataBase.Fertigstellung_Zeit>, "P_fertigstellung_zeit_nr");
-                        Fertigstellungszeit.cdg_fertigstellung.InitializeData<DataBase.Fertigstellung_Zeit>();
                         break; 
                     case "Norm":
                         UpdateEntity(Norm.cdg_norm.baseDataGrid.ItemsSource as IEnumerable<DataBase.Norm>, "N_nr");
-                        Norm.cdg_norm.InitializeData<DataBase.Norm>();
                         break;   
                     case "Mehrwertsteuer":
                         UpdateEntity(Mehrwertsteuer.cdg_mehrwert.baseDataGrid.ItemsSource as IEnumerable<DataBase.Mehrwertsteuer>,"Mwst_nr");
-                        Mehrwertsteuer.cdg_mehrwert.InitializeData<DataBase.Mehrwertsteuer>();
                         break;
                     case "Angebot":
                         UpdateEntity(Angebot.cdg_angebot.baseDataGrid.ItemsSource as IEnumerable<DataBase.Angebot> as IEnumerable<DataBase.Angebot>, "Ang_nr");
-                        Angebot.cdg_angebot.InitializeData<DataBase.Angebot>();
                         break; 
                     case "Prüfungstypen":
                         UpdateEntity(Prüfungstypen.cdg_prüf.baseDataGrid.ItemsSource as IEnumerable<DataBase.Pruefungstyp>, "Pe_Typ_nr");
-                        Prüfungstypen.cdg_prüf.InitializeData<DataBase.Pruefungstyp>();
                         break;
                     case "Auftrag":
                         UpdateEntity(Auftrag.cdg_auftrag.baseDataGrid.ItemsSource as IEnumerable<DataBase.Auftrag>, "Auf_nr");
-                        Auftrag.cdg_auftrag.InitializeData<DataBase.Auftrag>();
                         break;
                     case "Werkstoff":
                         UpdateEntity(Werkstoff.cdg_werkstoff.baseDataGrid.ItemsSource as IEnumerable<DataBase.Werkstoff>,"w_nr");
-                        Werkstoff.cdg_werkstoff.InitializeData<DataBase.Werkstoff>();
                         break;
                     case "Textbausteine":
                         UpdateEntity(Textbausteine.cdg_textbaustein.baseDataGrid.ItemsSource as IEnumerable<DataBase.Textbaustein>, "Textbaustein_nr");
-                        Textbausteine.cdg_textbaustein.InitializeData<DataBase.Textbaustein>();
                         break;
                     
                 } 

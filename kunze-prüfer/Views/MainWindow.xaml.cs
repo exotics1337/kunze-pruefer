@@ -20,13 +20,16 @@ namespace kunze_prüfer
     /// </summary>
     public partial class MainWindow : AdonisUI.Controls.AdonisWindow, INotifyPropertyChanged
     {
+        public static User CurrentUser { get; set; }
         private int selectedPage;
-        public MainWindow()
+        public MainWindow(User user = null)
         {
             InitializeComponent();
             DataContext = this;
             SetDefaultView();
             ViewHandler();
+            CurrentUser = user;
+            if (user != null) ImageProfile.ToolTip = user.Name;
         }
 
         private UserControl _currentView;
@@ -71,10 +74,6 @@ namespace kunze_prüfer
             NavItem6.Style = defaultStyle;
             NavItem7.Style = defaultStyle;
             NavItem8.Style = defaultStyle;
-            NavItem9.Style = defaultStyle;
-            NavItem10.Style = defaultStyle;
-            NavItem11.Style = defaultStyle;
-            NavItem12.Style = defaultStyle;
             switch (selectedPage)
             {
                 case 0:
@@ -99,22 +98,10 @@ namespace kunze_prüfer
                     break;
                 case 9:
                     NavItem7.Style = selectedStyle;
+                    CurrentView = new Stammdaten();
                     break;
                 case 10:
                     NavItem8.Style = selectedStyle;
-                    break;
-                case 11:
-                    NavItem9.Style = selectedStyle;
-                    break;
-                case 12:
-                    NavItem10.Style = selectedStyle;
-                    break;
-                case 13:
-                    NavItem11.Style = selectedStyle;
-                    CurrentView = new Stammdaten();
-                    break;
-                case 14:
-                    NavItem12.Style = selectedStyle;
                     break;
             }
         }
@@ -153,7 +140,7 @@ namespace kunze_prüfer
             }
         }
 
-        private void NavItem14_OnMouseDown(object sender, MouseButtonEventArgs e)
+        private void NavItem8_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             InvoiceDataSource invoiceDataInstance = new InvoiceDataSource();
             

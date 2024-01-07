@@ -1,4 +1,6 @@
-﻿using AdonisUI.Controls;
+﻿using System.Diagnostics;
+using AdonisUI.Controls;
+using kunze_prüfer.Models;
 
 namespace kunze_prüfer.Views.Stammdaten
 {
@@ -18,6 +20,7 @@ namespace kunze_prüfer.Views.Stammdaten
             InitializeComponent();
         }
         
+        DBQ db = new DBQ();
         public int currentlySelectedId = 0;
         public bool handleSelectionChanged = false;
         public event Action SelectionChangedEvent;
@@ -156,7 +159,6 @@ namespace kunze_prüfer.Views.Stammdaten
 
         private async Task<List<T>> LoadAsync<T>() where T : class
         {
-            DBQ db = new DBQ();
             var items = await db.GetAll<T>();
             return items;
         }
@@ -182,6 +184,87 @@ namespace kunze_prüfer.Views.Stammdaten
             currentlySelectedId = (int)baseDataGrid.SelectedCells[0].Item.GetType().GetProperty("Auf_nr")
                 .GetValue(baseDataGrid.SelectedCells[0].Item, null); 
             SelectionChangedEvent?.Invoke();
+        }
+        
+        public (int Id, Type Type) GetDataFromCurrentlySelectedId()
+        {
+            try
+            {
+                var item = baseDataGrid.SelectedCells[0].Item;
+                var type = item.GetType();
+                var idProperty = type.GetProperty("Id");
+                if (idProperty != null)
+                {
+                    var id = (int)idProperty.GetValue(item);
+                    return (id, type);
+                }
+                else
+                {
+                    throw new Exception($"The type {type.Name} does not have an 'Id' property.");
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.Log(e);
+                return (0, null);
+            }
+        }
+        
+        public void Search<T>(string query) where T : class
+        {
+            if (baseDataGrid.ItemsSource != null)
+            {
+                var items = baseDataGrid.ItemsSource as IEnumerable<T>;
+                var filtered = items.Where(item =>
+                {
+                    var type = item.GetType();
+                    var properties = type.GetProperties();
+
+                    return properties.Any(property =>
+                    {
+                        var value = property.GetValue(item);
+                        return value != null && value.ToString().Contains(query);
+                    });
+                });
+                Dispatcher.Invoke(() =>
+                {
+                    baseDataGrid.ItemsSource = filtered;
+                });
+            }
+            else
+            {
+                AdonisUI.Controls.MessageBox.Show("Es wurden keine Ergebnisse gefunden",
+                    "Suche war nicht Erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+        }
+        
+        public void Search<T>(int query) where T : class
+        {
+            var items = baseDataGrid.ItemsSource as IEnumerable<T>;
+            var filtered = items.Where(item =>
+            {
+                var type = item.GetType();
+                var properties = type.GetProperties();
+
+                return properties.Any(property =>
+                {
+                    var value = property.GetValue(item);
+                    return value != null && value.ToString().Contains(query.ToString());
+                });
+            });
+            baseDataGrid.ItemsSource = filtered;
+        }
+        
+        public void SetItemsSource<T>(IEnumerable<T> items) where T : class
+        {
+            Dispatcher.Invoke(() =>
+                {
+                    baseDataGrid.ItemsSource = items;
+                    baseDataGrid.Items.Refresh();
+                    Debug.WriteLine(items.Count());
+                    Debug.WriteLine(baseDataGrid.Items.Count);
+                }
+            );
         }
     }
 }

@@ -9,48 +9,109 @@
     <Grid>
         <ScrollViewer>
             <StackPanel>
-            <GroupBox Height="170" Margin="15" VerticalAlignment="Top" Header="Vorhandenen Kunden auswählen">
+            <GroupBox Height="190" Margin="15" VerticalAlignment="Top" Header="Vorhandenen Kunden auswählen">
                 <StackPanel >
-                    <TextBox Height="30" VerticalAlignment="Top">Suchen...</TextBox>
+                    <TextBox Height="30" VerticalAlignment="Top" x:Name="TextBoxSuchen">Suchen...</TextBox>
                     <TextBlock Text="Ausgewählter Kunde:" FontSize="10" Margin="5" Foreground="#848484"/>                
-                    <TextBlock Text="Max Müller GmbH" FontSize="14" Margin="5" FontWeight="Light" />
-                    <Button Margin="10"> Kunden Auswählen</Button>
+                    <TextBlock x:Name="TextBlockSelectedKunde" Text="Keine Auswahl" FontSize="14" Margin="5" FontWeight="Light" />
+                    <TextBlock Text="Auswahl aufheben" Style="{StaticResource InternalLink}" Foreground="#3D82FF" Cursor="Hand" x:Name="TextBlockSelectionClearKunde" MouseDown="TextBlockSelectionClearKunde_OnMouseDown"></TextBlock>
+                    <Button Margin="10" x:Name="ButtonKundeAuswählen" Click="ButtonKundeAuswählen_OnClick"> Kunden Auswählen</Button>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Height="150" Margin="15,0,15,15" VerticalAlignment="Top" Header="Kundendetails">
+            <GroupBox Height="150" Margin="15,0,15,15" VerticalAlignment="Top" Header="Kundendetails" x:Name="GroupBoxKundendetails">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kundennr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="60" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="60" Text="" TextChanged="TextBoxKundennr_OnTextChanged" x:Name="TextBoxKundennr" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kundenname</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="140" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="140" Text="" x:Name="TextBoxKundenname" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kunden Ust. ID</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="160" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="160" Text="" x:Name="TextBoxKundenUstId" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kunden Adresse</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="180" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="180" Text="" x:Name="TextBoxKundenAdresse" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                        <CheckBox IsChecked="True" Margin="20">Lieferadresse ist wie die Rechnungsadrese</CheckBox>
-                        <StackPanel Margin="0,2,10,10" Visibility="Collapsed">
-                            <TextBlock FontSize="11" Foreground="#848484">Kunden Lieferadresse</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="180" Text="" />
-                        </StackPanel>
+                        <CheckBox IsChecked="True" Margin="20" Content="Lieferadresse ist wie die Rechnungsadresse" x:Name="CheckBoxLieferadresseWieRechnungsadresse" Unchecked="CheckBoxLieferadresseWieRechnungsadresse_OnUnchecked" Checked="CheckBoxLieferadresseWieRechnungsadresse_OnChecked"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,5,10" Visibility="Collapsed">
+                        <TextBlock FontSize="11" Foreground="#848484">Kunden Rechnungsadresse</TextBlock>
+                        <TextBox Margin="0,3,0,0" Width="180" Text="" x:Name="TextBoxKundenRechnungsadresse" />
                     </StackPanel>
                 </Grid>
             </GroupBox>
             <GroupBox Height="200" Margin="15,0,15,15" VerticalAlignment="Top" Header="Ansprechpartnerdetails">
                 <Grid>
-                    <DataGrid>
-                        
+                    <DataGrid x:Name="DataGridAnsprechpartner" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Ansprechpartner.Anspr_nr}" />
+                            <DataGridTextColumn Header="Vorname" Binding="{Binding Ansprechpartner.Anspr_vname}" />
+                            <DataGridTextColumn Header="Nachname" Binding="{Binding Ansprechpartner.Anspr_nname}" />
+                            <DataGridTextColumn Header="Position" Binding="{Binding Ansprechpartner.Anspr_position}" />
+                            <DataGridTextColumn Header="E-Mail" Binding="{Binding Ansprechpartner.Anspr_email}" />
+                            <DataGridTextColumn Header="Telefon" Binding="{Binding Ansprechpartner.Anspr_tel}" />
+                        </DataGrid.Columns>
                     </DataGrid>
+                </Grid>
+            </GroupBox>
+                <GroupBox Height="190" Margin="15,0,15,15" VerticalAlignment="Top" Header="Vorhandenen Werkstoff auswählen">
+                <StackPanel >
+                    <TextBox x:Name="TextBoxSuchenWerkstoff" Height="30" VerticalAlignment="Top">Suchen...</TextBox>
+                    <TextBlock Text="Ausgewählter Werkstoff:" FontSize="10" Margin="5" Foreground="#848484"/>
+                    <TextBlock x:Name="TextBlockSelectedWerkstoff" Text="Keine Auswahl" FontSize="14" Margin="5" FontWeight="Light" />
+                    <TextBlock Text="Auswahl aufheben" Style="{StaticResource InternalLink}" Foreground="#3D82FF" Cursor="Hand" x:Name="TextBlockSelectionClearWerkstoff" MouseDown="TextBlockSelectionClearWerkstoff_OnMouseDown"></TextBlock>
+                    <Button x:Name="ButtonWerkstoffAuswählen" Click="ButtonWerkstoffAuswählen_OnClick" Margin="10"> Werkstoff Auswählen</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Height="160" Margin="15,0,15,15" VerticalAlignment="Top" Header="Werkstoffdetails">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <StackPanel Margin="10,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Werkstoffnr.</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxWerkstoffnr" />
+                        </StackPanel>
+                        <StackPanel Margin="10,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Name</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="140" Text="" x:Name="TextBoxName" />
+                        </StackPanel>
+                        <StackPanel Margin="10,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Kurzname</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxKurzname" />
+                        </StackPanel>
+                        <StackPanel Margin="10,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Kennzeichnen</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="80" Text="" x:Name="TextBoxKennzeichnen" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,15,0,0">
+                        <StackPanel Margin="10,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Oberfläche</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="120" Text="" x:Name="TextBoxOberflaeche" />
+                        </StackPanel>
+                        <StackPanel Margin="8,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Höhe (cm)</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="100" Text="" x:Name="TextBoxHoehe" />
+                        </StackPanel>
+                        <StackPanel Margin="8,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Breite (cm)</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="100" Text="" x:Name="TextBoxBreite" />
+                        </StackPanel>
+                        <StackPanel Margin="8,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Länge (cm)</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="100" Text="" x:Name="TextBoxLaenge" />
+                        </StackPanel>
+                        <StackPanel Margin="8,0,10,10">
+                            <TextBlock FontSize="11" Foreground="#848484">Gewicht (g)</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="100" Text="" x:Name="TextBoxGewicht" />
+                        </StackPanel>
+                    </StackPanel>
                 </Grid>
             </GroupBox>
         </StackPanel>
