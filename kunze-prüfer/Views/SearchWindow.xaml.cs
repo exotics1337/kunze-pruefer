@@ -40,8 +40,6 @@ namespace kunze_prüfer.Views
 
         public async Task SearchWithType(string query = "", int queryInt = 0)
         {
-
-            
                 if (!string.IsNullOrEmpty(query))
                 {
                     switch (_tableTypeString)
@@ -110,7 +108,17 @@ namespace kunze_prüfer.Views
                             DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff>(query);
                             break;
                     }
+
+                    if (DataGrid.Items.Count == 1)
+                    {
+                        TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnis";
+                    }
+                    else
+                    {
+                        TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnisse";
+                    }
                 }
+                
         }
 
         private Func<T, bool> GetPredicate<T>(string query) where T : class
@@ -139,17 +147,14 @@ namespace kunze_prüfer.Views
 
             if (row != null)
             {
-                // Get the DataGridCellsPresenter from the row
                 DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
 
                 if (presenter != null)
                 {
-                    // Get the first cell of the selected row
                     DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(0);
 
                     if (cell != null)
                     {
-                        // Assuming the cell contains text, you might need to adjust this for other types of content
                         TextBlock txt = cell.Content as TextBlock;
 
                         if (txt != null)

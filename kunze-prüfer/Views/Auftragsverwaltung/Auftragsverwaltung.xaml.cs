@@ -14,7 +14,8 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         private DBQ db = new DBQ();
         public static class SharedResources
         {
-            public static Auftrag CurrentAuftrag { get; set; }
+            public static Auftrag CurrentAuftrag = new Auftrag();
+            public static int Step = 1;
         }
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
         {
@@ -54,6 +55,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
             SubmitButtonClicked?.Invoke();
+            CurrentStep = SharedResources.Step;
         }
 
         private UserControl _currentDetailsView;

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Data.Entity;
 using kunze_prüfer.DataBase;
+using kunze_prüfer.Models;
 
 namespace kunze_prüfer.DataBase
 
@@ -68,8 +69,8 @@ namespace kunze_prüfer.DataBase
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
-                    throw;
+                    ErrorLogger.Log(e);
+                    return null;
                 }
             }
         }

@@ -23,11 +23,11 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kundennr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="60" Text="" TextChanged="TextBoxKundennr_OnTextChanged" x:Name="TextBoxKundennr" />
+                            <TextBox Margin="0,3,0,0" Width="60" Text="" TextChanged="TextBoxKundennr_OnTextChanged" x:Name="TextBoxKundennr" IsReadOnly="True" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kundenname</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="140" Text="" x:Name="TextBoxKundenname" />
+                            <TextBox Margin="0,3,0,0" Width="140" Text="" x:Name="TextBoxKundenname" TextChanged="TextBoxKundenname_OnTextChanged" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kunden Ust. ID</TextBlock>
@@ -39,9 +39,9 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                        <CheckBox IsChecked="True" Margin="20" Content="Lieferadresse ist wie die Rechnungsadresse" x:Name="CheckBoxLieferadresseWieRechnungsadresse" Unchecked="CheckBoxLieferadresseWieRechnungsadresse_OnUnchecked" Checked="CheckBoxLieferadresseWieRechnungsadresse_OnChecked"/>
+                        <CheckBox IsChecked="True" Margin="20" Content="Lieferadresse ist wie die Rechnungsadresse" x:Name="CheckBoxLieferadresseWieRechnungsadresse" Click="CheckBoxLieferadresseWieRechnungsadresse_OnClick"/>
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,5,10" Visibility="Collapsed">
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,5,10" x:Name="StackPanelRechnungsadresse" Visibility="Collapsed">
                         <TextBlock FontSize="11" Foreground="#848484">Kunden Rechnungsadresse</TextBlock>
                         <TextBox Margin="0,3,0,0" Width="180" Text="" x:Name="TextBoxKundenRechnungsadresse" />
                     </StackPanel>
@@ -61,7 +61,7 @@
                     </DataGrid>
                 </Grid>
             </GroupBox>
-                <GroupBox Height="190" Margin="15,0,15,15" VerticalAlignment="Top" Header="Vorhandenen Werkstoff auswählen">
+                <GroupBox Height="190" Margin="15,0,15,15" VerticalAlignment="Top" Header="Vorhandenen Werkstoff auswählen" x:Name="GroupBoxWerkstoffDetails">
                 <StackPanel >
                     <TextBox x:Name="TextBoxSuchenWerkstoff" Height="30" VerticalAlignment="Top">Suchen...</TextBox>
                     <TextBlock Text="Ausgewählter Werkstoff:" FontSize="10" Margin="5" Foreground="#848484"/>
@@ -75,11 +75,11 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Werkstoffnr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxWerkstoffnr" />
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxWerkstoffnr" IsReadOnly="True"/>
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Name</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="140" Text="" x:Name="TextBoxName" />
+                            <TextBox Margin="0,3,0,0" Width="140" Text="" x:Name="TextBoxName" TextChanged="TextBoxName_OnTextChanged" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Kurzname</TextBlock>
