@@ -84,5 +84,48 @@
         }
 
 
+        private async void Search_btn_OnClick(object sender, RoutedEventArgs e)
+        {
+            SearchWindow sw = new SearchWindow(Stammdaten.SearchBox.Text, GetTable());
+            if (Stammdaten.SearchBox.Text != "")
+            {
+                await sw.SearchWithType(Stammdaten.SearchBox.Text);
+            }
+
+            sw.ShowDialog();
+        }
+
+        private string GetTable()
+        {
+            switch (Stammdaten.AuswahlCb1.SelectedItem.ToString())
+            {
+                case "Kunden":
+                    return "Kunde";
+                case "Mitarbeiter":
+                    return "Mitarbeiter";
+                case "Abnahmegesellschaft":
+                    return "Abnahmegesellschaft";
+                case "Ansprechpartner":
+                    return "Ansprechpartner";
+                case "Fertigstellungszeit":
+                    return "Fertigstellung_Zeit";
+                case "Norm":
+                    return "Norm";
+                case "Mehrwertsteuer":
+                    return "Mehrwertsteuer";
+                case "Angebot":
+                    return "Angebot";
+                case "Prüfungstypen":
+                    return "Pruefungstyp";
+                case"Textbausteine":
+                    return "Textbaustein";
+                case"Auftrag":
+                    return "Auftrag";
+                case"Werkstoff":
+                    return "Werkstoff";
+            }
+
+            return "hmm";
+        }
     }
 }

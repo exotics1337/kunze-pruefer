@@ -10,6 +10,7 @@
         <StackPanel Background="#F8F4F4" Orientation="Horizontal">
             <Button Width="120" Height="30" x:Name="Refresh_btn" Click="Refresh_btn_OnClick" Margin="10">Refresh</Button>
             <Button Width="120" Height="30" x:Name="Update_btn" Click="Update_btn_OnClick" Margin="10">Update</Button>
+            <Button Width="120" Height="30" x:Name="Search_btn" Click="Search_btn_OnClick" Margin="10">Suche</Button>
         </StackPanel>
     </Grid>
 </UserControl>

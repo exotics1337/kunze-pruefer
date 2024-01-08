@@ -186,7 +186,7 @@
             db.GetEntityByIdAsync<Kunde, int>(id);
         }
 
-       
-        
+
+   
     }
 }
