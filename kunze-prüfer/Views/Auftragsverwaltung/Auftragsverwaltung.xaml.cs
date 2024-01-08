@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
@@ -12,9 +13,11 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
     {
         public static event Action SubmitButtonClicked;
         private DBQ db = new DBQ();
+        private int _minStep = 1;
         public static class SharedResources
         {
             public static Auftrag CurrentAuftrag = new Auftrag();
+            public static ObservableCollection<Probe_Unter> CurrentProbeUnterList = new ObservableCollection<Probe_Unter>();
             public static int Step = 1;
         }
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
@@ -48,6 +51,30 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                 catch(Exception e)
                 {
                     ErrorLogger.Log(e);
+                }
+            }
+            else
+            {
+                try
+                {
+                    var auftrag = db.GetEntityById<Auftrag, int>(auftragsnummer);
+                    if (auftrag != null)
+                    {
+                        CurrentStep = auftrag.Result.Status_nr;
+                        TextStatus.Text = auftrag.Result.Status.Status_bez;
+                        TextAuftrag.Text = $"Auftrag #{auftragsnummer}";
+                    }
+                    else
+                    {
+                        auftragsnummer = 1;
+                        CurrentStep = 1;
+                        TextAuftrag.Text = "Neuer Auftrag";
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
                 }
             }
         }
@@ -91,7 +118,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             get { return _currentStep; }
             set
             {
-                if (value <= 7 && value > 0)
+                if (value <= 7 && value >= _minStep)
                 {
                     _currentStep = value;
                     OnPropertyChanged(nameof(CurrentStep));

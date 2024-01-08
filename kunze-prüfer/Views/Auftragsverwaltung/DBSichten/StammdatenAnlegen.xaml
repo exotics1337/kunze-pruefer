@@ -52,12 +52,12 @@
                     <StackPanel Orientation="Vertical">
                         <DataGrid x:Name="DataGridAnsprechpartner" AutoGenerateColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding Ansprechpartner.Anspr_nr}" />
-                                <DataGridTextColumn Header="Vorname" Binding="{Binding Ansprechpartner.Anspr_vname}" />
-                                <DataGridTextColumn Header="Nachname" Binding="{Binding Ansprechpartner.Anspr_nname}" />
-                                <DataGridTextColumn Header="Position" Binding="{Binding Ansprechpartner.Anspr_position}" />
-                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Ansprechpartner.Anspr_email}" />
-                                <DataGridTextColumn Header="Telefon" Binding="{Binding Ansprechpartner.Anspr_tel}" />
+                                <DataGridTextColumn Header="ID" Binding="{Binding Path=. Ansprechpartner.Anspr_nr}" />
+                                <DataGridTextColumn Header="Vorname" Binding="{Binding Path=. Ansprechpartner.Anspr_vname}" />
+                                <DataGridTextColumn Header="Nachname" Binding="{Binding Path=. Ansprechpartner.Anspr_nname}" />
+                                <DataGridTextColumn Header="Position" Binding="{Binding Path=. Ansprechpartner.Anspr_position}" />
+                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=. Ansprechpartner.Anspr_email}" />
+                                <DataGridTextColumn Header="Telefon" Binding="{Binding Path=. Ansprechpartner.Anspr_tel}" />
                             </DataGrid.Columns>
                         </DataGrid>
                         <StackPanel Margin="10,10,10,10" HorizontalAlignment="Left">
