@@ -114,12 +114,19 @@ namespace kunze_prüfer
 
         private void Profile_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            AdonisUI.Controls.MessageBox.Show("" +
+                                              "Sie sind eingeloggt als: " + CurrentUser.Name + "\n" +
+                                              "Admin: " + CurrentUser.IsAdmin + "\n" +
+                                              "", "Login-Information", AdonisUI.Controls.MessageBoxButton.OK);
         }
 
         private void SignOut_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+            // close this window, clear the CurrentUser and open the LoginWindow
+            Login Login = new Login();
+            Login.Show();
+            this.Close();
+            CurrentUser = null;
         }
 
         private void Exit_MouseDown(object sender, MouseButtonEventArgs e)

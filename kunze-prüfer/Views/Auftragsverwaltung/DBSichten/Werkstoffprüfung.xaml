@@ -22,41 +22,41 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Prüfungsnr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="90" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxPruefungsnr"/>
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Probeanzahl</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="90" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxProbeanzahl"/>
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Probenr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="90" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxProbenr"/>
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Probe Eingangsdatum</TextBlock>
-                            <DatePicker Margin="0,3,0,0" Width="160" Text="" />
+                            <DatePicker Margin="0,3,0,0" Width="160" x:Name="DatePickerProbeEingangsdatum"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,15,0,0">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Fertigstellungsdatum</TextBlock>
-                            <DatePicker Margin="0,3,0,0" Width="120" Text="" />
+                            <DatePicker Margin="0,3,0,0" Width="120" x:Name="DatePickerFertigstellungsdatum"/>
                         </StackPanel>
                         <StackPanel Margin="8,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Fertigstellungszeit</TextBlock>
-                            <ComboBox Margin="0,3,0,0" Width="100" Text="" />
+                            <ComboBox Margin="0,3,0,0" Width="100" x:Name="ComboBoxFertigstellungszeit"/>
                         </StackPanel>
                         <StackPanel Margin="8,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Abnahmedatum</TextBlock>
-                            <DatePicker Margin="0,3,0,0" Width="100" Text="" />
+                            <DatePicker Margin="0,3,0,0" Width="100" x:Name="DatePickerAbnahmedatum"/>
                         </StackPanel>
                         <StackPanel Margin="8,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Charge Nr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="100" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="100" Text="" x:Name="TextBoxChargeNr"/>
                         </StackPanel>
                         <StackPanel Margin="8,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Bemerkung</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="100" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="100" Text="" x:Name="TextBoxBemerkung"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -74,19 +74,30 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Abnahmenr.</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="90" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="90" Text="" x:Name="TextBoxAbnahmenr"/>
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Name</TextBlock>
-                            <TextBox Margin="0,3,0,0" Width="150" Text="" />
+                            <TextBox Margin="0,3,0,0" Width="150" Text="" x:Name="TextBoxNameAbnahmegesellschaft"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </GroupBox>
             <GroupBox Height="200" Margin="15,0,15,15" VerticalAlignment="Top" Header="Werkstoffprüfung">
                 <Grid>
-                    <DataGrid>
-                        
+                    <DataGrid x:Name="DataGridWerkstoff">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Nr" />
+                            <DataGridTemplateColumn Header="Typ Nr" />
+                            <DataGridTemplateColumn Header="Anzahl" />
+                            <DataGridTemplateColumn Header="Temperatur" />
+                            <DataGridTemplateColumn Header="Probenform" />
+                            <DataGridTemplateColumn Header="Probenlage" />
+                            <DataGridTemplateColumn Header="Norm" />
+                            <DataGridTemplateColumn Header="Bemerkung" />
+                            <DataGridTemplateColumn Header="Mitarbeiter Nr" />
+                            <DataGridTemplateColumn Header="Ergebnis" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </GroupBox>

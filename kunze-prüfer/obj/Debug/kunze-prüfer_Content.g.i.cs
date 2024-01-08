@@ -19,6 +19,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/kunze-icon.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/new-doc-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/new-test-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/pdf-48.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/print-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/save-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/test-52.png")]

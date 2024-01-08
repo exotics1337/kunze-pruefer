@@ -14,7 +14,8 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         private DBQ db = new DBQ();
         public static class SharedResources
         {
-            public static Auftrag CurrentAuftrag { get; set; }
+            public static Auftrag CurrentAuftrag = new Auftrag();
+            public static int Step = 1;
         }
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
         {
@@ -54,6 +55,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
             SubmitButtonClicked?.Invoke();
+            CurrentStep = SharedResources.Step;
         }
 
         private UserControl _currentDetailsView;
@@ -116,24 +118,31 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             {
                 case 1:
                     viewStammdatenAnlegen.Visibility = Visibility.Visible;
+                    SharedResources.Step = 1;
                     break;
                 case 2:
                     viewAuftragAnlegen.Visibility = Visibility.Visible;
+                    SharedResources.Step = 2;
                     break;
                 case 3:
                     viewAngebotbestätigung.Visibility = Visibility.Visible;
+                    SharedResources.Step = 3;
                     break;
                 case 4:
                     viewWerkstoffprüfung.Visibility = Visibility.Visible;
+                    SharedResources.Step = 4;
                     break;
                 case 5:
                     viewWerkstoffprüfungFinished.Visibility = Visibility.Visible;
+                    SharedResources.Step = 5;
                     break;
                 case 6:
                     viewZahlungseingang.Visibility = Visibility.Visible;
+                    SharedResources.Step = 6;
                     break;
                 case 7:
                     viewAuftragErledigt.Visibility = Visibility.Visible;
+                    SharedResources.Step = 7;
                     break;
                 default:
                     Debug.WriteLine($"Unexpected step: {step}");
