@@ -28,9 +28,11 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         }
         
         
-        private void OnSubmitButtonClicked()
+        private async void OnSubmitButtonClicked()
         {
-            if (CheckBoxLieferadresseWieRechnungsadresse.IsChecked == true)
+            if (Auftragsverwaltung.SharedResources.Step == 1)
+            {
+                if (CheckBoxLieferadresseWieRechnungsadresse.IsChecked == true)
             {
                 TextBoxKundenRechnungsadresse.Text = TextBoxKundenAdresse.Text;
             }
@@ -72,6 +74,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     _werkstoff = db.Set<DataBase.Werkstoff>().FirstOrDefault(w => w.w_nr == wnr);
                 }
                 
+                _auftrag.Anspr_nr = int.Parse(TextBoxAnsprechpartner.Text);
                 _auftrag.k_nr = _kunde.k_nr;
                 _auftrag.w_nr = _werkstoff.w_nr;
                 if (!_isKundeSelected)
@@ -82,12 +85,15 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                 {
                     db.Set<DataBase.Werkstoff>().Add(_werkstoff);
                 }
-                db.SaveChangesAsync();
-                Auftragsverwaltung.SharedResources.Step++;
+                await db.SaveChangesAsync();
+                Auftragsverwaltung.SharedResources.Step = 1;
+                Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
+                MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
             }
             else
             {
                 AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+            }
             }
         }
 
@@ -217,8 +223,15 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             if (!_isKundeSelected)
             {
                 var lastKunde = db.GetLastEntity<Kunde, int>(k => k.k_nr);
-                int newK_nr = lastKunde.k_nr + 1;
-                TextBoxKundennr.Text = newK_nr.ToString();
+                if (lastKunde != null)
+                {
+                    int newK_nr = lastKunde.k_nr + 1;
+                    TextBoxKundennr.Text = newK_nr.ToString();
+                }
+                else
+                {
+                    TextBoxKundennr.Text = "1";
+                }
             }
         }
 
@@ -227,8 +240,15 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             if (!_isWerkstoffSelected)
             {
                 var lastWerkstoff = db.GetLastEntity<Werkstoff, int>(w => w.w_nr);
-                int newW_nr = lastWerkstoff.w_nr + 1;
-                TextBoxWerkstoffnr.Text = newW_nr.ToString();
+                if (lastWerkstoff != null)
+                {
+                    int newW_nr = lastWerkstoff.w_nr + 1;
+                    TextBoxWerkstoffnr.Text = newW_nr.ToString();
+                }
+                else
+                {
+                    TextBoxWerkstoffnr.Text = "1";
+                }
             }
         }
     }

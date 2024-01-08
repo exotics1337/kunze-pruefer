@@ -82,7 +82,7 @@ namespace kunze_prüfer.Views
                 Name = "Artikel 2",
                 Preis = 24.5
             };
-                        
+            
             List<InvoiceTemplate.Artikel> artikelList = new List<InvoiceTemplate.Artikel>();
             artikelList.Add(artikel1);
             artikelList.Add(artikel2);

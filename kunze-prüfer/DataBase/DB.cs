@@ -37,6 +37,52 @@ namespace kunze_prüfer.DataBase
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
+            // DateTime2 Override, damit der SQL Server C# DateTimes korrekt abspeichern kann
+            modelBuilder.Entity<Auftrag>()
+                .Property(a => a.Auf_angenommen)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Auftrag>()
+                .Property(a => a.Auf_liefertermin)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Rechnung>()
+                .Property(r => r.r_datum)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Rechnung>()
+                .Property(r => r.r_zahlungsziel)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Rechnung>()
+                .Property(r => r.r_angebots_dat)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Rechnung>()
+                .Property(r => r.r_pruef_dat)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Angebot>()
+                .Property(a => a.Ang_gueltigkeit_dat)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Probe_Kopf>()
+                .Property(p => p.P_eingang)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Probe_Kopf>()
+                .Property(p => p.P_fertigstellung_dat)
+                .HasColumnType("datetime2");
+
+            modelBuilder.Entity<Probe_Kopf>()
+                .Property(p => p.P_abnahme_dat)
+                .HasColumnType("datetime2");
+            
+            
+            
+            
+            
             modelBuilder.Entity<Kunde>()
                 .HasKey(k => k.k_nr)
                 .HasMany(k => k.Kunden_Ansprechpartner)

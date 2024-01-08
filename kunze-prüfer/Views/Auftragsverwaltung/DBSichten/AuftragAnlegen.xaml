@@ -5,41 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="680">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <ScrollViewer>
             <StackPanel>
-                <GroupBox Height="170" Margin="15,15,15,15" VerticalAlignment="Top" Header="Vorhandene Prüfnorm auswählen">
+                <GroupBox Height="190" Margin="15,15,15,15" VerticalAlignment="Top" Header="Vorhandene Prüfnorm auswählen">
                     <StackPanel >
                         <TextBox x:Name="TextBoxSuchen" Height="30" VerticalAlignment="Top">Suchen...</TextBox>
                         <TextBlock Text="Ausgewählte Prüfnorm:" FontSize="10" Margin="5" Foreground="#848484"/>
-                        <TextBlock x:Name="TextBlockSelectedNorm" Text="Max Müller GmbH" FontSize="14" Margin="5" FontWeight="Light" />
+                        <TextBlock x:Name="TextBlockSelectedNorm" Text="Keine Auswahl" FontSize="14" Margin="5" FontWeight="Light" />
+                        <TextBlock Text="Auswahl aufheben" Style="{StaticResource InternalLink}" Foreground="#3D82FF" Cursor="Hand" x:Name="TextBlockSelectionClearNorm" MouseDown="TextBlockSelectionClearNorm_OnMouseDown"></TextBlock>
                         <Button x:Name="ButtonPrüfnormAuswählen" Margin="10" Click="ButtonPrüfnormAuswählen_OnClick"> Prüfnorm Auswählen</Button>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Prüfnormdetails">
+                <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Prüfnormdetails" x:Name="GroupBoxNormDetails">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Normnr.</TextBlock>
-                            <TextBox x:Name="TextBoxNormnr" Margin="0,3,0,0" Width="60" Text="" />
+                            <TextBox x:Name="TextBoxNormnr" Margin="0,3,0,0" Width="60" Text="" IsReadOnly="True" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Prüfnormbezeichnung</TextBlock>
-                            <TextBox x:Name="TextBoxPrüfnormbezeichnung" Margin="0,3,0,0" Width="140" Text="" />
+                            <TextBox x:Name="TextBoxPrüfnormbezeichnung" Margin="0,3,0,0" Width="140" Text="" TextChanged="TextBoxPrüfnormbezeichnung_OnTextChanged" />
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </GroupBox>
-                <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Auftragsdetails">
+                <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Auftragsdetails" x:Name="GroupBoxAuftragDetails">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Auftragsnr.</TextBlock>
-                            <TextBox x:Name="TextBoxAuftragsnr" Margin="0,3,0,0" Width="60" Text="" />
+                            <TextBox x:Name="TextBoxAuftragsnr" Margin="0,3,0,0" Width="60" Text="" IsReadOnly="True" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Liefertermin</TextBlock>
-                            <DatePicker x:Name="DatePickerLiefertermin" Margin="0,3,0,0" Width="140" Text="" />
+                            <DatePicker x:Name="DatePickerLiefertermin" Margin="0,3,0,0" Width="140" Text="" SelectedDateChanged="DatePickerLiefertermin_OnSelectedDateChanged" />
                         </StackPanel>
                         <StackPanel Margin="10,0,10,10">
                             <TextBlock FontSize="11" Foreground="#848484">Bestellnr.</TextBlock>

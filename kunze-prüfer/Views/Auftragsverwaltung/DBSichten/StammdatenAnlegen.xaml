@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung.DBSichten"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="680">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <ScrollViewer>
             <StackPanel>
             <GroupBox Height="190" Margin="15" VerticalAlignment="Top" Header="Vorhandenen Kunden auswählen">
@@ -47,21 +47,27 @@
                     </StackPanel>
                 </Grid>
             </GroupBox>
-            <GroupBox Height="200" Margin="15,0,15,15" VerticalAlignment="Top" Header="Ansprechpartnerdetails">
+            <GroupBox Height="200" Margin="15,0,15,15" VerticalAlignment="Top" Header="Ansprechpartnerdetails" x:Name="GroupBoxAnsprechpartner">
                 <Grid>
-                    <DataGrid x:Name="DataGridAnsprechpartner" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding Ansprechpartner.Anspr_nr}" />
-                            <DataGridTextColumn Header="Vorname" Binding="{Binding Ansprechpartner.Anspr_vname}" />
-                            <DataGridTextColumn Header="Nachname" Binding="{Binding Ansprechpartner.Anspr_nname}" />
-                            <DataGridTextColumn Header="Position" Binding="{Binding Ansprechpartner.Anspr_position}" />
-                            <DataGridTextColumn Header="E-Mail" Binding="{Binding Ansprechpartner.Anspr_email}" />
-                            <DataGridTextColumn Header="Telefon" Binding="{Binding Ansprechpartner.Anspr_tel}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <StackPanel Orientation="Vertical">
+                        <DataGrid x:Name="DataGridAnsprechpartner" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Ansprechpartner.Anspr_nr}" />
+                                <DataGridTextColumn Header="Vorname" Binding="{Binding Ansprechpartner.Anspr_vname}" />
+                                <DataGridTextColumn Header="Nachname" Binding="{Binding Ansprechpartner.Anspr_nname}" />
+                                <DataGridTextColumn Header="Position" Binding="{Binding Ansprechpartner.Anspr_position}" />
+                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Ansprechpartner.Anspr_email}" />
+                                <DataGridTextColumn Header="Telefon" Binding="{Binding Ansprechpartner.Anspr_tel}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Margin="10,10,10,10" HorizontalAlignment="Left">
+                            <TextBlock FontSize="11" Foreground="#848484">Zugewiesener Ansprechpartner Nr.</TextBlock>
+                            <TextBox Margin="0,3,0,0" Width="180" Text="" x:Name="TextBoxAnsprechpartner"/>
+                        </StackPanel>
+                    </StackPanel>
                 </Grid>
             </GroupBox>
-                <GroupBox Height="190" Margin="15,0,15,15" VerticalAlignment="Top" Header="Vorhandenen Werkstoff auswählen" x:Name="GroupBoxWerkstoffDetails">
+                <GroupBox Height="190" Margin="15,0,15,15" VerticalAlignment="Top" Header="Vorhandenen Werkstoff auswählen">
                 <StackPanel >
                     <TextBox x:Name="TextBoxSuchenWerkstoff" Height="30" VerticalAlignment="Top">Suchen...</TextBox>
                     <TextBlock Text="Ausgewählter Werkstoff:" FontSize="10" Margin="5" Foreground="#848484"/>
@@ -70,7 +76,7 @@
                     <Button x:Name="ButtonWerkstoffAuswählen" Click="ButtonWerkstoffAuswählen_OnClick" Margin="10"> Werkstoff Auswählen</Button>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Height="160" Margin="15,0,15,15" VerticalAlignment="Top" Header="Werkstoffdetails">
+            <GroupBox Height="160" Margin="15,0,15,15" VerticalAlignment="Top" Header="Werkstoffdetails" x:Name="GroupBoxWerkstoffDetails">
                 <Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <StackPanel Margin="10,0,10,10">

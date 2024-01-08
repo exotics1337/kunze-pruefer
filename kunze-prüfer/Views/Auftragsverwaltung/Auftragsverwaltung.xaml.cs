@@ -118,24 +118,31 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             {
                 case 1:
                     viewStammdatenAnlegen.Visibility = Visibility.Visible;
+                    SharedResources.Step = 1;
                     break;
                 case 2:
                     viewAuftragAnlegen.Visibility = Visibility.Visible;
+                    SharedResources.Step = 2;
                     break;
                 case 3:
                     viewAngebotbestätigung.Visibility = Visibility.Visible;
+                    SharedResources.Step = 3;
                     break;
                 case 4:
                     viewWerkstoffprüfung.Visibility = Visibility.Visible;
+                    SharedResources.Step = 4;
                     break;
                 case 5:
                     viewWerkstoffprüfungFinished.Visibility = Visibility.Visible;
+                    SharedResources.Step = 5;
                     break;
                 case 6:
                     viewZahlungseingang.Visibility = Visibility.Visible;
+                    SharedResources.Step = 6;
                     break;
                 case 7:
                     viewAuftragErledigt.Visibility = Visibility.Visible;
+                    SharedResources.Step = 7;
                     break;
                 default:
                     Debug.WriteLine($"Unexpected step: {step}");

@@ -64,7 +64,7 @@ namespace kunze_prüfer.Models
                     column.Item().Text(text =>
                     {
                         text.Span("Datum: ").SemiBold();
-                        text.Span($"{DateTime.Now.ToString()}");
+                        text.Span($"{DateTime.Now.ToString("d")}");
                     });
                 });
 

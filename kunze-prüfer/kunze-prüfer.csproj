@@ -111,6 +111,10 @@
     <Compile Include="Migrations\202401061642031_v03.Designer.cs">
       <DependentUpon>202401061642031_v03.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401072203428_v04.cs" />
+    <Compile Include="Migrations\202401072203428_v04.Designer.cs">
+      <DependentUpon>202401072203428_v04.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
     <Compile Include="Models\ErrorLogger.cs" />
@@ -280,6 +284,9 @@
     <EmbeddedResource Include="Migrations\202401061642031_v03.resx">
       <DependentUpon>202401061642031_v03.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401072203428_v04.resx">
+      <DependentUpon>202401072203428_v04.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -330,6 +337,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Media\Icons\new-test-52.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Media\Icons\pdf-48.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Media\Icons\print-52.png">
