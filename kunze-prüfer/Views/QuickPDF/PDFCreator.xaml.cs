@@ -141,5 +141,9 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             TextBlockRechnungssumme.Text = "Rechnungsumme: " + invoiceInstance.GetSum().ToString("C");
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

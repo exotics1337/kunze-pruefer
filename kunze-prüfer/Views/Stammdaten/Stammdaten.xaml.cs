@@ -36,7 +36,9 @@
             Angebotsposition.Angebotsposi_layout.Stammdaten = this;
             Kundenansprechpartner.Kundenansprech_layout.Stammdaten = this;
             Rechnung.Rechnung_layout.Stammdaten = this;
-            Rechnungsposition.Rechnungsposi_layout.Stammdaten = this; 
+            Rechnungsposition.Rechnungsposi_layout.Stammdaten = this;
+            Angebotstextbausteine.Angebotstext_layout.Stammdaten = this;
+            Werkstoffprüfung.Werkstoffpruef_layout.Stammdaten = this;
 
         }
         //Databinding
@@ -68,8 +70,6 @@
 
         private void ChangeUser()
         {
-            CustomDataGrid dg = new CustomDataGrid();
-            dg.RefreshData<Kunde>();
             if (AuswahlCb1.SelectedItem!=null)
             {
                 string test = AuswahlCb1.SelectedItem.ToString();

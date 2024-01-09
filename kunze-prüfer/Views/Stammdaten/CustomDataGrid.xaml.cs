@@ -87,8 +87,8 @@ namespace kunze_prüfer.Views.Stammdaten
             else if (modellTyp == typeof(Mehrwertsteuer))
             {
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "ID", Binding = new Binding("Mwst_nr"), IsReadOnly = true});
-                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Steuersatz", Binding = new Binding("Mswt_satz") });
-                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Mswt_geloescht") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Steuersatz", Binding = new Binding("Mwst_satz") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Mwst_geloescht") });
             }
             else if (modellTyp == typeof(Norm))
             {
