@@ -183,5 +183,33 @@ namespace kunze_prüfer.DataBase
             }
         }
         
+        public async Task<List<T>> GetFilteredAsync<T>(int query) where T : class
+        {
+            using (var db = new DBQ())
+            {
+                // Get all entities of type T
+                var allEntities = await db.Set<T>().ToListAsync();
+
+                // Filter entities based on the query
+                var filteredEntities = allEntities.Where(entity =>
+                {
+                    // Check each integer property to see if it matches the query
+                    foreach (var prop in typeof(T).GetProperties())
+                    {
+                        if (prop.PropertyType == typeof(int) || prop.PropertyType == typeof(int?))
+                        {
+                            var value = prop.GetValue(entity);
+                            if (value != null && Convert.ToInt32(value) == query)
+                            {
+                                return true; // If any property matches the query, return true
+                            }
+                        }
+                    }
+                    return false; // If no properties match the query, return false
+                }).ToList();
+
+                return filteredEntities;
+            }
+        }
     }
 }

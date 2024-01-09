@@ -61,6 +61,8 @@
             Stumm.Add("Rechnung");
             Stumm.Add("Rechnungsposition");
             Stumm.Add("Kundenansprechpartner");
+            Stumm.Add("Werkstoffprüfung");
+            Stumm.Add("Angebotstextbausteine");
             AuswahlCb1.SelectedIndex = 0;
         }
 
@@ -130,6 +132,12 @@
                     case"Kundenansprechpartner":
                         Kundenansprechpartner.Visibility = Visibility.Visible;
                         break;
+                    case"Angebotstextbausteine":
+                        Angebotstextbausteine.Visibility = Visibility.Visible;
+                        break;
+                    case"Werkstoffprüfung":
+                        Werkstoffprüfung.Visibility = Visibility.Visible;
+                        break;
                         
                     
                 }    
@@ -188,9 +196,14 @@
                         UpdateEntity(Angebotsposition.cdg_angebotsposi.baseDataGrid.ItemsSource as IEnumerable<DataBase.Angebotsposition>, "Ang_nr");
                         break;
                     case "Kundenansprechpartner":
-                        Console.WriteLine("test");
                         UpdateEntity(Kundenansprechpartner.cdg_kundenansprech.baseDataGrid.ItemsSource as IEnumerable<DataBase.Kunden_Ansprechpartner>,"K_nr");
                        break; 
+                    case "Angebotstextbausteine":
+                        UpdateEntity(Angebotstextbausteine.cdg_angebotstext.baseDataGrid.ItemsSource as IEnumerable<DataBase.Angebot_Textbaustein>);
+                        break;
+                    case "Werkstoffprüfung":
+                        UpdateEntity(Werkstoffprüfung.cdg_werkstoffpruef.baseDataGrid.ItemsSource as IEnumerable<DataBase.Werkstoff_Pruefung>);
+                        break;
                 } 
             }
             else
@@ -220,6 +233,11 @@
         }
 
 
-   
+       
+
+        private void SearchBox_OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            SearchBox.Text = "";
+        }
     }
 }

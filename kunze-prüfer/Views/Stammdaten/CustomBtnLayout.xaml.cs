@@ -69,6 +69,7 @@
         private async void Refresh_btn_OnClick(object sender, RoutedEventArgs e)
         {
             Task taskToAwait = null;
+            Stammdaten.SearchBox.Text = "Suche";
 
             switch (Stammdaten.AuswahlCb1.SelectedItem.ToString())
             {
@@ -124,6 +125,14 @@
                     taskToAwait = Stammdaten.Rechnungsposition.cdg_rechnungsposi
                         .InitializeData<DataBase.Rechnungsposition>();
                     break;
+                case "Angebotstextbausteine":
+                    taskToAwait = Stammdaten.Angebotstextbausteine.cdg_angebotstext
+                        .InitializeData<DataBase.Angebot_Textbaustein>();
+                    break;
+                case "Werkstoffprüfung":
+                    taskToAwait = Stammdaten.Werkstoffprüfung.cdg_werkstoffpruef
+                        .InitializeData<DataBase.Werkstoff_Pruefung>();
+                    break;
                 default:
                     MessageBox.Show("Unbekannte Auswahl. Bitte wählen Sie eine gültige Option.");
                     return;
@@ -139,7 +148,11 @@
         private async void Search_btn_OnClick(object sender, RoutedEventArgs e)
         {
             SearchWindow sw = new SearchWindow(Stammdaten.SearchBox.Text, GetTable());
-            if (Stammdaten.SearchBox.Text != "")
+            if (Stammdaten.SearchBox.Text != "" && int.TryParse(Stammdaten.SearchBox.Text ,out int result ))
+            {
+                await sw.SearchWithType(result);
+            }
+            else if (Stammdaten.SearchBox.Text != "")
             {
                 await sw.SearchWithType(Stammdaten.SearchBox.Text);
             }
@@ -183,6 +196,11 @@
                     return "Rechnungsposition";
                case "Kundenansprechpartner":
                    return "Kundenansprechpartner";
+               case "Angebotstextbausteine":
+                   return "Angebot_Textbaustein";
+               case "Werkstoffprüfung":
+                   return "Werkstoff_Pruefung"; 
+               
             }
 
             return "hmm";
@@ -242,8 +260,17 @@
                     Stammdaten.Kundenansprechpartner.cdg_kundenansprech.baseDataGrid.ItemsSource =
                         sw.DataGrid.ItemsSource;
                     break;
+                case "Werkstoffprüfung":
+                    Stammdaten.Werkstoffprüfung.cdg_werkstoffpruef.baseDataGrid.ItemsSource = sw.DataGrid.ItemsSource;
+                    break;
+                case "Angebotstextbausteine":
+                    Stammdaten.Angebotstextbausteine.cdg_angebotstext.baseDataGrid.ItemsSource =
+                        sw.DataGrid.ItemsSource;
+                    break;
                                 
             }
-        } 
+        }
+
+      
     }
 }

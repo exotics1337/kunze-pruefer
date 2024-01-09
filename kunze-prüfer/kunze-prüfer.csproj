@@ -177,6 +177,9 @@
     <Compile Include="Views\Stammdaten\Angebotsposition.xaml.cs">
       <DependentUpon>Angebotsposition.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Angebotstextbausteine.xaml.cs">
+      <DependentUpon>Angebotstextbausteine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Stammdaten\Ansprechpartner.xaml.cs">
       <DependentUpon>Ansprechpartner.xaml</DependentUpon>
     </Compile>
@@ -225,6 +228,9 @@
     <Compile Include="Views\Stammdaten\Werkstoff.xaml.cs">
       <DependentUpon>Werkstoff.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Stammdaten\Werkstoffprüfung.xaml.cs">
+      <DependentUpon>Werkstoffprüfung.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Auftragsverwaltung\Auftragsverwaltung.xaml" />
     <Page Include="Views\Auftragsverwaltung\DashboardDetails.xaml" />
     <Page Include="Views\Auftragsverwaltung\DBSichten\AuftragAnlegen.xaml" />
@@ -263,6 +269,7 @@
     <Page Include="Views\Stammdaten\Abnahmegesellschaft.xaml" />
     <Page Include="Views\Stammdaten\Angebot.xaml" />
     <Page Include="Views\Stammdaten\Angebotsposition.xaml" />
+    <Page Include="Views\Stammdaten\Angebotstextbausteine.xaml" />
     <Page Include="Views\Stammdaten\Ansprechpartner.xaml" />
     <Page Include="Views\Stammdaten\Auftrag.xaml" />
     <Page Include="Views\Stammdaten\CustomBtnLayout.xaml" />
@@ -279,6 +286,7 @@
     <Page Include="Views\Stammdaten\Stammdaten.xaml" />
     <Page Include="Views\Stammdaten\Textbausteine.xaml" />
     <Page Include="Views\Stammdaten\Werkstoff.xaml" />
+    <Page Include="Views\Stammdaten\Werkstoffprüfung.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

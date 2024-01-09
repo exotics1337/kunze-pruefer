@@ -19,7 +19,7 @@ namespace kunze_prüfer.Models
                 {
                     try
                     {
-                        var result = await db.Mitarbeiter.AnyAsync(x => x.M_nr == mitnr && x.M_pass == password);
+                        var result = await db.Mitarbeiter.AnyAsync(x => x.M_nr == mitnr && x.M_pass == password && x.M_geloescht == false);
                         return result;
                     }
                     catch (Exception ex)

@@ -36,7 +36,7 @@
                       x:Name="AuswahlCb1" Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0" />
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1">
-            <TextBox x:Name="SearchBox">Suche</TextBox>
+            <TextBox x:Name="SearchBox" GotFocus="SearchBox_OnGotFocus">Suche</TextBox>
         </Grid>
         <Grid Grid.Row="6" Grid.Column="1" x:Name="UserGrid">
             <local:Kunden x:Name="Kunden" Visibility="Collapsed" />
@@ -55,6 +55,8 @@
             <local:Rechnung x:Name="Rechnung" Visibility="Collapsed" />
             <local:Angebotsposition x:Name="Angebotsposition" Visibility="Collapsed" />
             <local:Kundenansprechpartner x:Name="Kundenansprechpartner" Visibility="Collapsed"></local:Kundenansprechpartner>
+            <local:Werkstoffprüfung x:Name="Werkstoffprüfung" Visibility="Collapsed"></local:Werkstoffprüfung>
+            <local:Angebotstextbausteine x:Name="Angebotstextbausteine" Visibility="Collapsed"></local:Angebotstextbausteine>
         </Grid>
 
     </Grid>

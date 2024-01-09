@@ -38,87 +38,171 @@ namespace kunze_prüfer.Views
             KonfiguriereSpaltenFuerModell(tableType, showid: true);
         }
 
-        public async Task SearchWithType(string query = "", int queryInt = 0)
+        public async Task SearchWithType(string query = "")
         {
-                if (!string.IsNullOrEmpty(query))
+            if (!string.IsNullOrEmpty(query))
+            {
+                switch (_tableTypeString)
                 {
-                    switch (_tableTypeString)
-                    {
-                        case "Abnahmegesellschaft":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Abnahmegesellschaft>(query);
-                            break;
-                        case "Angebot_Textbaustein":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebot_Textbaustein>(query);
-                            break;
-                        case "Angebot":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebot>(query);
-                            break;
-                        case "Angebotsposition":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebotsposition>(query);
-                            break;
-                        case "Ansprechpartner":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Ansprechpartner>(query);
-                            break;
-                        case "Auftrag":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Auftrag>(query);
-                            break;
-                        case "Fertigstellung_Zeit":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Fertigstellung_Zeit>(query);
-                            break;
-                        case "Kunden_Ansprechpartner":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Kunden_Ansprechpartner>(query);
-                            break;
-                        case "Kunde":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Kunde>(query);
-                            break;
-                        case "Mehrwertsteuer":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Mehrwertsteuer>(query);
-                            break;
-                        case "Mitarbeiter":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Mitarbeiter>(query);
-                            break;
-                        case "Norm":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Norm>(query);
-                            break;
-                        case "Probe_Kopf":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Probe_Kopf>(query);
-                            break;
-                        case "Probe_Unter":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Probe_Unter>(query);
-                            break;
-                        case "Pruefungstyp":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Pruefungstyp>(query);
-                            break;
-                        case "Rechnung":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Rechnung>(query);
-                            break;
-                        case "Rechnungsposition":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Rechnungsposition>(query);
-                            break;
-                        case "Status":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Status>(query);
-                            break;
-                        case "Textbaustein":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Textbaustein>(query);
-                            break;
-                        case "Werkstoff_Pruefung":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff_Pruefung>(query);
-                            break;
-                        case "Werkstoff":
-                            DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff>(query);
-                            break;
-                    }
-
-                    if (DataGrid.Items.Count == 1)
-                    {
-                        TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnis";
-                    }
-                    else
-                    {
-                        TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnisse";
-                    }
+                    case "Abnahmegesellschaft":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Abnahmegesellschaft>(query);
+                        break;
+                    case "Angebot_Textbaustein":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebot_Textbaustein>(query);
+                        break;
+                    case "Angebot":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebot>(query);
+                        break;
+                    case "Angebotsposition":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebotsposition>(query);
+                        break;
+                    case "Ansprechpartner":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Ansprechpartner>(query);
+                        break;
+                    case "Auftrag":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Auftrag>(query);
+                        break;
+                    case "Fertigstellung_Zeit":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Fertigstellung_Zeit>(query);
+                        break;
+                    case "Kunden_Ansprechpartner":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Kunden_Ansprechpartner>(query);
+                        break;
+                    case "Kunde":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Kunde>(query);
+                        break;
+                    case "Mehrwertsteuer":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Mehrwertsteuer>(query);
+                        break;
+                    case "Mitarbeiter":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Mitarbeiter>(query);
+                        break;
+                    case "Norm":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Norm>(query);
+                        break;
+                    case "Probe_Kopf":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Probe_Kopf>(query);
+                        break;
+                    case "Probe_Unter":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Probe_Unter>(query);
+                        break;
+                    case "Pruefungstyp":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Pruefungstyp>(query);
+                        break;
+                    case "Rechnung":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Rechnung>(query);
+                        break;
+                    case "Rechnungsposition":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Rechnungsposition>(query);
+                        break;
+                    case "Status":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Status>(query);
+                        break;
+                    case "Textbaustein":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Textbaustein>(query);
+                        break;
+                    case "Werkstoff_Pruefung":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff_Pruefung>(query);
+                        break;
+                    case "Werkstoff":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff>(query);
+                        break;
                 }
+
+                if (DataGrid.Items.Count == 1)
+                {
+                    TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnis";
+                }
+                else
+                {
+                    TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnisse";
+                }
+            }
                 
+        }
+        
+        
+        public async Task SearchWithType(int query)
+        {
+            if (query != null)
+            {
+                switch (_tableTypeString)
+                {
+                    case "Abnahmegesellschaft":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Abnahmegesellschaft>(query);
+                        break;
+                    case "Angebot_Textbaustein":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebot_Textbaustein>(query);
+                        break;
+                    case "Angebot":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebot>(query);
+                        break;
+                    case "Angebotsposition":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Angebotsposition>(query);
+                        break;
+                    case "Ansprechpartner":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Ansprechpartner>(query);
+                        break;
+                    case "Auftrag":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Auftrag>(query);
+                        break;
+                    case "Fertigstellung_Zeit":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Fertigstellung_Zeit>(query);
+                        break;
+                    case "Kunden_Ansprechpartner":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Kunden_Ansprechpartner>(query);
+                        break;
+                    case "Kunde":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Kunde>(query);
+                        break;
+                    case "Mehrwertsteuer":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Mehrwertsteuer>(query);
+                        break;
+                    case "Mitarbeiter":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Mitarbeiter>(query);
+                        break;
+                    case "Norm":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Norm>(query);
+                        break;
+                    case "Probe_Kopf":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Probe_Kopf>(query);
+                        break;
+                    case "Probe_Unter":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Probe_Unter>(query);
+                        break;
+                    case "Pruefungstyp":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Pruefungstyp>(query);
+                        break;
+                    case "Rechnung":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Rechnung>(query);
+                        break;
+                    case "Rechnungsposition":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Rechnungsposition>(query);
+                        break;
+                    case "Status":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Status>(query);
+                        break;
+                    case "Textbaustein":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Textbaustein>(query);
+                        break;
+                    case "Werkstoff_Pruefung":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff_Pruefung>(query);
+                        break;
+                    case "Werkstoff":
+                        DataGrid.ItemsSource = await db.GetFilteredAsync<DataBase.Werkstoff>(query);
+                        break;
+                }
+        
+                if (DataGrid.Items.Count == 1)
+                {
+                    TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnis";
+                }
+                else
+                {
+                    TextBlockErgebnisse.Text = DataGrid.Items.Count.ToString() + " Ergebnisse";
+                }
+            }
+                        
         }
 
         private Func<T, bool> GetPredicate<T>(string query) where T : class

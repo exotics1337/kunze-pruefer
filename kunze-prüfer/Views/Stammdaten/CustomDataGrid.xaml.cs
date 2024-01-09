@@ -188,6 +188,18 @@ namespace kunze_prüfer.Views.Stammdaten
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kunden-Nr", Binding = new Binding("K_nr")});
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Ansprechpartner-Nr", Binding = new Binding("Anspr_nr")});
             }
+            
+            else if (modellTyp == typeof(Angebotstextbausteine))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebots-Nr", Binding = new Binding("Ang_nr")});
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Textbaustein-Nr", Binding = new Binding("Textbaustein_nr")});
+            }
+            
+            else if (modellTyp == typeof(Werkstoffprüfung))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Werkstoff-Nr", Binding = new Binding("W_nr") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüfungstyp-Nr", Binding = new Binding("Pe_Typ_nr") });
+            }
         }
 
         private async Task<List<T>> LoadAsync<T>() where T : class
