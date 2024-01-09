@@ -29,6 +29,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             ComboBoxFertigstellungszeit.ItemsSource = db.GetAll<Fertigstellung_Zeit>().Result.ToList();
             ComboBoxFertigstellungszeit.DisplayMemberPath = "P_fertigstellung_zeit_bez";
             ComboBoxFertigstellungszeit.SelectedValuePath = "P_fertigstellung_zeit_nr";
+            TextBoxProbenr.Text = _auftrag.Auf_nr.ToString();
         }
 
         private async void OnSubmitButtonClicked()
@@ -60,7 +61,6 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     
                     _probeKopf = new Probe_Kopf()
                     {
-                        P_nr = int.Parse(TextBoxPruefungsnr.Text),
                         P_anzahl = int.Parse(TextBoxProbeanzahl.Text),
                         Prob_nr = int.Parse(TextBoxProbenr.Text),
                         P_eingang = DatePickerProbeEingangsdatum.SelectedDate.Value,
@@ -72,7 +72,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                         Abnahme_nr = _abnahmegesellschaft.Abnahme_nr,
                     };
 
-                    if (_isAbnahmegesellschaftSelected)
+                    if (!_isAbnahmegesellschaftSelected)
                     {
                         db.Set<Abnahmegesellschaft>().Add(_abnahmegesellschaft);
                     }
@@ -84,7 +84,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                         db.Set<Probe_Unter>().Add(pb);
                     }
 
-                    db.SaveChangesAsync();
+                    _auftrag.Status_nr = 4;
+                    _auftrag.Prob_nr = _probeKopf.Prob_nr;
+                    await db.SaveChangesAsync();
                     Auftragsverwaltung.SharedResources.Step = 5;
                     Auftragsverwaltung.SharedResources.CurrentProbeUnterList = ProbeUnterList;
                     AdonisUI.Controls.MessageBox.Show("Werkstoffprüfung wurde erfolgreich erstellt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
@@ -143,6 +145,18 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     TextBoxAbnahmenr.Text = "1";
                 }
             }
+        }
+
+        private void TextBoxProbeanzahl_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var lastPruefung = db.GetLastEntity<Probe_Kopf, int>(pk => pk.P_nr);
+            if (lastPruefung == null)
+            {
+                TextBoxPruefungsnr.Text = "1";
+                return;
+            }
+            int newP_nr = lastPruefung.P_nr + 1;
+            TextBoxPruefungsnr.Text = newP_nr.ToString();
         }
     }
 }

@@ -43,7 +43,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                         Mwst_nr = int.Parse(ComboBoxMwstSatz.SelectedValue.ToString()),
                         Auf_nr = _auftrag.Auf_nr
                     };
-                    MessageBox.Show(Convert.ToString(ComboBoxMwstSatz.SelectedValue));
+                    _auftrag.Status_nr = 3;
                     db.Set<Angebot>().Add(_angebot);
                     await db.SaveChangesAsync();
                     Auftragsverwaltung.SharedResources.Step = 4;

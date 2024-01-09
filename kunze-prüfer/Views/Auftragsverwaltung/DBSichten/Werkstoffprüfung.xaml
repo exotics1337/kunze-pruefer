@@ -16,15 +16,15 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <StackPanel Margin="10,0,10,10">
                                 <TextBlock FontSize="11" Foreground="#848484">Prüfungsnr.</TextBlock>
-                                <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxPruefungsnr"/>
+                                <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxPruefungsnr" IsReadOnly="True"/>
                             </StackPanel>
                             <StackPanel Margin="10,0,10,10">
                                 <TextBlock FontSize="11" Foreground="#848484">Probeanzahl</TextBlock>
-                                <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxProbeanzahl"/>
+                                <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxProbeanzahl" TextChanged="TextBoxProbeanzahl_OnTextChanged"/>
                             </StackPanel>
                             <StackPanel Margin="10,0,10,10">
                                 <TextBlock FontSize="11" Foreground="#848484">Probenr.</TextBlock>
-                                <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxProbenr"/>
+                                <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxProbenr" IsReadOnly="True"/>
                             </StackPanel>
                             <StackPanel Margin="10,0,10,10">
                                 <TextBlock FontSize="11" Foreground="#848484">Probe Eingangsdatum</TextBlock>

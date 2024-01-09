@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using kunze_prüfer.DataBase;
@@ -12,6 +13,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
     public partial class Auftragsverwaltung : UserControl
     {
         public static event Action SubmitButtonClicked;
+        private int _auftragsnummer;
         private DBQ db = new DBQ();
         private int _minStep = 1;
         public static class SharedResources
@@ -23,6 +25,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
         {
             InitializeComponent();
+            _auftragsnummer = auftragsnummer;
             DataContext = this;
             CurrentStep = 1;
             CurrentDetailsView = new DashboardDetails(auftragsnummer);
@@ -53,32 +56,33 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                     ErrorLogger.Log(e);
                 }
             }
-            else
-            {
-                try
-                {
-                    var auftrag = db.GetEntityById<Auftrag, int>(auftragsnummer);
-                    if (auftrag != null)
-                    {
-                        CurrentStep = auftrag.Result.Status_nr;
-                        TextStatus.Text = auftrag.Result.Status.Status_bez;
-                        TextAuftrag.Text = $"Auftrag #{auftragsnummer}";
-                    }
-                    else
-                    {
-                        auftragsnummer = 1;
-                        CurrentStep = 1;
-                        TextAuftrag.Text = "Neuer Auftrag";
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
         }
 
+        public async Task InitializeAsync()
+        {
+            try
+            {
+                var auftrag = await db.GetEntityByIdAsync<Auftrag, int>(_auftragsnummer);
+                if (auftrag != null)
+                {
+                    CurrentStep = auftrag.Status_nr + 1;
+                    TextStatus.Text = auftrag.Status.Status_bez;
+                    TextAuftrag.Text = $"Auftrag #{_auftragsnummer}";
+                    _minStep = auftrag.Status_nr;
+                }
+                else
+                {
+                    _auftragsnummer = 1;
+                    CurrentStep = 1;
+                    TextAuftrag.Text = "Neuer Auftrag";
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.Log(e);
+            }
+        }
+        
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
             SubmitButtonClicked?.Invoke();

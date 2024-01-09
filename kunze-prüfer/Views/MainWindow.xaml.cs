@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,15 +27,18 @@ namespace kunze_prüfer
         {
             InitializeComponent();
             DataContext = this;
-            SetDefaultView();
+            selectedPage = 0;
             ViewHandler();
             CurrentUser = user;
             if (user != null) ImageProfile.ToolTip = user.Name;
+            
+            ChangeView += (view) =>
+            {
+                CurrentView = view;
+            };
         }
 
         private UserControl _currentView;
-
-        // Ändere die Property-Deklaration
         public UserControl CurrentView
         {
             get { return _currentView; }
@@ -47,6 +51,14 @@ namespace kunze_prüfer
                 }
             }
         }
+        
+        public static event Action<UserControl> ChangeView;
+
+        public static void OnChangeView(UserControl newView)
+        {
+            ChangeView?.Invoke(newView);
+        }
+
 
         // Event für die Property-Änderung
         public event PropertyChangedEventHandler PropertyChanged;
@@ -57,11 +69,6 @@ namespace kunze_prüfer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         
-        private void SetDefaultView()
-        {
-            selectedPage = 0;
-            CurrentView = new Dashboard();
-        }
         private void ViewHandler()
         {
             Style defaultStyle = this.FindResource("NavItem") as Style;
