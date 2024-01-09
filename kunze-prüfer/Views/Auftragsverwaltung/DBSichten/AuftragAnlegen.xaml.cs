@@ -127,6 +127,11 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             if (!_isPrüfnormSelected)
             {
                 var lastNorm = db.GetLastEntity<Norm, int>(n => n.N_nr);
+                if (lastNorm == null)
+                {
+                    TextBoxNormnr.Text = "1";
+                    return;
+                }
                 int newN_nr = lastNorm.N_nr + 1;
                 TextBoxNormnr.Text = newN_nr.ToString();
             }

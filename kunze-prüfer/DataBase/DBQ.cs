@@ -91,6 +91,22 @@ namespace kunze_prüfer.DataBase
             }
         }
         
+        public Task<T> GetEntityById<T, TKey>(TKey id) where T : class
+        {
+            using (var db = new DBQ())
+            {
+                try
+                {
+                    return db.Set<T>().FindAsync(id);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
+        
         public T GetLastEntity<T, TKey>(Func<T, TKey> keySelector) where T : class
         {
             using (var db = new DBQ())

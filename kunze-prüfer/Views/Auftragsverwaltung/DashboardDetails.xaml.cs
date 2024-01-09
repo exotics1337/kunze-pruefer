@@ -22,7 +22,6 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             var auftrag = await db.GetEntityByIdAsync<Auftrag, int>(id);
             var kunde = await db.GetEntityByIdAsync<Kunde, int>(auftrag.k_nr);
             var ansprechpartner = await db.GetEntityByIdAsync<Ansprechpartner, int>(auftrag.Anspr_nr);
-            MessageBox.Show(kunde.k_name);
             Dispatcher.Invoke(() =>
             {
                 LieferterminText.Text = auftrag.Auf_liefertermin.ToString();

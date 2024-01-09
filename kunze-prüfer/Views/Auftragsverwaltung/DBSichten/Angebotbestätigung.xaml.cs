@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using kunze_prüfer.DataBase;
 using kunze_prüfer.Models;
 using kunze_prüfer.Views.QuickPDF;
@@ -20,27 +22,38 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             Auftragsverwaltung.SubmitButtonClicked += OnSubmitButtonClicked;
             ComboBoxMwstSatz.ItemsSource = db.GetAll<Mehrwertsteuer>().Result.ToList();
             ComboBoxMwstSatz.DisplayMemberPath = "Mwst_satz";
+            ComboBoxMwstSatz.SelectedValuePath = "Mwst_nr";
         }
 
         private async void OnSubmitButtonClicked()
         {
             if (Auftragsverwaltung.SharedResources.Step == 3)
             {
-                if (AreAllTextBoxesFilled(GroupBoxAngebot))
+                if (
+                    TextBoxAngebotsnr != null && TextBoxProbeVoraussetzung != null &&
+                    DatePickerGueltigkeitsdatum.SelectedDate.HasValue && ComboBoxMwstSatz.SelectedIndex != -1 &&
+                    CheckBoxAngebotAngenommen.IsChecked.HasValue
+                    )
                 {
                     _angebot = new Angebot()
                     {
-                        Ang_nr = int.Parse(TextBoxAngebotsnr.Text),
                         Ang_probe_vorraussetzung = TextBoxProbeVoraussetzung.Text,
                         Ang_angenommen = CheckBoxAngebotAngenommen.IsChecked.Value,
                         Ang_gueltigkeit_dat = DatePickerGueltigkeitsdatum.SelectedDate.Value,
-                        Mwst_nr = ComboBoxMwstSatz.SelectedIndex + 1,
+                        Mwst_nr = int.Parse(ComboBoxMwstSatz.SelectedValue.ToString()),
                         Auf_nr = _auftrag.Auf_nr
                     };
+                    _auftrag.Status_nr = 3;
                     db.Set<Angebot>().Add(_angebot);
                     await db.SaveChangesAsync();
                     Auftragsverwaltung.SharedResources.Step = 4;
                     Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
+                    AdonisUI.Controls.MessageBox.Show("Angebot wurde erfolgreich erstellt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                    MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
+                }
+                else
+                {
+                    AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
                 }
             }
         }

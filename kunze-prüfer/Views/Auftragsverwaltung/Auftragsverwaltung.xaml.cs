@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using kunze_prüfer.DataBase;
@@ -11,15 +13,19 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
     public partial class Auftragsverwaltung : UserControl
     {
         public static event Action SubmitButtonClicked;
+        private int _auftragsnummer;
         private DBQ db = new DBQ();
+        private int _minStep = 1;
         public static class SharedResources
         {
             public static Auftrag CurrentAuftrag = new Auftrag();
+            public static ObservableCollection<Probe_Unter> CurrentProbeUnterList = new ObservableCollection<Probe_Unter>();
             public static int Step = 1;
         }
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
         {
             InitializeComponent();
+            _auftragsnummer = auftragsnummer;
             DataContext = this;
             CurrentStep = 1;
             CurrentDetailsView = new DashboardDetails(auftragsnummer);
@@ -52,6 +58,31 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             }
         }
 
+        public async Task InitializeAsync()
+        {
+            try
+            {
+                var auftrag = await db.GetEntityByIdAsync<Auftrag, int>(_auftragsnummer);
+                if (auftrag != null)
+                {
+                    CurrentStep = auftrag.Status_nr + 1;
+                    TextStatus.Text = auftrag.Status.Status_bez;
+                    TextAuftrag.Text = $"Auftrag #{_auftragsnummer}";
+                    _minStep = auftrag.Status_nr;
+                }
+                else
+                {
+                    _auftragsnummer = 1;
+                    CurrentStep = 1;
+                    TextAuftrag.Text = "Neuer Auftrag";
+                }
+            }
+            catch (Exception e)
+            {
+                ErrorLogger.Log(e);
+            }
+        }
+        
         private void ButtonSubmit_Click(object sender, RoutedEventArgs e)
         {
             SubmitButtonClicked?.Invoke();
@@ -91,7 +122,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             get { return _currentStep; }
             set
             {
-                if (value <= 7 && value > 0)
+                if (value <= 7 && value >= _minStep)
                 {
                     _currentStep = value;
                     OnPropertyChanged(nameof(CurrentStep));

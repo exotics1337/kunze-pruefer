@@ -16,10 +16,9 @@
             <ColumnDefinition Width="16"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="65"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
@@ -62,11 +61,6 @@
                     <TextBlock FontSize="20" x:Name="TextAuftrag"></TextBlock>
                 </StackPanel>
             </StackPanel>
-        </Grid>
-        
-        
-        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">
-            <!-- To Be Implemented. Auftrags Pipeline kommt hier hin -->
         </Grid>
     </Grid>
 </UserControl>

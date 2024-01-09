@@ -196,7 +196,7 @@ namespace kunze_prüfer.Views.Stammdaten
             return items;
         }
 
-        public async Task InitializeData<T>() where T : class
+        public async Task InitializeData<T>(bool showDeleted = true) where T : class
         {
             var itemList = await Task.Run(()=> LoadAsync<T>());
             var itemsObserv = new ObservableCollection<T>(itemList);

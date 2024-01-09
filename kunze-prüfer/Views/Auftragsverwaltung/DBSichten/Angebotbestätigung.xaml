@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung.DBSichten"
              mc:Ignorable="d"
 d:DesignHeight="500" d:DesignWidth="680">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <ScrollViewer>
             <StackPanel>
                 <GroupBox Height="170" Margin="15,15,15,15" VerticalAlignment="Top" Header="Angebotsdetails" x:Name="GroupBoxAngebot">
-                    <Grid>
-                        <StackPanel>
+                    <Grid x:Name="GridAngebot">
+                        <StackPanel x:Name="StackPanelAngebot">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <StackPanel Margin="10,0,10,10">
                                     <TextBlock FontSize="11" Foreground="#848484">Neues Angebot erstellen</TextBlock>
