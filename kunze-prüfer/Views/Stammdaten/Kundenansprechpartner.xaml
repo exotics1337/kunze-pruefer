@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="kunze_prüfer.Views.Stammdaten.Kundenansprechpartner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:kunze_prüfer.Views.Stammdaten"
+             mc:Ignorable="d"
+             d:DesignHeight="520" d:DesignWidth="690">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <local:CustomDataGrid x:Name="cdg_kundenansprech"></local:CustomDataGrid>
+            <local:CustomBtnLayout Grid.Row="1" x:Name="Kundenansprech_layout"></local:CustomBtnLayout>
+        </Grid>
+    </Grid>
+</UserControl>

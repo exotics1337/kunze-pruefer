@@ -642,3 +642,16 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v04.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\pdf-48.png
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\pdf-48.png
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\SearchWindow.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\SearchWindow.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v04.resources
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotsposition.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnung.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnungsposition.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotsposition.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnung.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnungsposition.baml
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kundenansprechpartner.g.cs
+C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kundenansprechpartner.baml

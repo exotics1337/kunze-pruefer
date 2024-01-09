@@ -51,6 +51,10 @@
             <local:Textbausteine Visibility="Collapsed" x:Name="Textbausteine" />
             <local:Fertigstellungszeit Visibility="Collapsed" x:Name="Fertigstellungszeit" />
             <local:Angebot x:Name="Angebot" Visibility="Collapsed" />
+            <local:Rechnungsposition x:Name="Rechnungsposition" Visibility="Collapsed" />
+            <local:Rechnung x:Name="Rechnung" Visibility="Collapsed" />
+            <local:Angebotsposition x:Name="Angebotsposition" Visibility="Collapsed" />
+            <local:Kundenansprechpartner x:Name="Kundenansprechpartner" Visibility="Collapsed"></local:Kundenansprechpartner>
         </Grid>
 
     </Grid>

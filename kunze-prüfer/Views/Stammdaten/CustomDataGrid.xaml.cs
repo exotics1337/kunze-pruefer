@@ -155,6 +155,39 @@ namespace kunze_prüfer.Views.Stammdaten
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Auftrags-Nr", Binding = new Binding("Auf_nr") });
                 baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("Ang_geloescht") });
             }
+            
+            else if (modellTyp == typeof(Rechnung))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Rechnungs-Nr", Binding = new Binding("r_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Datum", Binding = new Binding("r_datum") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Zahlungsziel", Binding = new Binding("r_zahlungsziel") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebots-Datum", Binding = new Binding("r_angebots_dat") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüf-Datum", Binding = new Binding("r_pruef_dat") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Skontofähig", Binding = new Binding("r_skontofaehig") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebots-Nr", Binding = new Binding("Ang_nr") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Gelöscht", Binding = new Binding("r_geloescht") });
+            }
+            else if (modellTyp == typeof(Angebotsposition))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebots-Nr", Binding = new Binding("Ang_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüfungstyp-Nr", Binding = new Binding("Pe_typ_nr") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Preis", Binding = new Binding("Rp_preis") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Menge", Binding = new Binding("Rp_menge") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bemerkung", Binding = new Binding("Rp_bemerkung") });
+            }
+            else if (modellTyp == typeof(Rechnungsposition))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Rechnungs-Nr", Binding = new Binding("r_nr"), IsReadOnly = true });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüfungstyp-Nr", Binding = new Binding("Pe_typ_nr") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Preis", Binding = new Binding("Rp_preis") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Menge", Binding = new Binding("Rp_menge") });
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bemerkung", Binding = new Binding("Rp_bemerkung") });
+            }
+            else if (modellTyp == typeof(Kundenansprechpartner))
+            {
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Kunden-Nr", Binding = new Binding("K_nr")});
+                baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Ansprechpartner-Nr", Binding = new Binding("Anspr_nr")});
+            }
         }
 
         private async Task<List<T>> LoadAsync<T>() where T : class

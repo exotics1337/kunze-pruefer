@@ -32,8 +32,12 @@
             Norm.Norm_layout.Stammdaten = this;
             Prüfungstypen.Prüf_layout.Stammdaten = this;
             Fertigstellungszeit.Fertigstell_layout.Stammdaten = this;
-            Textbausteine.Textbaustein_layout.Stammdaten = this; 
-            
+            Textbausteine.Textbaustein_layout.Stammdaten = this;
+            Angebotsposition.Angebotsposi_layout.Stammdaten = this;
+            Kundenansprechpartner.Kundenansprech_layout.Stammdaten = this;
+            Rechnung.Rechnung_layout.Stammdaten = this;
+            Rechnungsposition.Rechnungsposi_layout.Stammdaten = this; 
+
         }
         //Databinding
         public ObservableCollection<string> Stumm { get; set; }
@@ -53,6 +57,10 @@
             Stumm.Add("Prüfungstypen");
             Stumm.Add("Fertigstellungszeit");
             Stumm.Add("Textbausteine");
+            Stumm.Add("Angebotsposition");
+            Stumm.Add("Rechnung");
+            Stumm.Add("Rechnungsposition");
+            Stumm.Add("Kundenansprechpartner");
             AuswahlCb1.SelectedIndex = 0;
         }
 
@@ -109,7 +117,20 @@
                         break;  
                     case"Werkstoff":
                         Werkstoff.Visibility = Visibility.Visible;
-                        break;  
+                        break;
+                    case"Rechnung":
+                        Rechnung.Visibility = Visibility.Visible;
+                        break;   
+                    case"Rechnungsposition":
+                        Rechnungsposition.Visibility = Visibility.Visible;
+                        break;
+                    case"Angebotsposition":
+                        Angebotsposition.Visibility = Visibility.Visible;
+                        break;
+                    case"Kundenansprechpartner":
+                        Kundenansprechpartner.Visibility = Visibility.Visible;
+                        break;
+                        
                     
                 }    
             }
@@ -157,7 +178,19 @@
                     case "Textbausteine":
                         UpdateEntity(Textbausteine.cdg_textbaustein.baseDataGrid.ItemsSource as IEnumerable<DataBase.Textbaustein>, "Textbaustein_nr");
                         break;
-                    
+                    case "Rechnung":
+                        UpdateEntity(Rechnung.cdg_rechnung.baseDataGrid.ItemsSource as IEnumerable<DataBase.Rechnung>,"r_nr");
+                        break;
+                    case "Rechnungsposition":
+                        UpdateEntity(Rechnungsposition.cdg_rechnungsposi.baseDataGrid.ItemsSource as IEnumerable<DataBase.Rechnungsposition>,"r_nr");
+                        break;
+                    case "Angebotsposition":
+                        UpdateEntity(Angebotsposition.cdg_angebotsposi.baseDataGrid.ItemsSource as IEnumerable<DataBase.Angebotsposition>, "Ang_nr");
+                        break;
+                    case "Kundenansprechpartner":
+                        Console.WriteLine("test");
+                        UpdateEntity(Kundenansprechpartner.cdg_kundenansprech.baseDataGrid.ItemsSource as IEnumerable<DataBase.Kunden_Ansprechpartner>,"K_nr");
+                       break; 
                 } 
             }
             else
@@ -172,11 +205,11 @@
             ChangeUser();
         }
 
-        private void UpdateEntity<T>(IEnumerable<T> itemstoUpdate, string id) where T : class
+        private void UpdateEntity<T>(IEnumerable<T> itemstoUpdate, string id = "") where T : class
         {
             if (itemstoUpdate != null)
             {
-                DAS.UpdateEntities(itemstoUpdate,id);
+                DAS.UpdateEntities(itemstoUpdate);
             }
         }
         
