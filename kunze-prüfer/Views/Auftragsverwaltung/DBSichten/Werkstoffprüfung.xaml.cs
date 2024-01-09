@@ -22,16 +22,18 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         public Werkstoffprüfung()
         {
             InitializeComponent();
-            this.DataContext = this;
-            DataGridWerkstoffpruefung.ItemsSource = ProbeUnterList;
             _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
             Auftragsverwaltung.SubmitButtonClicked += OnSubmitButtonClicked;
+            Auftragsverwaltung.CurrentAuftragChanged += OnCurrentAuftragChanged;
             ComboBoxFertigstellungszeit.ItemsSource = db.GetAll<Fertigstellung_Zeit>().Result.ToList();
             ComboBoxFertigstellungszeit.DisplayMemberPath = "P_fertigstellung_zeit_bez";
             ComboBoxFertigstellungszeit.SelectedValuePath = "P_fertigstellung_zeit_nr";
-            TextBoxProbenr.Text = _auftrag.Auf_nr.ToString();
         }
 
+        private void OnCurrentAuftragChanged()
+        {
+            _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
+        }
         private async void OnSubmitButtonClicked()
         {
             if (Auftragsverwaltung.SharedResources.Step == 4)
@@ -76,16 +78,43 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     {
                         db.Set<Abnahmegesellschaft>().Add(_abnahmegesellschaft);
                     }
-                    db.Set<Probe_Kopf>().Add(_probeKopf);
+                    var entityInDb = db.Set<Probe_Kopf>().Find(int.Parse(TextBoxPruefungsnr.Text));
+        
+                    if (entityInDb == null)
+                    {
+                        db.Set<Probe_Kopf>().Add(_probeKopf);
+                    }
+                    else
+                    {
+                        _probeKopf.P_nr = entityInDb.P_nr;
+                        db.Entry(entityInDb).CurrentValues.SetValues(_probeKopf);
+                    }
+                    await db.SaveChangesAsync();
 
+                    int index = 1;
                     foreach(Probe_Unter pb in ProbeUnterList)
                     {
-                        pb.P_nr = _probeKopf.P_nr;
-                        db.Set<Probe_Unter>().Add(pb);
+                        var entitiesInDb = db.Set<Probe_Unter>().Find(pb.P_nr, index);
+        
+                        if (entitiesInDb == null)
+                        {
+                            pb.P_nr = _probeKopf.P_nr;
+                            pb.Pe_nr = index;
+                            db.Set<Probe_Unter>().Add(pb);
+                            index++;
+                        }
+                        else
+                        {
+                            pb.P_nr = _probeKopf.P_nr;
+                            pb.Pe_nr = index;
+                            db.Entry(entitiesInDb).CurrentValues.SetValues(pb);
+                            index++;
+                        }
                     }
 
                     _auftrag.Status_nr = 4;
-                    _auftrag.Prob_nr = _probeKopf.Prob_nr;
+                    var entityInDbAuftrag = db.Set<Auftrag>().Find(_auftrag.Auf_nr);
+                    db.Entry(entityInDbAuftrag).CurrentValues.SetValues(_auftrag);
                     await db.SaveChangesAsync();
                     Auftragsverwaltung.SharedResources.Step = 5;
                     Auftragsverwaltung.SharedResources.CurrentProbeUnterList = ProbeUnterList;
@@ -157,6 +186,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             }
             int newP_nr = lastPruefung.P_nr + 1;
             TextBoxPruefungsnr.Text = newP_nr.ToString();
+            TextBoxProbenr.Text = Auftragsverwaltung.SharedResources.CurrentAuftrag.Auf_nr.ToString();
         }
     }
 }

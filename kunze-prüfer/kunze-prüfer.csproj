@@ -115,6 +115,14 @@
     <Compile Include="Migrations\202401072203428_v04.Designer.cs">
       <DependentUpon>202401072203428_v04.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401091907098_v06.cs" />
+    <Compile Include="Migrations\202401091907098_v06.Designer.cs">
+      <DependentUpon>202401091907098_v06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202401091920224_v07.cs" />
+    <Compile Include="Migrations\202401091920224_v07.Designer.cs">
+      <DependentUpon>202401091920224_v07.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
     <Compile Include="Models\ErrorLogger.cs" />
@@ -138,9 +146,6 @@
     <Compile Include="Views\Auftragsverwaltung\DBSichten\AuftragErledigt.xaml.cs">
       <DependentUpon>AuftragErledigt.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.xaml.cs">
-      <DependentUpon>Rechnungserstellung.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Auftragsverwaltung\DBSichten\StammdatenAnlegen.xaml.cs">
       <DependentUpon>StammdatenAnlegen.xaml</DependentUpon>
     </Compile>
@@ -149,9 +154,6 @@
     </Compile>
     <Compile Include="Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.xaml.cs">
       <DependentUpon>WerkstoffprüfungFinished.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Auftragsverwaltung\DBSichten\Zahlungseingang.xaml.cs">
-      <DependentUpon>Zahlungseingang.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
@@ -236,11 +238,9 @@
     <Page Include="Views\Auftragsverwaltung\DBSichten\AuftragAnlegen.xaml" />
     <Page Include="Views\Auftragsverwaltung\DBSichten\Angebotbestätigung.xaml" />
     <Page Include="Views\Auftragsverwaltung\DBSichten\AuftragErledigt.xaml" />
-    <Page Include="Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.xaml" />
     <Page Include="Views\Auftragsverwaltung\DBSichten\StammdatenAnlegen.xaml" />
     <Page Include="Views\Auftragsverwaltung\DBSichten\Werkstoffprüfung.xaml" />
     <Page Include="Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.xaml" />
-    <Page Include="Views\Auftragsverwaltung\DBSichten\Zahlungseingang.xaml" />
     <Page Include="Views\Dashboard.xaml" />
     <Page Include="Views\DatabaseConfig.xaml" />
     <Page Include="Views\Login.xaml">
@@ -310,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202401072203428_v04.resx">
       <DependentUpon>202401072203428_v04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401091907098_v06.resx">
+      <DependentUpon>202401091907098_v06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401091920224_v07.resx">
+      <DependentUpon>202401091920224_v07.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

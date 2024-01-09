@@ -1,26 +1,32 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using kunze_prüfer.Models;
+using kunze_prüfer.Views.Stammdaten;
 using QuestPDF.Fluent;
 using QuestPDF.Previewer;
+using Angebotsposition = kunze_prüfer.DataBase.Angebotsposition;
 using Colors = QuestPDF.Helpers.Colors;
+using Rechnungsposition = kunze_prüfer.DataBase.Rechnungsposition;
 
 namespace kunze_prüfer.Views.QuickPDF
 {
     public partial class PDFCreator : Window
     {
         private Models.InvoiceDataSource invoiceInstance = new Models.InvoiceDataSource();
-        public PDFCreator(Models.InvoiceDataSource invoiceInstance)
+        private bool _isAngebot;
+        private int _angebotNr;
+        public PDFCreator(Models.InvoiceDataSource invoiceInstance, int angebotNr, bool isAngebot = true)
         {
             InitializeComponent();
             foreach (var element in invoiceInstance.InvoiceBaseElements)
             {
                 ListBox_Rechnungspos.Items.Add(element.Artikelname);
             }
-
+            this._isAngebot = isAngebot;
             this.invoiceInstance = invoiceInstance;
         }
 
@@ -141,9 +147,48 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             TextBlockRechnungssumme.Text = "Rechnungsumme: " + invoiceInstance.GetSum().ToString("C");
         }
+        
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonSpeichern_OnClick(object sender, RoutedEventArgs e)
         {
+            if (_isAngebot)
+            {
+                foreach (var el in invoiceInstance.InvoiceElements)
+                {
+                    Angebotsposition pos = new Angebotsposition();
+                    pos.Ang_nr = _angebotNr;
+                    pos.Ang2_nr = el.Rechnungs_pos;
+                    pos.Rp_name = el.Artikelname;
+                    pos.Rp_menge = Convert.ToInt32(el.Artikel_menge);
+                    pos.Rp_preis = Convert.ToDouble(el.Artikel_gesamt_preis);
+                    pos.Rp_bemerkung = el.Artikel_bemerkung;
+                    if (el.Artikel_IstFreiposition)
+                    {
+                        pos.Rp_menge = 0;
+                        pos.Rp_preis = 0;
+                    }
+                    Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentAngebotspositionList.Add(pos);
+                }
+            }
+            else
+            {
+                foreach (var el in invoiceInstance.InvoiceElements)
+                {
+                    Rechnungsposition pos = new Rechnungsposition();
+                    pos.r_nr = _angebotNr;
+                    pos.r2_nr = el.Rechnungs_pos;
+                    pos.Rp_name = el.Artikelname;
+                    pos.Rp_menge = Convert.ToInt32(el.Artikel_menge);
+                    pos.Rp_preis = Convert.ToDouble(el.Artikel_gesamt_preis);
+                    pos.Rp_bemerkung = el.Artikel_bemerkung;
+                    if (el.Artikel_IstFreiposition)
+                    {
+                        pos.Rp_menge = 0;
+                        pos.Rp_preis = 0;
+                    }
+                    Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentRechnungspositionList.Add(pos);
+                }
+            }
         }
     }
 }

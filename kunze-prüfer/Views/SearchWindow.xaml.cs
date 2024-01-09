@@ -8,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using kunze_prüfer.DataBase;
+using kunze_prüfer.Models;
 using kunze_prüfer.Views.Stammdaten;
 using Abnahmegesellschaft = kunze_prüfer.DataBase.Abnahmegesellschaft;
 using Angebot = kunze_prüfer.DataBase.Angebot;
@@ -227,53 +228,67 @@ namespace kunze_prüfer.Views
 
         private void ButtonSelect_OnClick(object sender, RoutedEventArgs e)
         {
-            var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(DataGrid.SelectedIndex);
-
-            if (row != null)
+            try
             {
-                DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+                var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(DataGrid.SelectedIndex);
 
-                if (presenter != null)
+                if (row != null)
                 {
-                    DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(0);
+                    DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
 
-                    if (cell != null)
+                    if (presenter != null)
                     {
-                        TextBlock txt = cell.Content as TextBlock;
+                        DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(0);
 
-                        if (txt != null)
+                        if (cell != null)
                         {
-                            CurrentlySelectedID = int.Parse(txt.Text);
-                            this.Close();
+                            TextBlock txt = cell.Content as TextBlock;
+
+                            if (txt != null)
+                            {
+                                CurrentlySelectedID = int.Parse(txt.Text);
+                                this.Close();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.Log(ex);
             }
         }
         
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(DataGrid.SelectedIndex);
-
-            if (row != null)
+            try
             {
-                DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+                var row = (DataGridRow)DataGrid.ItemContainerGenerator.ContainerFromIndex(DataGrid.SelectedIndex);
 
-                if (presenter != null)
+                if (row != null)
                 {
-                    DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(0);
+                    DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
 
-                    if (cell != null)
+                    if (presenter != null)
                     {
-                        TextBlock txt = cell.Content as TextBlock;
+                        DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(0);
 
-                        if (txt != null)
+                        if (cell != null)
                         {
-                            CurrentlySelectedID = int.Parse(txt.Text);
-                            this.Close();
+                            TextBlock txt = cell.Content as TextBlock;
+
+                            if (txt != null)
+                            {
+                                CurrentlySelectedID = int.Parse(txt.Text);
+                                this.Close();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ErrorLogger.Log(ex);
             }
         }
 

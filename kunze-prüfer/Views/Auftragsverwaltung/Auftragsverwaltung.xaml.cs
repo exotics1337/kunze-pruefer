@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +16,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
     public partial class Auftragsverwaltung : UserControl
     {
         public static event Action SubmitButtonClicked;
+        public static event Action CurrentAuftragChanged;
         private int _auftragsnummer;
         private DBQ db = new DBQ();
         private int _minStep = 1;
@@ -20,6 +24,8 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
         {
             public static Auftrag CurrentAuftrag = new Auftrag();
             public static ObservableCollection<Probe_Unter> CurrentProbeUnterList = new ObservableCollection<Probe_Unter>();
+            public static ObservableCollection<Angebotsposition> CurrentAngebotspositionList = new ObservableCollection<Angebotsposition>();
+            public static ObservableCollection<Rechnungsposition> CurrentRechnungspositionList = new ObservableCollection<Rechnungsposition>();
             public static int Step = 1;
         }
         public Auftragsverwaltung(int auftragsnummer = 0) // Wert von 0 als Auftragsnummer impliziert, dass ein neuer Auftrag angelegt werden soll
@@ -49,7 +55,6 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                         CurrentStep = 1;
                         TextAuftrag.Text = "Neuer Auftrag";
                     }
-                    MessageBox.Show(auftragsnummer.ToString());
                 }
                 catch(Exception e)
                 {
@@ -66,10 +71,31 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                 if (auftrag != null)
                 {
                     CurrentStep = auftrag.Status_nr + 1;
-                    TextStatus.Text = auftrag.Status.Status_bez;
-                    TextAuftrag.Text = $"Auftrag #{_auftragsnummer}";
-                    _minStep = auftrag.Status_nr;
+                    var Status = await db.GetEntityByIdAsync<Status, int>(auftrag.Status_nr);
+                    TextStatus.Text = Status.Status_bez;
+                    TextAuftrag.Text = $"Auftrag #{auftrag.Auf_nr.ToString()}";
+                    _minStep = auftrag.Status_nr + 1;
+                    SharedResources.CurrentAuftrag = auftrag;
+
+                    var probeUnterList = await db.GetAll<Probe_Unter>();
+                    var relatedProbeUnterList = new List<Probe_Unter>();
+
+                    var relatedProbeKopfList = await db.Set<Probe_Kopf>()
+                        .Where(pk => pk.Prob_nr == auftrag.Auf_nr)
+                        .ToListAsync();
+
+                    foreach (var probeUnter in probeUnterList)
+                    {
+                        if (relatedProbeKopfList.Any(pk => pk.P_nr == probeUnter.P_nr))
+                        {
+                            relatedProbeUnterList.Add(probeUnter);
+                        }
+                    }
+
+                    SharedResources.CurrentProbeUnterList = new ObservableCollection<Probe_Unter>(relatedProbeUnterList);
+                    CurrentAuftragChanged?.Invoke();
                 }
+
                 else
                 {
                     _auftragsnummer = 1;
@@ -122,7 +148,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
             get { return _currentStep; }
             set
             {
-                if (value <= 7 && value >= _minStep)
+                if (value <= 6 && value >= _minStep)
                 {
                     _currentStep = value;
                     OnPropertyChanged(nameof(CurrentStep));
@@ -168,12 +194,8 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                     SharedResources.Step = 5;
                     break;
                 case 6:
-                    viewZahlungseingang.Visibility = Visibility.Visible;
-                    SharedResources.Step = 6;
-                    break;
-                case 7:
                     viewAuftragErledigt.Visibility = Visibility.Visible;
-                    SharedResources.Step = 7;
+                    SharedResources.Step = 6;
                     break;
                 default:
                     Debug.WriteLine($"Unexpected step: {step}");
@@ -202,9 +224,6 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                     TextStatus.Text = "Werkstoffprüfung abgeschlossen";
                     break;
                 case 6:
-                    TextStatus.Text = "Zahlungseingang";
-                    break;
-                case 7:
                     TextStatus.Text = "Auftrag erledigt";
                     break;
             }

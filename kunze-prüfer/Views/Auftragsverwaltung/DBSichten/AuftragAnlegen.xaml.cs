@@ -20,9 +20,13 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             InitializeComponent();
             _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
             Auftragsverwaltung.SubmitButtonClicked += OnSubmitButtonClicked;
+            Auftragsverwaltung.CurrentAuftragChanged += OnCurrentAuftragChanged;
         }
         
-        
+        private void OnCurrentAuftragChanged()
+        {
+            _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
+        }
         private async void OnSubmitButtonClicked()
         {
             if (Auftragsverwaltung.SharedResources.Step == 2)
@@ -61,11 +65,21 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                 _auftrag.Auf_prüflos = int.Parse(TextBoxPrüflos.Text);
                 _auftrag.n_nr = _norm.N_nr;
                 _auftrag.Status_nr = 2;
-                db.Set<Auftrag>().Add(_auftrag);
+                _auftrag.Auf_nr = int.Parse(TextBoxAuftragsnr.Text);
+                var entityInDb = db.Set<Auftrag>().Find(int.Parse(TextBoxAuftragsnr.Text));
+        
+                if (entityInDb == null)
+                {
+                    db.Set<Auftrag>().Add(_auftrag);
+                }
+                else
+                {
+                    db.Entry(entityInDb).CurrentValues.SetValues(_auftrag);
+                }
                 await db.SaveChangesAsync();
                 Auftragsverwaltung.SharedResources.Step = 2;
                 Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
-                AdonisUI.Controls.MessageBox.Show("Auftrag erfolgreich erstellt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                AdonisUI.Controls.MessageBox.Show("Auftrag erfolgreich erstellt / aktualisiert!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
                 MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
             }
             else

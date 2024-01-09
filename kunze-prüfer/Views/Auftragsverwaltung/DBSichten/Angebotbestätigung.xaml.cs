@@ -20,11 +20,16 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             InitializeComponent();
             _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
             Auftragsverwaltung.SubmitButtonClicked += OnSubmitButtonClicked;
+            Auftragsverwaltung.CurrentAuftragChanged += OnCurrentAuftragChanged;
             ComboBoxMwstSatz.ItemsSource = db.GetAll<Mehrwertsteuer>().Result.ToList();
             ComboBoxMwstSatz.DisplayMemberPath = "Mwst_satz";
             ComboBoxMwstSatz.SelectedValuePath = "Mwst_nr";
         }
 
+        private void OnCurrentAuftragChanged()
+        {
+            _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
+        }
         private async void OnSubmitButtonClicked()
         {
             if (Auftragsverwaltung.SharedResources.Step == 3)
@@ -43,8 +48,21 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                         Mwst_nr = int.Parse(ComboBoxMwstSatz.SelectedValue.ToString()),
                         Auf_nr = _auftrag.Auf_nr
                     };
+                    var entityInDb = db.Set<Angebot>().Find(int.Parse(TextBoxAngebotsnr.Text));
+        
+                    if (entityInDb == null)
+                    {
+                        db.Set<Angebot>().Add(_angebot);
+                    }
+                    else
+                    {
+                        db.Entry(entityInDb).CurrentValues.SetValues(_angebot);
+                    }
+                    
                     _auftrag.Status_nr = 3;
-                    db.Set<Angebot>().Add(_angebot);
+                    var entityInDbAuftrag = db.Set<Auftrag>().Find(_auftrag.Auf_nr);
+                    db.Entry(entityInDbAuftrag).CurrentValues.SetValues(_auftrag);
+                    
                     await db.SaveChangesAsync();
                     Auftragsverwaltung.SharedResources.Step = 4;
                     Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
@@ -61,19 +79,19 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         private void ButtonAngebotErstellen_OnClick(object sender, RoutedEventArgs e)
         {
             
-            PDFCreator pdfCreator = new PDFCreator(new InvoiceDataSource());
-            pdfCreator.Show();
-            pdfCreator.Closed += (o, args) =>
-            {
-                var lastAngebot = db.GetLastEntity<Angebot, int>(a => a.Ang_nr);
-                if (lastAngebot == null)
-                {
-                    TextBoxAngebotsnr.Text = "1";
-                    return;
-                }
-                int newAng_nr = lastAngebot.Ang_nr + 1;
-                TextBoxAngebotsnr.Text = newAng_nr.ToString();
-            };
+            //PDFCreator pdfCreator = new PDFCreator(new InvoiceDataSource());
+            //pdfCreator.Show();
+            //pdfCreator.Closed += (o, args) =>
+            //{
+            //    var lastAngebot = db.GetLastEntity<Angebot, int>(a => a.Ang_nr);
+            //    if (lastAngebot == null)
+            //    {
+            //        TextBoxAngebotsnr.Text = "1";
+            //        return;
+            //    }
+            //    int newAng_nr = lastAngebot.Ang_nr + 1;
+            //    TextBoxAngebotsnr.Text = newAng_nr.ToString();
+            //};
         }
     }
 }
