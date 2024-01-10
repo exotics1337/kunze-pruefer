@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Media;
 using kunze_prüfer.DataBase;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
@@ -38,6 +39,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     Auftragsverwaltung.SharedResources.Step = 6;
                     Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
                     AdonisUI.Controls.MessageBox.Show("Werkstoffprüfung wurde erfolgreich bestätigt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                    MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
                 }
                 else
                 {
