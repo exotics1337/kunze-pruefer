@@ -20,7 +20,7 @@
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <StackPanel Margin="10,0,10,10">
                                     <TextBlock FontSize="11" Foreground="#848484">Neue Rechnung erstellen</TextBlock>
-                                    <Button Margin="0,3,0,0" Width="200" x:Name="ButtonRechnungErstellen">Rechnung Erstellen</Button>
+                                    <Button Margin="0,3,0,0" Width="200" x:Name="ButtonRechnungErstellen" Click="ButtonRechnungErstellen_OnClick">Rechnung Erstellen</Button>
                                 </StackPanel>
                                 <StackPanel Margin="10,0,10,10">
                                     <TextBlock FontSize="11" Foreground="#848484">Rechnungsnr</TextBlock>

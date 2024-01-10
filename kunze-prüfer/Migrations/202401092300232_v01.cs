@@ -3,16 +3,11 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class v07 : DbMigration
+    public partial class v01 : DbMigration
     {
         public override void Up()
         {
-            DropForeignKey("dbo.Angebotspositions", "Pruefungstyp_Pe_Typ_nr", "dbo.Pruefungstyps");
-            DropForeignKey("dbo.Rechnungspositions", "Pruefungstyp_Pe_Typ_nr", "dbo.Pruefungstyps");
-            DropIndex("dbo.Angebotspositions", new[] { "Pruefungstyp_Pe_Typ_nr" });
-            DropIndex("dbo.Rechnungspositions", new[] { "Pruefungstyp_Pe_Typ_nr" });
-            DropColumn("dbo.Angebotspositions", "Pruefungstyp_Pe_Typ_nr");
-            DropColumn("dbo.Rechnungspositions", "Pruefungstyp_Pe_Typ_nr");
+
         }
         
         public override void Down()

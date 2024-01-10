@@ -103,25 +103,13 @@
     <Compile Include="DataBase\DB.cs" />
     <Compile Include="DataBase\DBQ.cs" />
     <Compile Include="DataBase\QuerryTest.cs" />
-    <Compile Include="Migrations\202312241251277_v01.cs" />
-    <Compile Include="Migrations\202312241251277_v01.Designer.cs">
-      <DependentUpon>202312241251277_v01.cs</DependentUpon>
+    <Compile Include="Migrations\202401092300232_v01.cs" />
+    <Compile Include="Migrations\202401092300232_v01.Designer.cs">
+      <DependentUpon>202401092300232_v01.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202401061642031_v03.cs" />
-    <Compile Include="Migrations\202401061642031_v03.Designer.cs">
-      <DependentUpon>202401061642031_v03.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401072203428_v04.cs" />
-    <Compile Include="Migrations\202401072203428_v04.Designer.cs">
-      <DependentUpon>202401072203428_v04.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401091907098_v06.cs" />
-    <Compile Include="Migrations\202401091907098_v06.Designer.cs">
-      <DependentUpon>202401091907098_v06.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202401091920224_v07.cs" />
-    <Compile Include="Migrations\202401091920224_v07.Designer.cs">
-      <DependentUpon>202401091920224_v07.cs</DependentUpon>
+    <Compile Include="Migrations\202401092302479_v01test.cs" />
+    <Compile Include="Migrations\202401092302479_v01test.Designer.cs">
+      <DependentUpon>202401092302479_v01test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CheckLogin.cs" />
@@ -302,20 +290,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202312241251277_v01.resx">
-      <DependentUpon>202312241251277_v01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401092300232_v01.resx">
+      <DependentUpon>202401092300232_v01.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401061642031_v03.resx">
-      <DependentUpon>202401061642031_v03.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401072203428_v04.resx">
-      <DependentUpon>202401072203428_v04.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401091907098_v06.resx">
-      <DependentUpon>202401091907098_v06.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202401091920224_v07.resx">
-      <DependentUpon>202401091920224_v07.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202401092302479_v01test.resx">
+      <DependentUpon>202401092302479_v01test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -25,6 +25,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
             Auftragsverwaltung.SubmitButtonClicked += OnSubmitButtonClicked;
             Auftragsverwaltung.CurrentAuftragChanged += OnCurrentAuftragChanged;
+            DataGridWerkstoffpruefung.ItemsSource = ProbeUnterList;
             ComboBoxFertigstellungszeit.ItemsSource = db.GetAll<Fertigstellung_Zeit>().Result.ToList();
             ComboBoxFertigstellungszeit.DisplayMemberPath = "P_fertigstellung_zeit_bez";
             ComboBoxFertigstellungszeit.SelectedValuePath = "P_fertigstellung_zeit_nr";
@@ -116,7 +117,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     var entityInDbAuftrag = db.Set<Auftrag>().Find(_auftrag.Auf_nr);
                     db.Entry(entityInDbAuftrag).CurrentValues.SetValues(_auftrag);
                     await db.SaveChangesAsync();
-                    Auftragsverwaltung.SharedResources.Step = 5;
+                    Auftragsverwaltung.SharedResources.Step = 4;
                     Auftragsverwaltung.SharedResources.CurrentProbeUnterList = ProbeUnterList;
                     AdonisUI.Controls.MessageBox.Show("Werkstoffprüfung wurde erfolgreich erstellt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
                     MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
@@ -182,6 +183,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             if (lastPruefung == null)
             {
                 TextBoxPruefungsnr.Text = "1";
+                TextBoxProbenr.Text = Auftragsverwaltung.SharedResources.CurrentAuftrag.Auf_nr.ToString();
                 return;
             }
             int newP_nr = lastPruefung.P_nr + 1;

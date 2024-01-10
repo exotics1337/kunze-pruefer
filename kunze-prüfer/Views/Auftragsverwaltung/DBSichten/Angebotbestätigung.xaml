@@ -14,6 +14,10 @@ d:DesignHeight="500" d:DesignWidth="680">
                         <StackPanel x:Name="StackPanelAngebot">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <StackPanel Margin="10,0,10,10">
+                                    <TextBlock FontSize="11" Foreground="#848484">MwSt Satz (%)</TextBlock>
+                                    <ComboBox Margin="0,3,0,0" Width="100" x:Name="ComboBoxMwstSatz"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="10,0,10,10">
                                     <TextBlock FontSize="11" Foreground="#848484">Neues Angebot erstellen</TextBlock>
                                     <Button Margin="0,3,0,0" Width="200" x:Name="ButtonAngebotErstellen" Click="ButtonAngebotErstellen_OnClick">
                                         <StackPanel Orientation="Horizontal">
@@ -35,10 +39,6 @@ d:DesignHeight="500" d:DesignWidth="680">
                                 <StackPanel Margin="10,0,10,10">
                                     <TextBlock FontSize="11" Foreground="#848484">Gültigskeitsdatum</TextBlock>
                                     <DatePicker Margin="0,3,0,0" Width="150" x:Name="DatePickerGueltigkeitsdatum"/>
-                                </StackPanel>
-                                <StackPanel Margin="10,0,10,10">
-                                    <TextBlock FontSize="11" Foreground="#848484">MwSt Satz (%)</TextBlock>
-                                    <ComboBox Margin="0,3,0,0" Width="100" x:Name="ComboBoxMwstSatz"></ComboBox>
                                 </StackPanel>
                                 <StackPanel Margin="10,0,10,10">
                                     <TextBlock FontSize="11" Foreground="#848484">Probe Vorraussetzung</TextBlock>

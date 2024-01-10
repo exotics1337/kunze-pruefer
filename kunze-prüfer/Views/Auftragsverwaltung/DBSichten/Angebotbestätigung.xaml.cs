@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,6 +53,11 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         
                     if (entityInDb == null)
                     {
+                        foreach (var el in Auftragsverwaltung.SharedResources.CurrentAngebotspositionList)
+                        {
+                            el.Ang_nr = _angebot.Ang_nr;
+                            db.Set<Angebotsposition>().Add(el);
+                        }
                         db.Set<Angebot>().Add(_angebot);
                     }
                     else
@@ -76,22 +82,47 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             }
         }
 
-        private void ButtonAngebotErstellen_OnClick(object sender, RoutedEventArgs e)
+        private async void ButtonAngebotErstellen_OnClick(object sender, RoutedEventArgs e)
         {
+            var lastAngebot = db.GetLastEntity<Angebot, int>(a => a.Ang_nr);
+            if (lastAngebot == null)
+            {
+                TextBoxAngebotsnr.Text = "1";
+            }
+            else
+            {
+                int newAng_nr = lastAngebot.Ang_nr + 1;
+                TextBoxAngebotsnr.Text = newAng_nr.ToString();
+            }
             
-            //PDFCreator pdfCreator = new PDFCreator(new InvoiceDataSource());
-            //pdfCreator.Show();
-            //pdfCreator.Closed += (o, args) =>
-            //{
-            //    var lastAngebot = db.GetLastEntity<Angebot, int>(a => a.Ang_nr);
-            //    if (lastAngebot == null)
-            //    {
-            //        TextBoxAngebotsnr.Text = "1";
-            //        return;
-            //    }
-            //    int newAng_nr = lastAngebot.Ang_nr + 1;
-            //    TextBoxAngebotsnr.Text = newAng_nr.ToString();
-            //};
+            InvoiceDataSource IS = new InvoiceDataSource();
+            InvoiceTemplate IT = new InvoiceTemplate();
+            InvoiceTemplate.InvoiceKunde IK = new InvoiceTemplate.InvoiceKunde();
+            InvoiceTemplate.AngebotModel AM = new InvoiceTemplate.AngebotModel();
+
+            var kunde = await db.Set<Kunde>().FirstOrDefaultAsync(k => k.k_nr == _auftrag.k_nr);
+            IK.Name = kunde.k_name;
+            IK.Adresse = kunde.k_rech_adresse;
+            IK.USTID = kunde.k_ust_id;
+
+            AM.Kunde = IK;
+            AM.AngebotNr = int.Parse(TextBoxAngebotsnr.Text);
+            
+            if (ComboBoxMwstSatz.SelectedIndex != -1)
+            {
+                AM.MwSt = double.Parse(ComboBoxMwstSatz.Text);
+            }
+            else
+            {
+                AM.MwSt = 19;
+            }
+            
+            PDFCreator pdfCreator = new PDFCreator(IS, IK, int.Parse(TextBoxAngebotsnr.Text), AM, null, true);
+            pdfCreator.Show();
+            pdfCreator.Closed += (o, args) =>
+            {
+
+            };
         }
     }
 }

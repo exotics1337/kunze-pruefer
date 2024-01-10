@@ -38,7 +38,6 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     _norm = new Norm()
                     {
                         N_bez = TextBoxPrüfnormbezeichnung.Text,
-                        N_nr = int.Parse(TextBoxNormnr.Text)
                     };
                 }
                 else

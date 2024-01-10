@@ -19,7 +19,7 @@ namespace kunze_prüfer.Views.QuickPDF
         private Models.InvoiceDataSource invoiceInstance = new Models.InvoiceDataSource();
         private bool _isAngebot;
         private int _angebotNr;
-        public PDFCreator(Models.InvoiceDataSource invoiceInstance, int angebotNr, bool isAngebot = true)
+        public PDFCreator(Models.InvoiceDataSource invoiceInstance, InvoiceTemplate.InvoiceKunde IK, int angebotNr, InvoiceTemplate.AngebotModel AM = null, InvoiceTemplate.RechnungModel RM = null, bool isAngebot = true)
         {
             InitializeComponent();
             foreach (var element in invoiceInstance.InvoiceBaseElements)
@@ -189,6 +189,8 @@ namespace kunze_prüfer.Views.QuickPDF
                     Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentRechnungspositionList.Add(pos);
                 }
             }
+            
+            this.Close();
         }
     }
 }

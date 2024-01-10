@@ -7,13 +7,13 @@ namespace kunze_prüfer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class v07 : IMigrationMetadata
+    public sealed partial class v01test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(v07));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v01test));
         
         string IMigrationMetadata.Id
         {
-            get { return "202401091920224_v07"; }
+            get { return "202401092302479_v01test"; }
         }
         
         string IMigrationMetadata.Source

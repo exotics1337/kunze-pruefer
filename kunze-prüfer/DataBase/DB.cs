@@ -219,7 +219,8 @@ namespace kunze_prüfer.DataBase
              modelBuilder.Entity<Pruefungstyp>()
                  .HasMany(re => re.Werkstoff_Pruefung)
                  .WithRequired(pr => pr.Pruefungstyp)
-                 .HasForeignKey(pr => pr.Pe_Typ_nr);
+                 .HasForeignKey(pr => pr.Pe_Typ_nr)
+                 ;
 
              modelBuilder.Entity<Abnahmegesellschaft>()
                  .HasKey(a => a.Abnahme_nr)
@@ -236,7 +237,8 @@ namespace kunze_prüfer.DataBase
              modelBuilder.Entity<Werkstoff_Pruefung>()
                  .HasRequired(we => we.Pruefungstyp)
                  .WithMany(we => we.Werkstoff_Pruefung)
-                 .HasForeignKey(we => we.Pe_Typ_nr);
+                 .HasForeignKey(we => we.Pe_Typ_nr)
+                 ;
 
              modelBuilder.Entity<Mehrwertsteuer>()
                  .HasKey(m => m.Mwst_nr)
