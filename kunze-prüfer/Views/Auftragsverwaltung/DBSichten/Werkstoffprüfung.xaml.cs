@@ -9,6 +9,8 @@ using kunze_prüfer.DataBase;
 using static kunze_prüfer.Models.TextBoxChecker;
 namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
 {
+    using System;
+
     public partial class Werkstoffprüfung : UserControl
     {
         private DataBase.DBQ db = new DataBase.DBQ();
@@ -37,120 +39,136 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         }
         private async void OnSubmitButtonClicked()
         {
-            if (Auftragsverwaltung.SharedResources.Step == 4)
+            try
             {
-                if (
-                    TextBoxNameAbnahmegesellschaft != null && TextBoxAbnahmenr != null &&
-                    TextBoxPruefungsnr != null && TextBoxProbeanzahl != null &&
-                    TextBoxProbenr != null && DatePickerProbeEingangsdatum.SelectedDate.HasValue &&
-                    DatePickerFertigstellungsdatum.SelectedDate.HasValue && ComboBoxFertigstellungszeit.SelectedIndex != -1 &&
-                    DatePickerAbnahmedatum.SelectedDate.HasValue && TextBoxChargeNr != null &&
-                    TextBoxBemerkung != null
-                    )
+                if (Auftragsverwaltung.SharedResources.Step == 4)
                 {
-                    if (!_isAbnahmegesellschaftSelected)
+                    if (
+                        TextBoxNameAbnahmegesellschaft != null && TextBoxAbnahmenr != null &&
+                        TextBoxPruefungsnr != null && TextBoxProbeanzahl != null &&
+                        TextBoxProbenr != null && DatePickerProbeEingangsdatum.SelectedDate.HasValue &&
+                        DatePickerFertigstellungsdatum.SelectedDate.HasValue && ComboBoxFertigstellungszeit.SelectedIndex != -1 &&
+                        DatePickerAbnahmedatum.SelectedDate.HasValue && TextBoxChargeNr != null &&
+                        TextBoxBemerkung != null
+                    )
                     {
-                        _abnahmegesellschaft = new Abnahmegesellschaft()
+                        if (!_isAbnahmegesellschaftSelected)
                         {
-                            Abnhme_bez = TextBoxNameAbnahmegesellschaft.Text,
-                            Abnahme_nr = int.Parse(TextBoxAbnahmenr.Text)
-                        };
-                    }
-                    else
-                    {
-                        int abnahmenr = int.Parse(TextBoxAbnahmenr.Text);
-                        _abnahmegesellschaft = db.Set<Abnahmegesellschaft>().FirstOrDefault(ab => ab.Abnahme_nr == abnahmenr);
-                    }
-                    
-                    _probeKopf = new Probe_Kopf()
-                    {
-                        P_anzahl = int.Parse(TextBoxProbeanzahl.Text),
-                        Prob_nr = int.Parse(TextBoxProbenr.Text),
-                        P_eingang = DatePickerProbeEingangsdatum.SelectedDate.Value,
-                        P_fertigstellung_dat = DatePickerFertigstellungsdatum.SelectedDate.Value,
-                        P_fertigstellung_zeit_nr = int.Parse(ComboBoxFertigstellungszeit.SelectedValue.ToString()),
-                        P_abnahme_dat = DatePickerAbnahmedatum.SelectedDate.Value,
-                        P_charge_nr = TextBoxChargeNr.Text,
-                        P_bemerkung = TextBoxBemerkung.Text,
-                        Abnahme_nr = _abnahmegesellschaft.Abnahme_nr,
-                    };
-
-                    if (!_isAbnahmegesellschaftSelected)
-                    {
-                        db.Set<Abnahmegesellschaft>().Add(_abnahmegesellschaft);
-                    }
-                    var entityInDb = db.Set<Probe_Kopf>().Find(int.Parse(TextBoxPruefungsnr.Text));
-        
-                    if (entityInDb == null)
-                    {
-                        db.Set<Probe_Kopf>().Add(_probeKopf);
-                    }
-                    else
-                    {
-                        _probeKopf.P_nr = entityInDb.P_nr;
-                        db.Entry(entityInDb).CurrentValues.SetValues(_probeKopf);
-                    }
-                    await db.SaveChangesAsync();
-
-                    int index = 1;
-                    foreach(Probe_Unter pb in ProbeUnterList)
-                    {
-                        var entitiesInDb = db.Set<Probe_Unter>().Find(pb.P_nr, index);
-        
-                        if (entitiesInDb == null)
-                        {
-                            pb.P_nr = _probeKopf.P_nr;
-                            pb.Pe_nr = index;
-                            db.Set<Probe_Unter>().Add(pb);
-                            index++;
+                            _abnahmegesellschaft = new Abnahmegesellschaft()
+                            {
+                                Abnhme_bez = TextBoxNameAbnahmegesellschaft.Text,
+                                Abnahme_nr = int.Parse(TextBoxAbnahmenr.Text)
+                            };
                         }
                         else
                         {
-                            pb.P_nr = _probeKopf.P_nr;
-                            pb.Pe_nr = index;
-                            db.Entry(entitiesInDb).CurrentValues.SetValues(pb);
-                            index++;
+                            int abnahmenr = int.Parse(TextBoxAbnahmenr.Text);
+                            _abnahmegesellschaft = db.Set<Abnahmegesellschaft>().FirstOrDefault(ab => ab.Abnahme_nr == abnahmenr);
                         }
-                    }
+                    
+                        _probeKopf = new Probe_Kopf()
+                        {
+                            P_anzahl = int.Parse(TextBoxProbeanzahl.Text),
+                            Prob_nr = int.Parse(TextBoxProbenr.Text),
+                            P_eingang = DatePickerProbeEingangsdatum.SelectedDate.Value,
+                            P_fertigstellung_dat = DatePickerFertigstellungsdatum.SelectedDate.Value,
+                            P_fertigstellung_zeit_nr = int.Parse(ComboBoxFertigstellungszeit.SelectedValue.ToString()),
+                            P_abnahme_dat = DatePickerAbnahmedatum.SelectedDate.Value,
+                            P_charge_nr = TextBoxChargeNr.Text,
+                            P_bemerkung = TextBoxBemerkung.Text,
+                            Abnahme_nr = _abnahmegesellschaft.Abnahme_nr,
+                        };
 
-                    _auftrag.Status_nr = 4;
-                    var entityInDbAuftrag = db.Set<Auftrag>().Find(_auftrag.Auf_nr);
-                    db.Entry(entityInDbAuftrag).CurrentValues.SetValues(_auftrag);
-                    await db.SaveChangesAsync();
-                    Auftragsverwaltung.SharedResources.Step = 4;
-                    Auftragsverwaltung.SharedResources.CurrentProbeUnterList = ProbeUnterList;
-                    AdonisUI.Controls.MessageBox.Show("Werkstoffprüfung wurde erfolgreich erstellt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
-                    MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
-                }
-                else
-                {
-                    AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                        if (!_isAbnahmegesellschaftSelected)
+                        {
+                            db.Set<Abnahmegesellschaft>().Add(_abnahmegesellschaft);
+                        }
+                        var entityInDb = db.Set<Probe_Kopf>().Find(int.Parse(TextBoxPruefungsnr.Text));
+        
+                        if (entityInDb == null)
+                        {
+                            db.Set<Probe_Kopf>().Add(_probeKopf);
+                        }
+                        else
+                        {
+                            _probeKopf.P_nr = entityInDb.P_nr;
+                            db.Entry(entityInDb).CurrentValues.SetValues(_probeKopf);
+                        }
+                        await db.SaveChangesAsync();
+
+                        int index = 1;
+                        foreach(Probe_Unter pb in ProbeUnterList)
+                        {
+                            var entitiesInDb = db.Set<Probe_Unter>().Find(pb.P_nr, index);
+        
+                            if (entitiesInDb == null)
+                            {
+                                pb.P_nr = _probeKopf.P_nr;
+                                pb.Pe_nr = index;
+                                db.Set<Probe_Unter>().Add(pb);
+                                index++;
+                            }
+                            else
+                            {
+                                pb.P_nr = _probeKopf.P_nr;
+                                pb.Pe_nr = index;
+                                db.Entry(entitiesInDb).CurrentValues.SetValues(pb);
+                                index++;
+                            }
+                        }
+
+                        _auftrag.Status_nr = 4;
+                        var entityInDbAuftrag = db.Set<Auftrag>().Find(_auftrag.Auf_nr);
+                        db.Entry(entityInDbAuftrag).CurrentValues.SetValues(_auftrag);
+                        await db.SaveChangesAsync();
+                        Auftragsverwaltung.SharedResources.Step = 4;
+                        Auftragsverwaltung.SharedResources.CurrentProbeUnterList = ProbeUnterList;
+                        AdonisUI.Controls.MessageBox.Show("Werkstoffprüfung wurde erfolgreich erstellt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                        MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
+                    }
+                    else
+                    {
+                        AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
 
         private async void ButtonAbnahmegesellschaftAuswaehlen_OnClick(object sender, RoutedEventArgs e)
         {
-            SearchWindow sw = new SearchWindow(TextBoxSucheAbnahmegesellschaft.Text, "Abnahmegesellschaft");
-            if (int.TryParse(TextBoxSucheAbnahmegesellschaft.Text, out int result))
+            try
             {
-                // Suche mit ID implementieren
-            }
-            else if (TextBoxSucheAbnahmegesellschaft.Text != "")
-            {
-                await sw.SearchWithType(TextBoxSucheAbnahmegesellschaft.Text);
-            }
-            sw.ShowDialog();
-            if (sw.CurrentlySelectedID != 0)
-            {
-                var abnahmegesellschaft = await db.GetEntityByIdAsync<DataBase.Abnahmegesellschaft, int>(sw.CurrentlySelectedID);
-                if (abnahmegesellschaft != null)
+                SearchWindow sw = new SearchWindow(TextBoxSucheAbnahmegesellschaft.Text, "Abnahmegesellschaft");
+                if (int.TryParse(TextBoxSucheAbnahmegesellschaft.Text, out int result))
                 {
-                    _isAbnahmegesellschaftSelected = true;
-                    TextBoxAbnahmenr.Text = abnahmegesellschaft.Abnahme_nr.ToString();
-                    TextBoxNameAbnahmegesellschaft.Text = abnahmegesellschaft.Abnhme_bez;
+                    // Suche mit ID implementieren
+                }
+                else if (TextBoxSucheAbnahmegesellschaft.Text != "")
+                {
+                    await sw.SearchWithType(TextBoxSucheAbnahmegesellschaft.Text);
+                }
+                sw.ShowDialog();
+                if (sw.CurrentlySelectedID != 0)
+                {
+                    var abnahmegesellschaft = await db.GetEntityByIdAsync<DataBase.Abnahmegesellschaft, int>(sw.CurrentlySelectedID);
+                    if (abnahmegesellschaft != null)
+                    {
+                        _isAbnahmegesellschaftSelected = true;
+                        TextBoxAbnahmenr.Text = abnahmegesellschaft.Abnahme_nr.ToString();
+                        TextBoxNameAbnahmegesellschaft.Text = abnahmegesellschaft.Abnhme_bez;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
 
         private void TextBlockSelectionClearAbnahme_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -162,33 +180,49 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
 
         private void TextBoxNameAbnahmegesellschaft_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!_isAbnahmegesellschaftSelected)
+            try
             {
-                var lastAbnahme = db.GetLastEntity<Abnahmegesellschaft, int>(ab => ab.Abnahme_nr);
-                if (lastAbnahme != null)
+                if (!_isAbnahmegesellschaftSelected)
                 {
-                    int newW_nr = lastAbnahme.Abnahme_nr + 1;
-                    TextBoxAbnahmenr.Text = newW_nr.ToString();
-                }
-                else
-                {
-                    TextBoxAbnahmenr.Text = "1";
+                    var lastAbnahme = db.GetLastEntity<Abnahmegesellschaft, int>(ab => ab.Abnahme_nr);
+                    if (lastAbnahme != null)
+                    {
+                        int newW_nr = lastAbnahme.Abnahme_nr + 1;
+                        TextBoxAbnahmenr.Text = newW_nr.ToString();
+                    }
+                    else
+                    {
+                        TextBoxAbnahmenr.Text = "1";
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+               AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
 
         private void TextBoxProbeanzahl_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var lastPruefung = db.GetLastEntity<Probe_Kopf, int>(pk => pk.P_nr);
-            if (lastPruefung == null)
+            try
             {
-                TextBoxPruefungsnr.Text = "1";
+                var lastPruefung = db.GetLastEntity<Probe_Kopf, int>(pk => pk.P_nr);
+                if (lastPruefung == null)
+                {
+                    TextBoxPruefungsnr.Text = "1";
+                    TextBoxProbenr.Text = Auftragsverwaltung.SharedResources.CurrentAuftrag.Auf_nr.ToString();
+                    return;
+                }
+                int newP_nr = lastPruefung.P_nr + 1;
+                TextBoxPruefungsnr.Text = newP_nr.ToString();
                 TextBoxProbenr.Text = Auftragsverwaltung.SharedResources.CurrentAuftrag.Auf_nr.ToString();
-                return;
             }
-            int newP_nr = lastPruefung.P_nr + 1;
-            TextBoxPruefungsnr.Text = newP_nr.ToString();
-            TextBoxProbenr.Text = Auftragsverwaltung.SharedResources.CurrentAuftrag.Auf_nr.ToString();
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+
         }
     }
 }

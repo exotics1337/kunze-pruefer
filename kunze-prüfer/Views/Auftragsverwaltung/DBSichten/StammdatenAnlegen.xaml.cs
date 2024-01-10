@@ -13,6 +13,8 @@ using Werkstoff = kunze_prüfer.DataBase.Werkstoff;
 
 namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
 {
+    using System;
+
     public partial class StammdatenAnlegen : UserControl
     {
         private DBQ db = new DBQ();
@@ -31,112 +33,128 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         
         private async void OnSubmitButtonClicked()
         {
-            if (Auftragsverwaltung.SharedResources.Step == 1)
+            try
             {
-                if (CheckBoxLieferadresseWieRechnungsadresse.IsChecked == true)
-            {
-                TextBoxKundenRechnungsadresse.Text = TextBoxKundenAdresse.Text;
-            }
-            if (AreAllTextBoxesFilled(GroupBoxKundendetails) && AreAllTextBoxesFilled(GroupBoxWerkstoffDetails))
-            {
-                if (!_isKundeSelected)
+                if (Auftragsverwaltung.SharedResources.Step == 1)
                 {
-                    _kunde = new Kunde()
+                    if (CheckBoxLieferadresseWieRechnungsadresse.IsChecked == true)
                     {
-                        k_name = TextBoxKundenname.Text,
-                        k_ust_id = TextBoxKundenUstId.Text,
-                        k_lief_adresse = TextBoxKundenAdresse.Text,
-                        k_rech_adresse = TextBoxKundenRechnungsadresse.Text
-                    };
-                }
-                else
-                {
-                    int knr = int.Parse(TextBoxKundennr.Text);
-                    _kunde = db.Set<Kunde>().FirstOrDefault(k => k.k_nr == knr);
-                }
-                
-                if (!_isWerkstoffSelected)
-                {
-                    _werkstoff = new DataBase.Werkstoff()
+                        TextBoxKundenRechnungsadresse.Text = TextBoxKundenAdresse.Text;
+                    }
+                    if (AreAllTextBoxesFilled(GroupBoxKundendetails) && AreAllTextBoxesFilled(GroupBoxWerkstoffDetails))
                     {
-                        w_name = TextBoxName.Text,
-                        w_kennzeichen = TextBoxKennzeichnen.Text,
-                        w_oberflaeche = TextBoxOberflaeche.Text,
-                        w_hoehe = int.Parse(TextBoxHoehe.Text),
-                        w_breite = int.Parse(TextBoxBreite.Text),
-                        w_laenge = int.Parse(TextBoxLaenge.Text),
-                        w_gewicht = int.Parse(TextBoxGewicht.Text),
-                        w_kurz = TextBoxKurzname.Text
-                    };
-                }
-                else
-                {
-                    int wnr = int.Parse(TextBoxWerkstoffnr.Text);
-                    _werkstoff = db.Set<DataBase.Werkstoff>().FirstOrDefault(w => w.w_nr == wnr);
-                }
+                        if (!_isKundeSelected)
+                        {
+                            _kunde = new Kunde()
+                            {
+                                k_name = TextBoxKundenname.Text,
+                                k_ust_id = TextBoxKundenUstId.Text,
+                                k_lief_adresse = TextBoxKundenAdresse.Text,
+                                k_rech_adresse = TextBoxKundenRechnungsadresse.Text
+                            };
+                        }
+                        else
+                        {
+                            int knr = int.Parse(TextBoxKundennr.Text);
+                            _kunde = db.Set<Kunde>().FirstOrDefault(k => k.k_nr == knr);
+                        }
                 
-                _auftrag.Anspr_nr = int.Parse(TextBoxAnsprechpartner.Text);
-                _auftrag.k_nr = _kunde.k_nr;
-                _auftrag.w_nr = _werkstoff.w_nr;
-                if (!_isKundeSelected)
-                {
-                    db.Set<Kunde>().Add(_kunde);
+                        if (!_isWerkstoffSelected)
+                        {
+                            _werkstoff = new DataBase.Werkstoff()
+                            {
+                                w_name = TextBoxName.Text,
+                                w_kennzeichen = TextBoxKennzeichnen.Text,
+                                w_oberflaeche = TextBoxOberflaeche.Text,
+                                w_hoehe = int.Parse(TextBoxHoehe.Text),
+                                w_breite = int.Parse(TextBoxBreite.Text),
+                                w_laenge = int.Parse(TextBoxLaenge.Text),
+                                w_gewicht = int.Parse(TextBoxGewicht.Text),
+                                w_kurz = TextBoxKurzname.Text
+                            };
+                        }
+                        else
+                        {
+                            int wnr = int.Parse(TextBoxWerkstoffnr.Text);
+                            _werkstoff = db.Set<DataBase.Werkstoff>().FirstOrDefault(w => w.w_nr == wnr);
+                        }
+                
+                        _auftrag.Anspr_nr = int.Parse(TextBoxAnsprechpartner.Text);
+                        _auftrag.k_nr = _kunde.k_nr;
+                        _auftrag.w_nr = _werkstoff.w_nr;
+                        if (!_isKundeSelected)
+                        {
+                            db.Set<Kunde>().Add(_kunde);
+                        }
+                        if (!_isWerkstoffSelected)
+                        {
+                            db.Set<DataBase.Werkstoff>().Add(_werkstoff);
+                        }
+                        await db.SaveChangesAsync();
+                        Auftragsverwaltung.SharedResources.Step = 1;
+                        Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
+                        MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
+                    }
+                    else
+                    {
+                        AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                    }
                 }
-                if (!_isWerkstoffSelected)
-                {
-                    db.Set<DataBase.Werkstoff>().Add(_werkstoff);
-                }
-                await db.SaveChangesAsync();
-                Auftragsverwaltung.SharedResources.Step = 1;
-                Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
-                MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
             }
-            else
+            catch (Exception ex)
             {
-                AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
             }
-            }
+            
         }
 
         private async void ButtonKundeAuswählen_OnClick(object sender, RoutedEventArgs e)
         {
-            SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Kunde");
-            if (int.TryParse(TextBoxSuchen.Text, out int result))
+            try
             {
-                // Suche mit ID implementieren
-            }
-            else if (TextBoxSuchen.Text != "")
-            {
-                await sw.SearchWithType(TextBoxSuchen.Text);
-            }
-            sw.ShowDialog();
-            if (sw.CurrentlySelectedID != 0)
-            {
-                var kunden = await db.GetEntityByIdAsync<DataBase.Kunde, int>(sw.CurrentlySelectedID);
-                if (kunden != null)
+                SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Kunde");
+                if (int.TryParse(TextBoxSuchen.Text, out int result))
                 {
-                    _isKundeSelected = true;
-                    TextBlockSelectedKunde.Text = kunden.k_name;
-                    TextBoxKundennr.Text = kunden.k_nr.ToString();
-                    TextBoxKundenname.Text = kunden.k_name;
-                    TextBoxKundenUstId.Text = kunden.k_ust_id;
-                    TextBoxKundenAdresse.Text = kunden.k_lief_adresse;
-                    TextBoxKundenRechnungsadresse.Text = kunden.k_rech_adresse;
-                    if (TextBoxKundenAdresse.Text == TextBoxKundenRechnungsadresse.Text)
+                    // Suche mit ID implementieren
+                }
+                else if (TextBoxSuchen.Text != "")
+                {
+                    await sw.SearchWithType(TextBoxSuchen.Text);
+                }
+                sw.ShowDialog();
+                if (sw.CurrentlySelectedID != 0)
+                {
+                    var kunden = await db.GetEntityByIdAsync<DataBase.Kunde, int>(sw.CurrentlySelectedID);
+                    if (kunden != null)
                     {
-                        CheckBoxLieferadresseWieRechnungsadresse.IsChecked = true;
+                        _isKundeSelected = true;
+                        TextBlockSelectedKunde.Text = kunden.k_name;
+                        TextBoxKundennr.Text = kunden.k_nr.ToString();
+                        TextBoxKundenname.Text = kunden.k_name;
+                        TextBoxKundenUstId.Text = kunden.k_ust_id;
+                        TextBoxKundenAdresse.Text = kunden.k_lief_adresse;
+                        TextBoxKundenRechnungsadresse.Text = kunden.k_rech_adresse;
+                        if (TextBoxKundenAdresse.Text == TextBoxKundenRechnungsadresse.Text)
+                        {
+                            CheckBoxLieferadresseWieRechnungsadresse.IsChecked = true;
+                        }
+                        else
+                        {
+                            CheckBoxLieferadresseWieRechnungsadresse.IsChecked = false;
+                        }
+                        var ansprechpartnerList = db.Set<Kunden_Ansprechpartner>()
+                            .Include(k => k.Ansprechpartner)
+                            .Where(a => a.K_nr == kunden.k_nr)
+                            .ToList();
+                        DataGridAnsprechpartner.ItemsSource = ansprechpartnerList;
                     }
-                    else
-                    {
-                        CheckBoxLieferadresseWieRechnungsadresse.IsChecked = false;
-                    }
-                    var ansprechpartnerList = db.Set<Kunden_Ansprechpartner>()
-                        .Include(k => k.Ansprechpartner)
-                        .Where(a => a.K_nr == kunden.k_nr)
-                        .ToList();
-                    DataGridAnsprechpartner.ItemsSource = ansprechpartnerList;
                 }
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+
         }
 
         private async void TextBoxKundennr_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -149,34 +167,42 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
 
         private async void ButtonWerkstoffAuswählen_OnClick(object sender, RoutedEventArgs e)
         {
-            SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Werkstoff");
-            if (int.TryParse(TextBoxSuchen.Text, out int result))
+            try
             {
-                // Suche mit ID implementieren
-            }
-            else if (TextBoxSuchen.Text != "")
-            {
-                await sw.SearchWithType(TextBoxSuchenWerkstoff.Text);
-            }
-            sw.ShowDialog();
-            if (sw.CurrentlySelectedID != 0)
-            {
-                var werkstoff = await db.GetEntityByIdAsync<DataBase.Werkstoff, int>(sw.CurrentlySelectedID);
-                if (werkstoff != null)
+                SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Werkstoff");
+                if (int.TryParse(TextBoxSuchen.Text, out int result))
                 {
-                    _isWerkstoffSelected = true;
-                    TextBlockSelectedWerkstoff.Text = werkstoff.w_name;
-                    TextBoxWerkstoffnr.Text = werkstoff.w_nr.ToString();
-                    TextBoxName.Text = werkstoff.w_name;
-                    TextBoxKennzeichnen.Text = werkstoff.w_kennzeichen;
-                    TextBoxOberflaeche.Text = werkstoff.w_oberflaeche;
-                    TextBoxHoehe.Text = werkstoff.w_hoehe.ToString();
-                    TextBoxBreite.Text = werkstoff.w_breite.ToString();
-                    TextBoxLaenge.Text = werkstoff.w_laenge.ToString();
-                    TextBoxGewicht.Text = werkstoff.w_gewicht.ToString();
-                    TextBoxKurzname.Text = werkstoff.w_kurz;
+                    // Suche mit ID implementieren
+                }
+                else if (TextBoxSuchen.Text != "")
+                {
+                    await sw.SearchWithType(TextBoxSuchenWerkstoff.Text);
+                }
+                sw.ShowDialog();
+                if (sw.CurrentlySelectedID != 0)
+                {
+                    var werkstoff = await db.GetEntityByIdAsync<DataBase.Werkstoff, int>(sw.CurrentlySelectedID);
+                    if (werkstoff != null)
+                    {
+                        _isWerkstoffSelected = true;
+                        TextBlockSelectedWerkstoff.Text = werkstoff.w_name;
+                        TextBoxWerkstoffnr.Text = werkstoff.w_nr.ToString();
+                        TextBoxName.Text = werkstoff.w_name;
+                        TextBoxKennzeichnen.Text = werkstoff.w_kennzeichen;
+                        TextBoxOberflaeche.Text = werkstoff.w_oberflaeche;
+                        TextBoxHoehe.Text = werkstoff.w_hoehe.ToString();
+                        TextBoxBreite.Text = werkstoff.w_breite.ToString();
+                        TextBoxLaenge.Text = werkstoff.w_laenge.ToString();
+                        TextBoxGewicht.Text = werkstoff.w_gewicht.ToString();
+                        TextBoxKurzname.Text = werkstoff.w_kurz;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
 
         private void TextBlockSelectionClearKunde_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -221,36 +247,52 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
 
         private void TextBoxKundenname_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!_isKundeSelected)
+            try
             {
-                var lastKunde = db.GetLastEntity<Kunde, int>(k => k.k_nr);
-                if (lastKunde != null)
+                if (!_isKundeSelected)
                 {
-                    int newK_nr = lastKunde.k_nr + 1;
-                    TextBoxKundennr.Text = newK_nr.ToString();
-                }
-                else
-                {
-                    TextBoxKundennr.Text = "1";
+                    var lastKunde = db.GetLastEntity<Kunde, int>(k => k.k_nr);
+                    if (lastKunde != null)
+                    {
+                        int newK_nr = lastKunde.k_nr + 1;
+                        TextBoxKundennr.Text = newK_nr.ToString();
+                    }
+                    else
+                    {
+                        TextBoxKundennr.Text = "1";
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+
         }
 
         private void TextBoxName_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!_isWerkstoffSelected)
+            try
             {
-                var lastWerkstoff = db.GetLastEntity<Werkstoff, int>(w => w.w_nr);
-                if (lastWerkstoff != null)
+                if (!_isWerkstoffSelected)
                 {
-                    int newW_nr = lastWerkstoff.w_nr + 1;
-                    TextBoxWerkstoffnr.Text = newW_nr.ToString();
-                }
-                else
-                {
-                    TextBoxWerkstoffnr.Text = "1";
+                    var lastWerkstoff = db.GetLastEntity<Werkstoff, int>(w => w.w_nr);
+                    if (lastWerkstoff != null)
+                    {
+                        int newW_nr = lastWerkstoff.w_nr + 1;
+                        TextBoxWerkstoffnr.Text = newW_nr.ToString();
+                    }
+                    else
+                    {
+                        TextBoxWerkstoffnr.Text = "1";
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+               AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
     }
 }

@@ -29,88 +29,104 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         }
         private async void OnSubmitButtonClicked()
         {
-            if (Auftragsverwaltung.SharedResources.Step == 2)
+            try
             {
-             if (AreAllTextBoxesFilled(GroupBoxNormDetails) && AreAllTextBoxesFilled(GroupBoxAuftragDetails))
-            {
-                if (!_isPrüfnormSelected)
+                if (Auftragsverwaltung.SharedResources.Step == 2)
                 {
-                    _norm = new Norm()
+                    if (AreAllTextBoxesFilled(GroupBoxNormDetails) && AreAllTextBoxesFilled(GroupBoxAuftragDetails))
                     {
-                        N_bez = TextBoxPrüfnormbezeichnung.Text,
-                    };
-                }
-                else
-                {
-                    int nnr = int.Parse(TextBoxNormnr.Text);
-                    _norm = db.Set<Norm>().FirstOrDefault(n => n.N_nr == nnr);
-                }
+                        if (!_isPrüfnormSelected)
+                        {
+                            _norm = new Norm()
+                            {
+                                N_bez = TextBoxPrüfnormbezeichnung.Text,
+                            };
+                        }
+                        else
+                        {
+                            int nnr = int.Parse(TextBoxNormnr.Text);
+                            _norm = db.Set<Norm>().FirstOrDefault(n => n.N_nr == nnr);
+                        }
                 
-                if (DatePickerLiefertermin.SelectedDate.HasValue)
-                {
-                    _auftrag.Auf_liefertermin = DatePickerLiefertermin.SelectedDate.Value;
-                }
-                else
-                {
-                    AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
-                    return;
-                }
-                if (!_isPrüfnormSelected)
-                {
-                    db.Set<Norm>().Add(_norm);
-                }
+                        if (DatePickerLiefertermin.SelectedDate.HasValue)
+                        {
+                            _auftrag.Auf_liefertermin = DatePickerLiefertermin.SelectedDate.Value;
+                        }
+                        else
+                        {
+                            AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                            return;
+                        }
+                        if (!_isPrüfnormSelected)
+                        {
+                            db.Set<Norm>().Add(_norm);
+                        }
                 
-                _auftrag.auf_bestell_nr = int.Parse(TextBoxBestellnr.Text);
-                _auftrag.Auf_prüflos = int.Parse(TextBoxPrüflos.Text);
-                _auftrag.n_nr = _norm.N_nr;
-                _auftrag.Status_nr = 2;
-                _auftrag.Auf_nr = int.Parse(TextBoxAuftragsnr.Text);
-                var entityInDb = db.Set<Auftrag>().Find(int.Parse(TextBoxAuftragsnr.Text));
+                        _auftrag.auf_bestell_nr = int.Parse(TextBoxBestellnr.Text);
+                        _auftrag.Auf_prüflos = int.Parse(TextBoxPrüflos.Text);
+                        _auftrag.n_nr = _norm.N_nr;
+                        _auftrag.Status_nr = 2;
+                        _auftrag.Auf_nr = int.Parse(TextBoxAuftragsnr.Text);
+                        var entityInDb = db.Set<Auftrag>().Find(int.Parse(TextBoxAuftragsnr.Text));
         
-                if (entityInDb == null)
-                {
-                    db.Set<Auftrag>().Add(_auftrag);
+                        if (entityInDb == null)
+                        {
+                            db.Set<Auftrag>().Add(_auftrag);
+                        }
+                        else
+                        {
+                            db.Entry(entityInDb).CurrentValues.SetValues(_auftrag);
+                        }
+                        await db.SaveChangesAsync();
+                        Auftragsverwaltung.SharedResources.Step = 2;
+                        Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
+                        AdonisUI.Controls.MessageBox.Show("Auftrag erfolgreich erstellt / aktualisiert!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                        MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
+                    }
+                    else
+                    {
+                        AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                    }   
                 }
-                else
-                {
-                    db.Entry(entityInDb).CurrentValues.SetValues(_auftrag);
-                }
-                await db.SaveChangesAsync();
-                Auftragsverwaltung.SharedResources.Step = 2;
-                Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
-                AdonisUI.Controls.MessageBox.Show("Auftrag erfolgreich erstellt / aktualisiert!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
-                MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
             }
-            else
+            catch (Exception ex)
             {
-                AdonisUI.Controls.MessageBox.Show("Es wurden nicht alle notwendingen Felder ausgefüllt!", "Speichern nicht erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
-            }   
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
             }
+            
         }
 
         private async void ButtonPrüfnormAuswählen_OnClick(object sender, RoutedEventArgs e)
         {
-            SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Norm");
-            if (int.TryParse(TextBoxSuchen.Text, out int result))
+            try
             {
-                // Suche mit ID implementieren
-            }
-            else if (TextBoxSuchen.Text != "")
-            {
-                await sw.SearchWithType(TextBoxSuchen.Text);
-            }
-            sw.ShowDialog();
-            if (sw.CurrentlySelectedID != 0)
-            {
-                var prüfnorm = await db.GetEntityByIdAsync<Norm, int>(sw.CurrentlySelectedID);
-                if (prüfnorm != null)
+                SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Norm");
+                if (int.TryParse(TextBoxSuchen.Text, out int result))
                 {
-                    _isPrüfnormSelected = true;
-                    TextBlockSelectedNorm.Text = prüfnorm.N_bez;
-                    TextBoxNormnr.Text = prüfnorm.N_nr.ToString();
-                    TextBoxPrüfnormbezeichnung.Text = prüfnorm.N_bez;
+                    // Suche mit ID implementieren
+                }
+                else if (TextBoxSuchen.Text != "")
+                {
+                    await sw.SearchWithType(TextBoxSuchen.Text);
+                }
+                sw.ShowDialog();
+                if (sw.CurrentlySelectedID != 0)
+                {
+                    var prüfnorm = await db.GetEntityByIdAsync<Norm, int>(sw.CurrentlySelectedID);
+                    if (prüfnorm != null)
+                    {
+                        _isPrüfnormSelected = true;
+                        TextBlockSelectedNorm.Text = prüfnorm.N_bez;
+                        TextBoxNormnr.Text = prüfnorm.N_nr.ToString();
+                        TextBoxPrüfnormbezeichnung.Text = prüfnorm.N_bez;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
 
         private void TextBlockSelectionClearNorm_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -123,31 +139,47 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
 
         private void DatePickerLiefertermin_OnSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var lastAuftrag = db.GetLastEntity<Auftrag, int>(a => a.Auf_nr);
-            if (lastAuftrag != null)
+            try
             {
-                int newAuf_nr = lastAuftrag.Auf_nr + 1;
-                TextBoxAuftragsnr.Text = newAuf_nr.ToString();
+                var lastAuftrag = db.GetLastEntity<Auftrag, int>(a => a.Auf_nr);
+                if (lastAuftrag != null)
+                {
+                    int newAuf_nr = lastAuftrag.Auf_nr + 1;
+                    TextBoxAuftragsnr.Text = newAuf_nr.ToString();
+                }
+                else
+                {
+                    TextBoxAuftragsnr.Text = "1";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TextBoxAuftragsnr.Text = "1";
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
             }
+           
         }
 
         private void TextBoxPrüfnormbezeichnung_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!_isPrüfnormSelected)
+            try
             {
-                var lastNorm = db.GetLastEntity<Norm, int>(n => n.N_nr);
-                if (lastNorm == null)
+                if (!_isPrüfnormSelected)
                 {
-                    TextBoxNormnr.Text = "1";
-                    return;
+                    var lastNorm = db.GetLastEntity<Norm, int>(n => n.N_nr);
+                    if (lastNorm == null)
+                    {
+                        TextBoxNormnr.Text = "1";
+                        return;
+                    }
+                    int newN_nr = lastNorm.N_nr + 1;
+                    TextBoxNormnr.Text = newN_nr.ToString();
                 }
-                int newN_nr = lastNorm.N_nr + 1;
-                TextBoxNormnr.Text = newN_nr.ToString();
             }
+            catch (Exception ex)
+            {
+                AdonisUI.Controls.MessageBox.Show($"Ein Fehler ist aufgetreten: {ex.Message}", "Fehler", AdonisUI.Controls.MessageBoxButton.OK);
+            }
+            
         }
     }
 }
