@@ -4,14 +4,10 @@ namespace kunze_prüfer.Models
 {
     public class InvoiceTemplate
     {
-        public class Adresse
+        public class InvoiceKunde
         {
             public string Name { get; set; }
-            public string Strasse { get; set; }
-            public string Hausnummer { get; set; }
-            public string PLZ { get; set; }
-            public string Ort { get; set; }
-            public string Land { get; set; }
+            public string Adresse { get; set; }
             public string USTID { get; set; }
         }
 
@@ -31,26 +27,20 @@ namespace kunze_prüfer.Models
 
         public class AngebotModel
         {
-            public Adresse KundenAdresse { get; set; }
-            public Adresse AbsenderAdresse { get; set; }
+            public InvoiceKunde Kunde { get; set; }
             public List<Artikel> ArtikelList { get; set; }
             public List<Kommentar> KommentarList { get; set; }
             
-            public string AngebotNr { get; set; }
-            public string Betreff { get; set; }
-            public DateTime Datum { get; set; }
+            public int AngebotNr { get; set; }
             public double MwSt { get; set; }
         }
         
         public class RechnungModel
         {
-            public Adresse KundenAdresse { get; set; }
+            public InvoiceKunde Kunde { get; set; }
             public List<Artikel> ArtikelList { get; set; }
-            
-            public string RechnungNr { get; set; }
-            public string Betreff { get; set; }
-            public DateTime Datum { get; set; }
-
+            public List<Kommentar> KommentarList { get; set; }
+            public int RechnungNr { get; set; }
         }
     }
 }

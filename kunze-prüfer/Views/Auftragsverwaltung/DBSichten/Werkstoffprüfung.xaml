@@ -88,7 +88,6 @@
                     <Grid>
                         <DataGrid x:Name="DataGridWerkstoffpruefung" AutoGenerateColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nr" Binding="{Binding Pe_nr}" />
                                 <DataGridTextColumn Header="Typ Nr" Binding="{Binding Pe_typ_nr}" />
                                 <DataGridTextColumn Header="Anzahl" Binding="{Binding Pe_anzahl}" />
                                 <DataGridTextColumn Header="Temperatur" Binding="{Binding Pe_temp}" />

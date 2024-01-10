@@ -312,10 +312,11 @@ namespace kunze_prüfer.Views.Stammdaten
         {
             Dispatcher.Invoke(() =>
                 {
-                    baseDataGrid.ItemsSource = items;
-                    baseDataGrid.Items.Refresh();
-                    Debug.WriteLine(items.Count());
-                    Debug.WriteLine(baseDataGrid.Items.Count);
+                    var itemsObserv = new ObservableCollection<T>(items);
+                    Dispatcher.Invoke(() =>
+                    {
+                        baseDataGrid.ItemsSource = itemsObserv;
+                    });
                 }
             );
         }

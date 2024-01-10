@@ -156,14 +156,7 @@ namespace kunze_prüfer
 
         private void NavItem8_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            InvoiceDataSource invoiceDataInstance = new InvoiceDataSource();
-            
-            invoiceDataInstance.AddBaseElement( "Test", 1.0, 1.0);
-            invoiceDataInstance.AddBaseElement( "Test2", 13.0, 193.0);
-            invoiceDataInstance.AddBaseElement( "Test3", 10.0, 1194.0);
-            
-            PDFCreator pdfCreator = new PDFCreator(invoiceDataInstance);
-            pdfCreator.Show();
+
         }
     }
 }

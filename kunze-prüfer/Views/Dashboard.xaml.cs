@@ -33,9 +33,10 @@ namespace kunze_prüfer.Views
         {
             CurrentView = new DashboardDetails(DataGrid.currentlySelectedId);
         }
-        async Task GetAufträge()
+         async void GetAufträge()
         {
-            DataGrid.KonfiguriereSpaltenFuerModell(typeof(DataBase.Auftrag), false, false);
+            DataGrid.KonfiguriereSpaltenFuerModell(typeof(Auftrag), false, false);
+            DataGrid.InitializeData<DataBase.Auftrag>();
             var aufträge = await db.GetAll<DataBase.Auftrag>().ConfigureAwait(false);
             var filteredAufträge = aufträge.Where(a=> !a.Auf_geloescht).ToList();
             DataGrid.SetItemsSource(filteredAufträge);

@@ -47,8 +47,8 @@
                     </StackPanel>
                 </Grid>
             </GroupBox>
-            <GroupBox Height="200" Margin="15,0,15,15" VerticalAlignment="Top" Header="Ansprechpartnerdetails" x:Name="GroupBoxAnsprechpartner">
-                <Grid>
+            <GroupBox Height="Auto" MaxHeight="300" Margin="15,0,15,15" VerticalAlignment="Top" Header="Ansprechpartnerdetails" x:Name="GroupBoxAnsprechpartner">
+                <ScrollViewer>
                     <StackPanel Orientation="Vertical">
                         <DataGrid x:Name="DataGridAnsprechpartner" AutoGenerateColumns="False">
                             <DataGrid.Columns>
@@ -65,7 +65,7 @@
                             <TextBox Margin="0,3,0,0" Width="180" Text="" x:Name="TextBoxAnsprechpartner"/>
                         </StackPanel>
                     </StackPanel>
-                </Grid>
+                </ScrollViewer>
             </GroupBox>
                 <GroupBox Height="190" Margin="15,0,15,15" VerticalAlignment="Top" Header="Vorhandenen Werkstoff auswählen">
                 <StackPanel >

@@ -22,7 +22,6 @@ namespace kunze_prüfer.Views
             InitializeComponent();
             CheckConnection();
             QuestPDF.Settings.License = LicenseType.Community;
-            TestPdf();
         }
 
         private async void CheckConnection()
@@ -51,47 +50,7 @@ namespace kunze_prüfer.Views
                 }
             });
         }
-
-        private void TestPdf() // code später rauslöschen
-        {
-            InvoiceTemplate.Adresse adresse = new InvoiceTemplate.Adresse();
-            adresse.Land = "Deutschland";
-            adresse.Name = "Max Mustermann";
-            adresse.Ort = "Musterstadt";
-            adresse.PLZ = "12345";
-            adresse.Strasse = "Musterstraße";
-            adresse.Hausnummer = "1";
-            adresse.USTID = "DE123456789";
-            
-            InvoiceTemplate.AngebotModel model = new InvoiceTemplate.AngebotModel();
-            model.AbsenderAdresse = adresse;
-            model.KundenAdresse = adresse;
-            model.AngebotNr = "ANG-123";
-            model.Betreff = "Neues Angebot";
-
-            InvoiceTemplate.Artikel artikel1 = new InvoiceTemplate.Artikel
-            {
-                Menge = 1,
-                Name = "Artikel 1",
-                Preis = 10
-            };
-            
-            InvoiceTemplate.Artikel artikel2 = new InvoiceTemplate.Artikel
-            {
-                Menge = 3,
-                Name = "Artikel 2",
-                Preis = 24.5
-            };
-            
-            List<InvoiceTemplate.Artikel> artikelList = new List<InvoiceTemplate.Artikel>();
-            artikelList.Add(artikel1);
-            artikelList.Add(artikel2);
-
-            model.ArtikelList = artikelList;
-            
-            var document = new InvoiceGenerator(model);
-            document.GeneratePdf("invoice.pdf");
-        }
+        
 
         private async void ButtonLogin_OnClick(object sender, RoutedEventArgs e)
         {

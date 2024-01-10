@@ -111,15 +111,11 @@ namespace kunze_prüfer.DataBase
 
 
             modelBuilder.Entity<Rechnungsposition>()
-                .HasKey(rp => new{rp.r_nr , rp.Pe_typ_nr})
+                .HasKey(rp => new{rp.r_nr , rp.r2_nr})
                 .HasRequired(r => r.Rechnung)
                 .WithMany(r => r.Rechnungsposition)
                 .HasForeignKey(rp => rp.r_nr);
-
-            modelBuilder.Entity<Rechnungsposition>()
-                .HasRequired(pr => pr.Pruefungstyp)
-                .WithMany(re => re.Rechnungsposition)
-                .HasForeignKey(pe => pe.Pe_typ_nr);
+            
 
             modelBuilder.Entity<Textbaustein>()
                 .HasKey(t => t.Textbaustein_nr)
@@ -218,20 +214,13 @@ namespace kunze_prüfer.DataBase
 
 
            modelBuilder.Entity<Pruefungstyp>()
-               .HasKey(p => p.Pe_Typ_nr)
-               .HasMany(re => re.Rechnungsposition)
-               .WithRequired(pr => pr.Pruefungstyp)
-               .HasForeignKey(pr => pr.Pe_typ_nr);
+               .HasKey(p => p.Pe_Typ_nr);
             
              modelBuilder.Entity<Pruefungstyp>()
                  .HasMany(re => re.Werkstoff_Pruefung)
                  .WithRequired(pr => pr.Pruefungstyp)
-                 .HasForeignKey(pr => pr.Pe_Typ_nr);
-           
-             modelBuilder.Entity<Pruefungstyp>()
-                 .HasMany(re => re.Angebotsposition)
-                 .WithRequired(pr => pr.Pruefungstyp)
-                 .HasForeignKey(pr => pr.Pe_typ_nr);
+                 .HasForeignKey(pr => pr.Pe_Typ_nr)
+                 ;
 
              modelBuilder.Entity<Abnahmegesellschaft>()
                  .HasKey(a => a.Abnahme_nr)
@@ -248,7 +237,8 @@ namespace kunze_prüfer.DataBase
              modelBuilder.Entity<Werkstoff_Pruefung>()
                  .HasRequired(we => we.Pruefungstyp)
                  .WithMany(we => we.Werkstoff_Pruefung)
-                 .HasForeignKey(we => we.Pe_Typ_nr);
+                 .HasForeignKey(we => we.Pe_Typ_nr)
+                 ;
 
              modelBuilder.Entity<Mehrwertsteuer>()
                  .HasKey(m => m.Mwst_nr)
@@ -257,10 +247,7 @@ namespace kunze_prüfer.DataBase
                  .HasForeignKey(pr => pr.Mwst_nr);
 
              modelBuilder.Entity<Angebotsposition>()
-                 .HasKey(ap => new { ap.Ang_nr, ap.Pe_typ_nr })
-                 .HasRequired(pr => pr.Pruefungstyp)
-                 .WithMany(an => an.Angebotsposition)
-                 .HasForeignKey(pr => pr.Pe_typ_nr);
+                 .HasKey(ap => new { ap.Ang_nr, ap.Ang2_nr });
              
              modelBuilder.Entity<Angebotsposition>()
                  .HasRequired(pr => pr.Angebot)
@@ -378,15 +365,13 @@ namespace kunze_prüfer.DataBase
     public class Rechnungsposition
     {
         public int r_nr { get; set; }
-        public int Pe_typ_nr { get; set; }
+        public int r2_nr { get; set; }
+        public string Rp_name { get; set; }
         public double Rp_preis { get; set; }
         public int Rp_menge { get; set; }
         public string Rp_bemerkung { get; set; }
         //nav
         public virtual Rechnung Rechnung { get; set; }
-        
-        public virtual Pruefungstyp Pruefungstyp { get; set; }
-        
         
         
     }
@@ -516,8 +501,6 @@ namespace kunze_prüfer.DataBase
         public bool Pe_geloescht { get; set; }
         
         //Nav
-        public virtual ICollection<Rechnungsposition> Rechnungsposition { get; set; }
-        public virtual ICollection<Angebotsposition> Angebotsposition { get; set; }
         public virtual ICollection<Werkstoff_Pruefung> Werkstoff_Pruefung { get; set; }
     }
 
@@ -553,18 +536,18 @@ namespace kunze_prüfer.DataBase
 
         public virtual ICollection<Angebot> Angebot { get; set; }
         
+        
     }
     
     public class Angebotsposition
     {
         public int Ang_nr { get; set; }
-        public int Pe_typ_nr { get; set; }
+        public int Ang2_nr { get; set; }
+        public string Rp_name { get; set; }
         public double Rp_preis { get; set; }
         public int Rp_menge { get; set; }
         public string Rp_bemerkung { get; set; }
         //Nav
-
-        public virtual Pruefungstyp Pruefungstyp { get; set; }
         public virtual Angebot Angebot { get; set; }
     }
 

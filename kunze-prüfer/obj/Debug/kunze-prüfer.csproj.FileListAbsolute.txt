@@ -506,11 +506,9 @@ C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftrag
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragAnlegen.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Angebotbestätigung.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.g.cs
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\StammdatenAnlegen.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Werkstoffprüfung.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.g.cs
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Abnahmegesellschaft.g.cs
@@ -533,11 +531,9 @@ C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftrag
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragAnlegen.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Angebotbestätigung.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.baml
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Rechnungserstellung.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\StammdatenAnlegen.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Werkstoffprüfung.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\WerkstoffprüfungFinished.baml
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Dashboard.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\DatabaseConfig.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Abnahmegesellschaft.baml
@@ -625,7 +621,6 @@ C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Vie
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Textbausteine.baml
 C:\Users\kerim.guenaydin\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoff.baml
 C:\Users\Sergio\Desktop\Drive\Schule\2 Jahr\IFAS - Rolke\Kunze Projekt\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\SearchWindow.g.cs
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\SearchWindow.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\AuftragErledigt.g.cs
@@ -639,8 +634,6 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftrags
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Auftragsverwaltung\DBSichten\Zahlungseingang.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\CustomBtnLayout.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v03.resources
-C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v04.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\pdf-48.png
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\Icons\pdf-48.png
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\SearchWindow.g.cs
@@ -655,7 +648,21 @@ C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdat
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnungsposition.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kundenansprechpartner.g.cs
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kundenansprechpartner.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotsposition.g.cs
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kundenansprechpartner.g.cs
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnung.g.cs
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnungsposition.g.cs
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotsposition.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Kundenansprechpartner.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnung.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Rechnungsposition.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotstextbausteine.g.cs
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoffprüfung.g.cs
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotstextbausteine.baml
 C:\Users\User\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoffprüfung.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotstextbausteine.g.cs
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoffprüfung.g.cs
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Angebotstextbausteine.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoffprüfung.baml
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01test.resources

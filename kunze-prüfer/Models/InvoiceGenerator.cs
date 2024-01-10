@@ -54,12 +54,6 @@ namespace kunze_prüfer.Models
                 row.RelativeItem().Column(column =>
                 {
                     column.Item().Text(AngebotModel != null ? $"Angebot #{AngebotModel.AngebotNr}" : $"Rechnung #{RechnungModel.RechnungNr}").Style(titleStyle);
-
-                    column.Item().Text(text =>
-                    {
-                        text.Span("Betreff: ").SemiBold();
-                        text.Span(AngebotModel != null ? $"{AngebotModel.Betreff}" : $"{RechnungModel.Betreff}");
-                    });
                 
                     column.Item().Text(text =>
                     {

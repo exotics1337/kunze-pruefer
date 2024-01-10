@@ -51,7 +51,6 @@
             <dbsichten:Angebotbestätigung x:Name="viewAngebotbestätigung" Visibility="Collapsed"></dbsichten:Angebotbestätigung>
             <dbsichten:Werkstoffprüfung x:Name="viewWerkstoffprüfung" Visibility="Collapsed"></dbsichten:Werkstoffprüfung>
             <dbsichten:WerkstoffprüfungFinished x:Name="viewWerkstoffprüfungFinished" Visibility="Collapsed"></dbsichten:WerkstoffprüfungFinished>
-            <dbsichten:Zahlungseingang x:Name="viewZahlungseingang" Visibility="Collapsed"></dbsichten:Zahlungseingang>
             <dbsichten:AuftragErledigt x:Name="viewAuftragErledigt" Visibility="Collapsed"></dbsichten:AuftragErledigt>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#F8F4F4">

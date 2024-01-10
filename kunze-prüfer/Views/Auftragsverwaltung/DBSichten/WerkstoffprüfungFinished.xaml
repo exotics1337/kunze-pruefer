@@ -11,15 +11,25 @@
             <StackPanel>
             <GroupBox Height="360" Margin="15,15,15,15" VerticalAlignment="Top" Header="Werkstoffprüfung">
                 <Grid>
-                    <DataGrid>
-                        
+                    <DataGrid x:Name="DataGridWerkstoffpruefung" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Typ Nr" Binding="{Binding Pe_typ_nr}" />
+                                <DataGridTextColumn Header="Anzahl" Binding="{Binding Pe_anzahl}" />
+                                <DataGridTextColumn Header="Temperatur" Binding="{Binding Pe_temp}" />
+                                <DataGridTextColumn Header="Probenform" Binding="{Binding Pe_probenform}" />
+                                <DataGridTextColumn Header="Probenlage" Binding="{Binding Pe_probenlage}" />
+                                <DataGridTextColumn Header="Norm" Binding="{Binding Pe_norm}" />
+                                <DataGridTextColumn Header="Bemerkung" Binding="{Binding Pe_bemerkung}" />
+                                <DataGridTextColumn Header="Mitarbeiter Nr" Binding="{Binding M_nr}" />
+                                <DataGridTextColumn Header="Ergebnis" Binding="{Binding P_ergebnis_text}" />
+                            </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </GroupBox>
             <GroupBox Margin="15,0,15,15" Header="Werkstoffprüfung Überprüfen">
                 <StackPanel Margin="10,0,10,10" HorizontalAlignment="Left">
                     <TextBlock FontSize="11" Foreground="#848484">Werkstoffprüfung bestätigen</TextBlock>
-                    <CheckBox Margin="0,5,0,0" Width="90">Bestätigen</CheckBox>
+                    <CheckBox Margin="0,5,0,0" Width="90" x:Name="CheckBoxPruefungBestaetigen">Bestätigen</CheckBox>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

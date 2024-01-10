@@ -9,33 +9,37 @@
     <Grid>
         <ScrollViewer>
             <StackPanel>
-                <GroupBox Height="100" Margin="15,15,15,15" VerticalAlignment="Top" Header="Auftrag erledigt">
+                <GroupBox Height="100" Margin="15,15,15,15" VerticalAlignment="Top" Header="Auftrag erledigt" x:Name="GroupBoxAuftragErledigt">
                     <StackPanel >
-                        <TextBlock Text="Auftrag ist Erledigt!" FontSize="18" Margin="5" FontWeight="Light" />
+                        <TextBlock Text="Auftrag ist Erledigt!" FontSize="18" Margin="5" FontWeight="Light" x:Name="TextBlockAuftragErledigt" />
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Height="170" Margin="15,15,15,15" VerticalAlignment="Top" Header="Vorhandene Rechnung auswählen">
-                    <StackPanel >
-                        <TextBox Height="30" VerticalAlignment="Top">Suchen...</TextBox>
-                        <TextBlock Text="Ausgewählte Rechnung:" FontSize="10" Margin="5" Foreground="#848484"/>                
-                        <TextBlock Text="Max Müller GmbH" FontSize="14" Margin="5" FontWeight="Light" />
-                        <Button Margin="10"> Rechnung Auswählen</Button>
-                    </StackPanel>
-                </GroupBox>
-                <GroupBox Height="110" Margin="15,0,15,15" VerticalAlignment="Top" Header="Rechnungsdetails">
+                <GroupBox Height="160" Margin="15,0,15,15" VerticalAlignment="Top" Header="Rechnungsdetails" x:Name="GroupBoxRechnungsdetails">
                     <Grid>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <StackPanel Margin="10,0,10,10">
-                                <TextBlock FontSize="11" Foreground="#848484">Neue Rechnung erstellen</TextBlock>
-                                <Button Margin="0,3,0,0" Width="200" >Rechnung Erstellen</Button>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <StackPanel Margin="10,0,10,10">
+                                    <TextBlock FontSize="11" Foreground="#848484">Neue Rechnung erstellen</TextBlock>
+                                    <Button Margin="0,3,0,0" Width="200" x:Name="ButtonRechnungErstellen" Click="ButtonRechnungErstellen_OnClick">Rechnung Erstellen</Button>
+                                </StackPanel>
+                                <StackPanel Margin="10,0,10,10">
+                                    <TextBlock FontSize="11" Foreground="#848484">Rechnungsnr</TextBlock>
+                                    <TextBox Margin="0,3,0,0" Width="90" x:Name="TextBoxRechnungsnr" />
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Margin="10,0,10,10">
-                                <TextBlock FontSize="11" Foreground="#848484">Rechnungsnr</TextBlock>
-                                <TextBox Margin="0,3,0,0" Width="90" Text="" />
-                            </StackPanel>
-                            <StackPanel Margin="10,0,10,10">
-                                <TextBlock FontSize="11" Foreground="#848484">Rechnung abschcicken</TextBlock>
-                                <Button Margin="0,3,0,0" Width="200" >Rechnung Mailen</Button>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <StackPanel Margin="10,0,10,10">
+                                    <TextBlock FontSize="11" Foreground="#848484">Rechnungsdatum</TextBlock>
+                                    <DatePicker Margin="0,3,0,0" Width="150" x:Name="DatePickerRechnungsdatum" />
+                                </StackPanel>
+                                <StackPanel Margin="10,0,10,10">
+                                    <TextBlock FontSize="11" Foreground="#848484">Zahlungsziel</TextBlock>
+                                    <DatePicker Margin="0,3,0,0" Width="150" x:Name="DatePickerZahlungsziel" />
+                                </StackPanel>
+                                <StackPanel Margin="10,0,10,10">
+                                    <TextBlock FontSize="11" Foreground="#848484">Kunde ist Skontofähig</TextBlock>
+                                    <CheckBox Margin="0,3,0,0" Width="200" x:Name="CheckBoxSkonto">Skontofähig</CheckBox>
+                                </StackPanel>
                             </StackPanel>
                         </StackPanel>
                     </Grid>
