@@ -46,7 +46,6 @@
                 <TextBlock x:Name="NavItem6" Style="{StaticResource NavItem}">Aufträge</TextBlock>
                 <ListBoxItem Style="{StaticResource NavGroupHeader}" Margin="16,14,8,0">STAMMDATEN</ListBoxItem>
                 <TextBlock x:Name="NavItem7" Style="{StaticResource NavItem}">Stammdatenverwaltung</TextBlock>
-                <TextBlock x:Name="NavItem8" MouseDown="NavItem8_OnMouseDown" Style="{StaticResource NavItem}">Testio</TextBlock>
             </ListBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Background="#FF9600">

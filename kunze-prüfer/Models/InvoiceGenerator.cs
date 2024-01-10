@@ -47,7 +47,7 @@ namespace kunze_prüfer.Models
 
         void ComposeHeader(IContainer container)
         {
-            var titleStyle = TextStyle.Default.FontSize(20).SemiBold().FontColor(Colors.Blue.Medium);
+            var titleStyle = TextStyle.Default.FontSize(20).SemiBold().FontColor(Colors.Orange.Medium);
             
             container.Row(row =>
             {
@@ -62,7 +62,7 @@ namespace kunze_prüfer.Models
                     });
                 });
 
-                row.ConstantItem(100).Height(50).Placeholder();
+                row.ConstantItem(100).Image("./Media/kunze.png").FitArea();
             });
         }
 
@@ -74,7 +74,7 @@ namespace kunze_prüfer.Models
 
                 column.Item().Element(ComposeTable);
 
-                if (!string.IsNullOrWhiteSpace("Hello World")) // austauschen für Kommentar Objekt => Prüfen ob Kommentar vorhanden
+                if (!string.IsNullOrWhiteSpace("Hier würden künftig Kommentare stehen...")) // austauschen für Kommentar Objekt => Prüfen ob Kommentar vorhanden
                     column.Item().PaddingTop(25).Element(ComposeComments);
             });
         }
@@ -130,7 +130,7 @@ namespace kunze_prüfer.Models
             {
                 column.Spacing(5);
                 column.Item().Text("Kommentar 1").FontSize(14);
-                column.Item().Text("Hallo Welt"); // austauschen für Kommentar Objekt
+                column.Item().Text("Hier würden künftig Kommentare stehen..."); // austauschen für Kommentar Objekt
             });
         }
     }

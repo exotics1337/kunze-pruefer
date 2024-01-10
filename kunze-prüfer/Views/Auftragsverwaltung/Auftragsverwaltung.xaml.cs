@@ -45,9 +45,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung
                     if (auftrag != null)
                     {
                         auftragsnummer = auftrag.Auf_nr + 1;
-                        CurrentStep = auftrag.Status_nr;
-                        TextStatus.Text = auftrag.Status.Status_bez;
-                        TextAuftrag.Text = $"Auftrag #{auftragsnummer}";
+                        CurrentStep = 1;
+                        TextAuftrag.Text = "Neuer Auftrag";
+                        TextAuftrag.Text = $"Auftrag #{auftragsnummer + 1}";
                     }
                     else
                     {

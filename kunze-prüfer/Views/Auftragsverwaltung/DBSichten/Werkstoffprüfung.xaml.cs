@@ -25,6 +25,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         {
             InitializeComponent();
             _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
+            ProbeUnterList = Auftragsverwaltung.SharedResources.CurrentProbeUnterList;
             Auftragsverwaltung.SubmitButtonClicked += OnSubmitButtonClicked;
             Auftragsverwaltung.CurrentAuftragChanged += OnCurrentAuftragChanged;
             DataGridWerkstoffpruefung.ItemsSource = ProbeUnterList;
@@ -36,6 +37,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
         private void OnCurrentAuftragChanged()
         {
             _auftrag = Auftragsverwaltung.SharedResources.CurrentAuftrag;
+            ProbeUnterList = Auftragsverwaltung.SharedResources.CurrentProbeUnterList;
         }
         private async void OnSubmitButtonClicked()
         {

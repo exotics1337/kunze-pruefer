@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Diagnostics;
+using System.IO;
+using System.Security;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -19,6 +22,10 @@ namespace kunze_prüfer.Views.QuickPDF
         private Models.InvoiceDataSource invoiceInstance = new Models.InvoiceDataSource();
         private bool _isAngebot;
         private int _angebotNr;
+        private InvoiceDataSource model;
+        private InvoiceTemplate.InvoiceKunde _IK;
+        private InvoiceTemplate.AngebotModel _AM;
+        private InvoiceTemplate.RechnungModel _RM;
         public PDFCreator(Models.InvoiceDataSource invoiceInstance, InvoiceTemplate.InvoiceKunde IK, int angebotNr, InvoiceTemplate.AngebotModel AM = null, InvoiceTemplate.RechnungModel RM = null, bool isAngebot = true)
         {
             InitializeComponent();
@@ -28,6 +35,10 @@ namespace kunze_prüfer.Views.QuickPDF
             }
             this._isAngebot = isAngebot;
             this.invoiceInstance = invoiceInstance;
+            this._IK = IK;
+            this._angebotNr = angebotNr;
+            this._AM = AM;
+            this._RM = RM;
         }
 
         private void BtnPosAdd_OnClick(object sender, RoutedEventArgs e)
@@ -139,7 +150,7 @@ namespace kunze_prüfer.Views.QuickPDF
 
         private void BtnTabellenansicht_OnClick(object sender, RoutedEventArgs e)
         {
-
+            //
         }
         
         
@@ -153,15 +164,25 @@ namespace kunze_prüfer.Views.QuickPDF
         {
             if (_isAngebot)
             {
+                InvoiceTemplate.AngebotModel AM = new InvoiceTemplate.AngebotModel();
+                AM.ArtikelList = new List<InvoiceTemplate.Artikel>();
+                
                 foreach (var el in invoiceInstance.InvoiceElements)
                 {
+                    InvoiceTemplate.Artikel artikel = new InvoiceTemplate.Artikel();
                     Angebotsposition pos = new Angebotsposition();
                     pos.Ang_nr = _angebotNr;
                     pos.Ang2_nr = el.Rechnungs_pos;
                     pos.Rp_name = el.Artikelname;
                     pos.Rp_menge = Convert.ToInt32(el.Artikel_menge);
-                    pos.Rp_preis = Convert.ToDouble(el.Artikel_gesamt_preis);
+                    pos.Rp_preis = Convert.ToDouble(el.Artikel_einzel_preis);
                     pos.Rp_bemerkung = el.Artikel_bemerkung;
+
+                    artikel.Name = el.Artikelname;
+                    artikel.Menge = Convert.ToInt32(el.Artikel_menge);
+                    artikel.Preis = Convert.ToDouble(el.Artikel_einzel_preis);
+                    artikel.Bemerkung = el.Artikel_bemerkung;
+                    AM.ArtikelList.Add(artikel);
                     if (el.Artikel_IstFreiposition)
                     {
                         pos.Rp_menge = 0;
@@ -169,18 +190,45 @@ namespace kunze_prüfer.Views.QuickPDF
                     }
                     Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentAngebotspositionList.Add(pos);
                 }
+                
+                AM.AngebotNr = _angebotNr;
+                AM.Kunde = _IK;
+                
+                
+                var document = new InvoiceGenerator(AM);
+                
+                string path = "\\Dokumente\\Angebote\\";
+                string path2 = "/Dokumente/Angebote/";
+                if (!System.IO.Directory.Exists("." + path2))
+                {
+                    System.IO.Directory.CreateDirectory("." + path2);
+                }
+                if (!File.Exists(path + "Angebot-" + _angebotNr + ".pdf"))
+                {
+                    document.GeneratePdf("." + path2 + "Angebot-" + _angebotNr + ".pdf");
+                }
             }
             else
             {
+                InvoiceTemplate.RechnungModel RM = new InvoiceTemplate.RechnungModel();
+                RM.ArtikelList = new List<InvoiceTemplate.Artikel>();
+                
                 foreach (var el in invoiceInstance.InvoiceElements)
                 {
+                    InvoiceTemplate.Artikel artikel = new InvoiceTemplate.Artikel();
                     Rechnungsposition pos = new Rechnungsposition();
                     pos.r_nr = _angebotNr;
                     pos.r2_nr = el.Rechnungs_pos;
                     pos.Rp_name = el.Artikelname;
                     pos.Rp_menge = Convert.ToInt32(el.Artikel_menge);
-                    pos.Rp_preis = Convert.ToDouble(el.Artikel_gesamt_preis);
+                    pos.Rp_preis = Convert.ToDouble(el.Artikel_einzel_preis);
                     pos.Rp_bemerkung = el.Artikel_bemerkung;
+
+                    artikel.Name = el.Artikelname;
+                    artikel.Menge = Convert.ToInt32(el.Artikel_menge);
+                    artikel.Preis = Convert.ToDouble(el.Artikel_einzel_preis);
+                    artikel.Bemerkung = el.Artikel_bemerkung;
+                    RM.ArtikelList.Add(artikel);
                     if (el.Artikel_IstFreiposition)
                     {
                         pos.Rp_menge = 0;
@@ -188,9 +236,131 @@ namespace kunze_prüfer.Views.QuickPDF
                     }
                     Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentRechnungspositionList.Add(pos);
                 }
+
+                RM.RechnungNr = _angebotNr;
+                RM.Kunde = _IK;
+
+                var document = new InvoiceGenerator(null, RM);
+
+                string path = "\\Dokumente\\Rechnungen\\";
+                string path2 = "/Dokumente/Rechnungen/";
+                if (!System.IO.Directory.Exists("." + path2))
+                {
+                    System.IO.Directory.CreateDirectory("." + path2);
+                }
+                if (!File.Exists(path + "Rechnung-" + _angebotNr + ".pdf"))
+                {
+                    document.GeneratePdf("." + path2 + "Rechnung-" + _angebotNr + ".pdf");
+                }
             }
-            
             this.Close();
+        }
+
+        private void ButtonPrint_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (_isAngebot)
+            {
+                InvoiceTemplate.AngebotModel AM = new InvoiceTemplate.AngebotModel();
+                AM.ArtikelList = new List<InvoiceTemplate.Artikel>();
+                
+                foreach (var el in invoiceInstance.InvoiceElements)
+                {
+                    InvoiceTemplate.Artikel artikel = new InvoiceTemplate.Artikel();
+                    Angebotsposition pos = new Angebotsposition();
+                    pos.Ang_nr = _angebotNr;
+                    pos.Ang2_nr = el.Rechnungs_pos;
+                    pos.Rp_name = el.Artikelname;
+                    pos.Rp_menge = Convert.ToInt32(el.Artikel_menge);
+                    pos.Rp_preis = Convert.ToDouble(el.Artikel_einzel_preis);
+                    pos.Rp_bemerkung = el.Artikel_bemerkung;
+
+                    artikel.Name = el.Artikelname;
+                    artikel.Menge = Convert.ToInt32(el.Artikel_menge);
+                    artikel.Preis = Convert.ToDouble(el.Artikel_einzel_preis);
+                    artikel.Bemerkung = el.Artikel_bemerkung;
+                    AM.ArtikelList.Add(artikel);
+                    if (el.Artikel_IstFreiposition)
+                    {
+                        pos.Rp_menge = 0;
+                        pos.Rp_preis = 0;
+                    }
+                    Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentAngebotspositionList.Add(pos);
+                }
+                
+                AM.AngebotNr = _angebotNr;
+                AM.Kunde = _IK;
+                
+                
+                var document = new InvoiceGenerator(AM);
+                
+                string path = "\\Dokumente\\Angebote\\";
+                string path2 = "/Dokumente/Angebote/";
+                if (!System.IO.Directory.Exists("." + path2))
+                {
+                    System.IO.Directory.CreateDirectory("." + path2);
+                }
+
+                if (!File.Exists(path + "Angebot-" + _angebotNr + ".pdf"))
+                {
+                    document.GeneratePdf("." + path2 + "Angebot-" + _angebotNr + ".pdf");
+                    System.Diagnostics.Process.Start(Environment.CurrentDirectory + path + "Angebot-" + _angebotNr + ".pdf");
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(Environment.CurrentDirectory + path + "Angebot-" + _angebotNr + ".pdf");
+                }
+            }
+            else
+            {
+                InvoiceTemplate.RechnungModel RM = new InvoiceTemplate.RechnungModel();
+                RM.ArtikelList = new List<InvoiceTemplate.Artikel>();
+                
+                foreach (var el in invoiceInstance.InvoiceElements)
+                {
+                    InvoiceTemplate.Artikel artikel = new InvoiceTemplate.Artikel();
+                    Rechnungsposition pos = new Rechnungsposition();
+                    pos.r_nr = _angebotNr;
+                    pos.r2_nr = el.Rechnungs_pos;
+                    pos.Rp_name = el.Artikelname;
+                    pos.Rp_menge = Convert.ToInt32(el.Artikel_menge);
+                    pos.Rp_preis = Convert.ToDouble(el.Artikel_einzel_preis);
+                    pos.Rp_bemerkung = el.Artikel_bemerkung;
+
+                    artikel.Name = el.Artikelname;
+                    artikel.Menge = Convert.ToInt32(el.Artikel_menge);
+                    artikel.Preis = Convert.ToDouble(el.Artikel_einzel_preis);
+                    artikel.Bemerkung = el.Artikel_bemerkung;
+                    RM.ArtikelList.Add(artikel);
+                    if (el.Artikel_IstFreiposition)
+                    {
+                        pos.Rp_menge = 0;
+                        pos.Rp_preis = 0;
+                    }
+                    Auftragsverwaltung.Auftragsverwaltung.SharedResources.CurrentRechnungspositionList.Add(pos);
+                }
+
+                RM.RechnungNr = _angebotNr;
+                RM.Kunde = _IK;
+
+                var document = new InvoiceGenerator(null, RM);
+
+                string path = "\\Dokumente\\Rechnungen\\";
+                string path2 = "/Dokumente/Rechnungen/";
+                if (!System.IO.Directory.Exists("." + path2))
+                {
+                    System.IO.Directory.CreateDirectory("." + path2);
+                }
+
+                if (!File.Exists(path + "Rechnung-" + _angebotNr + ".pdf"))
+                {
+                    document.GeneratePdf("." + path2 + "Rechnung-" + _angebotNr + ".pdf");
+                    System.Diagnostics.Process.Start(Environment.CurrentDirectory + path + "Rechnung-" + _angebotNr + ".pdf");
+                }
+                else
+                {
+                    System.Diagnostics.Process.Start(Environment.CurrentDirectory + path + "Rechnung-" + _angebotNr + ".pdf"); 
+                }
+            }
         }
     }
 }
