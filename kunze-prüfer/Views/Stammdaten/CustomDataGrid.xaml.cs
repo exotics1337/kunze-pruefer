@@ -172,7 +172,7 @@ namespace kunze_prüfer.Views.Stammdaten
                 else if (modellTyp == typeof(Angebotsposition))
                 {
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebots-Nr", Binding = new Binding("Ang_nr"), IsReadOnly = true });
-                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüfungstyp-Nr", Binding = new Binding("Pe_typ_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Angebots-Nr2", Binding = new Binding("Ang2_nr") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Preis", Binding = new Binding("Rp_preis") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Menge", Binding = new Binding("Rp_menge") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bemerkung", Binding = new Binding("Rp_bemerkung") });
@@ -180,7 +180,7 @@ namespace kunze_prüfer.Views.Stammdaten
                 else if (modellTyp == typeof(Rechnungsposition))
                 {
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Rechnungs-Nr", Binding = new Binding("r_nr"), IsReadOnly = true });
-                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Prüfungstyp-Nr", Binding = new Binding("Pe_typ_nr") });
+                    baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Rechnungs-Nr2", Binding = new Binding("r2_nr") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Preis", Binding = new Binding("Rp_preis") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Menge", Binding = new Binding("Rp_menge") });
                     baseDataGrid.Columns.Add(new DataGridTextColumn { Header = "Bemerkung", Binding = new Binding("Rp_bemerkung") });
