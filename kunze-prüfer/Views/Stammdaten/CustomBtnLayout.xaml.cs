@@ -26,6 +26,7 @@
             try
             {
                 Stammdaten.UpdateData();
+                RefreshDoto();
             }
             catch (Exception exception)
             {
@@ -66,11 +67,15 @@
             }
         }
 
-        private async void Refresh_btn_OnClick(object sender, RoutedEventArgs e)
+        private void Refresh_btn_OnClick(object sender, RoutedEventArgs e)
+        {
+            Stammdaten.SearchBox.Text = "Suche";
+            RefreshDoto();
+        }
+
+        private async void RefreshDoto()
         {
             Task taskToAwait = null;
-            Stammdaten.SearchBox.Text = "Suche";
-
             switch (Stammdaten.AuswahlCb1.SelectedItem.ToString())
             {
                 case "Kunden":
@@ -137,13 +142,12 @@
                     MessageBox.Show("Unbekannte Auswahl. Bitte wählen Sie eine gültige Option.");
                     return;
             }
-
+            
             if (taskToAwait != null)
             {
                 await taskToAwait;
             }
         }
-
 
         private async void Search_btn_OnClick(object sender, RoutedEventArgs e)
         {
@@ -194,12 +198,12 @@
                     return "Rechnung";
                 case "Rechnungsposition":
                     return "Rechnungsposition";
-               case "Kundenansprechpartner":
-                   return "Kundenansprechpartner";
-               case "Angebotstextbausteine":
-                   return "Angebot_Textbaustein";
-               case "Werkstoffprüfung":
-                   return "Werkstoff_Pruefung"; 
+                case "Kundenansprechpartner":
+                    return "Kundenansprechpartner";
+                case "Angebotstextbausteine":
+                    return "Angebot_Textbaustein";
+                case "Werkstoffprüfung":
+                    return "Werkstoff_Pruefung"; 
                
             }
 
