@@ -146,9 +146,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             try
             {
                 SearchWindow sw = new SearchWindow(TextBoxSucheAbnahmegesellschaft.Text, "Abnahmegesellschaft");
-                if (int.TryParse(TextBoxSucheAbnahmegesellschaft.Text, out int result))
+                if (TextBoxSucheAbnahmegesellschaft.Text != "" && int.TryParse(TextBoxSucheAbnahmegesellschaft.Text, out int result))
                 {
-                    // Suche mit ID implementieren
+                    await sw.SearchWithType(result);
                 }
                 else if (TextBoxSucheAbnahmegesellschaft.Text != "")
                 {

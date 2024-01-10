@@ -67,10 +67,10 @@ namespace kunze_prüfer.Models
                 // Company Information
                 row.RelativeItem().Column(column =>
                 {
-                    column.Item().Text("Kunze Company GmbH").Style(subtitleStyle);
-                    column.Item().Text("Musterstraße 123").Style(detailStyle);
-                    column.Item().Text("12345 Musterstadt").Style(detailStyle);
-                    column.Item().Text("info@kunzecompany.com").Style(detailStyle);
+                    column.Item().Text("Werkstoffprüfung Kunze GmbH").Style(subtitleStyle);
+                    column.Item().Text("Lange Eck 52028").Style(detailStyle);
+                    column.Item().Text("58099 Hagen").Style(detailStyle);
+                    column.Item().Text("info@wsp-kunze.de").Style(detailStyle);
                 });
 
                 // Customer Information

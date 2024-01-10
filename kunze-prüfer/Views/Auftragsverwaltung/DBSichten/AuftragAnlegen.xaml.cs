@@ -101,9 +101,9 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             try
             {
                 SearchWindow sw = new SearchWindow(TextBoxSuchen.Text, "Norm");
-                if (int.TryParse(TextBoxSuchen.Text, out int result))
+                if (TextBoxSuchen.Text != "" && int.TryParse(TextBoxSuchen.Text, out int result))
                 {
-                    // Suche mit ID implementieren
+                    await sw.SearchWithType(result);
                 }
                 else if (TextBoxSuchen.Text != "")
                 {
