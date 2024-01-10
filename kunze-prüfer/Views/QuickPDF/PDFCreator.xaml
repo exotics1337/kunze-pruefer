@@ -99,7 +99,7 @@
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Background="#ed8900">
-                <Button Style="{StaticResource TransparentButton}">
+                <Button Style="{StaticResource TransparentButton}" x:Name="ButtonPrint" Click="ButtonPrint_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Media/Icons/print-52.png" Width="18" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,4,0" Stretch="Fill"/>
                         <TextBlock> Drucken </TextBlock>

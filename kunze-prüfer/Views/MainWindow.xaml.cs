@@ -80,7 +80,6 @@ namespace kunze_prüfer
             NavItem5.Style = defaultStyle;
             NavItem6.Style = defaultStyle;
             NavItem7.Style = defaultStyle;
-            NavItem8.Style = defaultStyle;
             switch (selectedPage)
             {
                 case 0:
@@ -106,9 +105,6 @@ namespace kunze_prüfer
                 case 9:
                     NavItem7.Style = selectedStyle;
                     CurrentView = new Stammdaten();
-                    break;
-                case 10:
-                    NavItem8.Style = selectedStyle;
                     break;
             }
         }
@@ -153,10 +149,6 @@ namespace kunze_prüfer
                 Application.Current.Shutdown();
             }
         }
-
-        private void NavItem8_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+        
     }
 }

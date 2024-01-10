@@ -666,3 +666,4 @@ C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammda
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\Views\Stammdaten\Werkstoffprüfung.baml
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01.resources
 C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\obj\Debug\kunze_prüfer.Migrations.v01test.resources
+C:\Users\gunay\RiderProjects\kunze-pruefer\kunze-prüfer\bin\Debug\Media\kunze.png

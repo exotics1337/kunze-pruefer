@@ -19,8 +19,6 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="16"/>
             <RowDefinition Height="65"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="16"/>
@@ -28,18 +26,13 @@
         
         <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Background="#F8F4F4">
             <StackPanel Orientation="Horizontal">
-                <Image Margin="20, 6, 0, 6" Width="52" Height="52" />
-                <StackPanel Orientation="Vertical" Margin="0,12,6,0">
+                <StackPanel Orientation="Vertical" Margin="10,12,6,0">
                     <TextBlock FontSize="8" FontWeight="Light"> DASHBOARD </TextBlock>
-                    <TextBlock FontSize="20"> Offene Aufträge (2) </TextBlock>
+                    <TextBlock FontSize="20"> Aktuelle Aufträge </TextBlock>
                 </StackPanel>
             </StackPanel>
-            <Button Width="260" Height="30" HorizontalAlignment="Right" Margin="0,0,12,0">+ Neuen Auftrag erstellen</Button>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1">
-            <TextBox>Suche in Aufträgen</TextBox>
-        </Grid>
-        <Grid Grid.Row="6" Grid.Column="1">
             <stammdaten:CustomDataGrid x:Name="DataGrid"></stammdaten:CustomDataGrid>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="3" Grid.RowSpan="3" Background="#F8F4F4">
@@ -52,10 +45,6 @@
                             <TextBlock x:Name="StatusText" Margin="2,0,0,0" FontSize="15" Foreground="Black" Text="" />
                         </StackPanel>
                     </Border>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-                        <Button Width="150">Angebot Drucken</Button>    
-                        <Button Margin="5,0,0,0" Width="150">Rechnung Drucken</Button>    
-                    </StackPanel>
                     <Button Width="305" Height="40" Margin="0,10,0,0" x:Name="ButtonEditAuftrag" Click="ButtonEditAuftrag_OnClick"> Auftrag Weiterbearbeiten </Button>
                 </StackPanel>
             </Grid>

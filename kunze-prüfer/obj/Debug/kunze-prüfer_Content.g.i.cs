@@ -24,6 +24,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/save-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/test-52.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/icons/transfer-52.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("media/kunze.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libharfbuzzsharp.dylib")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libharfbuzzsharp.dylib")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("libharfbuzzsharp.dll")]
