@@ -48,23 +48,50 @@ namespace kunze_prüfer.Models
         void ComposeHeader(IContainer container)
         {
             var titleStyle = TextStyle.Default.FontSize(20).SemiBold().FontColor(Colors.Orange.Medium);
-            
+            var subtitleStyle = TextStyle.Default.FontSize(13).SemiBold();
+            var detailStyle = TextStyle.Default.FontSize(10);
+
             container.Row(row =>
             {
+                // Document Title
                 row.RelativeItem().Column(column =>
                 {
                     column.Item().Text(AngebotModel != null ? $"Angebot #{AngebotModel.AngebotNr}" : $"Rechnung #{RechnungModel.RechnungNr}").Style(titleStyle);
-                
                     column.Item().Text(text =>
                     {
                         text.Span("Datum: ").SemiBold();
                         text.Span($"{DateTime.Now.ToString("d")}");
                     });
                 });
+                
+                // Company Information
+                row.RelativeItem().Column(column =>
+                {
+                    column.Item().Text("Kunze Company GmbH").Style(subtitleStyle);
+                    column.Item().Text("Musterstraße 123").Style(detailStyle);
+                    column.Item().Text("12345 Musterstadt").Style(detailStyle);
+                    column.Item().Text("info@kunzecompany.com").Style(detailStyle);
+                });
 
+                // Customer Information
+                row.RelativeItem().Column(column =>
+                {
+                    var customer = AngebotModel != null ? AngebotModel.Kunde : RechnungModel.Kunde;
+
+                    if (customer != null)
+                    {
+                        column.Item().Text(customer.Name).Style(subtitleStyle);
+                        column.Item().Text(customer.Adresse).Style(detailStyle);
+                        column.Item().Text($"USTID: {customer.USTID}").Style(detailStyle);
+                    }
+                });
+
+                // Company Logo
                 row.ConstantItem(100).Image("./Media/kunze.png").FitArea();
             });
         }
+
+
 
         void ComposeContent(IContainer container)
         {
@@ -74,10 +101,31 @@ namespace kunze_prüfer.Models
 
                 column.Item().Element(ComposeTable);
 
-                if (!string.IsNullOrWhiteSpace("Hier würden künftig Kommentare stehen...")) // austauschen für Kommentar Objekt => Prüfen ob Kommentar vorhanden
+                // Total Price
+                column.Item().PaddingTop(10).Row(row =>
+                {
+                    row.ConstantItem(150).Text("Gesamtpreis:").FontSize(12).SemiBold();
+                    row.ConstantItem(100).Text($"{CalculateTotalPrice()}€").FontSize(12).SemiBold();
+                });
+
+                if (!string.IsNullOrWhiteSpace("Hier würden künftig Kommentare stehen..."))
                     column.Item().PaddingTop(25).Element(ComposeComments);
             });
         }
+
+        double CalculateTotalPrice()
+        {
+            var artikelList = AngebotModel != null ? AngebotModel.ArtikelList : RechnungModel.ArtikelList;
+            double totalPrice = 0;
+
+            foreach (var item in artikelList)
+            {
+                totalPrice += item.Preis * item.Menge;
+            }
+
+            return totalPrice;
+        }
+
         void ComposeTable(IContainer container)
         {
             container.Table(table =>

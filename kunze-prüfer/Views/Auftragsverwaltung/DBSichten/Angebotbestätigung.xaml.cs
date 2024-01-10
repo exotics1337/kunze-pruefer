@@ -122,7 +122,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                 if (kunde != null)
                 {
                     IK.Name = kunde.k_name;
-                    IK.Adresse = kunde.k_rech_adresse;
+                    IK.Adresse = kunde.k_lief_adresse;
                     IK.USTID = kunde.k_ust_id;
                 }
 

@@ -14,7 +14,7 @@
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <DataGrid x:Name="DataGrid" AutoGenerateColumns="True" MouseDoubleClick="DataGrid_MouseDoubleClick"></DataGrid>
+            <DataGrid x:Name="DataGrid" MouseDoubleClick="DataGrid_MouseDoubleClick"></DataGrid>
         </Grid>
         <Grid Grid.Row="1" Background="#FF9600">
             <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Foreground="WhiteSmoke" FontWeight="Light" x:Name="TextBlockErgebnisse">0 Suchergebnisse </TextBlock>
