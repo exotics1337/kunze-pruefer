@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:kunze_prüfer.Views.Auftragsverwaltung.DBSichten"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="680">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <ScrollViewer>
             <StackPanel>
                 <GroupBox Height="100" Margin="15,15,15,15" VerticalAlignment="Top" Header="Auftrag erledigt" x:Name="GroupBoxAuftragErledigt">

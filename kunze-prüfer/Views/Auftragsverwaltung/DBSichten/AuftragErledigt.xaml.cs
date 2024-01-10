@@ -1,8 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using kunze_prüfer.DataBase;
 using kunze_prüfer.Models;
 using kunze_prüfer.Views.QuickPDF;
@@ -61,6 +64,7 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
                     Auftragsverwaltung.SharedResources.Step = 6;
                     Auftragsverwaltung.SharedResources.CurrentAuftrag = _auftrag;
                     AdonisUI.Controls.MessageBox.Show("Auftrag wurde erfolgreich bestätigt!", "Speichern erfolgreich!", AdonisUI.Controls.MessageBoxButton.OK);
+                    MainGrid.Background = new SolidColorBrush(Color.FromRgb(178, 255, 171));
                 }
                 else
                 {
@@ -83,16 +87,45 @@ namespace kunze_prüfer.Views.Auftragsverwaltung.DBSichten
             }
             
             InvoiceDataSource IS = new InvoiceDataSource();
-
+            InvoiceTemplate.RechnungModel RM = new InvoiceTemplate.RechnungModel();
+            RM.ArtikelList = new List<InvoiceTemplate.Artikel>();
+            
             foreach (var pu in ProbeUnterList)
             {
                 InvoiceTemplate.Artikel A = new InvoiceTemplate.Artikel();
-                A.Name = pu.P_nr.ToString();
+                InvoiceDataSource.InvoiceBaseElement IBE = new InvoiceDataSource.InvoiceBaseElement();
+                
+                A.Menge = pu.Pe_anzahl;
+                IBE.Artikel_menge = pu.Pe_anzahl;
+                
+                var pruefungstyp = await db.Set<Pruefungstyp>().FirstOrDefaultAsync(pt => pt.Pe_Typ_nr == pu.Pe_typ_nr);
+                if (pruefungstyp != null)
+                {
+                    A.Preis = Convert.ToDouble(pruefungstyp.Pe_durch_preis);
+                    IBE.Artikel_einzel_preis = Convert.ToDouble(pruefungstyp.Pe_durch_preis);
+                    IBE.Artikel_gesamt_preis = Convert.ToDouble(pruefungstyp.Pe_durch_preis) * pu.Pe_anzahl;
+
+                    A.Name = pruefungstyp.Pe_typ_bez;
+                    IBE.Artikelname = pruefungstyp.Pe_typ_bez;
+                }
+                else
+                {
+                    A.Preis = 0;
+                    IBE.Artikel_einzel_preis = 0;
+                    IBE.Artikel_gesamt_preis = 0;
+
+                    A.Name = "Neue Prüfung";
+                    IBE.Artikelname = "Neue Prüfung";
+                }
+                
+                A.Bemerkung = pu.Pe_bemerkung;
+                
+                RM.ArtikelList.Add(A);
+                IS.InvoiceBaseElements.Add(IBE);
             }
             
             InvoiceTemplate IT = new InvoiceTemplate();
             InvoiceTemplate.InvoiceKunde IK = new InvoiceTemplate.InvoiceKunde();
-            InvoiceTemplate.RechnungModel RM = new InvoiceTemplate.RechnungModel();
 
             var kunde = await db.Set<Kunde>().FirstOrDefaultAsync(k => k.k_nr == _auftrag.k_nr);
             IK.Name = kunde.k_name;
